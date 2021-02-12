@@ -1,9 +1,7 @@
 const Home = {"Tables": 10,"Parcels":9,"Kitchens": 10,"Waiters": 14,"Billers":10,"Customers":30};
-//const employeeData = {"Type": "Waiters","Name": "abc","Email": "abc@gmail.com", "Mobile" : "8280116464","Username": "abc","Password": "abc","DOJ": "20.11.15","status": 200,"msg":"employee added successfully"}
 const Loginmsg = {"status" : 200 ,"msg": "login successful"}
 const employeemsg = {"msg": "employee added", "status": 200}
-//const dummyData = {"Email": "abc@gmail.com", "password": "abc"}
-
+const waiters = [{name: "Ashok kumar",status:"Active",tableno: "5",orderdetails:["rice","dal","tandoor","coldrink","dry chana"]},{name:"vinod raj",status:"Active",tableno: "10",orderdetails:["masala papad","tandoor chiku","paneer","chhole"]},{name:"Akash sahu",status:"Inactive"},{name:"Sunil kumar",status:"Active",tableno: "7",orderdetails: ["rice","dal","mutton","egg","salad"]},{name:"Laxman hota",status:"Inactive"},{name:"Santosh panda",status:"Inactive"}]
 const routes = (app) => {
     app.route('/homepagedata').get((req,res) => res.send(Home)).post((req, res) =>
     res.send('POST request successful!'));
@@ -29,6 +27,10 @@ const routes = (app) => {
     let {Type,Name,Email,Mobile,Username,Password,DOJ} = req.body;
     //console.log(req.body)
   res.send(employeemsg)
+  })
+
+  app.route('/waiters').get((req,res) => {
+    res.send(waiters);
   })
 }
 
