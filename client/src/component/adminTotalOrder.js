@@ -1,87 +1,6 @@
 import React from "react";
 import { Accordion, Card, Button, Header } from "react-bootstrap";
-// function val() {
-//   return {
-//     va: {
-//       t1: {
-//         session1: [
-//           {
-//             items: "rice",
-//             quantity: 2,
-//             amount: 50,
-//           },
-//           {
-//             items: "dal",
-//             quantity: 1,
-//             amount: 70,
-//           },
-//           {
-//             items: "chilly chicken",
-//             quantity: 1,
-//             amount: 150,
-//           },
-//         ],
-//         session2: [
-//           {
-//             items: "roti",
-//             quantity: 5,
-//             amount: 10,
-//           },
-//           {
-//             items: "butter paneer",
-//             quantity: 1,
-//             amount: 140,
-//           },
-//           {
-//             items: "chilly chicken",
-//             quantity: 1,
-//             amount: 150,
-//           },
-//         ],
-//       },
-//       t2: {
-//         session1: [
-//           {
-//             items: "rice",
-//             quantity: 1,
-//             amount: 50,
-//           },
-//           {
-//             items: "mix veg",
-//             quantity: 1,
-//             amount: 90,
-//           },
-//           {
-//             items: "chicken",
-//             quantity: 1,
-//             amount: 130,
-//           },
-//         ],
-//       },
-//       t3: {
-//         session1: [
-//           {
-//             items: "rice",
-//             quantity: 1,
-//             amount: 50,
-//           },
-//           {
-//             items: "mix veg",
-//             quantity: 1,
-//             amount: 90,
-//           },
-//           {
-//             items: "chicken",
-//             quantity: 1,
-//             amount: 130,
-//           },
-//         ],
-//       },
-//     },
-//   };
-// }
-// const res = val();
-// console.log(res);
+
 var val = {
   t1: {
     session1: [
@@ -101,6 +20,7 @@ var val = {
         amount: 150,
       },
     ],
+    
     session2: [
       {
         items: "roti",
@@ -120,7 +40,7 @@ var val = {
     ],
   },
   t2: {
-    session1: [
+    session4: [
       {
         items: "rice",
         quantity: 1,
@@ -139,7 +59,7 @@ var val = {
     ],
   },
   t3: {
-    session1: [
+    session6: [
       {
         items: "rice",
         quantity: 1,
@@ -158,12 +78,7 @@ var val = {
     ],
   },
 };
-{
-  console.log(val.t1.session1);
-}
-{
-  console.log(Object.keys(val));
-}
+
 function AdminTotalOrder() {
   return (
     <div
@@ -174,31 +89,64 @@ function AdminTotalOrder() {
         backgroundImage: `linear-gradient(90deg,#ffdead 50%,#faf0e6 50%)`,
       }}
     >
-      {Object.keys(val).map((key, index) => (
+      
+      {Object.keys(val).map((item, index) => (
+
         <Accordion key={index}>
           <Card>
+            
             <Accordion.Toggle as={Card.Header} eventKey="0">
-              {key}
+              {item}
             </Accordion.Toggle>
+
             <Accordion.Collapse eventKey="0">
               <Card.Body>
-                {Object.values(val).map((value, index) => (
-                  <Accordion key={index}>
-                    <Card>
-                      <Accordion.Toggle as={Card.Header} eventKey="0">
-                        {Object.keys(value)}
-                      </Accordion.Toggle>
-                      <Accordion.Collapse eventKey="0">
-                        <Card.Body>Hello! I'm the body</Card.Body>
-                      </Accordion.Collapse>
-                    </Card>
-                  </Accordion>
-                ))}
+                {(item === "t1") ? 
+              //   Object.values(val).map((value, index) => (
+              //     <Accordion key={index}>
+              //       <Card>
+              //         <Accordion.Toggle as={Card.Header} eventKey="0">
+              //           {Object.keys(val.t1)}
+              //         </Accordion.Toggle>
+              //         <Accordion.Collapse eventKey="0">
+              //           <Card.Body>Hello! I'm the body</Card.Body>
+              //         </Accordion.Collapse>
+
+              //       </Card>
+              //     </Accordion>
+              // ))
+              <Accordion>
+                <Card>
+                  <Accordion.Toggle as={Card.Header} eventKey="0">{Object.keys(val.t1)}</Accordion.Toggle>
+                  <Accordion.Collapse eventKey="0"><Card.Body>hi</Card.Body></Accordion.Collapse>
+                </Card>
+              </Accordion>
+              : console.log("failed")}
+
+              {(item === "t2") ? 
+              <Accordion>
+                <Card>
+                  <Accordion.Toggle as={Card.Header} eventKey="0">{Object.keys(val.t2)}</Accordion.Toggle>
+                  <Accordion.Collapse eventKey="0"><Card.Body>hello</Card.Body></Accordion.Collapse>
+                  </Card>
+                  </Accordion> 
+                  : console.log("2nd")}
+
+            {(item === "t3") ? 
+              <Accordion>
+                <Card>
+                  <Accordion.Toggle as={Card.Header} eventKey="0">{Object.keys(val.t3)}</Accordion.Toggle>
+                  <Accordion.Collapse eventKey="0"><Card.Body>sweta</Card.Body></Accordion.Collapse>
+                  </Card>
+                  </Accordion> 
+                  : console.log("3rd")}
+
               </Card.Body>
             </Accordion.Collapse>
           </Card>
         </Accordion>
       ))}
+      
     </div>
   );
 }
