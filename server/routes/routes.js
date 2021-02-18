@@ -1,3 +1,5 @@
+
+let employeeSchema = require("../models/model")
 const Home = {"Tables": 10,"Parcels":9,"Kitchens": 10,"Waiters": 14,"Billers":10,"Customers":30};
 const Loginmsg = {"status" : 200 ,"msg": "login successful"}
 const employeemsg = {"msg": "employee added", "status": 200}
@@ -25,8 +27,9 @@ const routes = (app) => {
     //let data = employeeData;
     //console.log("all employee data = "+data+"");
     let {Type,Name,Email,Mobile,Username,Password,DOJ} = req.body;
-    //console.log(req.body)
-  res.send(employeemsg)
+    new employeeSchema(req.body).save();
+    console.log(req.body)
+    res.send(employeemsg)
   })
 
   app.route('/waiters').get((req,res) => {

@@ -3,6 +3,7 @@ const routes = require("./routes/routes");
 const mongoose = require("mongoose");
 const bodyParser = require("body-Parser");
 const cors = require("cors");
+//var empSchema = require("./models/model");
 const app = express();
 const PORT = 4000;
 

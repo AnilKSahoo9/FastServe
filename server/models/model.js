@@ -2,28 +2,24 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-export const DataSchema = new Schema({
-  Tables: {
-    type: Number
+const employeeSchema = new mongoose.Schema({
+  Username: {
+    type: String
   },
-  Parcels: {
-    type: Number
+  email: {
+    type: String
   },
-  Waiters: {
-    type: Number
+  password: {
+    type: String
   },
-  Kitchens: {
-      type:Number
+  Type: {
+      type:String
   },
-  Billers: {
-      type: Number
+  DOJ: {
+      type: String
   },
-  Customers: {
-      type:Number
-  },
-  created_date: {
-    type: Date,
-    default: Date.now
+  Mobile: {
+      type:String
   }
 })
-module.exports = mongoose.model('HomePageData', DataSchema);
+module.exports = mongoose.model('employees', employeeSchema);
