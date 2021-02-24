@@ -24,16 +24,7 @@ export const Menu = () => {
       >
         Total Order
       </Link>
-      <Link
-        className="list-group-item list-group-item-action"
-        outline
-        color="secondary"
-        tag="a"
-        to=""
-        action
-      >
-        Parcels
-      </Link>
+
       <Link
         className="list-group-item list-group-item-action"
         outline
