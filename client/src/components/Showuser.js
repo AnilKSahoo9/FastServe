@@ -52,13 +52,18 @@ const Showuser = (props) => {
   ];
   const [show, setShow] = useState(false);
   const [data, setData] = useState({});
+//const [dataFromChild,setDataFromChild] = useState(null);
 
   const handleShowDetails = (event) => {
-    setShow(true);
-    setData({ data: event });
-    console.log("event");
-    // return <ModalExample props={event} />;
-  };
+      setShow(!show);
+      setData({ data: event });
+    };
+  
+
+  // const handleCallback = (childData) => {
+  //  setDataFromChild(childData);
+  // }
+
   return (
     <div>
       <div className="border border-dark rounded ml-4 mr-4 mb-3">
@@ -85,18 +90,19 @@ const Showuser = (props) => {
                     <Button
                       outline
                       color="primary"
-                      onClick={() => handleShowDetails(user.modal)}
+                      onClick={() => handleShowDetails(user.modal)
+                      }
                     >
                       Show Details
                     </Button>
                   </td>
-                  {/* {show ? <ModalExample props={user.modal} /> : null} */}
                 </tr>
               ))}
             </tbody>
           </Table>
         </div>
-        {show ? <ModalExample props={data.data} /> : null}
+        {show ? <ModalExample Data={data.data} display={show} /> : null}
+        {/* parentCallback={handleCallback} */}
       </div>
       <div className="border border-dark rounded ml-4 mr-4 mb-3">
         <div style={{ backgroundColor: "Gray", color: "white " }}>

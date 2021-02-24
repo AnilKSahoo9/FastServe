@@ -5,47 +5,21 @@ const ModalExample = (props) => {
   const { buttonLabel, className } = props;
 
   const [modal, setModal] = useState(true);
+  //const [display,setDisplay] = useState(props.display);
 
-  const toggle = () => setModal(!modal);
-  // const userDetails = [
-  //  {
-  //     id: 1,
-  //     name: "Ravi Kumar",
-  //     gender: "Male",
-  //     email: "Ravi@gmail.com",
-  //     mobile: "9877456122",
-  //     address: "BBSR",
-  //     username: "Ravi",
-  //     password: "Ravi",
-  //     documents: "",
-  //     dateofjoin: "01/05/2018"
-  //  },
-  //  {
-  //     id:2,
-  //     name:"Pranaya Kumar",
-  //     gender:"Male",
-  //     email:"Ravi@gmail.com",
-  //     mobile:"9877456122",
-  //     address:"BBSR",
-  //     username:"Ravi",
-  //     password:"Ravi",
-  //     documents:"",
-  //     dateofjoin:"01/05/2018"
-  //   }
-  // ]
-
-  // const userList = userDetails.find(Detail =>
-  //   Detail.name === "Ravi Kumar"
-  //     );
-  //console.log(userList)
-  console.log(props);
+  const toggle = () => {setModal(!modal);
+  // setDisplay(!display);
+  // props.parentCallback(display);
+};
+  
+  //console.log(props.Data);
   return (
     <div>
       {/* <Button color="danger" onClick={toggle}>{buttonLabel}</Button> */}
-      <Modal isOpen={modal} toggle={toggle} className={className}>
-        <ModalHeader toggle={toggle}>User Details</ModalHeader>
+      <Modal isOpen={modal} toggle={props.display} className={className}>
+        <ModalHeader toggle={props.display}>User Details</ModalHeader>
         <ModalBody>
-          <div>{props.gender}</div>
+          <div>{Object.entries(props.Data).map((item,index) => (<ol key={index}>{item}</ol>))}</div>
         </ModalBody>
         <ModalFooter>
           <Button color="primary" onClick={toggle}>
