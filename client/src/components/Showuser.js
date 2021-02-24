@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Button, Table } from "reactstrap";
-import ModalExample from "./modal";
+//import ModalExample from "./modal";
+import {  Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 const Showuser = (props) => {
-  //   const [UN, setUN] = useState("Ravi Kumar");
   const userDetails = [
     {
       empId: 1,
@@ -52,18 +52,30 @@ const Showuser = (props) => {
   ];
   const [show, setShow] = useState(false);
   const [data, setData] = useState({});
-//const [dataFromChild,setDataFromChild] = useState(null);
+const [dataFromChild,setDataFromChild] = useState(null);
+const [displayModal,setdisplayModal] = useState(false);
 
   const handleShowDetails = (event) => {
       setShow(!show);
       setData({ data: event });
+      setdisplayModal(!displayModal)
     };
-  
 
-  // const handleCallback = (childData) => {
-  //  setDataFromChild(childData);
-  // }
+  const handleCallback = (childData) => {
+    //console.log(childData);
+   setDataFromChild(childData);
+  }
+//console.log(dataFromChild);
 
+const handleClick = () => {
+  if(show && displayModal === true){
+    setShow(false);
+    setdisplayModal(false)
+  }
+  else{
+    console.log("fail");
+  }
+}
   return (
     <div>
       <div className="border border-dark rounded ml-4 mr-4 mb-3">
@@ -101,8 +113,22 @@ const Showuser = (props) => {
             </tbody>
           </Table>
         </div>
-        {show ? <ModalExample Data={data.data} display={show} /> : null}
-        {/* parentCallback={handleCallback} */}
+        {/* {show ? <ModalExample Data={data.data} display={show} parentCallback={handleCallback}/> : null} */}
+        {show ? (
+        <div>
+          <Modal isOpen={displayModal} toggle={displayModal}>
+            <ModalHeader>User Details</ModalHeader>
+              <ModalBody><div>{Object.entries(data.data).map((item,index) => (<ol key={index}>{item}</ol>))}</div></ModalBody>
+            <ModalFooter>
+            <Button color="primary">
+            Edit
+          </Button>{" "}
+          <Button color="secondary" onClick={handleClick}>
+            Cancel
+          </Button>
+            </ModalFooter>
+          </Modal>
+        </div>) : null}
       </div>
       <div className="border border-dark rounded ml-4 mr-4 mb-3">
         <div style={{ backgroundColor: "Gray", color: "white " }}>
