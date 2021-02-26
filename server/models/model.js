@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const Schema = mongoose.Schema;
+//const Schema = mongoose.Schema;
 
 const employeeSchema = new mongoose.Schema({
   Username: {
@@ -21,5 +21,17 @@ const employeeSchema = new mongoose.Schema({
   Mobile: {
       type:String
   }
+});
+
+const menuSchema = new mongoose.Schema({
+  breakfast:{type:Array},
+  dessert:{type:Array},
+  rice:{type:Array},
+  dal:{type:Array},
+  nonveg:{type:Object},
+  veg:{type:Object}
 })
+
 module.exports = mongoose.model('employees', employeeSchema);
+
+module.exports = mongoose.model('menus',menuSchema);

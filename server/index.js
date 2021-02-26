@@ -3,7 +3,6 @@ const routes = require("./routes/routes");
 const mongoose = require("mongoose");
 const bodyParser = require("body-Parser");
 const cors = require("cors");
-//var empSchema = require("./models/model");
 const app = express();
 const PORT = 4000;
 
@@ -46,7 +45,7 @@ mongoose
   )
   .then(() => {
     // app.listen(4000);
-    console.log("db connected...!");
+    //console.log("db connected...!");
     app.listen(PORT, () =>
       console.log(`Your server is running on port ${PORT}`)
     );
