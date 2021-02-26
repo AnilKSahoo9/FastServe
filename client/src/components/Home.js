@@ -65,7 +65,7 @@ function Home() {
     return (
         <div>
             <CardGroup className='bg-dark'>
-                <Card body outline color="info" style={{ width: 200, height: 250 }}>
+                <Card body outline color="info" style={{ width: 200, height: 250 ,color:'white',backgroundImage: `linear-gradient(to right bottom, #051437, #004782, #0081a7, #00b98a, #12eb25)`}}>
                     <CardBody >
                         <CardTitle>Tables</CardTitle>
                         <hr></hr>
@@ -73,7 +73,7 @@ function Home() {
                         <p>No. of Tables Active</p>
                     </CardBody>
                 </Card>
-                <Card body outline color="info" style={{ width: 200, height: 250 }}>
+                <Card body outline color="info" style={{ width: 200, height: 250,color:'white',backgroundImage: `linear-gradient(to right bottom, #051437, #004782, #0081a7, #00b98a, #12eb25)` }}>
                     <CardBody>
                         <CardTitle>Parcels</CardTitle>
                         <hr></hr>
@@ -81,7 +81,7 @@ function Home() {
                         <p>No. of Parcel Placed</p>
                     </CardBody>
                 </Card>
-                <Card body outline color="info" style={{ width: 200, height: 250 }}>
+                <Card body outline color="info" style={{ width: 200, height: 250,color:'white',backgroundImage: `linear-gradient(to right bottom, #051437, #004782, #0081a7, #00b98a, #12eb25)` }}>
                     <CardBody>
                         <CardTitle>Waiters</CardTitle>
                         <hr></hr>
@@ -91,7 +91,7 @@ function Home() {
                 </Card>
             </CardGroup>
             <CardGroup>
-                <Card body outline color="info" style={{ width: 200, height: 250 }}>
+                <Card body outline color="info" style={{ width: 200, height: 250,color:'white',backgroundImage: `linear-gradient(to left top, #051437, #004782, #0081a7, #00b98a, #12eb25)`}}>
                     <CardBody>
                         <CardTitle>Kichens</CardTitle>
                         <hr></hr>
@@ -99,7 +99,7 @@ function Home() {
                         <p>No. of Orders Accepted by Kitchen</p>
                     </CardBody>
                 </Card>
-                <Card body outline color="info" style={{ width: 200, height: 250 }}>
+                <Card body outline color="info" style={{ width: 200, height: 250 ,color:'white',backgroundImage: `linear-gradient(to left top, #051437, #004782, #0081a7, #00b98a, #12eb25)`}}>
                     <CardBody>
                         <CardTitle>Billers</CardTitle>
                         <hr></hr>
@@ -107,7 +107,7 @@ function Home() {
                         <p>Total amount collected by Biller</p>
                     </CardBody>
                 </Card>
-                <Card body outline color="info" style={{ width: 200, height: 250 }}>
+                <Card body outline color="info" style={{ width: 200, height: 250,color:'white',backgroundImage: `linear-gradient(to left top, #051437, #004782, #0081a7, #00b98a, #12eb25)` }}>
                     <CardBody>
                         <CardTitle>Customers</CardTitle>
                         <hr></hr>

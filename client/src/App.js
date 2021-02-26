@@ -11,19 +11,25 @@ import AddUser from "./components/AddUser";
 import Showuser from "./components/Showuser";
 import AdminWaiterPage from "./components/adminWaiterPage";
 import AdminTotalOrder from "./components/adminTotalOrder";
+import Logopart from "./logopart";
+import Navbar1 from './components/Navbar/Navbar';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" id="outer-container">
+    <div style={{background:"white"}}>
+      {/* <Menu pageWrapId={'page-wrap'} outerContainerId={'outer-container'} /> */}
       <Router>
-        {/* <ToastContainer /> */}
-        {/* <Container  className="ml-0 mr-0"> */}
-        <Header />
+         {/* <Header />  */}
+         
         <Row>
-          <Col md={4}>
-            <Menu />
+          <Col md={3} style={{paddingRight:"0px",paddingLeft:"0px"}}>
+          <Logopart /> 
+            {/* <Menu /> */}
+            <Navbar1 />
           </Col>
-          <Col md={8}>
+          <Col md={9} style={{paddingRight:"0px",paddingLeft:"0px"}}>
+          <Header /> 
             <Route path="/" component={Home} exact />
             <Route path="/AddUser" component={AddUser} exact />
             <Route path="/Showuser" component={Showuser} exact />
@@ -31,8 +37,10 @@ function App() {
             <Route path="/TotalOrder" component={AdminTotalOrder} exact />
           </Col>
         </Row>
-        {/* </Container> */}
+        
+        
       </Router>
+      </div>
     </div>
   );
 }

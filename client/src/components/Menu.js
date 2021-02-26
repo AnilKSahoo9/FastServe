@@ -1,81 +1,98 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { slide as Menu } from 'react-burger-menu';
 import { ListGroup, ListGroupItem } from "reactstrap";
 
-export const Menu = () => {
-  return (
-    <ListGroup>
-      <Link
-        className="list-group-item list-group-item-action"
+export default props => {
+   return (
+         <Menu>
+    <div style={{width:'100%'}}>
+    <ListGroup style={{width:'100%'}}>
+      <ListGroupItem
+      
         color="warning"
         tag="a"
-        to="/"
+        href="/"
         action
       >
         Home
-      </Link>
-      <Link
-        className="list-group-item list-group-item-action"
-        outline
-        color="info"
-        tag="a"
-        to="/TotalOrder"
-        action
-      >
-        Total Order
-      </Link>
+      </ListGroupItem>
 
-      <Link
-        className="list-group-item list-group-item-action"
-        outline
-        color="success"
-        tag="a"
-        to="/Waiters"
-        action
-      >
-        Waiters
-      </Link>
-      <Link
-        className="list-group-item list-group-item-action"
-        outline
-        color="danger"
-        tag="a"
-        to="/"
-        action
-      >
-        Kichens
-      </Link>
-      <Link
-        className="list-group-item list-group-item-action"
-        outline
-        color="secondary"
-        tag="a"
-        to="/"
-        action
-      >
-        Billers
-      </Link>
-      <Link
-        className="list-group-item list-group-item-action"
-        outline
-        color="info"
-        tag="a"
-        to="/AddUser"
-        action
-      >
-        Adduser
-      </Link>
-      <Link
-        className="list-group-item list-group-item-action"
-        outline
+      <ListGroupItem 
         color="warning"
         tag="a"
-        to="/Showuser"
+        href="/TotalOrder"
+        action
+      >
+        Order
+      </ListGroupItem>
+
+      <ListGroupItem 
+        color="warning"
+        tag="a"
+        href="/Waiters"
+        action
+      >
+        Waiter
+      </ListGroupItem>
+      <ListGroupItem 
+        color="warning"
+        tag="a"
+        href="/AddUser"
+        action
+      >
+        AddUser
+      </ListGroupItem>
+      <ListGroupItem 
+        color="warning"
+        tag="a"
+        href="/Showuser"
         action
       >
         ShowUser
-      </Link>
+      </ListGroupItem>
     </ListGroup>
+    </div>
+    </Menu>
   );
 };
-export default Menu;
+// export default Menu;
+
+
+
+
+
+// import React from 'react';
+// import { slide as Menu } from 'react-burger-menu';
+// import { ListGroup, ListGroupItem } from "reactstrap";
+
+// export default props => {
+//   return (
+//     <Menu>
+    
+//     <ListGroupItems 
+//          color="warning"
+//          tag="a"
+//          href="/"
+//          action
+//        >
+//          Home
+//        </ListGroupItems>
+//       <a className="menu-item" href="/">
+//         Home
+//       </a>
+//       <a className="menu-item" href="/Order">
+//         Order
+//       </a>
+//       <a className="menu-item" href="/Waiter">
+//         Waiter
+//       </a>
+//       <a className="menu-item" href="/Adduser">
+//         AddUser
+//       </a>
+//       <a className="menu-item" href="/Showuser">
+//         ShowUser
+//       </a>
+//     </Menu>
+//   );
+// };
