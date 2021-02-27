@@ -1,5 +1,12 @@
 let employeeSchema = require("../models/model");
 let menuSchema = require("../models/model");
+let tableSchema = require("../models/model");
+let adminSchema = require("../models/model");
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
+const {createJWT} = require("../utils/auth");
+require('dotenv').config();
+const emailRegexp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
 
 const Home = {
   Tables: 10,
@@ -10,7 +17,7 @@ const Home = {
   Customers: 30,
 };
 
-const Loginmsg = { status: 200, msg: "login successful" };
+//const Loginmsg = { status: 200, msg: "login successful" };
 const employeemsg = { msg: "employee added", status: 200 };
 
 const waiters = [
@@ -52,7 +59,68 @@ const routes = (app) => {
 
   app.route("/login").post((req, res) => {
     let { email, password } = req.body;
-    res.send(Loginmsg);
+
+    let errors = [];
+    if(!email){
+      errors.push({email:"required"});
+    }
+
+    if(!emailRegexp.test(email)){
+      errors.push({email:"invalid email"});
+    }
+
+    if(!password){
+      errors.push({password:"required"});
+    }
+
+    if(errors.length > 0){
+      return res.status(422).json({errors:errors});
+    }
+
+    adminSchema.findOne({email:email}).then(user => {
+
+      if(!user){
+       return res.status(404).json({msg:"user not found"});
+      }
+      
+      else{
+
+        bcrypt.compare(password,user.password).then(isMatch => {
+
+          if(!isMatch){
+            res.status(400).json({msg:"incorrect password"});
+          }
+
+          else{
+            return res.send({msg:"successfully logged in"});
+          }
+
+      let access_token = createJWT(user.email,user._id,3600);
+        //console.log(access_token);
+          //let access_token = jwt.sign({email:user.email,id:user._id},process.env.TOKEN_SECRET,{expiresIn:3600});
+          //console.log(access_token);
+      jwt.verify(access_token,process.env.TOKEN_SECRET,(err,decoded) => {
+
+        if(err){
+          return res.status(500);
+        }
+
+        if(decoded){
+          return res.status(200).json({success:true,token:access_token,message:user});
+        }
+
+      });
+
+        }).catch(err => {
+          return res.status(500).json({errors:err});
+        });
+
+      }
+
+    }).catch(err => {
+      return res.status(500).json({errors:err});
+    });
+    
   });
 
   app.route("/addemployee").post((req, res) => {
@@ -71,7 +139,47 @@ const routes = (app) => {
     new menuSchema(req.body).save();
     res.send({status:200,msg:"successfully added to database"});
     //console.log(req.body);
-  })
+  });
+
+  app.route("/table").post((req,res) => {
+    let {tableNo, noOfTables} = req.body;
+    for(i=0;i<noOfTables;i++){
+      let tables = new tableSchema({tableNo:Number(tableNo)+i,session:[],tableStatus:null});
+      tables.save();
+    }
+    res.send({status:200,msg:"successfully created tableschema and data"})
+  });
+
+  // app.route("/signup").post((req,res) => {
+  //   let {email,password} = req.body;
+  //   adminSchema.findOne({email:email}).then(user => {
+  //     if(user){
+  //       return res.status(422).json({ errors: [{ user: "email already exists" }] });
+  //    }
+  //    else{
+  //     const user = new adminSchema({
+  //       email: email,
+  //       password: password,
+  //     });
+  //     bcrypt.genSalt(10,(err,salt) => {
+  //       bcrypt.hash(password,salt,(err,hash) => {
+  //         if(err){throw err}
+  //         user.password = hash;
+  //         user.save().then(response => {
+  //           res.status(200).json({
+  //             success: true,
+  //             result: response})
+  //         }).catch(err => {
+  //           res.status(500).json({errors: [{ error: err }]});
+  //         });
+  //       });
+  //     });
+  //    }
+  //   }).catch(err => {
+  //     res.status(500).json({errors: [{ error: 'Something went wrong' }]});
+  //   })
+  // })
+
 };
 
 module.exports = routes;
