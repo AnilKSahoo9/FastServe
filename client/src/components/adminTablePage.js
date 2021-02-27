@@ -1,7 +1,7 @@
 import React from "react";
 import "../css/admin.css";
-import present from "../image/download.jpg";
-import notpresent from "../image/download (1).png";
+// import present from "../image/download.jpg";
+// import notpresent from "../image/download (1).png";
 import {
   Button,
   Modal,
@@ -124,8 +124,6 @@ export default AdminTablePage;
 
 // import React, { Fragment, useState, useEffect } from "react";
 
-
-
 // import "./Table.css";
 // import { Card, Button } from "react-bootstrap";
 // import { Grid,  Dialog,
@@ -134,7 +132,7 @@ export default AdminTablePage;
 
 //   DialogTitle, } from "@material-ui/core";
 
-// const Table = () => { 
+// const Table = () => {
 //   const [showDialog, setshowDialog] = useState(false)
 //   const TableInfo = [
 //     { Tablename: "1", sessionno: "3", status: "Active", currentorder: ["Chhole Bhature", "Bharwa Bhindi"], occupay:true ,},
@@ -175,7 +173,7 @@ export default AdminTablePage;
 //             </Card>
 //           </Grid>)
 //         })}
-//       </Grid> 
+//       </Grid>
 //       <Dialog
 //         open={showDialog}
 //         onClose={closeDialog}
@@ -184,14 +182,10 @@ export default AdminTablePage;
 //       >
 
 //         <DialogContent >
-          
-          
+
 //         </DialogContent>
 
 //         <DialogActions>
-
-
-
 
 //           <Button
 //             onClick={() => closeDialog()
