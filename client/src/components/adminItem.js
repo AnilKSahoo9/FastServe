@@ -18,7 +18,7 @@ function AdminItem() {
   const [itemName, setItemName] = useState("");
   const [itemPrice, setitemPrice] = useState("");
   const [value, setValue] = useState("Select the item category");
-  const [data, setData] = useState({});
+  // const [data, setData] = useState({});
   const [arrData, setArrData] = useState([]);
   const handleSelect = (e) => {
     setValue(e);
@@ -26,7 +26,7 @@ function AdminItem() {
   const handleChange = (e) => {
     setItemName(e.target.value);
   };
-  console.log(itemName);
+  // console.log(itemName);
   const handleChangePrice = (e) => {
     setitemPrice(e.target.value);
   };
@@ -36,12 +36,12 @@ function AdminItem() {
 
   const mySubmitHandler = (event, resetForm) => {
     setModalShow(false);
-
+    let data = {};
     data.category = value;
     data.name = itemName;
     data.price = itemPrice;
-    // setArrData(...arrData, [data]);
-    arrData.push(data);
+    setArrData([...arrData, data]);
+    // arrData.push(data);
     Swal.fire("Good job!", "Submit data sucessfully", "success");
     // event.target.reset();
     setitemPrice("");
@@ -127,7 +127,7 @@ function AdminItem() {
         </Modal>
       </div>
       <div>
-        {data.category === "Drink" ? (
+        {/* {data.category === "Drink" ? (
           <Accordion defaultActiveKey="0">
             <Card>
               <Accordion.Toggle as={Card.Header} eventKey="0">
@@ -148,7 +148,7 @@ function AdminItem() {
           </Accordion>
         ) : (
           ""
-        )}
+        )} */}
       </div>
     </div>
   );
