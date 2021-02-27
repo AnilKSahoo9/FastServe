@@ -26,6 +26,14 @@ export default props => {
       >
         Order
       </ListGroupItem>
+      <ListGroupItem 
+        color="warning"
+        tag="a"
+        href="/Table"
+        action
+      >
+        Table
+      </ListGroupItem>
 
       <ListGroupItem 
         color="warning"
