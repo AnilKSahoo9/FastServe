@@ -30,8 +30,24 @@ const menuSchema = new mongoose.Schema({
   dal:{type:Array},
   nonveg:{type:Object},
   veg:{type:Object}
-})
+});
+
+
+const tableSchema = new mongoose.Schema({
+  tableNo:{type:Number},
+  session:{type:Array},
+  tableStatus:{type:String}
+});
+
+const adminSchema = new mongoose.Schema({
+  email:{type:String},
+  password:{type:String}
+});
 
 module.exports = mongoose.model('employees', employeeSchema);
 
 module.exports = mongoose.model('menus',menuSchema);
+
+module.exports = mongoose.model('tables',tableSchema);
+
+module.exports = mongoose.model('admins',adminSchema);

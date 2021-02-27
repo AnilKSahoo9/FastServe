@@ -3,8 +3,9 @@ const routes = require("./routes/routes");
 const mongoose = require("mongoose");
 const bodyParser = require("body-Parser");
 const cors = require("cors");
+require('dotenv').config();
 const app = express();
-const PORT = 4000;
+//const PORT = 4000;
 
 // mongoose connection
 // mongoose.Promise = global.Promise;
@@ -36,8 +37,8 @@ app.get("/", (req, res) =>
 
 mongoose
   .connect(
-    // "mongodb+srv://Devdatabase:GetDevconnection@cluster0.b9nxv.mongodb.net/GetDevs?retryWrites=true&w=majority",
-    "mongodb+srv://Devdatabase:GetDevconnection@cluster0.b9nxv.mongodb.net/restaurant?retryWrites=true&w=majority",
+    process.env.DB,
+    //"mongodb+srv://Devdatabase:GetDevconnection@cluster0.b9nxv.mongodb.net/restaurant?retryWrites=true&w=majority",
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
@@ -45,9 +46,12 @@ mongoose
   )
   .then(() => {
     // app.listen(4000);
-    //console.log("db connected...!");
-    app.listen(PORT, () =>
-      console.log(`Your server is running on port ${PORT}`)
+    console.log("db connected...!");
+
+const port = process.env.PORT;
+
+    app.listen(port, () =>
+      console.log(`Your server is running on port ${port}`)
     );
   })
   .catch((err) => {
