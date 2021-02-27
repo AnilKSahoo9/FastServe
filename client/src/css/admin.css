@@ -1,18 +1,14 @@
-.sidebar {
-  height: 100%;
-  width: 160px;
-  position: fixed;
-  z-index: 1;
-  top: 20;
-  left: 0;
-  background-color: #343a40;
-  overflow-x: hidden;
-  padding-top: 20px;
+.home {
+  background: radial-gradient(#e0e0eb, #ffff, #e0e0eb);
 }
-.main {
-  height: 100%;
-  width: 90%;
-  left: 160px;
-  position: absolute;
+
+.waitercard {
+  box-shadow: 5px 10px 20px 5px rgba(0, 0, 0, 0.253) !important;
+  /* border-style: solid;
+  border-color: rgba(27, 26, 26, 0.993); */
+  border-radius: 0.4rem;
+}
+.waitercard:hover {
+  box-shadow: 10px 15px 25px 10px rgba(109, 108, 100, 0.336) !important;
 }
 

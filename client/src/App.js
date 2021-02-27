@@ -12,6 +12,7 @@ import Showuser from "./components/Showuser";
 import AdminWaiterPage from "./components/adminWaiterPage";
 import AdminTotalOrder from "./components/adminTotalOrder";
 import Logopart from "./logopart";
+import AdminItem from "./components/adminItem";
 import Navbar1 from './components/Navbar/Navbar';
 import AdminTablePage from './components/adminTablePage';
 function App() {
@@ -36,6 +37,7 @@ function App() {
             <Route path="/Waiters" component={AdminWaiterPage} exact />
             <Route path="/TotalOrder" component={AdminTotalOrder} exact />
             <Route path="/Table" component={AdminTablePage} exact />
+            <Route path="/itemDetails" component={AdminItem} exact />
           </Col>
         </Row>
         

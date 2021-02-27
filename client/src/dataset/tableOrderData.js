@@ -4,7 +4,7 @@ export var data = [
     session: [
       {
         sessionNo: 1,
-        waiter: "ramesh",
+        waiter: "ram",
         orderdetails: [
           {
             items: "rice",

@@ -1,22 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { slide as Menu } from 'react-burger-menu';
+import { slide as Menu } from "react-burger-menu";
 import { ListGroup, ListGroupItem } from "reactstrap";
 
-export default props => {
-   return (
-         <Menu>
-    <div style={{width:'100%'}}>
-    <ListGroup style={{width:'100%'}}>
-      <ListGroupItem
-      
-        color="warning"
-        tag="a"
-        href="/"
-        action
-      >
-        Home
-      </ListGroupItem>
+export default (props) => {
+  return (
+    <Menu>
+      <div style={{ width: "100%" }}>
+        <ListGroup style={{ width: "100%" }}>
+          <ListGroupItem color="warning" tag="a" href="/" action>
+            Home
+          </ListGroupItem>
 
       <ListGroupItem 
         color="warning"
@@ -35,40 +29,24 @@ export default props => {
         Table
       </ListGroupItem>
 
-      <ListGroupItem 
-        color="warning"
-        tag="a"
-        href="/Waiters"
-        action
-      >
-        Waiter
-      </ListGroupItem>
-      <ListGroupItem 
-        color="warning"
-        tag="a"
-        href="/AddUser"
-        action
-      >
-        AddUser
-      </ListGroupItem>
-      <ListGroupItem 
-        color="warning"
-        tag="a"
-        href="/Showuser"
-        action
-      >
-        ShowUser
-      </ListGroupItem>
-    </ListGroup>
-    </div>
+          <ListGroupItem color="warning" tag="a" href="/Waiters" action>
+            Waiter
+          </ListGroupItem>
+          <ListGroupItem color="warning" tag="a" href="/itemDetails" action>
+            Add Item
+          </ListGroupItem>
+          <ListGroupItem color="warning" tag="a" href="/AddUser" action>
+            AddUser
+          </ListGroupItem>
+          <ListGroupItem color="warning" tag="a" href="/Showuser" action>
+            ShowUser
+          </ListGroupItem>
+        </ListGroup>
+      </div>
     </Menu>
   );
 };
 // export default Menu;
-
-
-
-
 
 // import React from 'react';
 // import { slide as Menu } from 'react-burger-menu';
@@ -77,8 +55,8 @@ export default props => {
 // export default props => {
 //   return (
 //     <Menu>
-    
-//     <ListGroupItems 
+
+//     <ListGroupItems
 //          color="warning"
 //          tag="a"
 //          href="/"

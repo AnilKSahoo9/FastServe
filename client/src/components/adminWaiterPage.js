@@ -1,7 +1,6 @@
 import React from "react";
 import "../css/admin.css";
-import present from "../image/download.jpg";
-import notpresent from "../image/download (1).png";
+
 import {
   Button,
   Modal,
@@ -27,18 +26,17 @@ function AdminWaiterPage() {
   console.log(val);
 
   return (
-    <Container>
+    <Container className="home">
       <Row>
         {waiter.map((user) => (
           <Col xs={12} lg={4} md={6}>
             {user.status === "Active" ? (
               <CardDeck>
                 <Card
-                  border="secondary"
-                  className="text-center mb-3 mt-3"
+                  className="waitercard text-center mb-3 mt-3"
                   style={{
-                    width: "18rem",
-                    height: "16rem",
+                    width: "17rem",
+                    height: "14.5rem",
                     background: `linear-gradient(to bottom,#4dff03,#00d0ff )`,
                   }}
                 >
@@ -48,16 +46,27 @@ function AdminWaiterPage() {
                     alt="Card image cap"
                     style={{ height: 30 }}
                   /> */}
-                  <h5>
+                  <h4>
                     {" "}
-                    <Card.Header style={{ backgroundColor: "grey" }}>
-                      {user.name}
+                    <Card.Header
+                      style={{
+                        backgroundColor: "#f2f2f2",
+                        fontFamily: "Times New Roman, Times, serif",
+                        fontWeight: 750,
+                      }}
+                    >
+                      ~: {user.name} :~
                     </Card.Header>
-                  </h5>
+                  </h4>
                   <Card.Body>
-                    <Card.Text> Status: {user.status}</Card.Text>
-                    <Card.Text>Total Order Taken: {user.ordertaken}</Card.Text>
-                    <Card.Text>Table no:{user.tableno}</Card.Text>
+                    <b>Status:</b> {user.status}
+                    <br />
+                    <b>Total Order Taken:</b> {user.ordertaken}
+                    <br />
+                    <b> Table no: </b>
+                    {user.tableno}
+                    <br />
+                    <br />
                     <Button
                       variant="primary"
                       onClick={handleShow}
@@ -65,8 +74,14 @@ function AdminWaiterPage() {
                     >
                       Order Details
                     </Button>
-                    <Modal show={show} onHide={handleClose}>
-                      <Modal.Header>Order Details</Modal.Header>
+                    <Modal
+                      show={show}
+                      onHide={handleClose}
+                      size="lg"
+                      aria-labelledby="contained-modal-title-vcenter"
+                      centered
+                    >
+                      <Modal.Header closeButton>Order Details</Modal.Header>
                       <Modal.Body>
                         {waiter.map((users) =>
                           users.name === val
@@ -88,11 +103,10 @@ function AdminWaiterPage() {
             ) : (
               <CardDeck>
                 <Card
-                  border="secondary"
-                  className="text-center mb-3 mt-3"
+                  className="waitercard text-center mb-3 mt-3"
                   style={{
-                    width: "18rem",
-                    height: "16rem",
+                    width: "17rem",
+                    height: "14.5rem",
                     background: `linear-gradient(to bottom,  #ffbc00,#ff0058)`,
                   }}
                 >
@@ -102,14 +116,20 @@ function AdminWaiterPage() {
                     alt="Card image cap"
                     style={{ height: 30 }}
                   /> */}
-                  <h5>
+                  <h4>
                     {" "}
-                    <Card.Header style={{ backgroundColor: "grey" }}>
-                      {user.name}
+                    <Card.Header
+                      style={{
+                        backgroundColor: "#f2f2f2",
+                        fontFamily: "Times New Roman, Times, serif",
+                        fontWeight: 750,
+                      }}
+                    >
+                      ~: {user.name} :~
                     </Card.Header>
-                  </h5>
+                  </h4>
                   <Card.Body>
-                    <Card.Text> Status: {user.status}</Card.Text>
+                    <b>Status:</b> {user.status}
                   </Card.Body>
                 </Card>
               </CardDeck>
