@@ -3,16 +3,9 @@ const routes = require("./routes/routes");
 const mongoose = require("mongoose");
 const bodyParser = require("body-Parser");
 const cors = require("cors");
-require('dotenv').config();
+require("dotenv").config();
 const app = express();
-//const PORT = 4000;
-
-// mongoose connection
-// mongoose.Promise = global.Promise;
-// mongoose.connect('mongodb://localhost/antiracismdb', {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true
-// })
+const PORT = 4000;
 
 //bodyparser setup
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -38,17 +31,17 @@ app.get("/", (req, res) =>
 mongoose
   .connect(
     process.env.DB,
-    //"mongodb+srv://Devdatabase:GetDevconnection@cluster0.b9nxv.mongodb.net/restaurant?retryWrites=true&w=majority",
     {
       useNewUrlParser: true,
+      useCreateIndex: true,
       useUnifiedTopology: true,
+      useFindAndModify: false,
     }
   )
   .then(() => {
-    // app.listen(4000);
     console.log("db connected...!");
 
-const port = process.env.PORT;
+    const port = PORT;
 
     app.listen(port, () =>
       console.log(`Your server is running on port ${port}`)
