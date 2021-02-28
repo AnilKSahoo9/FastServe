@@ -7,13 +7,6 @@ require("dotenv").config();
 const app = express();
 const PORT = 4000;
 
-// mongoose connection
-// mongoose.Promise = global.Promise;
-// mongoose.connect('mongodb://localhost/antiracismdb', {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true
-// })
-
 //bodyparser setup
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -38,10 +31,7 @@ app.get("/", (req, res) =>
 mongoose
   .connect(
     process.env.DB,
-    //"mongodb+srv://Devdatabase:GetDevconnection@cluster0.b9nxv.mongodb.net/restaurant?retryWrites=true&w=majority",
     {
-      // useNewUrlParser: true,
-      // useUnifiedTopology: true,
       useNewUrlParser: true,
       useCreateIndex: true,
       useUnifiedTopology: true,
@@ -49,7 +39,6 @@ mongoose
     }
   )
   .then(() => {
-    // app.listen(4000);
     console.log("db connected...!");
 
     const port = PORT;
