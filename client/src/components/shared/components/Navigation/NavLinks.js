@@ -11,7 +11,7 @@ const NavLinks = props => {
       <NavLink to="/" exact className="home">Home</NavLink>
     </li>
     <li>
-      <NavLink to="/u1/Tables"className="table">Tables</NavLink>
+      <NavLink to="/Tables"className="table">Tables</NavLink>
     </li>
     <li>
       <NavLink to="/parcels"className="Order">Order</NavLink>
