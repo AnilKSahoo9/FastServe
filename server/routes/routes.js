@@ -2,10 +2,14 @@ let employeeSchema = require("../models/model");
 let menuSchema = require("../models/model");
 let tableSchema = require("../models/model");
 let adminSchema = require("../models/model");
+let sessionSchema = require("../models/model");
+const table = require("../models/model");
+const {v4: uuidv4} = require('uuid');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const {createJWT} = require("../utils/auth");
 require('dotenv').config();
+
 const emailRegexp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
 
 const Home = {
@@ -96,7 +100,7 @@ const routes = (app) => {
           }
 
       let access_token = createJWT(user.email,user._id,3600);
-        //console.log(access_token);
+        console.log(access_token);
           //let access_token = jwt.sign({email:user.email,id:user._id},process.env.TOKEN_SECRET,{expiresIn:3600});
           //console.log(access_token);
       jwt.verify(access_token,process.env.TOKEN_SECRET,(err,decoded) => {
@@ -179,7 +183,55 @@ const routes = (app) => {
   //     res.status(500).json({errors: [{ error: 'Something went wrong' }]});
   //   })
   // })
+  
+  app.route("/sessions").post((req,res) => {
+    let {items,totalAmount,tableNo,waiterName} = req.body;
+    //console.log(req.body);
+    let idB = uuidv4();
+    tableSchema.findOneAndUpdate({tableNo:101},{$push:{session:idB}});
 
-};
+    // let sessions = new sessionSchema({_id:idB,items:items,totalAmount:totalAmount,tableNo:tableNo,waiterName:waiterName});
+    // sessions.save();
+
+    // tableSchema.findOne({tableNo:102}).then(item => {
+    //   console.log(`${item}`)
+    // }).catch(err => console.log(err))
+   
+   res.send("success");
+  });
+}
+
+    // const query = {"tableNo":tableNo};
+    // const projection = {"tableStatus":null};
+    // return tableSchema.findOne(query,projection).then(result => {
+    //   if(result){
+    //     console.log(`success: ${result}`)
+    //   }
+    //   else{
+    //     console.log(`fail`)
+    //   }
+    //   return result;
+    // }).catch(err => console.error(`failed to find doc: ${err}`));
+
+    // tableSchema.find().forEach(element => {
+    //   var z = sessionSchema.findOne({tableNo:element.tableNo});
+    //   if(z != null){
+    //     element.session = z.ID;
+    //     tableSchema.save(element);
+    //   }
+    // });
+
+    // tableSchema.find().then((item) => {
+    //   item.forEach((element) => {
+    //     var z = sessionSchema.findOne({tableNo:element.tableNo});
+    //     if(z != null){
+    //       element.session = z.ID;
+    //       tableSchema.save();
+    //     }
+    //     else{
+    //       throw console.error();
+    //     }
+    //   })
+    // }); 
 
 module.exports = routes;

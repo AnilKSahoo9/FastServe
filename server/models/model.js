@@ -44,6 +44,14 @@ const adminSchema = new mongoose.Schema({
   password:{type:String}
 });
 
+const sessionSchema = new mongoose.Schema({
+  _id:{type:String},
+  items:{type:Array},
+  totalAmount:{type:Number},
+  tableNo:{type:Number},
+  waiterName:{type:String}
+});
+
 module.exports = mongoose.model('employees', employeeSchema);
 
 module.exports = mongoose.model('menus',menuSchema);
@@ -51,3 +59,5 @@ module.exports = mongoose.model('menus',menuSchema);
 module.exports = mongoose.model('tables',tableSchema);
 
 module.exports = mongoose.model('admins',adminSchema);
+
+module.exports = mongoose.model('sessions',sessionSchema)
