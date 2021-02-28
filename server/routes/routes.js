@@ -1,16 +1,17 @@
 let employeeSchema = require("../models/model");
 let menuSchema = require("../models/model");
-let tableSchema = require("../models/model");
+let tableSchema = require("../models/tableModel");
 let adminSchema = require("../models/model");
 let sessionSchema = require("../models/model");
 const table = require("../models/model");
-const {v4: uuidv4} = require('uuid');
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
-const {createJWT} = require("../utils/auth");
-require('dotenv').config();
-
+const { v4: uuidv4 } = require("uuid");
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
+const { createJWT } = require("../utils/auth");
+require("dotenv").config();
+const ObjectId = require("mongodb").ObjectID;
 const emailRegexp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+const mongoose = require("mongoose");
 
 const Home = {
   Tables: 10,
@@ -48,7 +49,6 @@ const waiters = [
   { name: "Santosh panda", status: "Inactive" },
 ];
 
-
 const routes = (app) => {
   app
     .route("/homepagedata")
@@ -65,66 +65,67 @@ const routes = (app) => {
     let { email, password } = req.body;
 
     let errors = [];
-    if(!email){
-      errors.push({email:"required"});
+    if (!email) {
+      errors.push({ email: "required" });
     }
 
-    if(!emailRegexp.test(email)){
-      errors.push({email:"invalid email"});
+    if (!emailRegexp.test(email)) {
+      errors.push({ email: "invalid email" });
     }
 
-    if(!password){
-      errors.push({password:"required"});
+    if (!password) {
+      errors.push({ password: "required" });
     }
 
-    if(errors.length > 0){
-      return res.status(422).json({errors:errors});
+    if (errors.length > 0) {
+      return res.status(422).json({ errors: errors });
     }
 
-    adminSchema.findOne({email:email}).then(user => {
+    adminSchema
+      .findOne({ email: email })
+      .then((user) => {
+        if (!user) {
+          return res.status(404).json({ msg: "user not found" });
+        } else {
+          bcrypt
+            .compare(password, user.password)
+            .then((isMatch) => {
+              if (!isMatch) {
+                res.status(400).json({ msg: "incorrect password" });
+              } else {
+                return res.send({ msg: "successfully logged in" });
+              }
 
-      if(!user){
-       return res.status(404).json({msg:"user not found"});
-      }
-      
-      else{
+              let access_token = createJWT(user.email, user._id, 3600);
+              console.log(access_token);
+              //let access_token = jwt.sign({email:user.email,id:user._id},process.env.TOKEN_SECRET,{expiresIn:3600});
+              //console.log(access_token);
+              jwt.verify(
+                access_token,
+                process.env.TOKEN_SECRET,
+                (err, decoded) => {
+                  if (err) {
+                    return res.status(500);
+                  }
 
-        bcrypt.compare(password,user.password).then(isMatch => {
-
-          if(!isMatch){
-            res.status(400).json({msg:"incorrect password"});
-          }
-
-          else{
-            return res.send({msg:"successfully logged in"});
-          }
-
-      let access_token = createJWT(user.email,user._id,3600);
-        console.log(access_token);
-          //let access_token = jwt.sign({email:user.email,id:user._id},process.env.TOKEN_SECRET,{expiresIn:3600});
-          //console.log(access_token);
-      jwt.verify(access_token,process.env.TOKEN_SECRET,(err,decoded) => {
-
-        if(err){
-          return res.status(500);
+                  if (decoded) {
+                    return res.status(200).json({
+                      success: true,
+                      token: access_token,
+                      message: user,
+                    });
+                  }
+                }
+              );
+            })
+            .catch((err) => {
+              return res.status(500).json({ errors: err });
+            });
         }
-
-        if(decoded){
-          return res.status(200).json({success:true,token:access_token,message:user});
-        }
-
+      })
+      .catch((err) => {
+        return res.status(500).json({ errors: err });
       });
-
-        }).catch(err => {
-          return res.status(500).json({errors:err});
-        });
-
-      }
-
-    }).catch(err => {
-      return res.status(500).json({errors:err});
-    });
-    
   });
 
   app.route("/addemployee").post((req, res) => {
@@ -138,100 +139,149 @@ const routes = (app) => {
     res.send(waiters);
   });
 
-  app.route("/menu").post((req,res) => {
-    let {breakfast,dessert,rice,dal,nonveg,veg} = req.body;
+  app.route("/menu").post((req, res) => {
+    let { breakfast, dessert, rice, dal, nonveg, veg } = req.body;
     new menuSchema(req.body).save();
-    res.send({status:200,msg:"successfully added to database"});
+    res.send({ status: 200, msg: "successfully added to database" });
     //console.log(req.body);
   });
 
-  app.route("/table").post((req,res) => {
-    let {tableNo, noOfTables} = req.body;
-    for(i=0;i<noOfTables;i++){
-      let tables = new tableSchema({tableNo:Number(tableNo)+i,session:[],tableStatus:null});
+  app.route("/table").post((req, res) => {
+    console.log(req.body);
+    // var query = tableSchema.find({});
+    // console.log(query);
+    let { tableNo, noOfTables } = req.body;
+    for (i = 0; i < noOfTables; i++) {
+      let tables = new tableSchema({
+        tableNo: Number(tableNo) + i,
+        session: [],
+        tableStatus: null,
+      });
       tables.save();
     }
-    res.send({status:200,msg:"successfully created tableschema and data"})
+    res.send({ status: 200, msg: "successfully created tableschema and data" });
   });
+  // const User = mongoose.model("tables", {
+  //   // name: { type: String },
+  //   // age: { type: Number },
+  //   tableNo: { type: Number },
+  //   session: { type: Array },
+  //   tableStatus: { type: String },
+  // });
+  app.route("/sessions").post(async (req, res) => {
+    let { items, totalAmount, tableNo, waiterName } = req.body;
+    console.log(req.body);
+    // let idB = uuidv4();
+    tableSchema.updateOne(
+      { tableNo: tableNo },
+      { tableStatus: "active" },
+      function (err, docs) {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log("Updated Docs : ", docs);
+        }
+      }
+    );
+    // try {
+    //   user = await new Promise((resolve, reject) => {
+    //     tableSchema.updateOne(
+    //       { tableNo: tableNo },
+    //       { tableStatus: "active" },
+    //       { upsert: true, new: true },
+    //       (error, obj) => {
+    //         if (error) {
+    //           console.error(JSON.stringify(error));
+    //           return reject(error);
+    //         }
 
-  // app.route("/signup").post((req,res) => {
-  //   let {email,password} = req.body;
-  //   adminSchema.findOne({email:email}).then(user => {
-  //     if(user){
-  //       return res.status(422).json({ errors: [{ user: "email already exists" }] });
-  //    }
-  //    else{
-  //     const user = new adminSchema({
-  //       email: email,
-  //       password: password,
-  //     });
-  //     bcrypt.genSalt(10,(err,salt) => {
-  //       bcrypt.hash(password,salt,(err,hash) => {
-  //         if(err){throw err}
-  //         user.password = hash;
-  //         user.save().then(response => {
-  //           res.status(200).json({
-  //             success: true,
-  //             result: response})
-  //         }).catch(err => {
-  //           res.status(500).json({errors: [{ error: err }]});
-  //         });
-  //       });
-  //     });
-  //    }
-  //   }).catch(err => {
-  //     res.status(500).json({errors: [{ error: 'Something went wrong' }]});
-  //   })
-  // })
-  
-  app.route("/sessions").post((req,res) => {
-    let {items,totalAmount,tableNo,waiterName} = req.body;
-    //console.log(req.body);
-    let idB = uuidv4();
-    tableSchema.findOneAndUpdate({tableNo:101},{$push:{session:idB}});
+    //         resolve(obj);
+    //       }
+    //     );
+    //   });
+    // } catch (error) {
+    //   /* set the world on fire */
+    // }
+    // console.log(user);
+    // // tableSchema.updateOne(
+    // //   { tableNo: tableNo },
+    // //   { tableStatus: "active" },
+    // //   // { new: true },
+    // //   { returnOriginal: false },
+    // //   function (err, docs) {
+    // //     if (err) {
+    // //       console.log(err);
+    // //     } else {
+    // //       console.log("Updated Docs : ", docs);
+    // //     }
+    // //   }
+    // // );
 
-    // let sessions = new sessionSchema({_id:idB,items:items,totalAmount:totalAmount,tableNo:tableNo,waiterName:waiterName});
-    // sessions.save();
-
-    // tableSchema.findOne({tableNo:102}).then(item => {
-    //   console.log(`${item}`)
-    // }).catch(err => console.log(err))
-   
-   res.send("success");
+    res.send("success");
   });
-}
+};
 
-    // const query = {"tableNo":tableNo};
-    // const projection = {"tableStatus":null};
-    // return tableSchema.findOne(query,projection).then(result => {
-    //   if(result){
-    //     console.log(`success: ${result}`)
-    //   }
-    //   else{
-    //     console.log(`fail`)
-    //   }
-    //   return result;
-    // }).catch(err => console.error(`failed to find doc: ${err}`));
+// app.route("/signup").post((req,res) => {
+//   let {email,password} = req.body;
+//   adminSchema.findOne({email:email}).then(user => {
+//     if(user){
+//       return res.status(422).json({ errors: [{ user: "email already exists" }] });
+//    }
+//    else{
+//     const user = new adminSchema({
+//       email: email,
+//       password: password,
+//     });
+//     bcrypt.genSalt(10,(err,salt) => {
+//       bcrypt.hash(password,salt,(err,hash) => {
+//         if(err){throw err}
+//         user.password = hash;
+//         user.save().then(response => {
+//           res.status(200).json({
+//             success: true,
+//             result: response})
+//         }).catch(err => {
+//           res.status(500).json({errors: [{ error: err }]});
+//         });
+//       });
+//     });
+//    }
+//   }).catch(err => {
+//     res.status(500).json({errors: [{ error: 'Something went wrong' }]});
+//   })
+// })
 
-    // tableSchema.find().forEach(element => {
-    //   var z = sessionSchema.findOne({tableNo:element.tableNo});
-    //   if(z != null){
-    //     element.session = z.ID;
-    //     tableSchema.save(element);
-    //   }
-    // });
+// const query = {"tableNo":tableNo};
+// const projection = {"tableStatus":null};
+// return tableSchema.findOne(query,projection).then(result => {
+//   if(result){
+//     console.log(`success: ${result}`)
+//   }
+//   else{
+//     console.log(`fail`)
+//   }
+//   return result;
+// }).catch(err => console.error(`failed to find doc: ${err}`));
 
-    // tableSchema.find().then((item) => {
-    //   item.forEach((element) => {
-    //     var z = sessionSchema.findOne({tableNo:element.tableNo});
-    //     if(z != null){
-    //       element.session = z.ID;
-    //       tableSchema.save();
-    //     }
-    //     else{
-    //       throw console.error();
-    //     }
-    //   })
-    // }); 
+// tableSchema.find().forEach(element => {
+//   var z = sessionSchema.findOne({tableNo:element.tableNo});
+//   if(z != null){
+//     element.session = z.ID;
+//     tableSchema.save(element);
+//   }
+// });
+
+// tableSchema.find().then((item) => {
+//   item.forEach((element) => {
+//     var z = sessionSchema.findOne({tableNo:element.tableNo});
+//     if(z != null){
+//       element.session = z.ID;
+//       tableSchema.save();
+//     }
+//     else{
+//       throw console.error();
+//     }
+//   })
+// });
 
 module.exports = routes;
