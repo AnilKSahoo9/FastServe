@@ -3,6 +3,7 @@ let menuSchema = require("../models/menuModel");
 let tableSchema = require("../models/tableModel");
 let adminSchema = require("../models/adminModel");
 let sessionSchema = require("../models/sessionModel");
+let parcelSchema = require("../models/parcelModel");
 const { v4: uuidv4 } = require("uuid");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
@@ -127,16 +128,42 @@ const routes = (app) => {
 
   app.route("/addemployee").post((req, res) => {
     let { Type, Name, Email, Mobile, Username, Password, DOJ } = req.body;
-    new employeeSchema(req.body).save();
-    //console.log(req.body);
-    res.send({status:200,msg:'successfully added employee details'});
+
+    const employeeData = new employeeSchema({Name:Name,Email:Email,Username:Username,Type:Type,DOJ:DOJ,Mobile:Mobile,Password:Password});
+    
+    bcrypt.genSalt(10,(err,salt) => {
+      bcrypt.hash(Password,salt,(err,hash) => {
+        if(err){
+          throw err;
+        }
+        employeeData.Password = hash;
+        employeeData.save().then(response => {
+          res.status(200).json({success: true,result: response})
+        }).catch(err => {
+          res.status(500).json({errors: [{ error: err }]});
+        })
+      })
+    })
+    // new employeeSchema(req.body).save();
+    // res.send({status:200,msg:'successfully added employee details'});
   });
 
+  app.route("/employeelogin").post((req,res) => {
+    let {Username,Password} = req.body;
+    employeeSchema.findOne({Username:Username}).then((user) => {
+      bcrypt.compare(Password,user.Password).then((isMatch) => {
+        if (!isMatch) {
+          res.status(400).json({ msg: "incorrect password" });
+        } else {
+          return res.send({ msg: "successfully logged in" });
+        }
+      })
+    })
+  });
 
   app.route("/waiters").get((req, res) => {
     res.send(waiters);
   });
-
 
   app.route("/menu").post((req, res) => {
     let { breakfast, dessert, rice, dal, nonveg, veg } = req.body;
@@ -158,7 +185,6 @@ const routes = (app) => {
     res.send({ status: 200, msg: "successfully created tableschema and data" });
   });
   
-
   app.route("/sessions").post(async (req, res) => {
     let { items, totalAmount, tableNo, waiterName } = req.body;
     //console.log(req.body);
@@ -178,7 +204,44 @@ const routes = (app) => {
     );
     res.send({status:200,msg:"successfully added and updated"});
   });
+
+  app.route("/parcels").post((req,res) => {
+    let {items,totalAmount,billerName} = req.body;
+    let idP = uuidv4();
+    new parcelSchema({_id:idP,items:items,totalAmount:totalAmount,billerName:billerName}).save();
+    res.send('successfully added the parcel details');
+  })
   
 };
 
 module.exports = routes;
+
+// app.route("/signup").post((req,res) => {
+//   let {email,password} = req.body;
+//   adminSchema.findOne({email:email}).then(user => {
+//     if(user){
+//       return res.status(422).json({ errors: [{ user: "email already exists" }] });
+//    }
+//    else{
+//     const user = new adminSchema({
+//       email: email,
+//       password: password,
+//     });
+//     bcrypt.genSalt(10,(err,salt) => {
+//       bcrypt.hash(password,salt,(err,hash) => {
+//         if(err){throw err}
+//         user.password = hash;
+//         user.save().then(response => {
+//           res.status(200).json({
+//             success: true,
+//             result: response})
+//         }).catch(err => {
+//           res.status(500).json({errors: [{ error: err }]});
+//         });
+//       });
+//     });
+//    }
+//   }).catch(err => {
+//     res.status(500).json({errors: [{ error: 'Something went wrong' }]});
+//   })
+// })
