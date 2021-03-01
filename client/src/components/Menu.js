@@ -6,8 +6,8 @@ import { ListGroup, ListGroupItem } from "reactstrap";
 export default (props) => {
   return (
     <Menu>
-      <div style={{ width: "100%" }}>
-        <ListGroup style={{ width: "100%" }}>
+      <div >
+        <ListGroup >
           <ListGroupItem color="warning" tag="a" href="/" action>
             Home
           </ListGroupItem>

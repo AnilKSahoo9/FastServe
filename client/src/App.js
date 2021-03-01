@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Header from "./components/Header";
 import { Col, Container, Row, Toast } from "reactstrap";
 import { ToastContainer } from "react-toastify";
-import { Menu } from "./components/Menu";
+import { Menu } from './components/Menu';
 import Home from "./components/Home";
 import AddUser from "./components/AddUser";
 import Showuser from "./components/Showuser";
@@ -13,24 +13,25 @@ import AdminWaiterPage from "./components/adminWaiterPage";
 import AdminTotalOrder from "./components/adminTotalOrder";
 import Logopart from "./logopart";
 import AdminItem from "./components/adminItem";
-import Navbar1 from './components/Navbar/Navbar';
+//import Navbar1 from './components/Navbar/Navbar';
 import AdminTablePage from './components/adminTablePage';
+import MainNavigation from './components/shared/components/Navigation/MainNavigation';
 function App() {
   return (
+
+    
     <div className="App" id="outer-container">
     <div style={{background:"white"}}>
       {/* <Menu pageWrapId={'page-wrap'} outerContainerId={'outer-container'} /> */}
       <Router>
-         {/* <Header />  */}
-         
+         <Header /> 
+         <MainNavigation />
+{/* //       <main> */}
         <Row>
           <Col md={3} style={{paddingRight:"0px",paddingLeft:"0px"}}>
           <Logopart /> 
-            {/* <Menu /> */}
-            <Navbar1 />
           </Col>
           <Col md={9} style={{paddingRight:"0px",paddingLeft:"0px"}}>
-          <Header /> 
             <Route path="/" component={Home} exact />
             <Route path="/AddUser" component={AddUser} exact />
             <Route path="/Showuser" component={Showuser} exact />
@@ -40,8 +41,7 @@ function App() {
             <Route path="/itemDetails" component={AdminItem} exact />
           </Col>
         </Row>
-        
-        
+{/* //       </main> */}
       </Router>
       </div>
     </div>
