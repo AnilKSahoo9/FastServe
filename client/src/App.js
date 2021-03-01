@@ -28,8 +28,8 @@ function App() {
          <MainNavigation />
 {/* //       <main> */}
         <Row>
-          <Col md={3} style={{paddingRight:"0px",paddingLeft:"0px"}}>
-          <Logopart /> 
+          <Col md={3} style={{paddingRight:"0px",paddingLeft:"-10px"}}>
+          {/* <Logopart />  */}
           </Col>
           <Col md={9} style={{paddingRight:"0px",paddingLeft:"0px"}}>
             <Route path="/" component={Home} exact />
