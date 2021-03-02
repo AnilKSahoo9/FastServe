@@ -1,5 +1,5 @@
 import React from "react";
-import "../css/admin.css";
+import "./AdminStyles.css";
 
 import {
   Button,
@@ -11,9 +11,9 @@ import {
   Row,
 } from "react-bootstrap";
 import { useState } from "react";
-import { waiter } from "../dataset/waiterData";
+import { waiter } from "../../StaticData/waiterData";
 
-function AdminWaiterPage() {
+const AdminWaiter = () => {
   const [show, setShow] = useState(false);
   const [val, setname] = useState("");
   const handleClose = () => setShow(false);
@@ -26,7 +26,7 @@ function AdminWaiterPage() {
   console.log(val);
 
   return (
-    <Container className="home">
+    <Container className="inner-container">
       <Row>
         {waiter.map((user) => (
           <Col xs={12} lg={4} md={6}>
@@ -139,6 +139,6 @@ function AdminWaiterPage() {
       </Row>
     </Container>
   );
-}
+};
 
-export default AdminWaiterPage;
+export default AdminWaiter;

@@ -1,0 +1,8 @@
+.navbar {
+    background-image: linear-gradient(to left top, #37051d, #732820, #96610c, #8ea61f, #12eb83);
+        width: 84.3vw;
+        max-width: 84.3vw;
+        height: 9vh;
+        margin-left: 15.7vw;
+        /* overflow-x: hidden; */
+}

@@ -1,7 +1,7 @@
 .main-header {
-  width: 200px;
-  height: 100%;
-  display:flex;
+  width: 15.7vw;
+  height: 100vh;
+  display: flex;
   align-items: top;
   position: fixed;
   top: 0;
@@ -22,10 +22,11 @@ main {
     justify-content: space-between;
   }
 }
+
 @media screen and (max-width: 768px) {
   .main-header {
     width: 0px;
     /* display: none; */
-    
+
   }
 }

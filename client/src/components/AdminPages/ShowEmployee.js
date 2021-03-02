@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Button, Table } from "reactstrap";
 //import ModalExample from "./modal";
-import {  Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
-const Showuser = (props) => {
+import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+const ShowEmployee = (props) => {
   const userDetails = [
     {
       empId: 1,
@@ -146,37 +146,35 @@ const Showuser = (props) => {
     },
   ];
 
-
   const [show, setShow] = useState(false);
   const [data, setData] = useState({});
-const [dataFromChild,setDataFromChild] = useState(null);
-const [displayModal,setdisplayModal] = useState(false);
+  const [dataFromChild, setDataFromChild] = useState(null);
+  const [displayModal, setdisplayModal] = useState(false);
 
   const handleShowDetails = (event) => {
-      setShow(!show);
-      setData({ data: event });
-      setdisplayModal(!displayModal)
-    };
+    setShow(!show);
+    setData({ data: event });
+    setdisplayModal(!displayModal);
+  };
 
   const handleCallback = (childData) => {
     //console.log(childData);
-   setDataFromChild(childData);
-  }
-//console.log(dataFromChild);
+    setDataFromChild(childData);
+  };
+  //console.log(dataFromChild);
 
-const handleClick = () => {
-  // show && displayModal && {setShow(false),setdisplayModal(false)}
+  const handleClick = () => {
+    // show && displayModal && {setShow(false),setdisplayModal(false)}
 
-  if(show && displayModal === true){
-    setShow(false);
-    setdisplayModal(false)
-  }
-  else{
-    console.log("fail");
-  }
-}
+    if (show && displayModal === true) {
+      setShow(false);
+      setdisplayModal(false);
+    } else {
+      console.log("fail");
+    }
+  };
   return (
-    <div>
+    <div className="inner-container">
       <div className="border border-dark rounded ml-4 mr-4 mb-3">
         <div style={{ backgroundColor: "Gray", color: "white " }}>
           <h4>Waiter</h4>
@@ -201,8 +199,7 @@ const handleClick = () => {
                     <Button
                       outline
                       color="primary"
-                      onClick={() => handleShowDetails(user.modal)
-                      }
+                      onClick={() => handleShowDetails(user.modal)}
                     >
                       Show Details
                     </Button>
@@ -214,22 +211,26 @@ const handleClick = () => {
         </div>
         {/* {show ? <ModalExample Data={data.data} display={show} parentCallback={handleCallback}/> : null} */}
         {show ? (
-        <div>
-          <Modal isOpen={displayModal} toggle={displayModal}>
-            <ModalHeader>User Details</ModalHeader>
-              <ModalBody><div>{Object.entries(data.data).map((item,index) => (<ol key={index}>{item}</ol>))}</div></ModalBody>
-            <ModalFooter>
-            <Button color="primary">
-            Edit
-          </Button>{" "}
-          <Button color="secondary" onClick={handleClick}>
-            Cancel
-          </Button>
-            </ModalFooter>
-          </Modal>
-        </div>) : null}
+          <div>
+            <Modal isOpen={displayModal} toggle={displayModal}>
+              <ModalHeader>User Details</ModalHeader>
+              <ModalBody>
+                <div>
+                  {Object.entries(data.data).map((item, index) => (
+                    <ol key={index}>{item}</ol>
+                  ))}
+                </div>
+              </ModalBody>
+              <ModalFooter>
+                <Button color="primary">Edit</Button>{" "}
+                <Button color="secondary" onClick={handleClick}>
+                  Cancel
+                </Button>
+              </ModalFooter>
+            </Modal>
+          </div>
+        ) : null}
       </div>
-
 
       <div className="border border-dark rounded ml-4 mr-4 mb-3">
         <div style={{ backgroundColor: "Gray", color: "white " }}>
@@ -246,40 +247,45 @@ const handleClick = () => {
               </tr>
             </thead>
             <tbody>
-            {billerDetails.map((biller, id) => (
-              <tr>
-                <th scope="row">{biller.empId}</th>
-                <td>{biller.name}</td>
-                <td>{biller.status}</td>
-                <td><Button
+              {billerDetails.map((biller, id) => (
+                <tr>
+                  <th scope="row">{biller.empId}</th>
+                  <td>{biller.name}</td>
+                  <td>{biller.status}</td>
+                  <td>
+                    <Button
                       outline
                       color="primary"
-                      onClick={() => handleShowDetails(biller.modal)
-                      }
+                      onClick={() => handleShowDetails(biller.modal)}
                     >
                       Show Details
                     </Button>
-                    </td>
-              </tr>
-            ))}
+                  </td>
+                </tr>
+              ))}
             </tbody>
-            </Table>
-            </div>
-            {show ? (
-        <div>
-          <Modal isOpen={displayModal} toggle={displayModal}>
-            <ModalHeader>User Details</ModalHeader>
-              <ModalBody><div>{Object.entries(data.data).map((item,index) => (<ol key={index}>{item}</ol>))}</div></ModalBody>
-            <ModalFooter>
-            <Button color="primary">
-            Edit
-          </Button>{" "}
-          <Button color="secondary" onClick={handleClick}>
-            Cancel
-          </Button>
-            </ModalFooter>
-          </Modal>
-        </div>) : null}
+          </Table>
+        </div>
+        {show ? (
+          <div>
+            <Modal isOpen={displayModal} toggle={displayModal}>
+              <ModalHeader>User Details</ModalHeader>
+              <ModalBody>
+                <div>
+                  {Object.entries(data.data).map((item, index) => (
+                    <ol key={index}>{item}</ol>
+                  ))}
+                </div>
+              </ModalBody>
+              <ModalFooter>
+                <Button color="primary">Edit</Button>{" "}
+                <Button color="secondary" onClick={handleClick}>
+                  Cancel
+                </Button>
+              </ModalFooter>
+            </Modal>
+          </div>
+        ) : null}
       </div>
 
       <div className="border border-dark rounded ml-4 mr-4 mb-3 ">
@@ -385,7 +391,7 @@ const handleClick = () => {
   );
 };
 
-export default Showuser;
+export default ShowEmployee;
 // import React from 'react'
 // import { Button, Table } from 'reactstrap';
 // const Showuser = () => {

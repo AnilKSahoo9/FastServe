@@ -1,0 +1,21 @@
+.inner-container{
+    /* width: 80vw; */
+    max-width: 80vw;
+    margin-left: 1.3vw;
+    margin-top: 5vh;
+}
+
+.home {
+    background: radial-gradient(#e0e0eb, #ffff, #e0e0eb);
+}
+
+.waitercard {
+    box-shadow: 5px 10px 20px 5px rgba(0, 0, 0, 0.253) !important;
+    /* border-style: solid;
+  border-color: rgba(27, 26, 26, 0.993); */
+    border-radius: 0.4rem;
+}
+
+.waitercard:hover {
+    box-shadow: 10px 15px 25px 10px rgba(109, 108, 100, 0.336) !important;
+}

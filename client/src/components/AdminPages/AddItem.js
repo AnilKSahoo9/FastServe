@@ -13,7 +13,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import Swal from "sweetalert2";
 
-function AdminItem() {
+const AddItem = () => {
   const [modalShow, setModalShow] = useState(false);
   const [itemName, setItemName] = useState("");
   const [itemPrice, setitemPrice] = useState("");
@@ -50,7 +50,7 @@ function AdminItem() {
   };
   console.log(arrData);
   return (
-    <div>
+    <div className="inner-container">
       <div style={{ float: "right" }}>
         {" "}
         <Button
@@ -152,6 +152,6 @@ function AdminItem() {
       </div>
     </div>
   );
-}
+};
 
-export default AdminItem;
+export default AddItem;

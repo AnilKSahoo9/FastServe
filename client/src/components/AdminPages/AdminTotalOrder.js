@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Card, Button, Header, Table, Row, Col } from "react-bootstrap";
 import Accordion from "react-bootstrap/Accordion";
-import { data } from "../dataset/tableOrderData";
-import { parcel } from "../dataset/parcelData";
+import { data } from "../../StaticData/tableOrderData";
+import { parcel } from "../../StaticData/parcelData";
 
-function AdminTotalOrder() {
+const AdminTotalOrder = () => {
   const [count, setCount] = useState(0);
 
   const cal = () => {
@@ -14,12 +14,12 @@ function AdminTotalOrder() {
 
   return (
     <div
-      classname="main"
-      style={{
-        width: "100%",
-        height: "100vh",
-        backgroundImage: `linear-gradient(90deg,#ffdead 50%,#faf0e6 50%)`,
-      }}
+      classname="inner-container"
+      // style={{
+      //   width: "100%",
+      //   height: "100vh",
+      //   backgroundImage: `linear-gradient(90deg,#ffdead 50%,#faf0e6 50%)`,
+      // }}
     >
       <Row>
         <Col md={6} xs={12}>
@@ -135,6 +135,6 @@ function AdminTotalOrder() {
       </Row>
     </div>
   );
-}
+};
 
 export default AdminTotalOrder;
