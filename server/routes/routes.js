@@ -125,40 +125,50 @@ const routes = (app) => {
       });
   });
 
-
   app.route("/addemployee").post((req, res) => {
     let { Type, Name, Email, Mobile, Username, Password, DOJ } = req.body;
 
-    const employeeData = new employeeSchema({Name:Name,Email:Email,Username:Username,Type:Type,DOJ:DOJ,Mobile:Mobile,Password:Password});
-    
-    bcrypt.genSalt(10,(err,salt) => {
-      bcrypt.hash(Password,salt,(err,hash) => {
-        if(err){
+    const employeeData = new employeeSchema({
+      Name: Name,
+      Email: Email,
+      Username: Username,
+      Type: Type,
+      DOJ: DOJ,
+      Mobile: Mobile,
+      Password: Password,
+    });
+
+    bcrypt.genSalt(10, (err, salt) => {
+      bcrypt.hash(Password, salt, (err, hash) => {
+        if (err) {
           throw err;
         }
         employeeData.Password = hash;
-        employeeData.save().then(response => {
-          res.status(200).json({success: true,result: response})
-        }).catch(err => {
-          res.status(500).json({errors: [{ error: err }]});
-        })
-      })
-    })
+        employeeData
+          .save()
+          .then((response) => {
+            res.status(200).json({ success: true, result: response });
+          })
+          .catch((err) => {
+            res.status(500).json({ errors: [{ error: err }] });
+          });
+      });
+    });
     // new employeeSchema(req.body).save();
     // res.send({status:200,msg:'successfully added employee details'});
   });
 
-  app.route("/employeelogin").post((req,res) => {
-    let {Username,Password} = req.body;
-    employeeSchema.findOne({Username:Username}).then((user) => {
-      bcrypt.compare(Password,user.Password).then((isMatch) => {
+  app.route("/employeelogin").post((req, res) => {
+    let { Username, Password } = req.body;
+    employeeSchema.findOne({ Username: Username }).then((user) => {
+      bcrypt.compare(Password, user.Password).then((isMatch) => {
         if (!isMatch) {
           res.status(400).json({ msg: "incorrect password" });
         } else {
           return res.send({ msg: "successfully logged in" });
         }
-      })
-    })
+      });
+    });
   });
 
   app.route("/waiters").get((req, res) => {
@@ -170,7 +180,6 @@ const routes = (app) => {
     new menuSchema(req.body).save();
     res.send({ status: 200, msg: "successfully added to database" });
   });
-
 
   app.route("/table").post((req, res) => {
     let { tableNo, noOfTables } = req.body;
@@ -184,16 +193,22 @@ const routes = (app) => {
     }
     res.send({ status: 200, msg: "successfully created tableschema and data" });
   });
-  
+
   app.route("/sessions").post(async (req, res) => {
     let { items, totalAmount, tableNo, waiterName } = req.body;
     //console.log(req.body);
-     let idB = uuidv4();
-     //console.log(idb);
-     new sessionSchema({_id:idB,items:items,totalAmount:totalAmount,tableNo:tableNo,waiterName:waiterName}).save();
+    let idB = uuidv4();
+    //console.log(idb);
+    new sessionSchema({
+      _id: idB,
+      items: items,
+      totalAmount: totalAmount,
+      tableNo: tableNo,
+      waiterName: waiterName,
+    }).save();
     tableSchema.updateOne(
       { tableNo: tableNo },
-      { $push:{session:idB} },
+      { $push: { session: idB } },
       function (err, docs) {
         if (err) {
           console.log(err);
@@ -202,16 +217,56 @@ const routes = (app) => {
         }
       }
     );
-    res.send({status:200,msg:"successfully added and updated"});
+    res.send({ status: 200, msg: "successfully added and updated" });
   });
 
-  app.route("/parcels").post((req,res) => {
-    let {items,totalAmount,billerName} = req.body;
+  app.route("/parcels").post((req, res) => {
+    let { items, totalAmount, billerName } = req.body;
     let idP = uuidv4();
-    new parcelSchema({_id:idP,items:items,totalAmount:totalAmount,billerName:billerName}).save();
-    res.send('successfully added the parcel details');
-  })
-  
+    new parcelSchema({
+      _id: idP,
+      items: items,
+      totalAmount: totalAmount,
+      billerName: billerName,
+    }).save();
+    res.send("successfully added the parcel details");
+  });
+
+  app.route("/totalorder").post((req, res) => {
+    // let { items, totalAmount, billerName } = req.body;
+    // let idP = uuidv4();
+    let arraytables = [];
+    tableSchema.find({}, function (err, tables) {
+      tables.map((eachTable) => {
+        arraytables.push({
+          tableNo: eachTable.tableNo,
+          sessions: eachTable.session
+            ? eachTable.session.map((eachSession) => {
+                console.log(eachSession);
+                // eachSession;
+                sessionSchema.findById(
+                  { _id: eachSession },
+                  function (err, result) {
+                    console.log(result);
+                    return {
+                      totalAmount: result.totalAmount,
+                    };
+                  }
+                );
+              })
+            : null,
+        });
+        // res.send(item);
+      });
+      console.log(arraytables);
+      res.send(arraytables);
+      // return users;
+      // console.log(users);
+    });
+    // tableSchema.find();
+    // console.log(totalorder);
+    // res.send("success");
+  });
 };
 
 module.exports = routes;

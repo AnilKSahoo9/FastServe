@@ -40,12 +40,6 @@ const AdminWaiter = () => {
                     background: `linear-gradient(to bottom,#4dff03,#00d0ff )`,
                   }}
                 >
-                  {/* <Card.Img
-                    variant="top"
-                    src={present}
-                    alt="Card image cap"
-                    style={{ height: 30 }}
-                  /> */}
                   <h4>
                     {" "}
                     <Card.Header
@@ -110,12 +104,6 @@ const AdminWaiter = () => {
                     background: `linear-gradient(to bottom,  #ffbc00,#ff0058)`,
                   }}
                 >
-                  {/* <Card.Img
-                    variant="top"
-                    src={notpresent}
-                    alt="Card image cap"
-                    style={{ height: 30 }}
-                  /> */}
                   <h4>
                     {" "}
                     <Card.Header

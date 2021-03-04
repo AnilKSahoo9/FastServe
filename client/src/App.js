@@ -46,12 +46,12 @@ const App = () => {
           >
             <Switch>
               <Route path="/" component={AdminHome} exact />
-              <Route path="/addemployee" component={AddEmployee} exact />
-              <Route path="/showemployee" component={ShowEmployee} exact />
-              <Route path="/waiter" component={AdminWaiter} exact />
-              <Route path="/totalorder" component={AdminTotalOrder} exact />
-              <Route path="/table" component={AdminTable} exact />
-              <Route path="/additems" component={AddItem} exact />
+              <Route path="/addemployee" component={AddEmployee} />
+              <Route path="/showemployee" component={ShowEmployee} />
+              <Route path="/waiter" component={AdminWaiter} />
+              <Route path="/totalorder" component={AdminTotalOrder} />
+              <Route path="/table" component={AdminTable} />
+              <Route path="/additems" component={AddItem} />
               <Redirect to="/" />
             </Switch>
           </Suspense>
