@@ -2,27 +2,36 @@ let tableSchema = require("../models/tableModel");
 let sessionSchema = require("../models/sessionModel");
 
 const totalOrderController = (req,res) => {
-//     let arraytables = [];
-// tableSchema.find({},(err,doc) => {
-//     doc.map((elem) => {
-//         elem.session.map((session_id) => {
-//             session_id ? arraytables.push({tableNo:elem.tableNo,sessions:elem.session}) : null;
-//             //sessionSchema.findById({_id:session_id},(err,result) => {console.log(result)})
-//         })
-//     })
-//     res.send(arraytables);
-// });
-tableSchema.aggregate([{
+
+// tableSchema.aggregate([
+//     {
+//     $lookup:{
+//         from:'sessions',
+//         localField:'session',
+//         foreignField:'_id',
+//         as:'tableOrder'
+//     }
+// }],(err,data) => { return res.json(data)}
+
+tableSchema.aggregate([
+    {
     $lookup:{
         from:'sessions',
         localField:'session',
         foreignField:'_id',
-        as:'totalOrder'
+        as:'tableOrder'
     }
-}
+},
+{
+    $replaceRoot:{newRoot:{$mergeObjects:[{$arrayElemAt:['$tableOrder',0]},'$$ROOT']}} //here 0 or 1 is the index
+},
+// {
+//     $project:{tableOrder:0}  //comment this project field and check response
+// }
 ],(err,data) => { return res.json(data)}
 )
-//res.send('ok')
+
+
 };
 module.exports = totalOrderController;
 
