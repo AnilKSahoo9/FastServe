@@ -1,13 +1,12 @@
 let tableSchema = require("../models/tableModel");
 let sessionSchema = require("../models/sessionModel");
 let parcelSchema = require("../models/parcelModel");
-// const parcelData = async function () {
-//   return await parcelSchema.find({}).exec();
-// };
+
 const totalOrderController = (req, res) => {
-  //   let promise = Promise.all(parcelData());
-  //   res.send(promise);
-  //   console.log(parcelData());
+  
+  parcelSchema.find({},(err,doc) => {
+      //console.log(doc);
+
   tableSchema.aggregate(
     [
       {
@@ -15,7 +14,7 @@ const totalOrderController = (req, res) => {
           from: "sessions",
           localField: "session",
           foreignField: "_id",
-          as: "tableOrder",
+          as: "sessions",  //o/p
         },
       },
     ],
@@ -23,19 +22,25 @@ const totalOrderController = (req, res) => {
       return res.json({
         tableOrder: data.map((eachTable) => ({
           tableNo: eachTable.tableNo,
-          tableOrder: eachTable.tableOrder.map((eachSession) => ({
-            items: eachSession.items,
+          sessions: eachTable.sessions.map((eachSession) => ({
+            orderDetails: eachSession.items,
             totalAmount: eachSession.totalAmount,
             waiterName: eachSession.waiterName,
           })),
         })),
-        //   parcelOrder: parcelSchema.find({}, function (err, data) {
-        //     //   return data;
-        //   }),
+         parcelOrder: doc.map((element) => ({
+             billerName:element.billerName,
+             totalAmount:element.totalAmount,
+             orderDetails:element.items
+         })) 
       });
     }
   );
+
+});
+
 };
+module.exports = totalOrderController;
 
 //   tableSchema.aggregate(
 //     [
@@ -63,7 +68,6 @@ const totalOrderController = (req, res) => {
 //     }
 //   );
 // };
-module.exports = totalOrderController;
 
 // .toArray((err,res) => {
 //     if(err) throw err;
