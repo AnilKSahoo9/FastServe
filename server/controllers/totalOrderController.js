@@ -3,42 +3,41 @@ let sessionSchema = require("../models/sessionModel");
 let parcelSchema = require("../models/parcelModel");
 
 const totalOrderController = (req, res) => {
-  
-  parcelSchema.find({},(err,doc) => {
-      //console.log(doc);
+  parcelSchema.find({}, (err, doc) => {
+    //console.log(doc);
 
-  tableSchema.aggregate(
-    [
-      {
-        $lookup: {
-          from: "sessions",
-          localField: "session",
-          foreignField: "_id",
-          as: "sessions",  //o/p
+    tableSchema.aggregate(
+      [
+        {
+          $lookup: {
+            from: "sessions",
+            localField: "session",
+            foreignField: "_id",
+            as: "sessions", //o/p
+          },
         },
-      },
-    ],
-    (err, data) => {
-      return res.json({
-        tableOrder: data.map((eachTable) => ({
-          tableNo: eachTable.tableNo,
-          sessions: eachTable.sessions.map((eachSession) => ({
-            orderDetails: eachSession.items,
-            totalAmount: eachSession.totalAmount,
-            waiterName: eachSession.waiterName,
+      ],
+      (err, data) => {
+        return res.json({
+          tableOrders: data.map((eachTable) => ({
+            tableNo: eachTable.tableNo,
+            sessions: eachTable.sessions.map((eachSession, index) => ({
+              sessionNo: index + 1,
+              orderDetails: eachSession.items,
+              totalAmount: eachSession.totalAmount,
+              waiterName: eachSession.waiterName,
+            })),
           })),
-        })),
-         parcelOrder: doc.map((element) => ({
-             billerName:element.billerName,
-             totalAmount:element.totalAmount,
-             orderDetails:element.items
-         })) 
-      });
-    }
-  );
-
-});
-
+          parcelOrders: doc.map((eachParcel, index) => ({
+            parcelNo: index + 1,
+            billerName: eachParcel.billerName,
+            totalAmount: eachParcel.totalAmount,
+            orderDetails: eachParcel.items,
+          })),
+        });
+      }
+    );
+  });
 };
 module.exports = totalOrderController;
 
