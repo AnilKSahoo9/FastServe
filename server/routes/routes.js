@@ -39,7 +39,7 @@ const routes = (app) => {
   //   .route("/homepagedata")
   //   .get((req, res) => res.send(Home))
   //   .post((req, res) => res.send("POST request successful!"));
-  app.get("/homepagedata", homepageController);
+  app.get("/admin-home", homepageController);
 
   // app.route('/login').post((req,res) =>
   // res.send(msg))
@@ -47,25 +47,29 @@ const routes = (app) => {
   // app.post('/login',(req,res) =>
   // res.send(msg))
 
-  app.post("/adminlogin", adminLoginController);
+  app.post("/admin-login", adminLoginController);
 
   app.post("/addemployee", addEmployeeController);
 
-  app.post("/employeelogin", employeeLoginController);
+  app.post("/employee-login", employeeLoginController);
 
-  app.route("/waiters").get((req, res) => {
+  app.route("/admin-waiters").get((req, res) => {
     res.send(waiters);
   });
 
-  app.get("/totalorder", totalOrderController);
+  app.get("/admin-totalorders", totalOrderController);
 
-  app.post("/menu", menuController);
+  app.post("/additems", menuController);
 
-  app.post("/table", tableController);
+  app.post("/admin-tables", tableController);
 
   app.post("/sessions", sessionController);
 
   app.post("/parcels", parcelController);
+
+  //write showemployees code, end point is /showemployees
+
+  //write showitems code, end point is /showitems
 };
 
 module.exports = routes;
