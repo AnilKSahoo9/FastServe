@@ -21,12 +21,11 @@ const AdminWaiter = () => {
     setShow(true);
     setname(event.target.value);
   };
-  const color1 = "";
-  const color2 = "#B408A4";
+
   console.log(val);
 
   return (
-    <Container className="inner-container">
+    <Container className="home">
       <Row>
         {waiter.map((user) => (
           <Col xs={12} lg={4} md={6}>
@@ -71,11 +70,22 @@ const AdminWaiter = () => {
                     <Modal
                       show={show}
                       onHide={handleClose}
-                      size="lg"
-                      aria-labelledby="contained-modal-title-vcenter"
-                      centered
+                      // aria-labelledby="contained-modal-title-vcenter"
+                      centered={true}
+                      scrollable={true}
+                      className="waitermodal"
                     >
-                      <Modal.Header closeButton>Order Details</Modal.Header>
+                      <Modal.Header
+                        closeButton
+                        style={{
+                          backgroundColor: "#b3b3ff",
+                          fontFamily: "Times New Roman, Times, serif",
+                          fontWeight: 750,
+                          fontSize: 20,
+                        }}
+                      >
+                        Order Details
+                      </Modal.Header>
                       <Modal.Body>
                         {waiter.map((users) =>
                           users.name === val
@@ -85,7 +95,11 @@ const AdminWaiter = () => {
                             : ""
                         )}
                       </Modal.Body>
-                      <Modal.Footer>
+                      <Modal.Footer
+                        style={{
+                          backgroundColor: "#b3b3ff",
+                        }}
+                      >
                         <Button variant="secondary" onClick={handleClose}>
                           close
                         </Button>
