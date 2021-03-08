@@ -9,7 +9,8 @@ const tableController = require("../controllers/tableController");
 const sessionController = require("../controllers/sessionController");
 const parcelController = require("../controllers/parcelController");
 const totalOrderController = require("../controllers/totalOrderController");
-
+const showEmployeeController = require("../controllers/showEmployeeController");
+const showItemController = require("../controllers/showItemController");
 const waiters = [
   {
     name: "Ashok kumar",
@@ -53,6 +54,8 @@ const routes = (app) => {
 
   app.post("/employee-login", employeeLoginController);
 
+  app.get("/showemployees",showEmployeeController);
+
   app.route("/admin-waiters").get((req, res) => {
     res.send(waiters);
   });
@@ -61,6 +64,7 @@ const routes = (app) => {
 
   app.post("/additems", menuController);
 
+  app.get("/showitems",showItemController);
   app.post("/admin-tables", tableController);
 
   app.post("/sessions", sessionController);

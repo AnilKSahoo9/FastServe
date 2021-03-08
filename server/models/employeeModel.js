@@ -21,5 +21,11 @@ const employeeSchema = new mongoose.Schema({
     Mobile: {
       type: String,
     },
+    Gender:{
+      type:String
+    },
+    Documents:{
+      type:Array
+    }
   });
   module.exports = mongoose.model("employees", employeeSchema);
