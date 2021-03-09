@@ -28,7 +28,12 @@ const AddItem = React.lazy(() => import("./components/AdminPages/AddItem"));
 const AdminTotalOrder = React.lazy(() =>
   import("./components/AdminPages/AdminTotalOrder")
 );
-
+const Waiterplaceorder = React.lazy(() =>
+  import("./components/AdminPages/Waiterplaceorder")
+);
+const Tablepage = React.lazy(() =>
+  import("./components/AdminPages/Tablepage")
+);
 const App = () => {
   return (
     <div className="App">
@@ -52,27 +57,15 @@ const App = () => {
               <Route path="/totalorder" component={AdminTotalOrder} exact />
               <Route path="/table" component={AdminTable} exact />
               <Route path="/additems" component={AddItem} exact />
+              <Route path="/PlaceOrder" component={Waiterplaceorder} exact />
+              <Route path="/Items" component={Tablepage} exact />
               <Redirect to="/" />
             </Switch>
           </Suspense>
         </div>
-        {/* <Row>
-            <Col md={3} style={{ paddingRight: "0px", paddingLeft: "-10px" }}>
-            </Col>
-            <Col md={9} style={{ paddingRight: "0px", paddingLeft: "0px" }}>
-              <Route path="/" component={Home} exact />
-              <Route path="/AddUser" component={AddUser} exact />
-              <Route path="/Showuser" component={Showuser} exact />
-              <Route path="/Waiters" component={AdminWaiterPage} exact />
-              <Route path="/TotalOrder" component={AdminTotalOrder} exact />
-              <Route path="/Table" component={AdminTablePage} exact />
-              <Route path="/itemDetails" component={AdminItem} exact />
-            </Col>
-          </Row> */}
-      </Router>
-      {/* </div> */}
+        </Router>
     </div>
   );
-};
+ };
 
 export default App;
