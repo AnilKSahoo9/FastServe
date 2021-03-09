@@ -20,6 +20,8 @@ await parcelSchema.find({},(err,docu) => {
         },
       ],
       (err, data) => {
+        if(err){return res.status(500).json({msg:'error occured',error:err})}
+        if(data){
         return res.json({
           tableOrders: data.map((eachTable) => ({
             tableNo: eachTable.tableNo,
@@ -37,6 +39,7 @@ await parcelSchema.find({},(err,docu) => {
             orderDetails: eachParcel.items,
           })),
         });
+      }
       }
     );
 
