@@ -1,10 +1,12 @@
 let tableSchema = require("../models/tableModel");
-let sessionSchema = require("../models/sessionModel");
 let parcelSchema = require("../models/parcelModel");
 
-const totalOrderController = (req, res) => {
-  parcelSchema.find({}, (err, doc) => {
-    //console.log(doc);
+const totalOrderController = async(req, res) => {
+
+let doc = [];
+await parcelSchema.find({},(err,docu) => {
+  doc = docu;
+});
 
     tableSchema.aggregate(
       [
@@ -37,7 +39,7 @@ const totalOrderController = (req, res) => {
         });
       }
     );
-  });
+
 };
 module.exports = totalOrderController;
 
