@@ -14,8 +14,8 @@ await menuSchema.find({}).then((elem) => {
         dessert = element.dessert;
         rice = element.rice;
         dal = element.dal;
-        veg.push(element.veg);
-        nonveg.push(element.nonveg);
+        veg = element.veg;
+        nonveg = element.nonveg;
     })
 });
 
