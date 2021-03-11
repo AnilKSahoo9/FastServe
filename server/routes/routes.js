@@ -11,6 +11,8 @@ const parcelController = require("../controllers/parcelController");
 const totalOrderController = require("../controllers/totalOrderController");
 const showEmployeeController = require("../controllers/showEmployeeController");
 const showItemController = require("../controllers/showItemController");
+const billerHomeController = require("../controllers/billerHomeController");
+const billerPaymentController = require("../controllers/billerPaymentController");
 const waiters = [
   {
     name: "Ashok kumar",
@@ -71,6 +73,8 @@ const routes = (app) => {
 
   app.post("/parcels", parcelController);
 
+  app.get("/biller-home",billerHomeController);
+  app.post("/biller-payment",billerPaymentController);
   //write showemployees code, end point is /showemployees
 
   //write showitems code, end point is /showitems
