@@ -56,7 +56,7 @@ const routes = (app) => {
 
   app.post("/employee-login", employeeLoginController);
 
-  app.get("/showemployees",showEmployeeController);
+  app.get("/showemployees", showEmployeeController);
 
   app.route("/admin-waiters").get((req, res) => {
     res.send(waiters);
@@ -66,18 +66,17 @@ const routes = (app) => {
 
   app.post("/additems", menuController);
 
-  app.get("/showitems",showItemController);
+  app.get("/showitems", showItemController);
+
   app.post("/admin-tables", tableController);
 
   app.post("/sessions", sessionController);
 
   app.post("/parcels", parcelController);
 
-  app.get("/biller-home",billerHomeController);
-  app.post("/biller-payment",billerPaymentController);
-  //write showemployees code, end point is /showemployees
+  app.get("/biller-home", billerHomeController);
 
-  //write showitems code, end point is /showitems
+  app.post("/biller-payment", billerPaymentController);
 };
 
 module.exports = routes;
