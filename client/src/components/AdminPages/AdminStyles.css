@@ -4,10 +4,14 @@
     margin-left: 1.3vw;
     margin-top: 5vh;
 }
-
-.home {
+@media (max-width: 640px) {
+    .inner-container {
+      margin-left: 3px;
+    }
+  }
+/* .home {
     background: radial-gradient(#e0e0eb, #ffff, #e0e0eb);
-}
+} */
 
 .waitercard {
     box-shadow: 5px 10px 20px 5px rgba(0, 0, 0, 0.253) !important;

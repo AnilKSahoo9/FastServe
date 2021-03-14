@@ -62,9 +62,12 @@ const NavLinks = (props) => {
           </NavLink>
         </li>
         
-        {/* <li>
-      <NavLink to="/showuser"className="showuser">ShowUser</NavLink>
-    </li> */}
+        <li>
+      <NavLink to="/logout"className="logout">LogOut</NavLink>
+    </li>
+    <li>
+      <NavLink to="/customer"className="customer">Customer</NavLink>
+    </li>
       </ul>
     </div>
   );

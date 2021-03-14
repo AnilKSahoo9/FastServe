@@ -29,6 +29,7 @@ const AdminTotalOrder = () => {
               style={{
                 boxShadow: "5px 10px 20px 5px rgba(0, 0, 0, 0.253)",
                 borderRadius: "0.10rem",
+                
               }}
             >
               <Card style={{ backgroundColor: "#ffe6ff" }}>

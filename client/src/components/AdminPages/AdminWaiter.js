@@ -21,11 +21,12 @@ const AdminWaiter = () => {
     setShow(true);
     setname(event.target.value);
   };
-
+  const color1 = "";
+  const color2 = "#B408A4";
   console.log(val);
 
   return (
-    <Container className="home">
+    <Container className="inner-container">
       <Row>
         {waiter.map((user) => (
           <Col xs={12} lg={4} md={6}>
@@ -34,18 +35,26 @@ const AdminWaiter = () => {
                 <Card
                   className="waitercard text-center mb-3 mt-3"
                   style={{
-                    width: "17rem",
-                    height: "14.5rem",
-                    background: `linear-gradient(to bottom,#4dff03,#00d0ff )`,
+                    maxwidth: '100%',
+                    maxheight: "100rem",
+                    color: 'black',
+                    fontFamily: "Times New Roman, Times, serif",
+                    margin: '1rem',
+                    borderStyle: 'groove',
+                    borderWidth: '3px',
+                    borderRadius: '7px',
+                    boxShadow: '20px 20px 50px grey',
+                    // backgroundImage: `linear-gradient(to bottom,#4dff03,#00d0ff )`
+                    backgroundImage: `linear-gradient(to right bottom, #051437, #004782, #0081a7, #00b98a, #12eb25)`
                   }}
                 >
                   <h4>
                     {" "}
                     <Card.Header
                       style={{
-                        backgroundColor: "#f2f2f2",
-                        fontFamily: "Times New Roman, Times, serif",
-                        fontWeight: 750,
+                        backgroundColor: "white", borderStyle: 'groove',
+                            borderWidth: '3px',
+                            borderRadius: '7px', padding: "3px", marginLeft: "15px", marginRight: "15px", marginBottom: "15px", marginTop: "15px"
                       }}
                     >
                       ~: {user.name} :~
@@ -70,22 +79,11 @@ const AdminWaiter = () => {
                     <Modal
                       show={show}
                       onHide={handleClose}
-                      // aria-labelledby="contained-modal-title-vcenter"
-                      centered={true}
-                      scrollable={true}
-                      className="waitermodal"
+                      size="lg"
+                      aria-labelledby="contained-modal-title-vcenter"
+                      centered
                     >
-                      <Modal.Header
-                        closeButton
-                        style={{
-                          backgroundColor: "#b3b3ff",
-                          fontFamily: "Times New Roman, Times, serif",
-                          fontWeight: 750,
-                          fontSize: 20,
-                        }}
-                      >
-                        Order Details
-                      </Modal.Header>
+                      <Modal.Header closeButton>Order Details</Modal.Header>
                       <Modal.Body>
                         {waiter.map((users) =>
                           users.name === val
@@ -95,11 +93,7 @@ const AdminWaiter = () => {
                             : ""
                         )}
                       </Modal.Body>
-                      <Modal.Footer
-                        style={{
-                          backgroundColor: "#b3b3ff",
-                        }}
-                      >
+                      <Modal.Footer>
                         <Button variant="secondary" onClick={handleClose}>
                           close
                         </Button>
@@ -113,18 +107,25 @@ const AdminWaiter = () => {
                 <Card
                   className="waitercard text-center mb-3 mt-3"
                   style={{
-                    width: "17rem",
-                    height: "14.5rem",
-                    background: `linear-gradient(to bottom,  #ffbc00,#ff0058)`,
+                      maxwidth: '100%',
+                      height: "16rem",
+                      color: 'black',
+                      fontFamily: "Times New Roman, Times, serif",
+                      margin: '1rem',
+                      borderStyle: 'groove',
+                      borderWidth: '3px',
+                      borderRadius: '7px',
+                      boxShadow: '20px 20px 50px grey',
+                      backgroundImage: `linear-gradient(to bottom,  #ffbc00,#ff0058)`
                   }}
                 >
                   <h4>
                     {" "}
                     <Card.Header
                       style={{
-                        backgroundColor: "#f2f2f2",
-                        fontFamily: "Times New Roman, Times, serif",
-                        fontWeight: 750,
+                        backgroundColor: "white", borderStyle: 'groove',
+                        borderWidth: '3px',
+                        borderRadius: '7px', padding: "3px", marginLeft: "15px", marginRight: "15px", marginBottom: "15px", marginTop: "15px"
                       }}
                     >
                       ~: {user.name} :~

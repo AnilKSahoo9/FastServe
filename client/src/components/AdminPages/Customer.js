@@ -15,8 +15,8 @@ import {
 } from "reactstrap";
 import base_Url from "../../Api/Homeapi";
 // import SideBar from "../shared/SideBar/SideBar";
-import "./AdminStyles.css";
-const AdminHome = () => {
+ import "./AdminStyles.css";
+const Customer = () => {
   const [data, setData] = useState({});
   useEffect(() => {
     axios
@@ -33,47 +33,9 @@ const AdminHome = () => {
         console.log(error);
       });
   }, []);
-  // useEffect(() => {
-  //     document.title="Home";
-  //     // extractDatafromserver();
-  //     const url = base_Url;
-  //     fetch(url).then(response=>response.json(response))
-  //     .then(response => console.log(response))
-  // }, [])
 
-  // function to call server
-  //  const extractDatafromserver = () => {
-  //      axios.get(`${base_Url}/Home`).then(
-  //        (response) =>  {
-  //             //success call
-  //             // console.log( response )
-  //             console.log( response.data )
-  //             setTables(response.data)
-  //        },
-  //        (error) => {
-  //            //for error happen
-  //            console.log(error)
-  //        }
-  //      )
-  //  };
-
-  // const extractDatafromserver = () => {
-  //     axios.get(`${url}`)
-  //     .then((response) => {
-  //         const responseData = responseData.data.Tables
-  //         extractDatafromserver(console.log(responseData))
-  //     })
-
-  // }
-
-  // calling server loading home function
-  // useEffect(() => {
-  //     extractDatafromserver();
-  // },[]);
-  // const [Tables, setTables] = useState([])
-
-  return (
-      <div className="inner-container"style={{ marginRight: "7rem" }}>
+    return (
+        <div className="inner-container"style={{ marginRight: "7rem" }}>
       <CardGroup >
                 <Card body outline color="info"
                     style={{
@@ -86,7 +48,7 @@ const AdminHome = () => {
                         borderWidth: '3px',
                         borderRadius: '7px',
                         boxShadow: '20px 20px 50px grey',
-                        backgroundImage: `linear-gradient(to right bottom, #051437, #004782, #0081a7, #00b98a, #12eb25)`
+                        backgroundImage: `linear-gradient(to bottom,  #ffbc00,#ff0058)`
                     }}>
                     <h5>
                         <CardHeader style={{
@@ -94,14 +56,15 @@ const AdminHome = () => {
                             borderWidth: '3px',
                             borderRadius: '7px', padding: "3px", margin: "0px"
                         }}>
-                            <CardTitle>Tables</CardTitle>
+                            <CardTitle>Table 1</CardTitle>
                         </CardHeader>
                     </h5>
                     <CardBody >
 
                         <hr></hr>
                         <CardText >{data.Tables}</CardText>
-                        <p>No. of Tables Active</p>
+                        <p>Food prepear in progress</p>
+                        <p>Expected time 30min</p>
                     </CardBody>
                 </Card>
                 <Card body outline color="info" style={{
@@ -114,7 +77,7 @@ const AdminHome = () => {
                     color: 'black',
                     fontFamily: "Times New Roman, Times, serif",
                     boxShadow: '20px 20px 50px grey',
-                    backgroundImage: `linear-gradient(to right bottom, #051437, #004782, #0081a7, #00b98a, #12eb25)`
+                    backgroundImage: `linear-gradient(to bottom,  #ff0050,#ff0050)`
                 }}>
                     <h5>
                         <CardHeader style={{
@@ -122,13 +85,13 @@ const AdminHome = () => {
                             borderWidth: '3px',
                             borderRadius: '7px', padding: "3px", margin: "0px"
                         }}>
-                            <CardTitle>Parcels</CardTitle>
+                            <CardTitle>Table 2</CardTitle>
                         </CardHeader>
                     </h5>
                     <CardBody>
                         <hr></hr>
                         <CardTitle>{data.Parcels}</CardTitle>
-                        <p>No. of Parcel Placed</p>
+                        <p>Food preparetion not storted</p>
                     </CardBody>
                 </Card>
                 <Card body outline color="info" style={{
@@ -141,7 +104,7 @@ const AdminHome = () => {
                     color: 'black',
                     fontFamily: "Times New Roman, Times, serif",
                     boxShadow: '20px 20px 50px grey',
-                    backgroundImage: `linear-gradient(to right bottom, #051437, #004782, #0081a7, #00b98a, #12eb25)`
+                    backgroundImage: `linear-gradient(to bottom,  #ff0058,#ff0058)`
                 }}>
                     <h5>
                         <CardHeader style={{
@@ -149,14 +112,14 @@ const AdminHome = () => {
                             borderWidth: '3px',
                             borderRadius: '7px', padding: "3px", margin: "0px"
                         }}>
-                            <CardTitle>Waiter</CardTitle>
+                            <CardTitle>Table 3</CardTitle>
                         </CardHeader>
                     </h5>
                     <CardBody>
 
                         <hr></hr>
                         <CardTitle>{data.Waiters}</CardTitle>
-                        <p>No. of Waiters Working</p>
+                        <p>Food prepartion not storted</p>
                     </CardBody>
                 </Card>
             </CardGroup>
@@ -171,7 +134,7 @@ const AdminHome = () => {
                     borderWidth: '3px',
                     borderRadius: '7px',
                     boxShadow: '20px 20px 50px grey',
-                    backgroundImage: `linear-gradient(to right bottom, #051437, #004782, #0081a7, #00b98a, #12eb25)`
+                    backgroundImage: `linear-gradient(to right bottom, #12eb25, #12eb25, #12eb25, #12eb25, #12eb25)`
                 }}>
                     <h5>
                         <CardHeader style={{
@@ -179,14 +142,15 @@ const AdminHome = () => {
                             borderWidth: '3px',
                             borderRadius: '7px', padding: "3px", margin: "0px"
                         }}>
-                            <CardTitle>Kichens</CardTitle>
+                            <CardTitle>Parcel 1</CardTitle>
                         </CardHeader>
                     </h5>
                     <CardBody>
 
                         <hr></hr>
                         <CardTitle>{data.Kitchens}</CardTitle>
-                        <p>No. of Orders Accepted by Kitchen</p>
+                        <p>Food prepared</p>
+                        <p>Just Arraving</p>
                     </CardBody>
                 </Card>
                 <Card body outline color="info" style={{
@@ -199,7 +163,7 @@ const AdminHome = () => {
                     borderWidth: '3px',
                     borderRadius: '7px',
                     boxShadow: '20px 20px 50px grey',
-                    backgroundImage: `linear-gradient(to right bottom, #051437, #004782, #0081a7, #00b98a, #12eb25)`
+                    backgroundImage: `linear-gradient(to bottom,  #ffbc00,#ff0058)`
                 }}>
                     <h5>
                         <CardHeader style={{
@@ -207,14 +171,14 @@ const AdminHome = () => {
                             borderWidth: '3px',
                             borderRadius: '7px', padding: "3px", margin: "0px"
                         }}>
-                            <CardTitle>Billers</CardTitle>
+                            <CardTitle>Parcel 2</CardTitle>
                         </CardHeader>
                     </h5>
                     <CardBody>
 
                         <hr></hr>
                         <CardTitle>{data.Billers}</CardTitle>
-                        <p>Total amount collected by Biller</p>
+                        <p>Parcel in progress</p>
                     </CardBody>
                 </Card>
                 <Card body outline color="info" style={{
@@ -235,21 +199,21 @@ const AdminHome = () => {
                             borderWidth: '3px',
                             borderRadius: '7px', padding: "3px", margin: "0px"
                         }}>
-                            <CardTitle>Customers</CardTitle>
+                            <CardTitle>Parcel 3</CardTitle>
                         </CardHeader>
                     </h5>
                     <CardBody>
 
                         <hr></hr>
                         <CardTitle>{data.Customers}</CardTitle>
-                        <p>No. of Customers Visited</p>
+                        <p>Parcel ready</p>
                     </CardBody>
                 </Card>
 
             </CardGroup>
         </div>
 
-
     )
 }
-export default AdminHome;
+
+export default Customer;
