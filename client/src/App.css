@@ -49,8 +49,14 @@
   max-width: 84vw;
   margin-left: 13.5vw;
 }
-@media (max-width: 640px) {
+@media (max-width: 770px) {
   .content {
-    margin-left: 25px;
+    margin-left: 45px;
+    /* width: 900px; */
   }
 }
+/* @media (max-width: 770px) {
+  .content {
+    margin-left: 45px;
+  }
+} */
