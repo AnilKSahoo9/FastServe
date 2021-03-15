@@ -14,13 +14,15 @@ import {
 } from "reactstrap";
 const AddEmployee = () => {
   return (
-    <div className="inner-container"style={{ width: "70%",margin:"3rem",backgroundColor:"lightgray",marginLeft:"15%",borderTop:"solid",borderColor:"darkgreen" }}>
+    <div className="inner-container"style={{ width: "85%",margin:"2rem",backgroundColor:"lightgray",marginLeft:"7%",borderTop:"solid",borderColor:"darkgreen" }}>
       <span className="border border-info rounded m-0 p-5"
                 style={{
                     width: "100%",
                     height: "100%",
                     display: "inline-block"
+                    
                 }}
+                
             >
             <div>
                 <Form >

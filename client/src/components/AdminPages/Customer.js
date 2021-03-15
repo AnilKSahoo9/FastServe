@@ -40,7 +40,7 @@ const Customer = () => {
                 <Card body outline color="info"
                     style={{
                         maxwidth: '100%',
-                        maxHeight: "100rem",
+                        height: "20rem",
                         color: 'black',
                         fontFamily: "Times New Roman, Times, serif",
                         margin: '1rem',
@@ -59,62 +59,6 @@ const Customer = () => {
                             <CardTitle>Table 1</CardTitle>
                         </CardHeader>
                     </h5>
-                    <CardBody >
-
-                        <hr></hr>
-                        <CardText >{data.Tables}</CardText>
-                        <p>Food prepear in progress</p>
-                        <p>Expected time 30min</p>
-                    </CardBody>
-                </Card>
-                <Card body outline color="info" style={{
-                    maxwidth: '100%',
-                    maxHeight: "100rem",
-                    margin: '1rem',
-                    borderStyle: 'groove',
-                    borderWidth: '3px',
-                    borderRadius: '7px',
-                    color: 'black',
-                    fontFamily: "Times New Roman, Times, serif",
-                    boxShadow: '20px 20px 50px grey',
-                    backgroundImage: `linear-gradient(to bottom,  #ff0050,#ff0050)`
-                }}>
-                    <h5>
-                        <CardHeader style={{
-                            backgroundColor: "white", borderStyle: 'groove',
-                            borderWidth: '3px',
-                            borderRadius: '7px', padding: "3px", margin: "0px"
-                        }}>
-                            <CardTitle>Table 2</CardTitle>
-                        </CardHeader>
-                    </h5>
-                    <CardBody>
-                        <hr></hr>
-                        <CardTitle>{data.Parcels}</CardTitle>
-                        <p>Food preparetion not storted</p>
-                    </CardBody>
-                </Card>
-                <Card body outline color="info" style={{
-                    maxwidth: '100%',
-                    maxHeight: "100rem",
-                    margin: '1rem',
-                    borderStyle: 'groove',
-                    borderWidth: '3px',
-                    borderRadius: '7px',
-                    color: 'black',
-                    fontFamily: "Times New Roman, Times, serif",
-                    boxShadow: '20px 20px 50px grey',
-                    backgroundImage: `linear-gradient(to bottom,  #ff0058,#ff0058)`
-                }}>
-                    <h5>
-                        <CardHeader style={{
-                            backgroundColor: "white", borderStyle: 'groove',
-                            borderWidth: '3px',
-                            borderRadius: '7px', padding: "3px", margin: "0px"
-                        }}>
-                            <CardTitle>Table 3</CardTitle>
-                        </CardHeader>
-                    </h5>
                     <CardBody>
 
                         <hr></hr>
@@ -126,7 +70,7 @@ const Customer = () => {
             <CardGroup >
                 <Card body outline color="info" style={{
                     maxwidth: '100%',
-                    maxHeight: "100rem",
+                    height: "20rem",
                     color: 'black',
                     fontFamily: "Times New Roman, Times, serif",
                     margin: '1rem',
@@ -144,64 +88,7 @@ const Customer = () => {
                         }}>
                             <CardTitle>Parcel 1</CardTitle>
                         </CardHeader>
-                    </h5>
-                    <CardBody>
-
-                        <hr></hr>
-                        <CardTitle>{data.Kitchens}</CardTitle>
-                        <p>Food prepared</p>
-                        <p>Just Arraving</p>
-                    </CardBody>
-                </Card>
-                <Card body outline color="info" style={{
-                    maxwidth: '100%',
-                    maxHeight: "100rem",
-                    color: 'black',
-                    fontFamily: "Times New Roman, Times, serif",
-                    margin: '1rem',
-                    borderStyle: 'groove',
-                    borderWidth: '3px',
-                    borderRadius: '7px',
-                    boxShadow: '20px 20px 50px grey',
-                    backgroundImage: `linear-gradient(to bottom,  #ffbc00,#ff0058)`
-                }}>
-                    <h5>
-                        <CardHeader style={{
-                            backgroundColor: "white", borderStyle: 'groove',
-                            borderWidth: '3px',
-                            borderRadius: '7px', padding: "3px", margin: "0px"
-                        }}>
-                            <CardTitle>Parcel 2</CardTitle>
-                        </CardHeader>
-                    </h5>
-                    <CardBody>
-
-                        <hr></hr>
-                        <CardTitle>{data.Billers}</CardTitle>
-                        <p>Parcel in progress</p>
-                    </CardBody>
-                </Card>
-                <Card body outline color="info" style={{
-                    maxwidth: '100%',
-                    maxHeight: "100rem",
-                    color: 'black',
-                    fontFamily: "Times New Roman, Times, serif",
-                    margin: '1rem',
-                    borderStyle: 'groove',
-                    borderWidth: '3px',
-                    borderRadius: '7px',
-                    boxShadow: '20px 20px 50px grey',
-                    backgroundImage: `linear-gradient(to right bottom, #051437, #004782, #0081a7, #00b98a, #12eb25)`
-                }}>
-                    <h5>
-                        <CardHeader style={{
-                            backgroundColor: "white", borderStyle: 'groove',
-                            borderWidth: '3px',
-                            borderRadius: '7px', padding: "3px", margin: "0px"
-                        }}>
-                            <CardTitle>Parcel 3</CardTitle>
-                        </CardHeader>
-                    </h5>
+                    </h5> 
                     <CardBody>
 
                         <hr></hr>

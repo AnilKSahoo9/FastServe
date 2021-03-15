@@ -58,7 +58,10 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  margin-right: 2rem;
+  margin-right: 5px;
+  margin-left: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
   cursor: pointer;
 }
 
@@ -92,11 +95,11 @@
   height: 100%;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 770px) {
   .main-navigation__menu-btn {
     display: none;
   }
- 
+  
 
   .main-navigation__header-nav {
     display: block;
