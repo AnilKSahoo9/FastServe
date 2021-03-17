@@ -42,6 +42,7 @@ const routes = (app) => {
   //   .route("/homepagedata")
   //   .get((req, res) => res.send(Home))
   //   .post((req, res) => res.send("POST request successful!"));
+  
   app.get("/admin-home", homepageController);
 
   // app.route('/login').post((req,res) =>
@@ -77,6 +78,9 @@ const routes = (app) => {
   app.get("/biller-home", billerHomeController);
 
   app.post("/biller-payment", billerPaymentController);
+  app.route('/add').post((req,res) => {
+    res.send('hello miss');
+  })
 };
 
 module.exports = routes;

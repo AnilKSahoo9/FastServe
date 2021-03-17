@@ -7,6 +7,15 @@ require("dotenv").config();
 const app = express();
 const PORT = 4000;
 
+
+const WebSocket = require('ws');
+const wss = new WebSocket.Server({port:5000})
+wss.on('connection',(ws) => {
+  ws.on('message',(message) => {
+    console.log(`received msg => ${message}`)
+  })
+  ws.send('oye hoye')
+})
 //bodyparser setup
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
