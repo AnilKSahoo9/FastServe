@@ -25,7 +25,7 @@ const BillerKichen = () => {
 
             <Row>
                 <Col md={5} xs={12} style={{
-                    backgroundImage: `linear-gradient(to right bottom, #051437, #004782, #0081a7, #00b98a, #12eb25)`, color: "white", margin: '1rem',
+                    backgroundImage: `linear-gradient(to right bottom, #051437, #004782, #0081a7, #00b98a, #12eb25)`, color: "white", margin: '1rem', marginLeft: "3px",
                     borderStyle: 'groove',
                     borderWidth: '3px',
                     borderRadius: '7px', height: "100%"
