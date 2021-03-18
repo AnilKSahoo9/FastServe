@@ -1,5 +1,5 @@
 import React from "react";
-import "./AdminStyles.css";
+import "../../css/admin.css";
 
 import {
   Button,

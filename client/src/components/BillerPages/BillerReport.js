@@ -17,7 +17,7 @@ import {
   } from "reactstrap";
 export const BillerReport = () => {
     return (
-        <div className="inner-container" style={{ margin: "25px", }}>
+        <div className="inner-container" style={{ margin: "25px" }}>
         <div  style={{
              width: '80%',
         // maxHeight: "16.5vh",

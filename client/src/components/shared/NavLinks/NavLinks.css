@@ -8,7 +8,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
 }
 
 .nav-links li .home {
@@ -102,7 +101,6 @@
   font-weight: bold;
 }
 
-
 .nav-links li .billerHome {
   position: absolute;
   left: -0.3cm;
@@ -176,8 +174,30 @@
   list-style-type: none;
   font-weight: bold;
 }
-
-
+.nav-links li .kitchenpage {
+  position: absolute;
+  left: -0.3cm;
+  width: 5cm;
+  text-align: center;
+  font-size: 20px;
+  top: 15.9cm;
+  margin: 1rem;
+  padding: 0;
+  list-style-type: none;
+  font-weight: bold;
+}
+.nav-links li .timer {
+  position: absolute;
+  left: -0.3cm;
+  width: 5cm;
+  text-align: center;
+  font-size: 20px;
+  top: 16.9cm;
+  margin: 1rem;
+  padding: 0;
+  list-style-type: none;
+  font-weight: bold;
+}
 .nav-links a {
   border: 1px solid transparent;
   color: #292929;
@@ -185,9 +205,7 @@
   padding: 0.5rem;
   position: absolute;
   margin-top: 10cm;
-
 }
-
 
 .nav-links a:hover,
 .nav-links a:active,
@@ -195,7 +213,6 @@
   background: #fff;
   border-color: #292929;
   color: #292929;
-  
 }
 
 .nav-links button {
@@ -205,7 +222,6 @@
   background: transparent;
   padding: 0.5rem;
   font: inherit;
-  
 }
 
 .nav-links button:focus {
@@ -237,7 +253,7 @@
     color: white;
     background: transparent;
   }
-  
+
   .nav-links button:hover,
   .nav-links button:active {
     background: #f8df00;
