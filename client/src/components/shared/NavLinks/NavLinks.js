@@ -67,7 +67,16 @@ const NavLinks = (props) => {
     </li>
     <li>
       <NavLink to="/customer"className="customer">Customer</NavLink>
-    </li>
+    </li><li>
+          <NavLink to="/kitchenDashboard" className="kitchenpage">
+            Kitchen Dashboard
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/timer" className="timer">
+            timer
+          </NavLink>
+        </li>
       </ul>
     </div>
   );
