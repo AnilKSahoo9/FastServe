@@ -1,5 +1,3 @@
-import { Table } from "react-bootstrap";
-
 export const data = [
   {
     orderType: "Table 2",
@@ -34,7 +32,7 @@ export const data = [
   },
   {
     orderType: "Parcel 4",
-    status: "accepted",
+    status: "pending",
     orderId: "1254",
     orderDetails: [
       {
@@ -53,7 +51,7 @@ export const data = [
   },
   {
     orderType: "Table 3",
-    status: "completed",
+    status: "pending",
     orderId: "1894",
     orderDetails: [
       {
