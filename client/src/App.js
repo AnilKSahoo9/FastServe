@@ -7,7 +7,6 @@ import {
 } from "react-router-dom";
 import ClipLoader from "react-spinners/ClipLoader";
 
-
 import React, { Suspense } from "react";
 import NavBar from "./components/shared/NavBar/NavBar";
 import SideBar from "./components/shared/SideBar/SideBar";
@@ -17,7 +16,7 @@ import BillerKichen from "./components/BillerPages/BillerKichen";
 import BillerHome from "./components/BillerPages/BillerHome";
 import WebsocketDemo from "../src/websocketDemo";
 // import Customer from "./components/BillerPages/Customer";
-
+import Login from "./components/login/Login";
 import Notification from "./components/KitchenPages/notification";
 const AdminHome = React.lazy(() => import("./components/AdminPages/AdminHome"));
 const AddEmployee = React.lazy(() =>
@@ -45,7 +44,6 @@ const KitchenDashbard = React.lazy(() =>
 const App = () => {
   return (
     <div className="App">
-      {/* <div style={{ background: "white" }}> */}
       <Router>
         <NavBar />
         <SideBar />
@@ -74,26 +72,22 @@ const App = () => {
 
               <Route path="/kitchenDashboard" component={KitchenDashbard} />
               <Route path="/notification" component={Notification} />
+              <Route path="/loginPage" component={Login} />
               <Redirect to="/" />
             </Switch>
           </Suspense>
         </div>
-        {/* <Row>
-            <Col md={3} style={{ paddingRight: "0px", paddingLeft: "-10px" }}>
-            </Col>
-            <Col md={9} style={{ paddingRight: "0px", paddingLeft: "0px" }}>
-              <Route path="/" component={Home} exact />
-              <Route path="/AddUser" component={AddUser} exact />
-              <Route path="/Showuser" component={Showuser} exact />
-              <Route path="/Waiters" component={AdminWaiterPage} exact />
-              <Route path="/TotalOrder" component={AdminTotalOrder} exact />
-              <Route path="/Table" component={AdminTablePage} exact />
-              <Route path="/itemDetails" component={AdminItem} exact />
-            </Col>
-          </Row> */}
       </Router>
-      {/* </div> */}
     </div>
+    // <div className="App">
+    //   <Router>
+    //     <Suspense>
+    //       <Switch>
+    //         <Route path="/loginPage" component={Login} />
+    //       </Switch>
+    //     </Suspense>
+    //   </Router>
+    // </div>
   );
 };
 
