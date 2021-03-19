@@ -18,13 +18,18 @@
 import React from "react";
 import { Button } from "reactstrap";
 import "./NavBar.css";
+import { useLocation } from "react-router-dom";
 const NavBar = () => {
+  const location = useLocation();
+
   return (
-    <div className="navbar" style={{}}>
-      <div className="text-right">
-        {/* <Button color="danger mt-2 mx-2">LogOut</Button> */}
+    location.pathname !== "/" && (
+      <div className="navbar" style={{}}>
+        <div className="text-right">
+          {/* <Button color="danger mt-2 mx-2">LogOut</Button> */}
+        </div>
       </div>
-    </div>
+    )
   );
 };
 export default NavBar;

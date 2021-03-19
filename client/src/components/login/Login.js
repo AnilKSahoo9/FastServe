@@ -26,6 +26,10 @@ import Box from "@material-ui/core/Box";
 import { Button } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
+// import { Swal } from "sweetalert2";
+import Swal from "sweetalert2";
+
+import { useHistory } from "react-router";
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -61,11 +65,50 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Login() {
   const classes = useStyles();
-  const [userName, setUserName] = useState("");
-  const handleChange = (e) => {
-    setUserName(e.target.value);
+  const credentials = { email: "fastserve@gmail.com", password: "fastserve" };
+  const [form, setForm] = useState({
+    email: "",
+    password: "",
+  });
+  // const [userName, setUserName] = useState("");
+  // const handleChange = (e) => {
+  //   setUserName(e.target.value);
+  // };
+  // console.log(userName);
+  const handleEmail = (event) => {
+    setForm((prev) => ({ ...prev, email: event.target.value }));
   };
-  console.log(userName);
+  const handlePassword = (event) => {
+    setForm((prev) => ({ ...prev, password: event.target.value }));
+  };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (
+      form.email === credentials.email &&
+      form.password === credentials.password
+    ) {
+      Swal.fire({
+        title: "Login Successful",
+        showConfirmButton: false,
+        icon: "success",
+        // confirmButtonText: `Save`,
+        // denyButtonText: `Don't save`,
+        timer: 2000,
+      });
+      window.location.replace("/home");
+    } else {
+      Swal.fire({
+        title: "Incorrect Email & Password",
+        showDenyButton: false,
+        showCancelButton: false,
+        showConfirmButton: false,
+        icon: "danger",
+        // confirmButtonText: `Save`,
+        // denyButtonText: `Don't save`,
+        // timer: 2000,
+      });
+    }
+  };
   return (
     <div>
       <Container fluid className="box">
@@ -100,12 +143,12 @@ export default function Login() {
 
                 <form className={classes.form} noValidate>
                   <FormControlLabel
-                    control={<Checkbox value="Admin" color="primary" />}
+                    control={<Checkbox value="admin" color="primary" />}
                     label="Admin"
                   />
 
                   <FormControlLabel
-                    control={<Checkbox value="Admin" color="primary" />}
+                    control={<Checkbox value="employee" color="primary" />}
                     label="Hotel Employee"
                   />
                   <TextField
@@ -118,8 +161,9 @@ export default function Login() {
                     name="email"
                     autoComplete="email"
                     autoFocus
-                    value={userName}
-                    onClick={handleChange}
+                    onChange={handleEmail}
+                    // value={userName}
+                    // onClick={handleChange}
                   />
                   <TextField
                     variant="outlined"
@@ -131,14 +175,16 @@ export default function Login() {
                     type="password"
                     id="password"
                     autoComplete="current-password"
+                    onChange={handlePassword}
                   />
 
                   <Button
-                    //type="submit"
+                    type="submit"
                     fullWidth
                     variant="contained"
                     color="primary"
                     className={classes.submit}
+                    onClick={handleSubmit}
                   >
                     Sign In
                   </Button>

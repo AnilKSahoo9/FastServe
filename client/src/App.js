@@ -56,7 +56,8 @@ const App = () => {
             }
           >
             <Switch>
-              <Route path="/" component={AdminHome} exact />
+              <Route path="/" exact component={Login} />
+              <Route path="/home" component={AdminHome} exact />
               <Route path="/addemployee" component={AddEmployee} exact />
               <Route path="/showemployee" component={ShowEmployee} exact />
               <Route path="/waiter" component={AdminWaiter} exact />
@@ -72,7 +73,7 @@ const App = () => {
 
               <Route path="/kitchenDashboard" component={KitchenDashbard} />
               <Route path="/notification" component={Notification} />
-              <Route path="/loginPage" component={Login} />
+              {/* <Route path="/loginPage" component={Login} /> */}
               <Redirect to="/" />
             </Switch>
           </Suspense>
