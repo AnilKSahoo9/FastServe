@@ -61,7 +61,6 @@ const NavLinks = (props) => {
             Biller Report
           </NavLink>
         </li>
-
         <li>
           <NavLink to="/logout" className="logout">
             LogOut
