@@ -15,10 +15,10 @@ import { BillerReport } from "./components/BillerPages/BillerReport";
 import { BillerWaiter } from "./components/BillerPages/BillerWaiter";
 import BillerKichen from "./components/BillerPages/BillerKichen";
 import BillerHome from "./components/BillerPages/BillerHome";
-import websocketDemo from '../src/websocketDemo';
+import websocketDemo from "../src/websocketDemo";
 // import Customer from "./components/BillerPages/Customer";
 
-import Timer from "./components/KitchenPages/timer";
+import Notification from "./components/KitchenPages/notification";
 const AdminHome = React.lazy(() => import("./components/AdminPages/AdminHome"));
 const AddEmployee = React.lazy(() =>
   import("./components/AdminPages/AddEmployee")
@@ -38,7 +38,6 @@ const AdminTotalOrder = React.lazy(() =>
   import("./components/AdminPages/AdminTotalOrder")
 );
 const Customer = React.lazy(() => import("./components/AdminPages/Customer"));
-
 
 const KitchenDashbard = React.lazy(() =>
   import("./components/KitchenPages/KitchenDashbard.js")
@@ -72,9 +71,9 @@ const App = () => {
               <Route path="/billerReport" component={BillerReport} exact />
               <Route path="/customer" component={Customer} exact />
               <Route path="/demo" component={websocketDemo} exact />
-              
+
               <Route path="/kitchenDashboard" component={KitchenDashbard} />
-              <Route path="/timer" component={Timer} />
+              <Route path="/notification" component={Notification} />
               <Redirect to="/" />
             </Switch>
           </Suspense>

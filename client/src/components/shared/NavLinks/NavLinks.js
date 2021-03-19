@@ -48,7 +48,7 @@ const NavLinks = (props) => {
         </li>
         <li>
           <NavLink to="/billerWaiter" className="billerWaiter">
-          Biller Waiter
+            Biller Waiter
           </NavLink>
         </li>
         <li>
@@ -61,20 +61,25 @@ const NavLinks = (props) => {
             Biller Report
           </NavLink>
         </li>
-        
+
         <li>
-      <NavLink to="/logout"className="logout">LogOut</NavLink>
-    </li>
-    <li>
-      <NavLink to="/customer"className="customer">Customer</NavLink>
-    </li><li>
+          <NavLink to="/logout" className="logout">
+            LogOut
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/customer" className="customer">
+            Customer
+          </NavLink>
+        </li>
+        <li>
           <NavLink to="/kitchenDashboard" className="kitchenpage">
             Kitchen Dashboard
           </NavLink>
         </li>
         <li>
-          <NavLink to="/timer" className="timer">
-            timer
+          <NavLink to="/notification" className="notification">
+            Notification
           </NavLink>
         </li>
       </ul>

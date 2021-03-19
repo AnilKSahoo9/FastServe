@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Table, Button, Form } from "react-bootstrap";
 import { data } from "../../StaticData/kitchenData";
-import "./timer.css";
+import "./notification.css";
 function KitchenDashbard() {
-  const [timerDays, setTimerDays] = useState("00");
   const [timerHours, setTimerHours] = useState("00");
   const [timerMin, setTimerMin] = useState("00");
   const [timerSec, setTimerSec] = useState("00");
@@ -11,59 +10,96 @@ function KitchenDashbard() {
     statusval: "notselected",
     rowKey: null,
   });
-  const [id, setId] = useState("0");
-  const [isActive, setIsActive] = useState(null);
+
+  //to reduce the counterdown
+  let interval = useRef();
+  const startTimer = () => {
+    const time = new Date();
+    const countdowndate = new Date(time.getTime() + 10 * 60000);
+
+    interval = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = countdowndate - now;
+      const hours = Math.floor(
+        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      );
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      if (distance < 0) {
+        //stop our timer
+        clearInterval(interval.current);
+      } else {
+        setTimerHours(hours);
+
+        setTimerMin(minutes);
+        setTimerSec(seconds);
+      }
+      console.log(countdowndate);
+    }, 1000);
+  };
+  const changeTheTimer = () => {
+    startTimer();
+    return () => {
+      clearInterval(interval.current);
+    };
+  };
+
+  //when order is aceepted
+
   const acceptedOrder = (e) => {
     setDisplay({ statusval: "accepted", rowKey: e.target.value });
-    setId(e.target.value);
-    console.log(e.target.value);
+
+    data.map((val, index) => {
+      if (index == e.target.value) {
+        val.status = "accepted";
+      }
+    });
+    changeTheTimer();
   };
-  console.log(display);
+
+  //when order is canceled
+
   const orderDecline = (e) => {
+    data.map((val, index) => {
+      if (index == e.target.value) {
+        val.status = "decline";
+      }
+    });
     setDisplay({ statusval: "decline", rowKey: e.target.value });
   };
-  // const toggleActive = (i) => {
-  //   //Remove the if statement if you don't want to unselect an already selected item
-  //   if (i === isActive) {
-  //     setIsActive({
-  //       isActive: null,
-  //     });
-  //   } else {
-  //     setIsActive({
-  //       isActive: i,
-  //     });
-  //   }
-  // };
+
   return (
-    <div>
-      <Table striped bordered hover keyField="orderId">
+    <div class="container-fluid">
+      <Table striped bordered hover className="tableDisplay" variant="blue">
         <thead>
           <tr>
-            <th>Order No</th>
-            <th>Order Type</th>
-            <th>Order Id</th>
-            <th>Status</th>
-            <th>Show Details</th>
+            <th>~:Order No:~</th>
+            <th>~:Order Type:~</th>
+            <th>~:Order Id:~</th>
+            <th>~:Status:~</th>
+            <th>~:Show Details:~</th>
           </tr>
         </thead>
         {data.map((no, index) => (
-          <tbody>
+          <tbody hover={true}>
             <tr
               key={index}
               style={
-                display.statusval === "accepted" && display.rowKey == index
-                  ? { background: "#98FB98" }
-                  : { background: "#F0E68C" }
+                no.status === "accepted" && display.rowKey == index
+                  ? { background: "#d9ffb3" }
+                  : no.status === "decline" && display.rowKey == index
+                  ? { background: "#ff9999" }
+                  : { background: "#ffffe6" }
               }
             >
               <td>{index}</td>
               <td>{no.orderType}</td>
               <td>{no.orderId}</td>
               <td>
-                {display.statusval === "accepted" && display.rowKey == index ? (
+                {no.status === "accepted" && display.rowKey == index ? (
                   <div>
                     {" "}
-                    Order Processing
+                    <h5 className="blink">Order Processing......</h5>
                     <section className="timer">
                       <div>
                         <section>
@@ -88,12 +124,12 @@ function KitchenDashbard() {
                         </section>
                       </div>
                     </section>
-                    {""}
-                    <Button variant="success">Completed</Button>
+                    <div className="acceptButton">
+                      <Button variant="success">Completed</Button>
+                    </div>
                   </div>
-                ) : display.statusval === "decline" &&
-                  display.rowKey == index ? (
-                  <h3>Order cancel</h3>
+                ) : no.status === "decline" && display.rowKey == index ? (
+                  <h3 className="blink">Order cancel</h3>
                 ) : (
                   <>
                     <div>
