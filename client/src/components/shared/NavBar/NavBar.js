@@ -22,7 +22,7 @@ const NavBar = () => {
   return (
     <div className="navbar" style={{}}>
       <div className="text-right">
-        <Button color="danger mt-2 mx-2">LogOut</Button>
+        {/* <Button color="danger mt-2 mx-2">LogOut</Button> */}
       </div>
     </div>
   );

@@ -16,9 +16,7 @@ const AdminTotalOrder = () => {
     <div
       classname="main"
       style={{
-        width: "100%",
-        height: "100%",
-        background: " radial-gradient(#e0e0eb, #ffff, #e0e0eb)",
+        width: "175vh",
       }}
     >
       <Row>
@@ -29,6 +27,7 @@ const AdminTotalOrder = () => {
               style={{
                 boxShadow: "5px 10px 20px 5px rgba(0, 0, 0, 0.253)",
                 borderRadius: "0.10rem",
+                
               }}
             >
               <Card style={{ backgroundColor: "#ffe6ff" }}>

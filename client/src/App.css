@@ -43,8 +43,21 @@
   text-align: center;
   height: 100vh;
   /* width: 100vw; */
+  
+  
 }
 .content{
   max-width: 84vw;
-  margin-left: 16.5vw;
+  margin-left: 13.5vw;
 }
+@media (max-width: 770px) {
+  .content {
+    margin-left: 25px;
+    /* width: 900px; */
+  }
+}
+/* @media (max-width: 770px) {
+  .content {
+    margin-left: 45px;
+  }
+} */

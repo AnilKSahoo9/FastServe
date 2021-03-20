@@ -64,6 +64,7 @@ const AdminHome = () => {
   //         extractDatafromserver(console.log(responseData))
   //     })
 
+  
   // }
 
   // calling server loading home function
@@ -77,11 +78,11 @@ const AdminHome = () => {
       <CardGroup >
                 <Card body outline color="info"
                     style={{
-                        width: '100%',
+                        maxwidth: '100%',
                         maxHeight: "100rem",
                         color: 'black',
                         fontFamily: "Times New Roman, Times, serif",
-                        margin: '2rem',
+                        margin: '1rem',
                         borderStyle: 'groove',
                         borderWidth: '3px',
                         borderRadius: '7px',
@@ -105,9 +106,9 @@ const AdminHome = () => {
                     </CardBody>
                 </Card>
                 <Card body outline color="info" style={{
-                    width: '100%',
+                    maxwidth: '100%',
                     maxHeight: "100rem",
-                    margin: '2rem',
+                    margin: '1rem',
                     borderStyle: 'groove',
                     borderWidth: '3px',
                     borderRadius: '7px',
@@ -132,9 +133,9 @@ const AdminHome = () => {
                     </CardBody>
                 </Card>
                 <Card body outline color="info" style={{
-                    width: '100%',
+                    maxwidth: '100%',
                     maxHeight: "100rem",
-                    margin: '2rem',
+                    margin: '1rem',
                     borderStyle: 'groove',
                     borderWidth: '3px',
                     borderRadius: '7px',
@@ -162,11 +163,11 @@ const AdminHome = () => {
             </CardGroup>
             <CardGroup >
                 <Card body outline color="info" style={{
-                    width: '100%',
+                    maxwidth: '100%',
                     maxHeight: "100rem",
                     color: 'black',
                     fontFamily: "Times New Roman, Times, serif",
-                    margin: '2rem',
+                    margin: '1rem',
                     borderStyle: 'groove',
                     borderWidth: '3px',
                     borderRadius: '7px',
@@ -190,11 +191,11 @@ const AdminHome = () => {
                     </CardBody>
                 </Card>
                 <Card body outline color="info" style={{
-                    width: '100%',
+                    maxwidth: '100%',
                     maxHeight: "100rem",
                     color: 'black',
                     fontFamily: "Times New Roman, Times, serif",
-                    margin: '2rem',
+                    margin: '1rem',
                     borderStyle: 'groove',
                     borderWidth: '3px',
                     borderRadius: '7px',
@@ -218,11 +219,11 @@ const AdminHome = () => {
                     </CardBody>
                 </Card>
                 <Card body outline color="info" style={{
-                    width: '100%',
+                    maxwidth: '100%',
                     maxHeight: "100rem",
                     color: 'black',
                     fontFamily: "Times New Roman, Times, serif",
-                    margin: '2rem',
+                    margin: '1rem',
                     borderStyle: 'groove',
                     borderWidth: '3px',
                     borderRadius: '7px',

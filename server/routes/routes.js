@@ -11,6 +11,9 @@ const parcelController = require("../controllers/parcelController");
 const totalOrderController = require("../controllers/totalOrderController");
 const showEmployeeController = require("../controllers/showEmployeeController");
 const showItemController = require("../controllers/showItemController");
+const billerHomeController = require("../controllers/billerHomeController");
+const billerPaymentController = require("../controllers/billerPaymentController");
+const thoughtsController = require("../controllers/thoughtController");
 const waiters = [
   {
     name: "Ashok kumar",
@@ -40,6 +43,7 @@ const routes = (app) => {
   //   .route("/homepagedata")
   //   .get((req, res) => res.send(Home))
   //   .post((req, res) => res.send("POST request successful!"));
+  
   app.get("/admin-home", homepageController);
 
   // app.route('/login').post((req,res) =>
@@ -54,7 +58,7 @@ const routes = (app) => {
 
   app.post("/employee-login", employeeLoginController);
 
-  app.get("/showemployees",showEmployeeController);
+  app.get("/showemployees", showEmployeeController);
 
   app.route("/admin-waiters").get((req, res) => {
     res.send(waiters);
@@ -64,16 +68,19 @@ const routes = (app) => {
 
   app.post("/additems", menuController);
 
-  app.get("/showitems",showItemController);
+  app.get("/showitems", showItemController);
+
   app.post("/admin-tables", tableController);
 
   app.post("/sessions", sessionController);
 
   app.post("/parcels", parcelController);
 
-  //write showemployees code, end point is /showemployees
+  app.get("/biller-home", billerHomeController);
 
-  //write showitems code, end point is /showitems
+  app.post("/biller-payment", billerPaymentController);
+  app.get("/thoughts",thoughtsController.getThoughts);
+  app.post("/thoughts",thoughtsController.postThoughts);
 };
 
 module.exports = routes;

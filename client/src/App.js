@@ -7,10 +7,18 @@ import {
 } from "react-router-dom";
 import ClipLoader from "react-spinners/ClipLoader";
 
+
 import React, { Suspense } from "react";
 import NavBar from "./components/shared/NavBar/NavBar";
 import SideBar from "./components/shared/SideBar/SideBar";
+import { BillerReport } from "./components/BillerPages/BillerReport";
+import { BillerWaiter } from "./components/BillerPages/BillerWaiter";
+import BillerKichen from "./components/BillerPages/BillerKichen";
+import BillerHome from "./components/BillerPages/BillerHome";
+import WebsocketDemo from "../src/websocketDemo";
+// import Customer from "./components/BillerPages/Customer";
 
+import Notification from "./components/KitchenPages/notification";
 const AdminHome = React.lazy(() => import("./components/AdminPages/AdminHome"));
 const AddEmployee = React.lazy(() =>
   import("./components/AdminPages/AddEmployee")
@@ -25,14 +33,14 @@ const AdminTable = React.lazy(() =>
   import("./components/AdminPages/AdminTable")
 );
 const AddItem = React.lazy(() => import("./components/AdminPages/AddItem"));
+// const BillerReport = React.lazy(() => import("./components/BillerPages/BillerReport"));
 const AdminTotalOrder = React.lazy(() =>
   import("./components/AdminPages/AdminTotalOrder")
 );
-const Waiterplaceorder = React.lazy(() =>
-  import("./components/AdminPages/Waiterplaceorder")
-);
-const Tablepage = React.lazy(() =>
-  import("./components/AdminPages/Tablepage")
+const Customer = React.lazy(() => import("./components/AdminPages/Customer"));
+
+const KitchenDashbard = React.lazy(() =>
+  import("./components/KitchenPages/KitchenDashbard.js")
 );
 const App = () => {
   return (
@@ -57,8 +65,15 @@ const App = () => {
               <Route path="/totalorder" component={AdminTotalOrder} exact />
               <Route path="/table" component={AdminTable} exact />
               <Route path="/additems" component={AddItem} exact />
-              <Route path="/PlaceOrder" component={Waiterplaceorder} exact />
-              <Route path="/Items" component={Tablepage} exact />
+              <Route path="/billerHome" component={BillerHome} exact />
+              <Route path="/billerWaiter" component={BillerWaiter} exact />
+              <Route path="/billerKichen" component={BillerKichen} exact />
+              <Route path="/billerReport" component={BillerReport} exact />
+              <Route path="/customer" component={Customer} exact />
+              <Route path="/demo" component={WebsocketDemo} exact />
+
+              <Route path="/kitchenDashboard" component={KitchenDashbard} />
+              <Route path="/notification" component={Notification} />
               <Redirect to="/" />
             </Switch>
           </Suspense>

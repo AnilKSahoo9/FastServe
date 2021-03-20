@@ -36,7 +36,7 @@ const SideBar = (props) => {
           <span />
         </button>
         <h1 className="main-navigation__title">
-          <div>
+          <div style={{marginLeft:"17px", marginTop: "5px"}}>
             <Link to="/">Hotel </Link>
           </div>
           {/* <div className="logo">

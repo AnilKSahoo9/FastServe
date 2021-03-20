@@ -1,10 +1,12 @@
 let tableSchema = require("../models/tableModel");
-let sessionSchema = require("../models/sessionModel");
 let parcelSchema = require("../models/parcelModel");
 
-const totalOrderController = (req, res) => {
-  parcelSchema.find({}, (err, doc) => {
-    //console.log(doc);
+const totalOrderController = async(req, res) => {
+
+let doc = [];
+await parcelSchema.find({},(err,docu) => {
+  doc = docu;
+});
 
     tableSchema.aggregate(
       [
@@ -18,6 +20,8 @@ const totalOrderController = (req, res) => {
         },
       ],
       (err, data) => {
+        if(err){return res.status(500).json({msg:'error occured',error:err})}
+        if(data){
         return res.json({
           tableOrders: data.map((eachTable) => ({
             tableNo: eachTable.tableNo,
@@ -36,8 +40,9 @@ const totalOrderController = (req, res) => {
           })),
         });
       }
+      }
     );
-  });
+
 };
 module.exports = totalOrderController;
 

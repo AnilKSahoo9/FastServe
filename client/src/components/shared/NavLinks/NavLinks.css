@@ -8,87 +8,158 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
 }
 
 .nav-links li .home {
   position: absolute;
   left: -0.3cm;
-  width: 5cm;
+  width: 4cm;
   text-align: center;
   font-size: 20px;
   top: 3cm;
   margin: 1rem;
+  padding: 0;
+  list-style-type: none;
+  font-weight: bold;
 }
 
 .nav-links li .table {
   position: absolute;
   left: -0.3cm;
-  width: 5cm;
+  width: 4cm;
   text-align: center;
   font-size: 20px;
   top: 4cm;
   margin: 1rem;
+  padding: 0;
+  list-style-type: none;
+  font-weight: bold;
 }
 
 .nav-links li .Order {
   position: absolute;
   left: -0.3cm;
-  width: 5cm;
+  width: 4cm;
   text-align: center;
   font-size: 20px;
   top: 5cm;
   margin: 1rem;
+  padding: 0;
+  list-style-type: none;
+  font-weight: bold;
 }
 
 .nav-links li .waiter {
   position: absolute;
   left: -0.3cm;
-  width: 5cm;
+  width: 4cm;
   text-align: center;
   font-size: 20px;
   top: 6cm;
   margin: 1rem;
+  padding: 0;
+  list-style-type: none;
+  font-weight: bold;
 }
 
 .nav-links li .kitchen {
   position: absolute;
   left: -0.3cm;
-  width: 5cm;
+  width: 4cm;
   text-align: center;
   font-size: 20px;
   top: 7cm;
   margin: 1rem;
+  padding: 0;
+  list-style-type: none;
+  font-weight: bold;
 }
 
 .nav-links li .biller {
   position: absolute;
   left: -0.3cm;
-  width: 5cm;
+  width: 4cm;
   text-align: center;
   font-size: 20px;
   top: 8cm;
   margin: 1rem;
+  padding: 0;
+  list-style-type: none;
+  font-weight: bold;
 }
 
 .nav-links li .adduser {
   position: absolute;
   left: -0.3cm;
-  width: 5cm;
+  width: 4cm;
   text-align: center;
   font-size: 20px;
   top: 9cm;
   margin: 1rem;
+  padding: 0;
+  list-style-type: none;
+  font-weight: bold;
 }
 
-.nav-links li .showuser {
+.nav-links li .billerHome {
   position: absolute;
   left: -0.3cm;
-  width: 5cm;
+  width: 4cm;
   text-align: center;
   font-size: 20px;
   top: 10cm;
   margin: 1rem;
+  padding: 0;
+  list-style-type: none;
+  font-weight: bold;
+}
+.nav-links li .billerWaiter {
+  position: absolute;
+  left: -0.3cm;
+  width: 4cm;
+  text-align: center;
+  font-size: 20px;
+  top: 11cm;
+  margin: 1rem;
+  padding: 0;
+  list-style-type: none;
+  font-weight: bold;
+}
+.nav-links li .billerKichen {
+  position: absolute;
+  left: -0.3cm;
+  width: 4cm;
+  text-align: center;
+  font-size: 20px;
+  top: 12cm;
+  margin: 1rem;
+  padding: 0;
+  list-style-type: none;
+  font-weight: bold;
+}
+.nav-links li .billerReport {
+  position: absolute;
+  left: -0.3cm;
+  width: 4cm;
+  text-align: center;
+  font-size: 20px;
+  top: 13cm;
+  margin: 1rem;
+  padding: 0;
+  list-style-type: none;
+  font-weight: bold;
+}
+.nav-links li .customer {
+  position: absolute;
+  left: -0.3cm;
+  width: 4cm;
+  text-align: center;
+  font-size: 20px;
+  top: 13.9cm;
+  margin: 1rem;
+  padding: 0;
+  list-style-type: none;
+  font-weight: bold;
 }
 .nav-links li .placeorder {
   position: absolute;
@@ -109,6 +180,42 @@
   margin: 1rem;
 }
 
+.nav-links li .logout {
+  position: absolute;
+  left: -0.3cm;
+  width: 4cm;
+  text-align: center;
+  font-size: 20px;
+  top: 14.9cm;
+  margin: 1rem;
+  padding: 0;
+  list-style-type: none;
+  font-weight: bold;
+}
+.nav-links li .kitchenpage {
+  position: absolute;
+  left: -0.3cm;
+  width: 5cm;
+  text-align: center;
+  font-size: 20px;
+  top: 15.9cm;
+  margin: 1rem;
+  padding: 0;
+  list-style-type: none;
+  font-weight: bold;
+}
+.nav-links li .notification {
+  position: absolute;
+  left: -0.3cm;
+  width: 5cm;
+  text-align: center;
+  font-size: 20px;
+  top: 16.9cm;
+  margin: 1rem;
+  padding: 0;
+  list-style-type: none;
+  font-weight: bold;
+}
 .nav-links a {
   border: 1px solid transparent;
   color: #292929;
@@ -116,9 +223,7 @@
   padding: 0.5rem;
   position: absolute;
   margin-top: 10cm;
-
 }
-
 
 .nav-links a:hover,
 .nav-links a:active,
@@ -126,7 +231,6 @@
   background: #fff;
   border-color: #292929;
   color: #292929;
-  
 }
 
 .nav-links button {
@@ -136,7 +240,6 @@
   background: transparent;
   padding: 0.5rem;
   font: inherit;
-  
 }
 
 .nav-links button:focus {
@@ -168,7 +271,7 @@
     color: white;
     background: transparent;
   }
-  
+
   .nav-links button:hover,
   .nav-links button:active {
     background: #f8df00;

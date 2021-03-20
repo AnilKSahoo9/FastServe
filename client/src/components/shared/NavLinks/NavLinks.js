@@ -42,16 +42,46 @@ const NavLinks = (props) => {
           </NavLink>
         </li>
         <li>
-      <NavLink to="/PlaceOrder"className="placeorder">PlaceOrder</NavLink>
-    </li> 
-    <li>
-      <NavLink to="/Items"className="items">Items</NavLink>
-    </li> 
+          <NavLink to="/billerHome" className="billerHome">
+            Biller Home
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/billerWaiter" className="billerWaiter">
+            Biller Waiter
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/billerKichen" className="billerKichen">
+            Biller Kichen
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/billerReport" className="billerReport">
+            Biller Report
+          </NavLink>
+        </li>
 
-
-        {/* <li>
-      <NavLink to="/showuser"className="showuser">ShowUser</NavLink>
-    </li> */}
+        <li>
+          <NavLink to="/logout" className="logout">
+            LogOut
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/customer" className="customer">
+            Customer
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/kitchenDashboard" className="kitchenpage">
+            Kitchen Dashboard
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/notification" className="notification">
+            Notification
+          </NavLink>
+        </li>
       </ul>
     </div>
   );
