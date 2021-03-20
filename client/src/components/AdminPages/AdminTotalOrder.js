@@ -1,16 +1,23 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect} from "react";
 import { Card, Table, Row, Col } from "react-bootstrap";
 import Accordion from "react-bootstrap/Accordion";
-import { data } from "../../StaticData/tableOrderData";
-import { parcel } from "../../StaticData/parcelData";
+import axios from 'axios';
 
 const AdminTotalOrder = () => {
-  // const [count, setCount] = useState(0);
+  const [responseData,setResponseData] = useState([]);
+  const [tableOrders,setTableOrders] = useState([]);
+  const [parcelOrders,setParcelOrders] = useState([]);
+  const fetchData = () => {
+    axios.get(`http://localhost:4000/admin-totalorders`).then((response) => {
+      setResponseData(response.data);
+      setTableOrders(response.data.tableOrders);
+      setParcelOrders(response.data.parcelOrders);
+    })
+  }
 
-  // const cal = () => {
-  //   console.log("arati");
-  //   setCount(count + 1);
-  // };
+useEffect(() => {
+  fetchData();
+},[])
 
   return (
     <div
@@ -22,7 +29,7 @@ const AdminTotalOrder = () => {
       <Row>
         <Col md={6} xs={12}>
           <h2>-:Table Order Details:-</h2>
-          {data.map((val, index) => (
+          {tableOrders.map((val, index) => (
             <Accordion
               style={{
                 boxShadow: "5px 10px 20px 5px rgba(0, 0, 0, 0.253)",
@@ -42,7 +49,7 @@ const AdminTotalOrder = () => {
                 </Card.Header>
                 <Accordion.Collapse eventKey={String(index)}>
                   <Card.Body>
-                    {val.session.map((value, index) => (
+                    {val.sessions.map((value, index) => (
                       <Accordion>
                         <Card>
                           <Card.Header style={{ backgroundColor: "#e6ccff" }}>
@@ -56,7 +63,7 @@ const AdminTotalOrder = () => {
                           </Card.Header>
                           <Accordion.Collapse eventKey={String(index)}>
                             <Card.Body>
-                              <h5>Order delivered by {value.waiter}</h5>
+                              <h5>Order delivered by {value.waiterName}</h5>
                               <Table striped bordered hover>
                                 <thead>
                                   <tr>
@@ -75,7 +82,7 @@ const AdminTotalOrder = () => {
                                   </tr>
                                 </thead>
 
-                                {value.orderdetails.map((valueitem, index) => (
+                                {value.orderDetails.map((valueitem, index) => (
                                   <tbody>
                                     <tr>
                                       <td
@@ -90,7 +97,7 @@ const AdminTotalOrder = () => {
                                           backgroundColor: "white",
                                         }}
                                       >
-                                        {valueitem.items}
+                                        {valueitem.name}
                                       </td>
                                       <td
                                         style={{
@@ -104,18 +111,17 @@ const AdminTotalOrder = () => {
                                           backgroundColor: "white",
                                         }}
                                       >
-                                        {valueitem.quantity * valueitem.amount}
+                                        {valueitem.price}
                                       </td>
                                     </tr>
-                                  </tbody>
-                                ))}
-
-                                <tr>
+                                    <tr>
                                   <th style={{ backgroundColor: "#ffe6ff" }}>
                                     Total:
                                   </th>
-                                  <td colspan="3">400</td>
+                                  <td colspan="3">{valueitem.quantity * valueitem.price}</td>
                                 </tr>
+                                  </tbody>
+                                ))}
                               </Table>
                             </Card.Body>
                           </Accordion.Collapse>
@@ -130,8 +136,7 @@ const AdminTotalOrder = () => {
         </Col>
         <Col md={6} xs={12}>
           <h2>-:Parcel Details:-</h2>
-          {parcel.map((val) =>
-            val.session.map((value, index) => (
+          {parcelOrders.map((val,index) =>
               <Accordion
                 style={{
                   boxShadow: "5px 10px 20px 5px rgba(0, 0, 0, 0.253)",
@@ -145,12 +150,12 @@ const AdminTotalOrder = () => {
                       eventKey={String(index)}
                       style={{ backgroundColor: "#f3e6ff" }}
                     >
-                      <h5>Session:{value.sessionNo}</h5>
+                      <h5>ParcelNo:{val.parcelNo}</h5>
                     </Accordion.Toggle>
                   </Card.Header>
                   <Accordion.Collapse eventKey={String(index)}>
                     <Card.Body>
-                      <h5>Order delivered by {value.waiter}</h5>
+                      <h5>Order delivered by {val.billerName}</h5>
                       <Table striped bordered hover>
                         <thead>
                           <tr>
@@ -167,7 +172,7 @@ const AdminTotalOrder = () => {
                           </tr>
                         </thead>
 
-                        {value.orderdetails.map((valueitem, index) => (
+                        {val.orderDetails.map((valueitem, index) => (
                           <tbody>
                             <tr>
                               <td
@@ -182,7 +187,7 @@ const AdminTotalOrder = () => {
                                   backgroundColor: "white",
                                 }}
                               >
-                                {valueitem.items}
+                                {valueitem.name}
                               </td>
                               <td
                                 style={{
@@ -196,22 +201,23 @@ const AdminTotalOrder = () => {
                                   backgroundColor: "white",
                                 }}
                               >
-                                {valueitem.quantity * valueitem.amount}
+                                {valueitem.price}
                               </td>
                             </tr>
+                            <tr>
+                                  <th style={{ backgroundColor: "#ffe6ff" }}>
+                                    Total:
+                                  </th>
+                                  <td colspan="3">{valueitem.quantity * valueitem.price}</td>
+                                </tr>
                           </tbody>
                         ))}
-
-                        <tr>
-                          <th style={{ backgroundColor: "#ffe6ff" }}>Total:</th>
-                          <td colspan="3">400</td>
-                        </tr>
                       </Table>
                     </Card.Body>
                   </Accordion.Collapse>
                 </Card>
               </Accordion>
-            ))
+            
           )}
         </Col>
       </Row>
