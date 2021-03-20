@@ -88,6 +88,7 @@ const AdminTable = () => {
                                   <li>{number}</li>
                                 ))
                               : ""
+                              
                           )}
                         </Modal.Body>
                         <Modal.Footer>
