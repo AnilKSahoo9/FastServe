@@ -13,7 +13,8 @@ import {
  var Customertableorders = [
     {
         TableNo : 1,
-        Orderstatus : "Food prepartion not started"
+        Orderstatus : "Food prepartion not started",
+
     },
     {
         TableNo : 2,
@@ -22,6 +23,11 @@ import {
     {
         TableNo : 3,
         Orderstatus : "Food preparation almost complete"
+    },
+    {
+        TableNo : 4,
+        Orderstatus : "Ready to Serve",
+        backgroundImage: `linear-gradient(to right bottom, #12eb25, #12eb25, #12eb25, #12eb25, #12eb25)`
     },
 ]
 var Customerparcelorders = [
@@ -32,6 +38,12 @@ var Customerparcelorders = [
     {
         ParcelNo : 2,
         Orderstatus : "Food prepared"
+    },
+    {
+        ParcelNo : 3,
+        Orderstatus : "Parcel is not ready",
+        backgroundImage: `linear-gradient(to bottom,  #ffbc00,#ff0058)`
+        
     },
 ]
 const breakPoints = [
@@ -45,7 +57,42 @@ const Customer = (props) => {
     return (
 
         <div className="inner-container"style={{ marginRight: "7rem" }}>
-            <Carousel breakPoints={breakPoints}>
+            <Carousel breakPoints={breakPoints} interval={1000}>
+            {Customertableorders.map((Customertableorder) => ( 
+                <Card body outline color="info" style={{
+                    maxwidth: '100%',
+                    height: "20rem",
+                    color: 'black',
+                    fontFamily: "Times New Roman, Times, serif",
+                    margin: '1rem',
+                    borderStyle: 'groove',
+                    borderWidth: '3px',
+                    borderRadius: '7px',
+                    backgroundImage: `linear-gradient(to bottom,  #ffbc00,#ff0058)`
+                }}>
+                    <h5>
+                        <CardHeader style={{
+                            backgroundColor: "white", borderStyle: 'groove',
+                            borderWidth: '3px',
+                            borderRadius: '7px', padding: "3px", margin: "0px"
+                        }}>
+                            <CardTitle style={{fontSize: "40px"}}>
+                            Table No : 
+                            {Customertableorder.TableNo}
+                            </CardTitle>
+                        </CardHeader>
+                    </h5> 
+                    <CardBody>
+            
+
+                        <hr></hr>
+                        <p style={{fontSize: "40px"}}>{Customertableorder.Orderstatus}</p>
+                    </CardBody>
+                </Card>
+            ))}
+           
+            </Carousel>
+            <Carousel breakPoints={breakPoints} interval={1000}>
             {Customerparcelorders.map((Customerparcelorder) => ( 
                 <Card body outline color="info" style={{
                     maxwidth: '100%',
@@ -78,37 +125,7 @@ const Customer = (props) => {
                     </CardBody>
                 </Card>
             ))}
-            {Customertableorders.map((Customertableorder) => ( 
-                <Card body outline color="info" style={{
-                    maxwidth: '100%',
-                    height: "20rem",
-                    color: 'black',
-                    fontFamily: "Times New Roman, Times, serif",
-                    margin: '1rem',
-                    borderStyle: 'groove',
-                    borderWidth: '3px',
-                    borderRadius: '7px',
-                    backgroundImage: `linear-gradient(to right bottom, #12eb25, #12eb25, #12eb25, #12eb25, #12eb25)`
-                }}>
-                    <h5>
-                        <CardHeader style={{
-                            backgroundColor: "white", borderStyle: 'groove',
-                            borderWidth: '3px',
-                            borderRadius: '7px', padding: "3px", margin: "0px"
-                        }}>
-                            <CardTitle style={{fontSize: "40px"}}>
-                            Table No : 
-                            {Customertableorder.TableNo}
-                            </CardTitle>
-                        </CardHeader>
-                    </h5> 
-                    <CardBody>
-
-                        <hr></hr>
-                        <p style={{fontSize: "40px"}}>{Customertableorder.Orderstatus}</p>
-                    </CardBody>
-                </Card>
-                ))}
+            
             </Carousel>
         </div>
     )
