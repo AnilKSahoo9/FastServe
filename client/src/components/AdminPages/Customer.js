@@ -57,8 +57,14 @@ const Customer = (props) => {
     return (
 
         <div className="inner-container"style={{ marginRight: "7rem" }}>
+<<<<<<< Updated upstream
             <Carousel breakPoints={breakPoints} interval={1000}>
             {Customertableorders.map((Customertableorder) => ( 
+=======
+            <Carousel breakPoints={breakPoints} >
+            {/* <Carousel.Item interval={1000}> */}
+            {Customerparcelorders.map((Customerparcelorder) => ( 
+>>>>>>> Stashed changes
                 <Card body outline color="info" style={{
                     maxwidth: '100%',
                     height: "20rem",
@@ -90,10 +96,16 @@ const Customer = (props) => {
                     </CardBody>
                 </Card>
             ))}
+<<<<<<< Updated upstream
            
             </Carousel>
             <Carousel breakPoints={breakPoints} interval={1000}>
             {Customerparcelorders.map((Customerparcelorder) => ( 
+=======
+            {/* </Carousel.Item>
+            <Carousel.Item interval={1000}> */}
+            {Customertableorders.map((Customertableorder) => ( 
+>>>>>>> Stashed changes
                 <Card body outline color="info" style={{
                     maxwidth: '100%',
                     height: "20rem",
@@ -124,8 +136,13 @@ const Customer = (props) => {
                         <p style={{fontSize: "40px"}}>{Customerparcelorder.Orderstatus}</p>
                     </CardBody>
                 </Card>
+<<<<<<< Updated upstream
             ))}
             
+=======
+                ))}
+                {/* </Carousel.Item> */}
+>>>>>>> Stashed changes
             </Carousel>
         </div>
     )
