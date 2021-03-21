@@ -15,6 +15,7 @@ import {
     Table,
 } from "reactstrap";
 import { Button, Modal } from "react-bootstrap"
+import { event } from 'jquery';
 
 // const handleclick = (e) => {
 //     setData("Paid");
@@ -22,14 +23,45 @@ import { Button, Modal } from "react-bootstrap"
 const BillerHome = () => {
     const [data, setData] = useState("Pay");
     const [show, setShow] = useState(false)
-    const [val, setname] = useState("");
-    const handleShow = (event) => {
-        // setShow(true);
-        setname(event.target.value);
-      };
+    
+    // const [val, setname] = useState("");
+    // const handleShow = (event) => {
+    //     // setShow(true);
+    //     setname(event.target.value);
+    //   };
     const handleClose = () => setShow(false);
-    const ShowdetailsOrder = () => {
-        setShow(true)
+    const showmodal = () =>{
+        setShow(true);
+    }
+    const ShowdetailsOrder = (val) => {
+        
+        console.log(show);
+        // console.log(TableOrderModal);
+        // return() =>{
+        <Modal show={true} onHide={() => handleClose()}>
+            <Modal.Header closeButton>Table details</Modal.Header>
+            <Modal.Body>
+                <h1>Hello</h1>
+                <h3>{val.TableNo}</h3>
+                {/* {TableOrderModals.map((TableOrderModal, index) => (
+                    <ol>
+
+                        {TableOrderModal.TableNo == { index } ?
+
+                            <ol key={index}>{TableOrderModal.TableNo},{TableOrderModal.Totalamount},
+            {TableOrderModal.items.map((item, index) => (<ul key={index}>{item.name}:{item.price}</ul>))}</ol>
+
+                            : ""}</ol>
+                ))} */}
+            </Modal.Body>
+            <Modal.Footer>
+                <Button onClick={() => handleClose()}>Close</Button>
+            </Modal.Footer>
+        </Modal>
+        // }
+        // )
+        console.log(val)
+        setShow(true);
     }
     const Payment = () => {
         setData("Paid")
@@ -42,6 +74,9 @@ const BillerHome = () => {
         })
 
     }
+    // const ShowdetailsOrderArg = (e) => {
+    //     ShowdetailsOrder(TableOrderModals, e);
+    // }
 
     return (
         <div className="inner-container" style={{ marginRight: "4rem" }}>
@@ -108,73 +143,43 @@ const BillerHome = () => {
 
 
 
-           
-                <Table striped bordered hover style={{
-                    color: "white",
-                    background: `linear-gradient(to right, #56ccf2, #2f80ed)`,
-                    maxwidth: '80%',
-                    maxHeight: "100rem",
-                    fontFamily: "Times New Roman, Times, serif",
-                    marginTop: "2rem",
-                    borderStyle: 'groove',
-                    borderWidth: '3px',
-                    borderRadius: '10px'
-                }}>
-                    <thead>
-                        <tr>
-                            <th>Table No</th>
-                            <th>SessionId</th>
-                            <th>Bill Payment</th>
-                            <th>Show Details</th>
-                        </tr>
-                    </thead>
-                    {TableOrder.map((tableorder) => (
 
-                        <tbody>
-
-                            <tr>
-
-                                <td>{tableorder.TableNo}</td>
-                                <td>{tableorder.SessionId}</td>
-                                <td><Button onClick={Payment}>{tableorder.BillPayment}</Button></td>
-                                <td><Button onClick={() => ShowdetailsOrder()}>{tableorder.ShowDetails}</Button></td>
-
-                                <Modal show={show} onHide={() => handleClose()}>
-                                    <Modal.Header closeButton>Table details</Modal.Header>
-                                    <Modal.Body>
-                                    
-                                    {TableOrderModals.map((TableOrderModal) => (
-                                        
-                                        TableOrderModal.TableNo === val
-                                                ? TableOrderModal.items.map((item) => (
-                                                    <ul>
-                                                    <li>{item.name}</li>
-                                                    <li>{item.price}</li>
-                                                    </ul>
-                                                ))
-                                                : ""
-
-                                    ))}
-                                        {/* {TableOrderModal.SessionNo}
-                                        {TableOrderModal.Totalamount}
-                                        {TableOrderModal.OrderStatus} */}
-                                        {/* {TableOrderModal.items.map((item)=>({itemname} ))} */}
-                                    </Modal.Body>
-                                    <Modal.Footer>
-                                        <Button onClick={() => handleClose()}>Close</Button>
-                                    </Modal.Footer>
-                                </Modal>
-
-                            </tr>
-
-                        </tbody>
-
-                    ))}
-                </Table>
-           
             <Table striped bordered hover style={{
                 color: "white",
-                background : `linear-gradient(to right, #56ccf2, #2f80ed)`,
+                background: `linear-gradient(to right, #56ccf2, #2f80ed)`,
+                maxwidth: '80%',
+                maxHeight: "100rem",
+                fontFamily: "Times New Roman, Times, serif",
+                marginTop: "2rem",
+                borderStyle: 'groove',
+                borderWidth: '3px',
+                borderRadius: '10px'
+            }}>
+                <thead>
+                    <tr>
+                        <th>Table No</th>
+                        <th>SessionId</th>
+                        <th>Bill Payment</th>
+                        <th>Show Details</th>
+                    </tr>
+                </thead>
+                {TableOrder.map((tableorder) => (
+                    <div>
+                    <tbody>
+                        <tr>
+                            <td>{tableorder.TableNo}</td>
+                            <td>{tableorder.SessionId}</td>
+                            <td><a href="#" onClick={() => Payment()}>{tableorder.BillPayment}</a></td>
+                            <td><a href="#" onClick={() => ShowdetailsOrder(tableorder)}>ShowDetails</a></td>
+                        </tr>
+                    </tbody>
+                    </div>
+                ))}
+            </Table>
+
+            <Table striped bordered hover style={{
+                color: "white",
+                background: `linear-gradient(to right, #56ccf2, #2f80ed)`,
                 maxwidth: '80%',
                 maxHeight: "100rem",
                 fontFamily: "Times New Roman, Times, serif",

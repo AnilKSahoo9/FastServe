@@ -17,6 +17,7 @@ function KitchenDashbard() {
     const time = new Date();
     const countdowndate = new Date(time.getTime() + 10 * 60000);
 
+    
     interval = setInterval(() => {
       const now = new Date().getTime();
       const distance = countdowndate - now;
