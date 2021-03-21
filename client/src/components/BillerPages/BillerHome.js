@@ -43,6 +43,7 @@ const BillerHome = () => {
             <Modal.Body>
                 <h1>Hello</h1>
                 <h3>{val.TableNo}</h3>
+
                 {/* {TableOrderModals.map((TableOrderModal, index) => (
                     <ol>
 
@@ -169,8 +170,8 @@ const BillerHome = () => {
                         <tr>
                             <td>{tableorder.TableNo}</td>
                             <td>{tableorder.SessionId}</td>
-                            <td><a href="#" onClick={() => Payment()}>{tableorder.BillPayment}</a></td>
-                            <td><a href="#" onClick={() => ShowdetailsOrder(tableorder)}>ShowDetails</a></td>
+                            <td><Button onClick={() => Payment()}>{tableorder.BillPayment}</Button></td>
+                            <td><Button onClick={() => ShowdetailsOrder(tableorder)}>ShowDetails</Button></td>
                         </tr>
                     </tbody>
                     </div>
