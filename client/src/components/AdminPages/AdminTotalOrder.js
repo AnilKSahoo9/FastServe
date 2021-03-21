@@ -17,7 +17,7 @@ const AdminTotalOrder = () => {
 
 useEffect(() => {
   fetchData();
-},[])
+},[tableOrders,parcelOrders])
 
   return (
     <div
