@@ -16,18 +16,6 @@ export const data = [
         items: "chicken",
         quantity: 1,
       },
-      {
-        items: "jeera rice",
-        quantity: 1,
-      },
-      {
-        items: "butter paneer",
-        quantity: 1,
-      },
-      {
-        items: "chilly chicken",
-        quantity: 1,
-      },
     ],
   },
   {
