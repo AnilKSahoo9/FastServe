@@ -69,8 +69,6 @@ const App = () => {
               <Route path="/billerKichen" component={BillerKichen} exact />
               <Route path="/billerReport" component={BillerReport} exact />
               <Route path="/customer" component={Customer} exact />
-              <Route path="/demo" component={WebsocketDemo} exact />
-
               <Route path="/kitchenDashboard" component={KitchenDashbard} />
               <Route path="/notification" component={Notification} />
               {/* <Route path="/loginPage" component={Login} /> */}
