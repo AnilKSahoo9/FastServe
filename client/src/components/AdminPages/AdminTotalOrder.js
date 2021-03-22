@@ -37,7 +37,12 @@ useEffect(() => {
   socket.emit("updatedData",(updatedData) => {
     console.log(updatedData);
     setResponseData(updatedData);
-  })
+  });
+
+  // return () => {
+  //   socket.emit("disconnect");
+  //   socket.off();
+  // }
 },[ENDPOINT])
 
   return (

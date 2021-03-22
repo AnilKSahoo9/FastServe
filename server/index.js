@@ -1,9 +1,11 @@
 const express = require("express");
 const routes = require("./routes/routes");
 const mongoose = require("mongoose");
-const bodyParser = require("body-Parser");
+const bodyParser = require("body-parser");
 const cors = require("cors");
 require("dotenv").config();
+let tableSchema = require("./models/tableModel");
+let parcelSchema = require("./models/parcelModel");
 
 const PORT = 4000;
 
@@ -11,16 +13,29 @@ const socketio = require('socket.io');
 const http = require('http');
 const app = express();
 app.use(cors());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 const server = http.createServer(app);
 const io = socketio(server);
+
+//let doc = [];
 
 io.on("connection",(socket) => {
   console.log("we'va a new connection!!!!");
 
   socket.on("updatedData",(callback) => {
     callback("hi,i am the response from server");
+    // await parcelSchema.find({},(err,docu) => {
+    //   doc = docu;
+    // });
+    // callback({parcelOrders: doc.map((eachParcel, index) => ({
+    //   parcelNo: index + 1,
+    //   billerName: eachParcel.billerName,
+    //   totalAmount: eachParcel.totalAmount,
+    //   orderDetails: eachParcel.items,
+    // }))})
   });
-
+  
 socket.on("disconnect",() => {
   console.log('user had left!!!!');
 });
@@ -44,10 +59,6 @@ server.listen(PORT,() => console.log(`server listening in port ${PORT}`));
 // });
 
 //bodyparser setup
-
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-
 
 // app.use(function (req, res, next) {
 //   res.header("Access-Control-Allow-Origin", "*");
