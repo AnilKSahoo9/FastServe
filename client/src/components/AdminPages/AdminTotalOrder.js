@@ -2,13 +2,25 @@ import React, { useState ,useEffect} from "react";
 import { Card, Table, Row, Col } from "react-bootstrap";
 import Accordion from "react-bootstrap/Accordion";
 import axios from 'axios';
+import io from 'socket.io-client';
+
+let socket;
 
 const AdminTotalOrder = () => {
   const [responseData,setResponseData] = useState([]);
   const [tableOrders,setTableOrders] = useState([]);
   const [parcelOrders,setParcelOrders] = useState([]);
+  const ENDPOINT = 'ws://localhost:4000/api/socket';
+  let connectionOptions = 
+    {
+      "force new connection" : true,
+      "reconnectionAttempts": "Infinity", 
+      "timeout" : 10000,                  
+      "transports" : ["websocket"]
+  };
+  
   const fetchData = () => {
-    axios.get(`http://localhost:4000/admin-totalorders`).then((response) => {
+    axios.get(`http://localhost:4000/admin-totalorders/`).then((response) => {
       setResponseData(response.data);
       setTableOrders(response.data.tableOrders);
       setParcelOrders(response.data.parcelOrders);
@@ -17,7 +29,32 @@ const AdminTotalOrder = () => {
 
 useEffect(() => {
   fetchData();
-},[tableOrders,parcelOrders])
+},[]);
+
+useEffect(() => {
+  socket = io(ENDPOINT,connectionOptions);
+  console.log(socket);
+  
+  // socket.emit("updatedData",(updatedData) => {
+  //   console.log(updatedData);
+  //   //setResponseData(updatedData);
+  // });
+
+// socket.on('news',(data) => {
+//   console.log(data);
+//   socket.emit('my other event',{my:'data'});
+// });
+
+socket.on('parcelData',(parcelData) => {
+  console.log(parcelData);
+  //setParcelOrders(parcelData);
+  socket.emit('my',{name:'sweta'})
+});
+  // return () => {
+  //   socket.emit("disconnect");
+  //   socket.off();
+  // }
+},[ENDPOINT])
 
   return (
     <div

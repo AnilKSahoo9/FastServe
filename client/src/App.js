@@ -14,7 +14,6 @@ import { BillerReport } from "./components/BillerPages/BillerReport";
 import { BillerWaiter } from "./components/BillerPages/BillerWaiter";
 import BillerKichen from "./components/BillerPages/BillerKichen";
 import BillerHome from "./components/BillerPages/BillerHome";
-import WebsocketDemo from "../src/websocketDemo";
 // import Customer from "./components/BillerPages/Customer";
 import Login from "./components/login/Login";
 import Notification from "./components/KitchenPages/notification";
@@ -69,8 +68,6 @@ const App = () => {
               <Route path="/billerKichen" component={BillerKichen} exact />
               <Route path="/billerReport" component={BillerReport} exact />
               <Route path="/customer" component={Customer} exact />
-              <Route path="/demo" component={WebsocketDemo} exact />
-
               <Route path="/kitchenDashboard" component={KitchenDashbard} />
               <Route path="/notification" component={Notification} />
               {/* <Route path="/loginPage" component={Login} /> */}

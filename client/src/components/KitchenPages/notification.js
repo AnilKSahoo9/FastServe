@@ -1,5 +1,5 @@
 import React from "react";
-import { Carousel, Card, Button, Row, Col } from "react-bootstrap";
+import { Carousel, Card, Button, Row, Col, Badge } from "react-bootstrap";
 import { data } from "../../StaticData/kitchenData";
 import img from "./parcel.jpg";
 import table from "./tablepic.jpg";
@@ -16,7 +16,7 @@ export default function Notification() {
     <div className="container-fluid">
       <Carousel>
         {arr.map((no) => (
-          <Carousel.Item interval={5000}>
+          <Carousel.Item interval={2000}>
             <Row>
               {no.map((val) => (
                 <Col>
@@ -31,17 +31,31 @@ export default function Notification() {
                       <Card.Img variant="top" src={img} className="parcelImg" />
                     )}
                     <Card.Body>
-                      <Card.Title>{val.orderType}</Card.Title>
+                      <Card.Title style={{ color: "red", fontSize: "2em" }}>
+                        <Badge variant="info">{val.orderType}</Badge>{" "}
+                      </Card.Title>
                       <Card.Text>
-                        <p>Status:{val.orderId}</p>
+                        <h5>Order Id: {val.orderId}</h5>
                       </Card.Text>
-                      <p>Order Details</p>
+                      <p
+                        style={{
+                          color: "#0039e6",
+                          backgroundColor: "#d9d9d9",
+                          height: "40px",
+                          verticalAlign: "center",
+                          fontSize: "1.4em",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        ~:Order Details:~
+                      </p>
                       <ul>
                         {val.orderDetails.map((no, index = 1) => (
-                          <li>{no.items + "  " + "=" + "  " + no.quantity}</li>
+                          <li style={{ fontSize: "1.3em" }}>
+                            {no.items + "  " + "=" + "  " + no.quantity}
+                          </li>
                         ))}
                       </ul>
-                      <Button variant="primary">Go somewhere</Button>
                     </Card.Body>
                   </Card>
                 </Col>
