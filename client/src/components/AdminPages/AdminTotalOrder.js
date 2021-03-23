@@ -10,7 +10,7 @@ const AdminTotalOrder = () => {
   const [responseData,setResponseData] = useState([]);
   const [tableOrders,setTableOrders] = useState([]);
   const [parcelOrders,setParcelOrders] = useState([]);
-  const ENDPOINT = 'http://localhost:4000/';
+  const ENDPOINT = 'ws://localhost:4000/api/socket';
   let connectionOptions = 
     {
       "force new connection" : true,
@@ -34,11 +34,22 @@ useEffect(() => {
 useEffect(() => {
   socket = io(ENDPOINT,connectionOptions);
   console.log(socket);
-  socket.emit("updatedData",(updatedData) => {
-    console.log(updatedData);
-    setResponseData(updatedData);
-  });
+  
+  // socket.emit("updatedData",(updatedData) => {
+  //   console.log(updatedData);
+  //   //setResponseData(updatedData);
+  // });
 
+// socket.on('news',(data) => {
+//   console.log(data);
+//   socket.emit('my other event',{my:'data'});
+// });
+
+socket.on('parcelData',(parcelData) => {
+  console.log(parcelData);
+  //setParcelOrders(parcelData);
+  socket.emit('my',{name:'sweta'})
+});
   // return () => {
   //   socket.emit("disconnect");
   //   socket.off();
