@@ -37,57 +37,24 @@ const BillerHome = () => {
     setname(event.target.value);
   };
   const handleClose = () => setShow(false);
-  const showmodal = () => {
-    setShow(true);
-  };
-  // const ShowdetailsOrder = (val) => {
-  //   console.log(show);
-  //   // console.log(TableOrderModal);
-  //   // return() =>{
-  //   <Modal show={true} onHide={() => handleClose()}>
-  //     <Modal.Header closeButton>Table details</Modal.Header>
-  //     <Modal.Body>
-  //       <h1>Hello</h1>
 
-  //       {/*
-  //       {TableOrderModals.map((TableOrderModal, index) => (
-  //                   <ol>
-
-  //                       {TableOrderModal.TableNo == { index } ?
-
-  //                           <ol key={index}>{TableOrderModal.TableNo},{TableOrderModal.Totalamount},
-  //           {TableOrderModal.items.map((item, index) => (<ul key={index}>{item.name}:{item.price}</ul>))}</ol>
-
-  //                           : ""}</ol>
-  //               ))} */}
-  //     </Modal.Body>
-  //     <Modal.Footer>
-  //       <Button onClick={() => handleClose()}>Close</Button>
-  //     </Modal.Footer>
-  //   </Modal>;
-  //   // }
-  //   // )
-  //   console.log(val);
-  //   setShow(true);
-  // };
   const Payment1 = () => {
     console.log("e");
   };
-  const Payment = (e) => {
-    TableOrder.map((val, index) => {
-      if (index == e.target.value) {
-        val.BillPayment = "Paid";
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: "Your Payment is successfull",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-      }
-      setRow(index);
-    });
-  };
+  // const Payment = (e) => {
+  //   TableOrder.map((val, index) => {
+  //     if (index == e.target.value) {
+  //       val.BillPayment = "Paid";
+  //       Swal.fire({
+  //         position: "center",
+  //         icon: "success",
+  //         title: "Your Payment is successfull",
+  //         showConfirmButton: false,
+  //         timer: 1500,
+  //       });
+  //     }
+  //   });
+  // };
 
   // const ShowdetailsOrderArg = (e) => {
   //     ShowdetailsOrder(TableOrderModals, e);
@@ -203,48 +170,36 @@ const BillerHome = () => {
                 <td>{tableorder.TableNo}</td>
                 <td>{tableorder.SessionId}</td>
                 <td>
-                  <Button onClick={Payment} value={index}>
-                    {tableorder.BillPayment}
-                  </Button>
+                  <Button>{tableorder.BillPayment}</Button>
                 </td>
                 <td>
-                  <Button onClick={handleShow} value={index}>
+                  <Button onClick={handleShow} value={tableorder.TableNo}>
                     ShowDetails
                   </Button>
-                  {console.log(tableorder.items)}
-                  <Modal show={show} onHide={handleClose}>
-                    <Modal.Header closeButton>Table details</Modal.Header>
-                    <Modal.Body>
-                      <h1>Hello</h1>
-                      {tableorder.items.map((no) => (
-                        <ul>
-                          {" "}
-                          <li>{no.name + "=>" + no.price}</li>
-                        </ul>
-                      ))}
-                      {/* 
-        {TableOrderModals.map((TableOrderModal, index) => (
-                    <ol>
-
-                        {TableOrderModal.TableNo == { index } ?
-
-                            <ol key={index}>{TableOrderModal.TableNo},{TableOrderModal.Totalamount},
-            {TableOrderModal.items.map((item, index) => (<ul key={index}>{item.name}:{item.price}</ul>))}</ol>
-
-                            : ""}</ol>
-                ))} */}
-                    </Modal.Body>
-                    <Modal.Footer>
-                      <Button onClick={() => handleClose()}>Close</Button>
-                    </Modal.Footer>
-                  </Modal>
                 </td>
               </tr>
             </tbody>
           </div>
         ))}
       </Table>
-
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>Table details</Modal.Header>
+        <Modal.Body>
+          {TableOrder.map((user) =>
+            val == user.TableNo
+              ? user.items.map((itemval) => (
+                  <ul>
+                    {" "}
+                    <li>{itemval.name + "=>" + itemval.price}</li>
+                  </ul>
+                ))
+              : ""
+          )}
+        </Modal.Body>
+        <Modal.Footer>
+          <Button onClick={() => handleClose()}>Close</Button>
+        </Modal.Footer>
+      </Modal>
       <Table
         striped
         bordered
