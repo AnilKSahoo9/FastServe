@@ -10,6 +10,7 @@ const AdminTotalOrder = () => {
   const [responseData,setResponseData] = useState([]);
   const [tableOrders,setTableOrders] = useState([]);
   const [parcelOrders,setParcelOrders] = useState([]);
+  const [newlyAddedParcelData,setNAPD] = useState([]);
   const ENDPOINT = 'ws://localhost:4000/api/socket';
   let connectionOptions = 
     {
@@ -33,13 +34,7 @@ useEffect(() => {
 
 useEffect(() => {
   socket = io(ENDPOINT,connectionOptions);
-  console.log(socket);
-  
-  // socket.emit("updatedData",(updatedData) => {
-  //   console.log(updatedData);
-  //   //setResponseData(updatedData);
-  // });
-
+  //console.log(socket);
 // socket.on('news',(data) => {
 //   console.log(data);
 //   socket.emit('my other event',{my:'data'});
@@ -47,14 +42,16 @@ useEffect(() => {
 
 socket.on('parcelData',(parcelData) => {
   console.log(parcelData);
-  //setParcelOrders(parcelData);
+  setNAPD(parcelData);
+  //parcelOrders.push(parcelData);
   socket.emit('my',{name:'sweta'})
 });
+
   // return () => {
   //   socket.emit("disconnect");
   //   socket.off();
   // }
-},[ENDPOINT])
+},[ENDPOINT,parcelOrders,newlyAddedParcelData])
 
   return (
     <div
@@ -173,6 +170,8 @@ socket.on('parcelData',(parcelData) => {
         </Col>
         <Col md={6} xs={12}>
           <h2>-:Parcel Details:-</h2>
+          {parcelOrders || newlyAddedParcelData ? (<div>
+          {/* <div> */}
           {parcelOrders.map((val,index) =>
               <Accordion
                 style={{
@@ -256,7 +255,95 @@ socket.on('parcelData',(parcelData) => {
               </Accordion>
             
           )}
-        </Col>
+          {/* </div> */}
+
+          {/* <div> */}
+          {newlyAddedParcelData.map((item,index2) => 
+          <Accordion style={{
+            boxShadow: "5px 10px 20px 5px rgba(0, 0, 0, 0.253)",
+            borderRadius: "0.10rem",
+          }}>
+          <Card>
+          <Card.Header style={{ backgroundColor: "#e6ccff" }}>
+                    <Accordion.Toggle
+                      as={Card.Header}
+                      eventKey={String(index2)}
+                      style={{ backgroundColor: "#f3e6ff" }}
+                    >
+                      <h5>ParcelNo:{item.parcelNo}</h5>
+                    </Accordion.Toggle>
+            </Card.Header>
+            <Accordion.Collapse eventKey={String(index2)}>
+            <Card.Body>
+                      <h5>Order delivered by {item.billerName}</h5>
+                      <Table striped bordered hover>
+                        <thead>
+                          <tr>
+                            <th style={{ backgroundColor: "#ffe6ff" }}>
+                              Sl no.
+                            </th>
+                            <th style={{ backgroundColor: "#ffe6ff" }}>Item</th>
+                            <th style={{ backgroundColor: "#ffe6ff" }}>
+                              Quantity
+                            </th>
+                            <th style={{ backgroundColor: "#ffe6ff" }}>
+                              Price
+                            </th>
+                          </tr>
+                        </thead>
+
+                        {item.orderDetails.map((valueitem, index3) => (
+                          <tbody>
+                            <tr>
+                              <td
+                                style={{
+                                  backgroundColor: "white",
+                                }}
+                              >
+                                {index3 + 1}
+                              </td>
+                              <td
+                                style={{
+                                  backgroundColor: "white",
+                                }}
+                              >
+                                {valueitem.name}
+                              </td>
+                              <td
+                                style={{
+                                  backgroundColor: "white",
+                                }}
+                              >
+                                {valueitem.quantity}
+                              </td>
+                              <td
+                                style={{
+                                  backgroundColor: "white",
+                                }}
+                              >
+                                {valueitem.price}
+                              </td>
+                            </tr>
+                            <tr>
+                                  <th style={{ backgroundColor: "#ffe6ff" }}>
+                                    Total:
+                                  </th>
+                                  <td colspan="3">{valueitem.quantity * valueitem.price}</td>
+                                </tr>
+                          </tbody>
+                        ))}
+                      </Table>
+                    </Card.Body>
+            </Accordion.Collapse>
+          </Card>
+
+          </Accordion>
+          )}
+          {/* </div>  */}
+          
+          </div>
+          ) : null
+          }</Col>
       </Row>
     </div>
   );
