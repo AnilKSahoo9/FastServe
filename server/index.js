@@ -33,15 +33,18 @@ io.of("/api/socket").on("connection",(socket) => {
       switch(change.operationType){
         case "insert":
           let parcelOrder = [];
-          parcelOrder.push({_id:change.fullDocument._id,totalAmount:change.fullDocument.totalAmount,orderDetails:change.fullDocument.items,billerName:change.fullDocument.billerName,parcelNo:1234})
+          parcelOrder.push({_id:change.fullDocument._id,totalAmount:change.fullDocument.totalAmount,orderDetails:change.fullDocument.items,billerName:change.fullDocument.billerName,parcelNo:123456})
           socket.emit('parcelData',parcelOrder);
           socket.on('my',(data) => {
             //console.log(data);
-          })
+          });
       }
     });
   
 socket.on("disconnect",() => {
+  // socket.removeAllListeners('parcelData');
+  // socket.removeAllListeners('disconnection');
+  // io.removeAllListeners('connection');
   console.log('user had left!!!!');
 });
 

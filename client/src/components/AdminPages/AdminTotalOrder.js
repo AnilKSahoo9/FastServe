@@ -34,7 +34,7 @@ useEffect(() => {
 
 useEffect(() => {
   socket = io(ENDPOINT,connectionOptions);
-  console.log(socket);
+  //console.log(socket);
 // socket.on('news',(data) => {
 //   console.log(data);
 //   socket.emit('my other event',{my:'data'});
@@ -42,15 +42,16 @@ useEffect(() => {
 
 socket.on('parcelData',(parcelData) => {
   console.log(parcelData);
-  //setParcelOrders(parcelData);
   setNAPD(parcelData);
+  //parcelOrders.push(parcelData);
   socket.emit('my',{name:'sweta'})
 });
+
   // return () => {
   //   socket.emit("disconnect");
   //   socket.off();
   // }
-},[ENDPOINT,parcelOrders])
+},[ENDPOINT,parcelOrders,newlyAddedParcelData])
 
   return (
     <div
@@ -170,6 +171,7 @@ socket.on('parcelData',(parcelData) => {
         <Col md={6} xs={12}>
           <h2>-:Parcel Details:-</h2>
           {parcelOrders || newlyAddedParcelData ? (<div>
+          {/* <div> */}
           {parcelOrders.map((val,index) =>
               <Accordion
                 style={{
@@ -253,6 +255,9 @@ socket.on('parcelData',(parcelData) => {
               </Accordion>
             
           )}
+          {/* </div> */}
+
+          {/* <div> */}
           {newlyAddedParcelData.map((item,index2) => 
           <Accordion style={{
             boxShadow: "5px 10px 20px 5px rgba(0, 0, 0, 0.253)",
@@ -334,10 +339,11 @@ socket.on('parcelData',(parcelData) => {
 
           </Accordion>
           )}
+          {/* </div>  */}
+          
           </div>
           ) : null
-          }
-          </Col>
+          }</Col>
       </Row>
     </div>
   );
