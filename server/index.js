@@ -11,6 +11,7 @@ const PORT = 4000;
 
 const socketio = require('socket.io');
 const http = require('http');
+const { count, countDocuments } = require("./models/tableModel");
 const app = express();
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -32,7 +33,7 @@ io.of("/api/socket").on("connection",(socket) => {
       switch(change.operationType){
         case "insert":
           let parcelOrder = [];
-          parcelOrder.push({_id:change.fullDocument._id,billStatus:change.fullDocument.billStatus,totalAmount:change.fullDocument.totalAmount,items:change.fullDocument.items,billerName:change.fullDocument.billerName})
+          parcelOrder.push({_id:change.fullDocument._id,totalAmount:change.fullDocument.totalAmount,orderDetails:change.fullDocument.items,billerName:change.fullDocument.billerName,parcelNo:1234})
           socket.emit('parcelData',parcelOrder);
           socket.on('my',(data) => {
             //console.log(data);
