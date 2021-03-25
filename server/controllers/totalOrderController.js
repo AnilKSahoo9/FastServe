@@ -33,10 +33,12 @@ await parcelSchema.find({},(err,docu) => {
             })),
           })),
           parcelOrders: doc.map((eachParcel, index) => ({
-            parcelNo: index + 1,
+            // parcelNo: index + 1,
+            billStatus: eachParcel.billStatus,
             billerName: eachParcel.billerName,
             totalAmount: eachParcel.totalAmount,
-            orderDetails: eachParcel.items,
+            items: eachParcel.items,
+            _id: eachParcel._id
           })),
         });
       }
