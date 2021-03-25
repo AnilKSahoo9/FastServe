@@ -47,8 +47,8 @@ var Customerparcelorders = [
     },
 ]
 const breakPoints = [
-    { width: 1500, itemsToShow: 1 },
-    { width: 1768, itemsToShow: 2, itemsToScroll: 2 },
+    { width: 500, itemsToShow: 1 },
+    { width: 668, itemsToShow: 2, itemsToScroll: 2 },
     // { width: 1200, itemsToShow: 3 },
     // { width: 1500, itemsToShow: 4 }
   ];
@@ -60,15 +60,15 @@ const Customer = (props) => {
             <Carousel breakPoints={breakPoints} interval={1000}>
             {Customertableorders.map((Customertableorder) => ( 
                 <Card body outline color="info" style={{
-                    maxwidth: '100%',
-                    height: "20rem",
+                    width: '50%',
+                    height: "25rem",
                     color: 'black',
                     fontFamily: "Times New Roman, Times, serif",
                     margin: '1rem',
                     borderStyle: 'groove',
                     borderWidth: '3px',
                     borderRadius: '7px',
-                    backgroundImage: `linear-gradient(to bottom,  #ffbc00,#ff0058)`
+                    backgroundImage:  `linear-gradient(to right bottom, #1e90ff, #00bfff, #1e90ff, #00bfff, #00bfff)`
                 }}>
                     <h5>
                         <CardHeader style={{
@@ -86,7 +86,7 @@ const Customer = (props) => {
             
 
                         <hr></hr>
-                        <p style={{fontSize: "40px"}}>{Customertableorder.Orderstatus}</p>
+                        <p style={{fontSize: "30px"}}>{Customertableorder.Orderstatus}</p>
                     </CardBody>
                 </Card>
             ))}
@@ -95,7 +95,7 @@ const Customer = (props) => {
             <Carousel breakPoints={breakPoints} interval={1000}>
             {Customerparcelorders.map((Customerparcelorder) => ( 
                 <Card body outline color="info" style={{
-                    maxwidth: '100%',
+                    width: '50%',
                     height: "20rem",
                     color: 'black',
                     fontFamily: "Times New Roman, Times, serif",
@@ -103,7 +103,7 @@ const Customer = (props) => {
                     borderStyle: 'groove',
                     borderWidth: '3px',
                     borderRadius: '7px',
-                     backgroundImage: `linear-gradient(to right bottom, #12eb25, #12eb25, #12eb25, #12eb25, #12eb25)`
+                     backgroundImage: `linear-gradient(to bottom,  #1e90ff,#1e90ff)`
                 }}>
                     <h5>
                         <CardHeader style={{
@@ -121,7 +121,7 @@ const Customer = (props) => {
             
 
                         <hr></hr>
-                        <p style={{fontSize: "40px"}}>{Customerparcelorder.Orderstatus}</p>
+                        <p style={{fontSize: "30px"}}>{Customerparcelorder.Orderstatus}</p>
                     </CardBody>
                 </Card>
             ))}
