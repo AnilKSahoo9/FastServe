@@ -21,9 +21,6 @@ const AdminTable = () => {
     setShow(true);
     setname(event.target.value);
   };
-  const color1 = "";
-  const color2 = "#B408A4";
-  console.log(val);
 
   return (
     <div className="inner-container">
@@ -37,17 +34,17 @@ const AdminTable = () => {
                     border="secondary"
                     className="text-center mb-3 mt-3"
                     style={{
-                      width: '100%',
+                      width: "100%",
                       height: "16rem",
-                      color: 'black',
+                      color: "black",
                       fontFamily: "Times New Roman, Times, serif",
-                      margin: '1rem',
-                      borderStyle: 'groove',
-                      borderWidth: '3px',
-                      borderRadius: '7px',
-                      boxShadow: '20px 20px 50px grey',
+                      margin: "1rem",
+                      borderStyle: "groove",
+                      borderWidth: "3px",
+                      borderRadius: "7px",
+                      boxShadow: "20px 20px 50px grey",
                       // backgroundImage: `linear-gradient(to bottom,#4dff03,#00d0ff )`
-                      backgroundImage: `linear-gradient(to right bottom, #051437, #004782, #0081a7, #00b98a, #12eb25)`
+                      backgroundImage: `linear-gradient(to right bottom, #051437, #004782, #0081a7, #00b98a, #12eb25)`,
                     }}
                   >
                     {/* <Card.Img
@@ -58,9 +55,16 @@ const AdminTable = () => {
                   /> */}
                     <h5>
                       {" "}
-                      <Card.Header style={{ backgroundColor: "white", borderStyle: 'groove',
-                            borderWidth: '3px',
-                            borderRadius: '7px', padding: "3px", margin: "1rem" }}>
+                      <Card.Header
+                        style={{
+                          backgroundColor: "white",
+                          borderStyle: "groove",
+                          borderWidth: "3px",
+                          borderRadius: "7px",
+                          padding: "3px",
+                          margin: "1rem",
+                        }}
+                      >
                         Table no {user.name}
                       </Card.Header>
                     </h5>
@@ -84,6 +88,7 @@ const AdminTable = () => {
                                   <li>{number}</li>
                                 ))
                               : ""
+                              
                           )}
                         </Modal.Body>
                         <Modal.Footer>
@@ -101,16 +106,16 @@ const AdminTable = () => {
                     border="secondary"
                     className="text-center mb-3 mt-3"
                     style={{
-                      width: '100%',
+                      width: "100%",
                       height: "16rem",
-                      color: 'black',
+                      color: "black",
                       fontFamily: "Times New Roman, Times, serif",
-                      margin: '1rem',
-                      borderStyle: 'groove',
-                      borderWidth: '3px',
-                      borderRadius: '7px',
-                      boxShadow: '20px 20px 50px grey',
-                      backgroundImage: `linear-gradient(to bottom,  #ffbc00,#ff0058)`
+                      margin: "1rem",
+                      borderStyle: "groove",
+                      borderWidth: "3px",
+                      borderRadius: "7px",
+                      boxShadow: "20px 20px 50px grey",
+                      backgroundImage: `linear-gradient(to bottom,  #ffbc00,#ff0058)`,
                     }}
                   >
                     {/* <Card.Img
@@ -121,9 +126,18 @@ const AdminTable = () => {
                   /> */}
                     <h5>
                       {" "}
-                      <Card.Header style={{ backgroundColor: "white", borderStyle: 'groove',
-                            borderWidth: '3px',
-                            borderRadius: '7px', padding: "3px", margin: "1rem" }}> Table no {user.name }
+                      <Card.Header
+                        style={{
+                          backgroundColor: "white",
+                          borderStyle: "groove",
+                          borderWidth: "3px",
+                          borderRadius: "7px",
+                          padding: "3px",
+                          margin: "1rem",
+                        }}
+                      >
+                        {" "}
+                        Table no {user.name}
                       </Card.Header>
                     </h5>
                     <Card.Body>

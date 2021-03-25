@@ -1,3 +1,5 @@
+/* kitchen dashboard css */
+
 .timer div {
   border: 2px solid black;
   border-radius: 2px;
@@ -97,4 +99,18 @@ section p:first-child,
   100% {
     opacity: 0;
   }
+}
+
+/* notification page css */
+.container-fluid {
+  margin-top: 20px;
+}
+.tableImg {
+  height: 180px;
+}
+.parcelImg {
+  height: 180px;
+}
+.notCard {
+  box-shadow: 5px 5px 8px 10px rgba(241, 241, 239, 0.945) !important;
 }
