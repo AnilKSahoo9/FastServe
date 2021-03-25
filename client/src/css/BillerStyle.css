@@ -1,0 +1,47 @@
+
+.inner-container{
+    /* position: relative; */
+    background-color:rgb(240,240,240);
+    margin-right: "8rem";
+    margin-top: "5rem";
+    /* display: inline;
+    justify-content: center; */
+}
+.chart{
+    /* display: flex; */
+    /* position: absolute; */
+    background-color:rgb(240,240,240);
+    justify-content: center;
+    width: 250px;
+    height: 150px;
+    
+}
+.chartcard{
+    background-color:rgb(240,240,240);
+    font-family: "Times New Roman, Times, serif";
+    /* left: "25px"; */
+    justify-content: center;
+     border-style: "groove";
+    border-width: "3px";
+      border-radius: "7px";
+               
+}
+/* .Tabledesign{
+    color: white;
+    background: "linear-gradient(to right, #56ccf2, #2f80ed)";
+    max-width: 80%;
+    max-height: 100rem;
+    font-family: "Times New Roman, Times, serif";
+    margin-top: "2rem"; */
+
+    /* background-color: pink; */
+    /* border-width: "3px";
+    border-radius: "30px";
+} */
+/* thead tr{
+    border-top: 1px solid #f0f0f0 ;
+    border-bottom: 1px solid #f0f0f0 ;
+}
+thead td{
+    font-weight: 700;
+} */

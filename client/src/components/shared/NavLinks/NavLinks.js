@@ -8,8 +8,9 @@ const NavLinks = (props) => {
       <ul className="nav-links">
         <li>
           <NavLink to="/home" className="home">
-            Home
+          Home
           </NavLink>
+
         </li>
         <li>
           <NavLink to="/totalorder" className="table">

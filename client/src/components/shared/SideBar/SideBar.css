@@ -87,7 +87,11 @@
 }
 
 .main-navigation__header-nav {
-  
+  width: 5px;
+  height: 100%;
+  position:fixed;
+  left: 0;
+  top: 0;
   display: none;
 }
 

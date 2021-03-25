@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Swal from "sweetalert2";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Doughnut } from "react-chartjs-2";
+// import { PieChart } from 'react-minimal-pie-chart';
+import "../../css/BillerStyle.css";
+
 import {
   TotalOrder,
   TotalParcel,
@@ -22,124 +26,208 @@ import {
   Table,
 } from "reactstrap";
 import { Button, Modal } from "react-bootstrap";
-import { event } from "jquery";
 
-// const handleclick = (e) => {
-//     setData("Paid");
-//   };
 const BillerHome = () => {
-  const [row, setRow] = useState(null);
-  const [show, setShow] = useState(false);
+  const data={
+    // lables:["received order","Pending Order"],
+    
+    datasets:[
+      {
+        // label:"Chart of Table Order",
+        data:[70,30],
+        backgroundColor:[
+          "rgba(255,99,132,1)",
+          "rgba(255,205,86,1)"
+        ]
+      }
+    ]
+  }
 
+
+
+
+
+
+
+  const [show, setShow] = useState(false);
+  const [pshow, setPShow] = useState(false);
+  const [value, setValue] = useState(null);
   const [val, setname] = useState("");
+  const [Pval, setPname] = useState("");
   const handleShow = (event) => {
     setShow(true);
     setname(event.target.value);
+    console.log(event.target.value);
+    // console.log(event);
+  };
+  const handleShow1 = (eve) => {
+    setPShow(true);
+    setPname(eve.target.value);
+    console.log(eve.target.value);
+    // console.log(eve);
   };
   const handleClose = () => setShow(false);
+  const handleClose1 = () => setPShow(false);
 
-  const Payment1 = () => {
-    console.log("e");
+  const Payment = (e) => {
+    setValue(e.target.value);
+    console.log(e.target.value);
+    var rowno = --e.target.value;
+    TableOrder.map((value, index) => {
+      if (index == rowno) {
+        value.BillPayment = "Paid";
+        console.log(value);
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Your Payment is successfull",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+
+      }
+    });
   };
-  // const Payment = (e) => {
-  //   TableOrder.map((val, index) => {
-  //     if (index == e.target.value) {
-  //       val.BillPayment = "Paid";
-  //       Swal.fire({
-  //         position: "center",
-  //         icon: "success",
-  //         title: "Your Payment is successfull",
-  //         showConfirmButton: false,
-  //         timer: 1500,
-  //       });
-  //     }
-  //   });
-  // };
+  const Payment1 = (e) => {
+    setValue(e.target.value);
+    console.log(e.target.value);
+    var rowno = --e.target.value;
+    ParcelOrder.map((value, index) => {
+      if (index == rowno) {
+        value.BillPayment = "Paid";
+        console.log(value);
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Your Payment is successfull",
+          showConfirmButton: false,
+          timer: 1500,
+        });
 
-  // const ShowdetailsOrderArg = (e) => {
-  //     ShowdetailsOrder(TableOrderModals, e);
-  // }
+      }
+    });
+  };
 
   return (
-    <div className="inner-container" style={{ marginRight: "4rem" }}>
-      <CardGroup>
-        <Card
-          body
-          outline
-          color="info"
-          style={{
-            maxwidth: "100%",
-            maxHeight: "100rem",
-            color: "black",
-            fontFamily: "Times New Roman, Times, serif",
-            margin: "1rem",
-            borderStyle: "groove",
-            borderWidth: "3px",
-            borderRadius: "7px",
-            boxShadow: "20px 20px 50px grey",
-            backgroundImage: `linear-gradient(to right bottom, #051437, #004782, #0081a7, #00b98a, #12eb25)`,
-          }}
-        >
-          <h5>
-            <CardHeader
+    
+    <div className="inner-container" >
+      <div>
+        <CardGroup >
+          <div className="cardsname">
+            <Card
+              body
+              outline
+              color="info"
               style={{
-                backgroundColor: "white",
+                maxwidth: "100%",
+                maxHeight: "100rem",
+                color: "rgb(0,0,205)",
+                fontFamily: "Times New Roman, Times, serif",
+                margin: "1rem",
                 borderStyle: "groove",
                 borderWidth: "3px",
                 borderRadius: "7px",
-                padding: "3px",
-                margin: "0px",
+                // boxShadow: "20px 20px 50px grey",
+                // backgroundImage: `linear-gradient(to right bottom, #051437, #004782, #0081a7, #00b98a, #12eb25)`,
               }}
             >
-              <CardTitle>Total No. of Order Placed</CardTitle>
-              {TotalOrder.map((totalorder) => (
-                <>
-                  <CardText>{totalorder.Data}</CardText>
-                </>
-              ))}
-            </CardHeader>
-          </h5>
-        </Card>
-        <Card
-          body
-          outline
-          color="info"
-          style={{
-            maxwidth: "100%",
-            maxHeight: "100rem",
-            color: "black",
-            fontFamily: "Times New Roman, Times, serif",
-            margin: "1rem",
-            borderStyle: "groove",
-            borderWidth: "3px",
-            borderRadius: "7px",
-            boxShadow: "20px 20px 50px grey",
-            backgroundImage: `linear-gradient(to right bottom, #051437, #004782, #0081a7, #00b98a, #12eb25)`,
-          }}
-        >
-          <h5>
-            <CardHeader
-              style={{
-                backgroundColor: "white",
-                borderStyle: "groove",
-                borderWidth: "3px",
-                borderRadius: "7px",
-                padding: "3px",
-                margin: "0px",
-              }}
-            >
-              <CardTitle>Total No. of Parcel Placed</CardTitle>
-              {TotalParcel.map((totalparcel) => (
-                <>
-                  <CardText>{totalparcel.Data}</CardText>
-                </>
-              ))}
-            </CardHeader>
-          </h5>
-        </Card>
-      </CardGroup>
+              <h5>
+                <CardHeader
+                  style={{
+                    backgroundColor: "white",
+                    borderBottom:"groove",
+                    // fontSize:"20px",
+                    // borderStyle: "groove",
+                    borderWidth: "2px",
+                    // borderBottom:"2px",
+                    borderBottomColor:"rgb(0,0,205)",
+                    borderRadius: "7px",
+                    padding: "3px",
+                    margin: "0px",
+                  }}
+                >
+                  <CardTitle>Total No. of Order Placed</CardTitle>
+                  {TotalOrder.map((totalorder) => (
+                    <>
+                      <CardText><b>{totalorder.Data}</b></CardText>
+                    </>
+                  ))}
+                </CardHeader>
+              </h5>
 
-      <Table
+            </Card>
+          </div>
+          <div className="cardsname">
+            <Card
+
+              body
+              outline
+              color="info"
+              style={{
+                maxwidth: "100%",
+                maxHeight: "100rem",
+                color: "rgb(0,0,205)",
+                fontFamily: "Times New Roman, Times, serif",
+                margin: "1rem",
+                borderStyle: "groove",
+                borderWidth: "3px",
+                borderRadius: "7px",
+                // boxShadow: "20px 20px 50px grey",
+                // backgroundImage: `linear-gradient(to right bottom, #051437, #004782, #0081a7, #00b98a, #12eb25)`,
+                backgroundColor:"rgb(255,255,255)"
+              }}
+            >
+              <h5>
+                <CardHeader
+                  style={{
+                    backgroundColor: "white",
+                    borderBottom:"groove",
+                    // fontSize:"20px",
+                    // borderStyle: "groove",
+                    borderWidth: "2px",
+                    // borderBottom:"2px",
+                    borderBottomColor:"rgb(0,0,205)",
+                    borderRadius: "7px",
+                    padding: "3px",
+                    margin: "0px",
+                  }}
+                >
+                  <CardTitle>Total No. of Parcel Placed</CardTitle>
+                  {TotalParcel.map((totalparcel) => (
+                    <>
+                      <CardText><b>{totalparcel.Data}</b></CardText>
+                    </>
+                  ))}
+                </CardHeader>
+              </h5>
+            </Card>
+          </div>
+         <Card className="chartcard">
+         <div className="chart">
+        <Doughnut data={data}
+       options={{ responsive: true }} />
+       <h5>Table order chart</h5>
+        </div>       
+         </Card>
+         <Card className="chartcard">
+         <div className="chart">
+        <Doughnut data={data}
+       options={{ responsive: true }} />
+       <h5>Parcel order chart</h5>
+        </div>       
+         </Card>
+           
+          
+        </CardGroup>
+        
+        
+       
+
+
+      </div>
+
+      <div className="Tabledesign">
+      <Table responsive size="sm"
         striped
         bordered
         hover
@@ -150,9 +238,9 @@ const BillerHome = () => {
           maxHeight: "100rem",
           fontFamily: "Times New Roman, Times, serif",
           marginTop: "2rem",
-          borderStyle: "groove",
           borderWidth: "3px",
-          borderRadius: "10px",
+          borderRadius: "20px",
+          borderCollapse:"collapse"
         }}
       >
         <thead>
@@ -164,22 +252,22 @@ const BillerHome = () => {
           </tr>
         </thead>
         {TableOrder.map((tableorder, index) => (
-          <div>
-            <tbody>
-              <tr>
-                <td>{tableorder.TableNo}</td>
-                <td>{tableorder.SessionId}</td>
-                <td>
-                  <Button>{tableorder.BillPayment}</Button>
-                </td>
-                <td>
-                  <Button onClick={handleShow} value={tableorder.TableNo}>
-                    ShowDetails
+
+          <tbody>
+            <tr>
+              <td>{tableorder.TableNo}</td>
+              <td>{tableorder.SessionId}</td>
+              <td>
+                <Button onClick={Payment} value={tableorder.TableNo}>{tableorder.BillPayment}=Rs.{tableorder.Totalamount}</Button>
+              </td>
+              <td>
+                <Button onClick={handleShow} value={tableorder.TableNo}>
+                  ShowDetails
                   </Button>
-                </td>
-              </tr>
-            </tbody>
-          </div>
+              </td>
+            </tr>
+          </tbody>
+
         ))}
       </Table>
       <Modal show={show} onHide={handleClose}>
@@ -187,33 +275,40 @@ const BillerHome = () => {
         <Modal.Body>
           {TableOrder.map((user) =>
             val == user.TableNo
-              ? user.items.map((itemval) => (
-                  <ul>
-                    {" "}
-                    <li>{itemval.name + "=>" + itemval.price}</li>
-                  </ul>
-                ))
+              ?
+              (<ol><b><li> Table No =: {user.TableNo} </li></b>
+                <b><li> Session Id =: {user.SessionId} </li></b>
+                <b><li> Total amount =: {user.Totalamount} </li></b>
+                <b><li>Order Status =: {user.OrderStatus}</li></b>
+                <b><li>Ordered Items =: {user.items.map((item) => <ul><li>Item Name= {item.name}  ,  Quantity= {item.quantity}  ,  Price=   {item.price}</li></ul>)}</li></b>
+              </ol>
+              )
               : ""
+
           )}
         </Modal.Body>
         <Modal.Footer>
           <Button onClick={() => handleClose()}>Close</Button>
         </Modal.Footer>
       </Modal>
-      <Table
+      </div>
+
+
+      <Table responsive size="sm"
         striped
         bordered
         hover
         style={{
           color: "white",
-          background: `linear-gradient(to right, #56ccf2, #2f80ed)`,
+          // backgroundColor:"#20B2AA",
+           background: `linear-gradient(to right, #56ccf2, #2f80ed)`,
           maxwidth: "80%",
           maxHeight: "100rem",
           fontFamily: "Times New Roman, Times, serif",
           marginTop: "2rem",
-          borderStyle: "groove",
+          // borderStyle: "groove",
           borderWidth: "3px",
-          borderRadius: "10px",
+          borderRadius: "20px",
         }}
       >
         <thead>
@@ -228,15 +323,37 @@ const BillerHome = () => {
             <tr>
               <td>{parcelorder.ParcelNo}</td>
               <td>
-                <Button onClick={Payment1}>{parcelorder.BillPayment}</Button>
+                <Button onClick={Payment1} value={parcelorder.ParcelNo}>{parcelorder.BillPayment}=Rs.{parcelorder.Totalamount}</Button>
               </td>
               <td>
-                <Button>{parcelorder.ShowDetails}</Button>
+                <Button onClick={handleShow1} value={parcelorder.ParcelNo}>
+                  ShowDetails
+                  </Button>
               </td>
             </tr>
           </tbody>
         ))}
       </Table>
+      <Modal show={pshow} onHide={handleClose1}>
+        <Modal.Header closeButton>Table details</Modal.Header>
+        <Modal.Body>
+          {ParcelOrder.map((Puser) =>
+            Pval == Puser.ParcelNo
+              ?
+              (<ol><b><li>  ParcelNo =: {Puser.ParcelNo} </li></b>
+                <b><li> Total amount =: {Puser.Totalamount} </li></b>
+                <b><li>Order Status =: {Puser.OrderStatus}</li></b>
+                <b><li>Ordered Items =: {Puser.items.map((item) => <ul><li>Item Name= {item.name}  ,  Quantity= {item.quantity}  ,  Price=   {item.price}</li></ul>)}</li></b>
+              </ol>
+              )
+              : ""
+
+          )}
+        </Modal.Body>
+        <Modal.Footer>
+          <Button onClick={() => handleClose1()}>Close</Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 };
