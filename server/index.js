@@ -11,7 +11,6 @@ const PORT = 4000;
 
 const socketio = require('socket.io');
 const http = require('http');
-const { count, countDocuments } = require("./models/tableModel");
 const app = express();
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -19,34 +18,25 @@ app.use(bodyParser.json());
 const server = http.createServer(app);
 const io = socketio(server);
 
-//let doc = [];
-
 io.of("/api/socket").on("connection",(socket) => {
   console.log("we'va a new connection!!!!");
-
-  // socket.emit('news',{hello:'world'});
-  // socket.on('my other event',(data) => {
-  //   console.log(data);
-  // })
+  
     const parcelChangeStream = parcelSchema.watch();
     parcelChangeStream.on("change",(change) => {
       switch(change.operationType){
         case "insert":
-          let parcelOrder = [];
-          parcelOrder.push({_id:change.fullDocument._id,totalAmount:change.fullDocument.totalAmount,orderDetails:change.fullDocument.items,billerName:change.fullDocument.billerName,parcelNo:123456})
-          socket.emit('parcelData',parcelOrder);
+          //let parcelOrder = [];
+          //.push({_id:change.fullDocument._id,totalAmount:change.fullDocument.totalAmount,orderDetails:change.fullDocument.items,billerName:change.fullDocument.billerName,parcelNo:123456})
+          socket.emit('parcelData',change.fullDocument);
           socket.on('my',(data) => {
             //console.log(data);
           });
       }
     });
-  
-socket.on("disconnect",() => {
-  // socket.removeAllListeners('parcelData');
-  // socket.removeAllListeners('disconnection');
-  // io.removeAllListeners('connection');
-  console.log('user had left!!!!');
-});
+
+    socket.on("disconnect",() => {
+    console.log('user had left!!!!');
+  });
 
 });
 
@@ -65,9 +55,7 @@ mongoose
   )
   .then(() => {
     console.log("db connected...!");
-
     // const port = PORT;
-
     // app.listen(port, () =>
     //   console.log(`Your server is running on port ${port}`)
     // );
@@ -75,3 +63,17 @@ mongoose
   .catch((err) => {
     console.log(err);
   });
+
+  // socket.removeAllListeners('parcelData');
+  // socket.removeAllListeners('disconnection');
+  // io.removeAllListeners('connection'); inside socket.disconnect()
+
+  // socket.emit('news',{hello:'world'});
+  // socket.on('my other event',(data) => {
+  //   console.log(data);
+  // }); inside io.of()
+
+  // socket.on('news',(data) => {
+//   console.log(data);
+//   socket.emit('my other event',{my:'data'});
+// }); this has to be written inside useeffect of client where socket conn is established
