@@ -16,7 +16,7 @@ export var list = [
         
       },
       {
-        name: "Table 4",
+        name: "Dinner",
         
       },
       {
@@ -24,23 +24,23 @@ export var list = [
         
       },
       {
-        name: "Curry",
+        name: "Lunch",
         
       },
       {
-        name: "Curry",
+        name: "Sweets",
         
       },
       {
-        name: "Curry",
+        name: "Drinks",
         
       },
       {
-        name: "Curry",
+        name: "vegies",
         
       },
       {
-        name: "Curry",
+        name: "Nudels",
         
       },
       {

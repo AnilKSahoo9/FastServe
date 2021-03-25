@@ -13,7 +13,10 @@ export var table = [
         sessionsno: "5",
         currentorder: ["masala papad", "tandoor chicken", "coldrink", "dry chana"],
       },
-      { name: "3", status: "Inactive" },
+      { 
+        name: "3", 
+      status: "Inactive" 
+      },
       {
         name: "4",
         status: "Active",

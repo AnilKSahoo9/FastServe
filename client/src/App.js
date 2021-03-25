@@ -42,6 +42,15 @@ const Customer = React.lazy(() => import("./components/AdminPages/Customer"));
 const KitchenDashbard = React.lazy(() =>
   import("./components/KitchenPages/KitchenDashbard.js")
 );
+const Tablepage = React.lazy(() =>
+  import("./components/Waiterpages/Tablepage")
+);
+const Catagorypage = React.lazy(() =>
+  import("./components/Waiterpages/Catagorypage")
+);
+const Listmenu = React.lazy(() =>
+  import("./components/Waiterpages/Listmenu")
+);
 const App = () => {
   return (
     <div className="App">
@@ -74,13 +83,18 @@ const App = () => {
 
               <Route path="/kitchenDashboard" component={KitchenDashbard} />
               <Route path="/notification" component={Notification} />
+              <Route path="/Tablepage" component={Tablepage} />
+              <Route path="/Catagorypage" component={Catagorypage} />
+              <Route path="/Listmenu" component={Listmenu} />
+              
+
               <Redirect to="/" />
             </Switch>
           </Suspense>
-        </div>
-        </Router>
-    </div>
+          </div>
+          </Router>
+          </div>
   );
- };
+};
 
 export default App;
