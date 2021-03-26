@@ -1,7 +1,12 @@
+<<<<<<< Updated upstream
 .home {
   /* background: radial-gradient(#e0e0eb, #ffff, #e0e0eb); */
+=======
+/* .home {
+  background: radial-gradient(#e0e0eb, #ffff, #e0e0eb);
+>>>>>>> Stashed changes
   width: 173vh;
-}
+} */
 
 .waitercard {
   box-shadow: 5px 10px 20px 5px rgba(0, 0, 0, 0.253) !important;

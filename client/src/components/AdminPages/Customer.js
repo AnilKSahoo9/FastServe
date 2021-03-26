@@ -57,7 +57,7 @@ const Customer = (props) => {
     return (
 
         <div className="inner-container"style={{ marginRight: "7rem" }}>
-            <Carousel breakPoints={breakPoints} interval={1000}>
+            <Carousel breakPoints={breakPoints} interval={2000}>
             {Customertableorders.map((Customertableorder) => ( 
                 <Card body outline color="info" style={{
                     width: '50%',
@@ -96,7 +96,7 @@ const Customer = (props) => {
             {Customerparcelorders.map((Customerparcelorder) => ( 
                 <Card body outline color="info" style={{
                     width: '50%',
-                    height: "20rem",
+                    height: "25rem",
                     color: 'black',
                     fontFamily: "Times New Roman, Times, serif",
                     margin: '1rem',
