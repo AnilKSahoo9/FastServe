@@ -36,12 +36,21 @@ useEffect(() => {
   parcelOrders.push(parcelData2);
   socket.emit('my',{name:'sweta'})
 });
+
+socket.on('sessionData',(sessionData) => {
+  //console.log(sessionData);
+  let sessionData2 = {};
+  sessionData2 = sessionData;
+  tableOrders.push(sessionData2);
+});
+//console.log(tableOrders);
+  fetchData();
   // return () => {
-  //   socket.emit("disconnect");
+  //   //socket.disconnect();
+  //   socket.emit("disconnect",(d) => {});
   //   socket.off();
   // }
-  fetchData();
-},[parcelOrders,ENDPOINT])
+},[parcelOrders,tableOrders,ENDPOINT])
 
   return (
     <div
@@ -82,7 +91,7 @@ useEffect(() => {
                               eventKey={String(index)}
                               style={{ backgroundColor: "#f3e6ff" }}
                             >
-                              <h5>Session:{value.sessionNo}</h5>
+                              <h5>Session:{val.sessions.length}</h5>
                             </Accordion.Toggle>
                           </Card.Header>
                           <Accordion.Collapse eventKey={String(index)}>

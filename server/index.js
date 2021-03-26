@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 require("dotenv").config();
-let tableSchema = require("./models/tableModel");
+let sessionSchema = require("./models/sessionModel");
 let parcelSchema = require("./models/parcelModel");
 
 const PORT = 4000;
@@ -31,6 +31,14 @@ io.of("/api/socket").on("connection",(socket) => {
           socket.on('my',(data) => {
             //console.log(data);
           });
+      }
+    });
+    const sessionChangeStream = sessionSchema.watch();
+    sessionChangeStream.on("change",(change) => {
+      switch(change.operationType){
+        case "insert":
+          socket.emit('sessionData',{_id:change.fullDocument._id,tableNo:change.fullDocument.tableNo,sessions:[{orderDetails:change.fullDocument.items,totalAmount:change.fullDocument.totalAmount,waiterName:change.fullDocument.waiterName}]});
+          //console.log(change.fullDocument);
       }
     });
 
