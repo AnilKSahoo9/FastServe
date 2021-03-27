@@ -37,7 +37,7 @@ const AdminWaiter = () => {
                   style={{
                     maxwidth: '100%',
                     maxheight: "100rem",
-                    color: 'black',
+                    // color: 'black',
                     fontFamily: "Times New Roman, Times, serif",
                     margin: '1rem',
                     borderStyle: 'groove',
@@ -45,22 +45,23 @@ const AdminWaiter = () => {
                     borderRadius: '7px',
                     boxShadow: '20px 20px 50px grey',
                     // backgroundImage: `linear-gradient(to bottom,#4dff03,#00d0ff )`
-                    backgroundImage: `linear-gradient(to right bottom, #051437, #004782, #0081a7, #00b98a, #12eb25)`
+                    backgroundImage: `linear-gradient(to right bottom, #0070BB, #132257, #004170, #00b98a, #009b7d)`
                   }}
                 >
                   <h4>
                     {" "}
                     <Card.Header
                       style={{
-                        backgroundColor: "white", borderStyle: 'groove',
-                            borderWidth: '3px',
+                        // borderStyle: 'groove',
+                        //     borderWidth: '3px',
+                        color:"white",
                             borderRadius: '7px', padding: "3px", marginLeft: "15px", marginRight: "15px", marginBottom: "15px", marginTop: "15px"
                       }}
                     >
                       ~: {user.name} :~
                     </Card.Header>
                   </h4>
-                  <Card.Body>
+                  <Card.Body style={{color:"white"}}>
                     <b>Status:</b> {user.status}
                     <br />
                     <b>Total Order Taken:</b> {user.ordertaken}
@@ -123,15 +124,16 @@ const AdminWaiter = () => {
                     {" "}
                     <Card.Header
                       style={{
-                        backgroundColor: "white", borderStyle: 'groove',
-                        borderWidth: '3px',
+                        // backgroundColor: "white", borderStyle: 'groove',
+                        // borderWidth: '3px',
+                        color:"white",
                         borderRadius: '7px', padding: "3px", marginLeft: "15px", marginRight: "15px", marginBottom: "15px", marginTop: "15px"
                       }}
                     >
                       ~: {user.name} :~
                     </Card.Header>
                   </h4>
-                  <Card.Body>
+                  <Card.Body style={{color:"white"}}>
                     <b>Status:</b> {user.status}
                   </Card.Body>
                 </Card>

@@ -1,23 +1,27 @@
 
 .inner-container{
     /* position: relative; */
-    background-color:rgb(240,240,240);
+    /* background-color:#0a2351; */
     margin-right: "8rem";
     margin-top: "5rem";
     /* display: inline;
     justify-content: center; */
 }
 .chart{
+    margin-left: 12%;
+    margin-right: 15%;
     /* display: flex; */
     /* position: absolute; */
-    background-color:rgb(240,240,240);
+    background-color:#0a2351;
     justify-content: center;
     width: 250px;
     height: 150px;
     
 }
 .chartcard{
-    background-color:rgb(240,240,240);
+    background-color:#1F305E;
+   
+    color: white;
     font-family: "Times New Roman, Times, serif";
     /* left: "25px"; */
     justify-content: center;
@@ -26,6 +30,21 @@
       border-radius: "7px";
                
 }
+.table-bordered td {
+    border: 0px;
+}
+.table-bordered th {
+    border: 0px;
+}
+.btn-primary{
+    border: 0px;
+  
+}
+.table{
+   
+    width:100%;
+}
+
 /* .Tabledesign{
     color: white;
     background: "linear-gradient(to right, #56ccf2, #2f80ed)";

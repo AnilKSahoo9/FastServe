@@ -121,9 +121,11 @@ const BillerHome = () => {
               style={{
                 maxwidth: "100%",
                 maxHeight: "100rem",
-                color: "rgb(0,0,205)",
+                color: "white",
+                backgroundColor:"#0a2351",
                 fontFamily: "Times New Roman, Times, serif",
                 margin: "1rem",
+                marginLeft:"1rem",
                 borderStyle: "groove",
                 borderWidth: "3px",
                 borderRadius: "7px",
@@ -138,9 +140,10 @@ const BillerHome = () => {
                     borderBottom:"groove",
                     // fontSize:"20px",
                     // borderStyle: "groove",
+                    backgroundColor:"#0a2351",
                     borderWidth: "2px",
                     // borderBottom:"2px",
-                    borderBottomColor:"rgb(0,0,205)",
+                    borderBottomColor:"#ffffff",
                     borderRadius: "7px",
                     padding: "3px",
                     margin: "0px",
@@ -159,22 +162,22 @@ const BillerHome = () => {
           </div>
           <div className="cardsname">
             <Card
-
               body
               outline
               color="info"
               style={{
                 maxwidth: "100%",
                 maxHeight: "100rem",
-                color: "rgb(0,0,205)",
+                color: "white",
+                backgroundColor:"#0a2351",
                 fontFamily: "Times New Roman, Times, serif",
                 margin: "1rem",
+                marginLeft:"2rem",
                 borderStyle: "groove",
                 borderWidth: "3px",
                 borderRadius: "7px",
                 // boxShadow: "20px 20px 50px grey",
                 // backgroundImage: `linear-gradient(to right bottom, #051437, #004782, #0081a7, #00b98a, #12eb25)`,
-                backgroundColor:"rgb(255,255,255)"
               }}
             >
               <h5>
@@ -184,9 +187,10 @@ const BillerHome = () => {
                     borderBottom:"groove",
                     // fontSize:"20px",
                     // borderStyle: "groove",
+                    backgroundColor:"#0a2351",
                     borderWidth: "2px",
                     // borderBottom:"2px",
-                    borderBottomColor:"rgb(0,0,205)",
+                    borderBottomColor:"#ffffff",
                     borderRadius: "7px",
                     padding: "3px",
                     margin: "0px",
@@ -202,7 +206,7 @@ const BillerHome = () => {
               </h5>
             </Card>
           </div>
-         <Card className="chartcard">
+         <Card  className="chartcard">
          <div className="chart">
         <Doughnut data={data}
        options={{ responsive: true }} />
@@ -233,12 +237,14 @@ const BillerHome = () => {
         hover
         style={{
           color: "white",
-          background: `linear-gradient(to right, #56ccf2, #2f80ed)`,
+          // background: `linear-gradient(to right,#2a52be,#0047AB, #002D62, #0a2351)`,
+          backgroundImage:`linear-gradient(to right,#0E3386,#0047AB, #002D62, #0a2351)`,
+          // background:"#073980",
           maxwidth: "80%",
           maxHeight: "100rem",
           fontFamily: "Times New Roman, Times, serif",
           marginTop: "2rem",
-          borderWidth: "3px",
+          // borderWidth: "0px",
           borderRadius: "20px",
           borderCollapse:"collapse"
         }}
@@ -258,10 +264,10 @@ const BillerHome = () => {
               <td>{tableorder.TableNo}</td>
               <td>{tableorder.SessionId}</td>
               <td>
-                <Button onClick={Payment} value={tableorder.TableNo}>{tableorder.BillPayment}=Rs.{tableorder.Totalamount}</Button>
+                <Button style={{backgroundColor:"#d11d72"}} onClick={Payment} value={tableorder.TableNo}>{tableorder.BillPayment}=Rs.{tableorder.Totalamount}</Button>
               </td>
               <td>
-                <Button onClick={handleShow} value={tableorder.TableNo}>
+                <Button style={{backgroundColor:"#d11d72"}} onClick={handleShow} value={tableorder.TableNo}>
                   ShowDetails
                   </Button>
               </td>
@@ -301,7 +307,9 @@ const BillerHome = () => {
         style={{
           color: "white",
           // backgroundColor:"#20B2AA",
-           background: `linear-gradient(to right, #56ccf2, #2f80ed)`,
+          //  background: `linear-gradient(to right, #56ccf2, #2f80ed)`,
+          // background:"#073980",
+          backgroundImage:`linear-gradient(to right,#0E3386,#0047AB, #002D62, #0a2351)`,
           maxwidth: "80%",
           maxHeight: "100rem",
           fontFamily: "Times New Roman, Times, serif",
@@ -323,10 +331,11 @@ const BillerHome = () => {
             <tr>
               <td>{parcelorder.ParcelNo}</td>
               <td>
-                <Button onClick={Payment1} value={parcelorder.ParcelNo}>{parcelorder.BillPayment}=Rs.{parcelorder.Totalamount}</Button>
+                <Button style={{backgroundColor:"#d11d72"}}
+                 onClick={Payment1} value={parcelorder.ParcelNo}>{parcelorder.BillPayment}=Rs.{parcelorder.Totalamount}</Button>
               </td>
               <td>
-                <Button onClick={handleShow1} value={parcelorder.ParcelNo}>
+                <Button style={{backgroundColor:"#d11d72"}} onClick={handleShow1} value={parcelorder.ParcelNo}>
                   ShowDetails
                   </Button>
               </td>
