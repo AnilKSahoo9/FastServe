@@ -4,7 +4,15 @@
     margin-left: 1.3vw;
     /* margin-left: 2rem; */
     margin-top: 5vh;
+    padding: 0px;
+    
+    /* margin: 0; */
 }
+/* .container{
+  padding-left: 0%;
+  margin-left: 0%;
+} */
+
 @media (max-width: 640px) {
     .inner-container {
       margin-left: 3px;
@@ -15,9 +23,15 @@
     box-shadow: 5px 10px 20px 5px rgba(0, 0, 0, 0.253) !important;
     /* border-style: solid;
   border-color: rgba(27, 26, 26, 0.993); */
-    border-radius: 0.4rem;
+    border-radius: 0.6rem;
+    margin-left: 15px;
+    width: 30%;
+    /* margin-right: 20px; */
 }
 
 .waitercard:hover {
-    box-shadow: 10px 15px 25px 10px rgba(109, 108, 100, 0.336) !important;
+    box-shadow: 10px 15px 25px 10px rgba(6, 15, 22, 0.336) !important;
 }
+/* .btn{
+  background-color: #d11d72;
+} */

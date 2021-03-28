@@ -48,8 +48,9 @@
 }
 .content{
   max-width: 84vw;
-  margin-top: 28.5px;
-  margin-left: 14.5vw;
+  margin-top: 30.5px;
+  margin-left: 18.25vw;
+  margin-right: 0% ;
 }
 @media (max-width: 770px) {
   .content {

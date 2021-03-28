@@ -36,14 +36,15 @@ const AdminWaiter = () => {
                   className="waitercard text-center mb-3 mt-3"
                   style={{
                     maxwidth: '100%',
+                    // height:"15rem",
                     maxheight: "100rem",
                     // color: 'black',
                     fontFamily: "Times New Roman, Times, serif",
-                    margin: '1rem',
+                    margin: '2rem',
                     borderStyle: 'groove',
                     borderWidth: '3px',
-                    borderRadius: '7px',
-                    boxShadow: '20px 20px 50px grey',
+                    borderRadius: '25px',
+                    boxShadow: '0 4px 8px 0 rgba(0,0,0,1.0);',
                     // backgroundImage: `linear-gradient(to bottom,#4dff03,#00d0ff )`
                     backgroundImage: `linear-gradient(to right bottom, #0070BB, #132257, #004170, #00b98a, #009b7d)`
                   }}
@@ -52,16 +53,14 @@ const AdminWaiter = () => {
                     {" "}
                     <Card.Header
                       style={{
-                        // borderStyle: 'groove',
-                        //     borderWidth: '3px',
-                        color:"white",
-                            borderRadius: '7px', padding: "3px", marginLeft: "15px", marginRight: "15px", marginBottom: "15px", marginTop: "15px"
+                        color:"white",borderRadius: '7px',fontSize:"25px",
+                         padding: "3px", marginLeft: "10px", marginRight: "10px", marginBottom: "10px", marginTop: "10px"
                       }}
                     >
-                      ~: {user.name} :~
+                     <b> {user.name} </b>
                     </Card.Header>
                   </h4>
-                  <Card.Body style={{color:"white"}}>
+                  <Card.Body style={{color:"white",fontSize:"15px",padding:"0px",paddingBottom:"10px"}}>
                     <b>Status:</b> {user.status}
                     <br />
                     <b>Total Order Taken:</b> {user.ordertaken}
@@ -70,7 +69,8 @@ const AdminWaiter = () => {
                     {user.tableno}
                     <br />
                     <br />
-                    <Button
+                    <Button style={{backgroundColor:"#d11d72"}}
+                    // #F6C700
                       variant="primary"
                       onClick={handleShow}
                       value={user.name}
@@ -109,31 +109,32 @@ const AdminWaiter = () => {
                   className="waitercard text-center mb-3 mt-3"
                   style={{
                       maxwidth: '100%',
-                      height: "16rem",
-                      color: 'black',
-                      fontFamily: "Times New Roman, Times, serif",
-                      margin: '1rem',
-                      borderStyle: 'groove',
-                      borderWidth: '3px',
-                      borderRadius: '7px',
-                      boxShadow: '20px 20px 50px grey',
-                      backgroundImage: `linear-gradient(to bottom,  #ffbc00,#ff0058)`
+                    height:"12rem",
+                    // maxheight: "16rem",
+
+                    // color: 'black',
+                    fontFamily: "Times New Roman, Times, serif",
+                    margin: '2rem',
+                    borderStyle: 'groove',
+                    borderWidth: '3px',
+                    borderRadius: '25px',
+                    // boxShadow: '20px 20px 50px grey',
+                      backgroundImage: `linear-gradient(to right bottom,#ff4500,#800080,#ff1493)`
                   }}
                 >
+                {/* #ffbc00,#ff1493 */}
                   <h4>
                     {" "}
                     <Card.Header
                       style={{
-                        // backgroundColor: "white", borderStyle: 'groove',
-                        // borderWidth: '3px',
-                        color:"white",
-                        borderRadius: '7px', padding: "3px", marginLeft: "15px", marginRight: "15px", marginBottom: "15px", marginTop: "15px"
+                        color:"white",borderRadius: '7px',fontSize:"25px",
+                         padding: "3px", marginLeft: "10px", marginRight: "10px", marginBottom: "10px", marginTop: "10px"
                       }}
                     >
-                      ~: {user.name} :~
+                     <b> {user.name}</b>
                     </Card.Header>
                   </h4>
-                  <Card.Body style={{color:"white"}}>
+                  <Card.Body style={{color:"white",fontSize:"15px"}}>
                     <b>Status:</b> {user.status}
                   </Card.Body>
                 </Card>
