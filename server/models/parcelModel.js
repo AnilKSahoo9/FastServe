@@ -4,6 +4,7 @@ const parcelSchema = new mongoose.Schema({
     items:{type:Array},
     totalAmount:{type:Number},
     billerName:{type:String},
-    billStatus:{type:String}
+    billStatus:{type:String},
+    orderStatus:{type:String}
 });
 module.exports = mongoose.model("parcels", parcelSchema);

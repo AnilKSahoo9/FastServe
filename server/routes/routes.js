@@ -13,7 +13,8 @@ const showEmployeeController = require("../controllers/showEmployeeController");
 const showItemController = require("../controllers/showItemController");
 const billerHomeController = require("../controllers/billerHomeController");
 const billerPaymentController = require("../controllers/billerPaymentController");
-const thoughtsController = require("../controllers/thoughtController");
+const kitchenController = require("../controllers/kitchenController");
+const kitchenOrderController = require("../controllers/kitchenOrderController");
 const waiters = [
   {
     name: "Ashok kumar",
@@ -79,8 +80,11 @@ const routes = (app) => {
   app.get("/biller-home", billerHomeController);
 
   app.post("/biller-payment", billerPaymentController);
-  app.get("/thoughts",thoughtsController.getThoughts);
-  app.post("/thoughts",thoughtsController.postThoughts);
+
+  app.post("/kitchens",kitchenController);
+  app.get("/getkitchendata",kitchenOrderController.kitchenOrderGetController);
+  app.post("/postkitchendata",kitchenOrderController.kitchenOrderPostController);
+  
 };
 
 module.exports = routes;

@@ -5,6 +5,7 @@ const sessionSchema = new mongoose.Schema({
     totalAmount: { type: Number },
     tableNo: { type: Number },
     waiterName: { type: String },
-    billStatus:{type:String}
+    billStatus:{type:String},
+    orderStatus:{type:String}
   });
   module.exports = mongoose.model("sessions", sessionSchema);
