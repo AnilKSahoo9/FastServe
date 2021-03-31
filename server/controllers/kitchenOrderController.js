@@ -9,34 +9,72 @@ const kitchenOrderGetController = async(req,res) => {
                 res.status(500).json({msg:'data not found'});
             }
             if(doc || doc2){
-                res.status(200).json({tableOrder:doc,parcelOrder:doc2})
+                res.status(200).json([...doc,...doc2]);
             }
         });
     });
 };
 
 const kitchenOrderPostController = (req,res) => {
-    let {_id,orderStatus} = req.body;
-    //console.log(req.body)
-    orderStatus === "accept" ?  kitchenSchema.updateOne({},{ $push:{accept:_id} } ,(err,doc) => {
+
+    let {_id,orderStatus,orderType,time} = req.body;
+
+    orderStatus === "accept" && orderType === "parcel"?  kitchenSchema.updateOne({},{ $push:{accept:_id} } ,(err,doc) => {
         if(err){
-            res.status(500).json({msg:'Error occured'});
+            return res.status(500).json({msg:'Error occured'});
         }
-        if(doc){
-            res.status(200).json({msg:'successfully updated'});
+        else{
+            parcelSchema.updateOne({_id:_id},{orderStatus:orderStatus,required_time:time},(err2,doc2) => {
+                if(doc2){
+                    return res.status(200).json({msg:'successfully updated inside parcel'});
+                }
+            });
         }
     })
     : null;
 
-
-    orderStatus === "reject" ?  kitchenSchema.updateOne({ $push:{reject:_id} },(err,doc) => {
+    orderStatus === "accept" && orderType === "table"?  kitchenSchema.updateOne({},{ $push:{accept:_id} } ,(err,doc) => {
         if(err){
-            res.status(500).json({msg:'Error occured'});
+            return res.status(500).json({msg:'Error occured'});
         }
-        if(doc){
-            res.status(200).json({msg:'successfully updated'});
+        else{
+            sessionSchema.updateOne({_id:_id},{orderStatus:orderStatus,required_time:time},(err2,doc2) => {
+                if(doc2){
+                    return res.status(200).json({msg:'successfully updated inside session'});
+                }
+            });
         }
-    }) : null;
+    })
+    : null;
+
+    orderStatus === "reject" && orderType === "parcel"?  kitchenSchema.updateOne({},{ $push:{reject:_id} } ,(err,doc) => {
+        if(err){
+            return res.status(500).json({msg:'Error occured'});
+        }
+        else{
+            parcelSchema.updateOne({_id:_id},{orderStatus:orderStatus},(err2,doc2) => {
+                if(doc2){
+                    return res.status(200).json({msg:'successfully updated inside parcel'});
+                }
+            });
+        }
+    })
+    : null;
+
+    orderStatus === "reject" && orderType === "table"?  kitchenSchema.updateOne({},{ $push:{reject:_id} } ,(err,doc) => {
+        if(err){
+            return res.status(500).json({msg:'Error occured'});
+        }
+        else{
+            sessionSchema.updateOne({_id:_id},{orderStatus:orderStatus},(err2,doc2) => {
+                if(doc2){
+                    return res.status(200).json({msg:'successfully updated inside session'});
+                }
+            });
+        }
+    })
+    : null;
+   
 };
 
 exports.kitchenOrderGetController = kitchenOrderGetController;

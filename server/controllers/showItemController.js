@@ -21,21 +21,25 @@ const showItemController = async (req, res) => {
   });
 
   res.status(200).json({
-    breakfasts: breakfast.map((z) => ({
+    breakfast: breakfast.map((z) => ({
       name: z.name,
       price: z.price,
+      quantity:z.quantity
     })),
-    desserts: dessert.map((z) => ({
+    dessert: dessert.map((z) => ({
       name: z.name,
       price: z.price,
+      quantity:z.quantity
     })),
     rice: rice.map((z) => ({
       name: z.name,
       price: z.price,
+      quantity:z.quantity
     })),
     dal: dal.map((z) => ({
       name: z.name,
       price: z.price,
+      quantity:z.quantity
     })),
     veg: veg,
     nonveg: nonveg,

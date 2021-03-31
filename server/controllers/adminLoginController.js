@@ -3,29 +3,10 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const { createJWT } = require("../utils/auth");
 require("dotenv").config();
-//const emailRegexp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
 
 const adminLoginController = (req,res) => {
 
     let { email, password } = req.body;
-
-    // let errors = [];
-    // if (!email) {
-    //   errors.push({ email: "required" });
-    // }
-
-    // if (!emailRegexp.test(email)) {
-    //   errors.push({ email: "invalid email" });
-    // }
-
-    // if (!password) {
-    //   errors.push({ password: "required" });
-    // }
-
-    // if (errors.length > 0) {
-    //   return res.status(422).json({ errors: errors });
-    // }
-
     adminSchema
       .findOne({ email: email })
       .then((user) => {
@@ -68,6 +49,39 @@ const adminLoginController = (req,res) => {
 }
 
 module.exports = adminLoginController;
+
+//admin-register
+// const adminRegisterController = (req,res) => {
+//   let {email,password} = req.body;
+//   adminSchema.findOne({email:email}).then(user => {
+//     if(user){
+//       return res.status(422).json({ errors: [{ user: "email already exists" }] });
+//    }
+//    else{
+//     const user = new adminSchema({
+//       email: email,
+//       password: password,
+//       created_at: new Date()
+//     });
+//     bcrypt.genSalt(10,(err,salt) => {
+//       bcrypt.hash(password,salt,(err,hash) => {
+//         if(err){throw err}
+//         user.password = hash;
+//         user.save().then(response => {
+//           res.status(200).json({
+//             success: true,
+//             result: response})
+//         }).catch(err => {
+//           res.status(500).json({errors: [{ error: err }]});
+//         });
+//       });
+//     });
+//    }
+//   }).catch(err => {
+//     res.status(500).json({errors: [{ error: 'Something went wrong' }]});
+//   })
+// };
+// module.exports = adminRegisterController;
 
 // app.route("/signup").post((req,res) => {
 //   let {email,password} = req.body;

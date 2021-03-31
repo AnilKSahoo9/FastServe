@@ -6,7 +6,7 @@ const sessionController = (req,res) => {
     //console.log(req.body);
      let idB = uuidv4();
      //console.log(idb);
-     new sessionSchema({_id:idB,items:items,totalAmount:totalAmount,tableNo:tableNo,waiterName:waiterName,billStatus:billStatus,orderStatus:orderStatus}).save();
+     new sessionSchema({_id:idB,items:items,totalAmount:totalAmount,tableNo:tableNo,waiterName:waiterName,billStatus:billStatus,orderStatus:orderStatus,required_time:null}).save();
     tableSchema.updateOne(
       { tableNo: tableNo },
       { $push:{session:idB} },

@@ -1,9 +1,11 @@
 const ObjectId = require("mongodb").ObjectID;
 
 const homepageController = require("../controllers/homepagedataController");
+//const adminRegisterController = require("../controllers/adminLoginController");
 const adminLoginController = require("../controllers/adminLoginController");
 const addEmployeeController = require("../controllers/addEmployeeController");
 const employeeLoginController = require("../controllers/employeeLoginController");
+const employeeLogoutController = require("../controllers/employeeLogoutController");
 const menuController = require("../controllers/menuController");
 const tableController = require("../controllers/tableController");
 const sessionController = require("../controllers/sessionController");
@@ -53,11 +55,13 @@ const routes = (app) => {
   // app.post('/login',(req,res) =>
   // res.send(msg))
 
+  //app.post("/admin-register",adminRegisterController);
   app.post("/admin-login", adminLoginController);
 
   app.post("/addemployee", addEmployeeController);
 
   app.post("/employee-login", employeeLoginController);
+  app.post("/employee-logout",employeeLogoutController);
 
   app.get("/showemployees", showEmployeeController);
 
