@@ -17,7 +17,7 @@ const billerHomeController = require("../controllers/billerHomeController");
 const billerPaymentController = require("../controllers/billerPaymentController");
 const kitchenController = require("../controllers/kitchenController");
 const kitchenOrderController = require("../controllers/kitchenOrderController");
-const billerController = require("../controllers/billerController");
+//const billerController = require("../controllers/billerController");
 const waiters = [
   {
     name: "Ashok kumar",
@@ -90,8 +90,8 @@ const routes = (app) => {
   app.get("/getkitchendata",kitchenOrderController.kitchenOrderGetController);
   app.post("/postkitchendata",kitchenOrderController.kitchenOrderPostController);
 
-  app.post('/billers',billerController.billerController);
-  app.get('/billerpaymentdetails',billerController.billerPaidController);
+  //app.post('/billers',billerController.billerController);
+  //app.get('/billerpaymentdetails',billerController.billerPaidController);
   
 };
 
