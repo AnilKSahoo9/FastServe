@@ -36,7 +36,9 @@ const AddItem = React.lazy(() => import("./components/AdminPages/AddItem"));
 const AdminTotalOrder = React.lazy(() =>
   import("./components/AdminPages/AdminTotalOrder")
 );
-const Customer = React.lazy(() => import("./components/AdminPages/Customer"));
+const Customer = React.lazy(() => import("./components/Customer/Customer"));
+const CustomerData = React.lazy(() => import("./components/Customer/CustomerData"));
+const reportWebVitals = React.lazy(() => import("./components/Customer/reportWebVitals"));
 
 const KitchenDashbard = React.lazy(() =>
   import("./components/KitchenPages/KitchenDashbard.js")
