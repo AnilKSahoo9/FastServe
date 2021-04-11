@@ -4,6 +4,19 @@ import { Prev } from "react-bootstrap/esm/PageItem";
 
 const Listmenu = () => {
   const [count, setCount] = useState(0);
+    const[num,setNum]=useState(0);
+    const incNum=()=>{
+      setNum(num +1)
+    };
+    const decNum=()=>{
+      if (num>0){
+        setNum(num-1)
+      }else{
+        alert('Sorry,Zero LIMIT Reached')
+        setNum(0)
+      }
+    }
+
 
   const list = {
     breakfast: [
@@ -41,7 +54,9 @@ const Listmenu = () => {
         </tbody>
       ))}
       <tr>
-        <button></button>
+      <th colSpan="3">
+        <button style={{marginLeft:"800px" , color:"blue"}}>Add more items</button>
+      </th>
       </tr>
     </Table>
   );

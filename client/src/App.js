@@ -4,6 +4,7 @@ import {
   Route,
   Redirect,
   Switch,
+  BrowserRouter,
 } from "react-router-dom";
 import ClipLoader from "react-spinners/ClipLoader";
 
@@ -51,7 +52,18 @@ const Listmenu = React.lazy(() =>
 );
 const App = () => {
   return (
+    <div>
+      <div className="gap" style={{width:"100% !important",height:"100% !important"}}>
+      <BrowserRouter>
+      <Switch>
+      
+      <Route path="/" exact component={Login} />
+      
+      </Switch>
+      </BrowserRouter>
+      </div>
     <div className="App">
+    
       <Router>
         <NavBar />
         <SideBar />
@@ -64,7 +76,7 @@ const App = () => {
             }
           >
             <Switch>
-              <Route path="/" exact component={Login} />
+              {/* <Route path="/" exact component={Login} /> */}
               <Route path="/home" component={AdminHome} exact />
               <Route path="/addemployee" component={AddEmployee} exact />
               <Route path="/showemployee" component={ShowEmployee} exact />
@@ -89,6 +101,7 @@ const App = () => {
           </Suspense>
           </div>
           </Router>
+          </div>
           </div>
   );
 };
