@@ -80,20 +80,18 @@ const AdminHome = () => {
                     style={{
                         maxwidth: '100%',
                         maxHeight: "100rem",
-                        color: 'black',
                         fontFamily: "Times New Roman, Times, serif",
-                        margin: '1rem',
-                        borderStyle: 'groove',
-                        borderWidth: '3px',
-                        borderRadius: '7px',
-                        boxShadow: '20px 20px 50px grey',
-                        backgroundImage: `linear-gradient(to right bottom, #051437, #004782, #0081a7, #00b98a, #12eb25)`
+                    margin: '2rem',
+                    borderStyle: 'groove',
+                    borderWidth: '3px',
+                    borderRadius: '25px',
+                    boxShadow: '0 4px 8px 0 rgba(0,0,0,1.0);',
+                    backgroundImage: `linear-gradient(to right bottom, #0070BB, #132257, #004170, #00b98a, #009b7d)`
                     }}>
                     <h5>
                         <CardHeader style={{
-                            backgroundColor: "white", borderStyle: 'groove',
-                            borderWidth: '3px',
-                            borderRadius: '7px', padding: "3px", margin: "0px"
+                            color:"white",borderRadius: '7px',fontSize:"25px",
+                            padding: "3px", marginLeft: "10px", marginRight: "10px", marginBottom: "10px", marginTop: "10px"
                         }}>
                             <CardTitle>Tables</CardTitle>
                         </CardHeader>
@@ -102,26 +100,24 @@ const AdminHome = () => {
 
                         <hr></hr>
                         <CardText >{data.Tables}</CardText>
-                        <p>No. of Tables Active</p>
+                        <p style={{color: "white", fontSize: "20px"}}>No. of Tables Active</p>
                     </CardBody>
                 </Card>
                 <Card body outline color="info" style={{
                     maxwidth: '100%',
                     maxHeight: "100rem",
-                    margin: '1rem',
+                    fontFamily: "Times New Roman, Times, serif",
+                    margin: '2rem',
                     borderStyle: 'groove',
                     borderWidth: '3px',
-                    borderRadius: '7px',
-                    color: 'black',
-                    fontFamily: "Times New Roman, Times, serif",
-                    boxShadow: '20px 20px 50px grey',
-                    backgroundImage: `linear-gradient(to right bottom, #051437, #004782, #0081a7, #00b98a, #12eb25)`
+                    borderRadius: '25px',
+                    boxShadow: '0 4px 8px 0 rgba(0,0,0,1.0);',
+                    backgroundImage: `linear-gradient(to right bottom, #0070BB, #132257, #004170, #00b98a, #009b7d)`
                 }}>
                     <h5>
                         <CardHeader style={{
-                            backgroundColor: "white", borderStyle: 'groove',
-                            borderWidth: '3px',
-                            borderRadius: '7px', padding: "3px", margin: "0px"
+                            color:"white",borderRadius: '7px',fontSize:"25px",
+                            padding: "3px", marginLeft: "10px", marginRight: "10px", marginBottom: "10px", marginTop: "10px"
                         }}>
                             <CardTitle>Parcels</CardTitle>
                         </CardHeader>
@@ -129,26 +125,24 @@ const AdminHome = () => {
                     <CardBody>
                         <hr></hr>
                         <CardTitle>{data.Parcels}</CardTitle>
-                        <p>No. of Parcel Placed</p>
+                        <p style={{color: "white", fontSize: "20px"}}>No. of Parcel Placed</p>
                     </CardBody>
                 </Card>
                 <Card body outline color="info" style={{
                     maxwidth: '100%',
                     maxHeight: "100rem",
-                    margin: '1rem',
+                    fontFamily: "Times New Roman, Times, serif",
+                    margin: '2rem',
                     borderStyle: 'groove',
                     borderWidth: '3px',
-                    borderRadius: '7px',
-                    color: 'black',
-                    fontFamily: "Times New Roman, Times, serif",
-                    boxShadow: '20px 20px 50px grey',
-                    backgroundImage: `linear-gradient(to right bottom, #051437, #004782, #0081a7, #00b98a, #12eb25)`
+                    borderRadius: '25px',
+                    boxShadow: '0 4px 8px 0 rgba(0,0,0,1.0);',
+                    backgroundImage: `linear-gradient(to right bottom, #0070BB, #132257, #004170, #00b98a, #009b7d)`
                 }}>
                     <h5>
                         <CardHeader style={{
-                            backgroundColor: "white", borderStyle: 'groove',
-                            borderWidth: '3px',
-                            borderRadius: '7px', padding: "3px", margin: "0px"
+                            color:"white",borderRadius: '7px',fontSize:"25px",
+                            padding: "3px", marginLeft: "10px", marginRight: "10px", marginBottom: "10px", marginTop: "10px"
                         }}>
                             <CardTitle>Waiter</CardTitle>
                         </CardHeader>
@@ -157,7 +151,7 @@ const AdminHome = () => {
 
                         <hr></hr>
                         <CardTitle>{data.Waiters}</CardTitle>
-                        <p>No. of Waiters Working</p>
+                        <p style={{color: "white", fontSize: "20px"}}>No. of Waiters Working</p>
                     </CardBody>
                 </Card>
             </CardGroup>
@@ -165,20 +159,18 @@ const AdminHome = () => {
                 <Card body outline color="info" style={{
                     maxwidth: '100%',
                     maxHeight: "100rem",
-                    color: 'black',
                     fontFamily: "Times New Roman, Times, serif",
-                    margin: '1rem',
+                    margin: '2rem',
                     borderStyle: 'groove',
                     borderWidth: '3px',
-                    borderRadius: '7px',
-                    boxShadow: '20px 20px 50px grey',
-                    backgroundImage: `linear-gradient(to right bottom, #051437, #004782, #0081a7, #00b98a, #12eb25)`
+                    borderRadius: '25px',
+                    boxShadow: '0 4px 8px 0 rgba(0,0,0,1.0);',
+                    backgroundImage: `linear-gradient(to right bottom, #0070BB, #132257, #004170, #00b98a, #009b7d)`
                 }}>
                     <h5>
                         <CardHeader style={{
-                            backgroundColor: "white", borderStyle: 'groove',
-                            borderWidth: '3px',
-                            borderRadius: '7px', padding: "3px", margin: "0px"
+                            color:"white",borderRadius: '7px',fontSize:"25px",
+                            padding: "3px", marginLeft: "10px", marginRight: "10px", marginBottom: "10px", marginTop: "10px"
                         }}>
                             <CardTitle>Kichens</CardTitle>
                         </CardHeader>
@@ -187,26 +179,24 @@ const AdminHome = () => {
 
                         <hr></hr>
                         <CardTitle>{data.Kitchens}</CardTitle>
-                        <p>No. of Orders Accepted by Kitchen</p>
+                        <p style={{color: "white", fontSize: "18px"}}>No. of Orders Accepted by Kitchen</p>
                     </CardBody>
                 </Card>
                 <Card body outline color="info" style={{
                     maxwidth: '100%',
                     maxHeight: "100rem",
-                    color: 'black',
                     fontFamily: "Times New Roman, Times, serif",
-                    margin: '1rem',
+                    margin: '2rem',
                     borderStyle: 'groove',
                     borderWidth: '3px',
-                    borderRadius: '7px',
-                    boxShadow: '20px 20px 50px grey',
-                    backgroundImage: `linear-gradient(to right bottom, #051437, #004782, #0081a7, #00b98a, #12eb25)`
+                    borderRadius: '25px',
+                    boxShadow: '0 4px 8px 0 rgba(0,0,0,1.0);',
+                    backgroundImage: `linear-gradient(to right bottom, #0070BB, #132257, #004170, #00b98a, #009b7d)`
                 }}>
                     <h5>
                         <CardHeader style={{
-                            backgroundColor: "white", borderStyle: 'groove',
-                            borderWidth: '3px',
-                            borderRadius: '7px', padding: "3px", margin: "0px"
+                           color:"white",borderRadius: '7px',fontSize:"25px",
+                           padding: "3px", marginLeft: "10px", marginRight: "10px", marginBottom: "10px", marginTop: "10px"
                         }}>
                             <CardTitle>Billers</CardTitle>
                         </CardHeader>
@@ -215,26 +205,24 @@ const AdminHome = () => {
 
                         <hr></hr>
                         <CardTitle>{data.Billers}</CardTitle>
-                        <p>Total amount collected by Biller</p>
+                        <p style={{color: "white", fontSize: "20px"}}>Total amount collected by Biller</p>
                     </CardBody>
                 </Card>
                 <Card body outline color="info" style={{
                     maxwidth: '100%',
                     maxHeight: "100rem",
-                    color: 'black',
                     fontFamily: "Times New Roman, Times, serif",
-                    margin: '1rem',
+                    margin: '2rem',
                     borderStyle: 'groove',
                     borderWidth: '3px',
-                    borderRadius: '7px',
-                    boxShadow: '20px 20px 50px grey',
-                    backgroundImage: `linear-gradient(to right bottom, #051437, #004782, #0081a7, #00b98a, #12eb25)`
+                    borderRadius: '25px',
+                    boxShadow: '0 4px 8px 0 rgba(0,0,0,1.0);',
+                    backgroundImage: `linear-gradient(to right bottom, #0070BB, #132257, #004170, #00b98a, #009b7d)`
                 }}>
                     <h5>
                         <CardHeader style={{
-                            backgroundColor: "white", borderStyle: 'groove',
-                            borderWidth: '3px',
-                            borderRadius: '7px', padding: "3px", margin: "0px"
+                            color:"white",borderRadius: '7px',fontSize:"25px",
+                            padding: "3px", marginLeft: "10px", marginRight: "10px", marginBottom: "10px", marginTop: "10px"
                         }}>
                             <CardTitle>Customers</CardTitle>
                         </CardHeader>
@@ -243,7 +231,7 @@ const AdminHome = () => {
 
                         <hr></hr>
                         <CardTitle>{data.Customers}</CardTitle>
-                        <p>No. of Customers Visited</p>
+                        <p style={{color: "white", fontSize: "20px"}}>No. of Customers Visited</p>
                     </CardBody>
                 </Card>
 
