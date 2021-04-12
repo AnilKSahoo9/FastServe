@@ -34,7 +34,7 @@ const BillerHome = () => {
     datasets:[
       {
         // label:"Chart of Table Order",
-        data:[70,30],
+        data:[60,40],
         backgroundColor:[
           "rgba(255,99,132,1)",
           "rgba(255,205,86,1)"
@@ -149,7 +149,7 @@ const BillerHome = () => {
                     margin: "0px",
                   }}
                 >
-                  <CardTitle>Total No. of Order Placed</CardTitle>
+                  <CardTitle>Total No. of Table Order Placed</CardTitle>
                   {TotalOrder.map((totalorder) => (
                     <>
                       <CardText><b>{totalorder.Data}</b></CardText>
@@ -196,7 +196,7 @@ const BillerHome = () => {
                     margin: "0px",
                   }}
                 >
-                  <CardTitle>Total No. of Parcel Placed</CardTitle>
+                  <CardTitle>Total No. of Parcel Order Placed</CardTitle>
                   {TotalParcel.map((totalparcel) => (
                     <>
                       <CardText><b>{totalparcel.Data}</b></CardText>
@@ -213,14 +213,14 @@ const BillerHome = () => {
        <h5>Table order chart</h5>
         </div>       
          </Card>
-         <Card className="chartcard">
+         {/* <Card className="chartcard">
          <div className="chart">
         <Doughnut data={data}
        options={{ responsive: true }} />
        <h5>Parcel order chart</h5>
         </div>       
          </Card>
-           
+            */}
           
         </CardGroup>
         
@@ -251,6 +251,7 @@ const BillerHome = () => {
       >
         <thead>
           <tr>
+            <th>SL No.</th>
             <th>Table No</th>
             <th>SessionId</th>
             <th>Bill Payment</th>
@@ -261,6 +262,7 @@ const BillerHome = () => {
 
           <tbody>
             <tr>
+              <td>{index + 1}</td>
               <td>{tableorder.TableNo}</td>
               <td>{tableorder.SessionId}</td>
               <td>
@@ -321,14 +323,16 @@ const BillerHome = () => {
       >
         <thead>
           <tr>
+          <th>SL No.</th>
             <th>Parcel No</th>
             <th>Bill Payment</th>
             <th>Show Details</th>
           </tr>
         </thead>
-        {ParcelOrder.map((parcelorder) => (
+        {ParcelOrder.map((parcelorder,index) => (
           <tbody>
             <tr>
+            <td>{index + 1}</td>
               <td>{parcelorder.ParcelNo}</td>
               <td>
                 <Button style={{backgroundColor:"#d11d72"}}

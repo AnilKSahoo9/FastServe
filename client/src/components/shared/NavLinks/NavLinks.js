@@ -53,8 +53,8 @@ const NavLinks = (props) => {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/billerKichen" className="billerKichen">
-            Biller Kichen
+          <NavLink to="/billerKitchen" className="billerKitchen">
+            Biller Kitchen
           </NavLink>
         </li>
         <li>

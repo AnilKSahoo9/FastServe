@@ -90,6 +90,7 @@ const routes = (app) => {
   app.get("/getkitchendata",kitchenOrderController.kitchenOrderGetController);
   app.post("/postkitchendata",kitchenOrderController.kitchenOrderPostController);
 
+  app.get("/homepagedata",homepageController);
   //app.post('/billers',billerController.billerController);
   //app.get('/billerpaymentdetails',billerController.billerPaidController);
   

@@ -40,33 +40,25 @@ const billerPaymentController =  (req, res) => {
         { _id: orderId },
         { billStatus: billStatus },
         (err, doc) => {
-          if (err) {
-            res.status(500).json({ msg: "error occured" });
-          }
+          // if (err) {
+          //   res.status(500).json({ msg: "error occured" });
+          // }
           if (doc) {
-            //console.log(doc);
-            res.status(200).json({ msg: "successful" });
+            billerSchema.findOne({name:billerName},(err2,doc2) => {
+              if(doc2){
+                billerSchema.updateOne({name:billerName},{ $push:{paid:orderId}},(err3,doc3) => {
+                     res.status(200).json({ msg: "successful" });
+                });
+              }
+              else{
+                new billerSchema({_id:idM,name:billerName,paid:orderId}).save();
+                 res.status(200).json({msg:"ok"});
+              }
+            });
+            //res.status(200).json({ msg: "successful" });
           }
         }
       )
     : null;
-
-  //  billerSchema
-  //   .findOne({},{ name: billerName },(err2,doc2) => {
-  //     if(doc2){
-  //       billerSchema.updateOne(
-  //         { name: billerName },
-  //         { $push: { paid: orderId } }
-  //       );
-  //     }
-  //     else{
-  //       new billerSchema({
-  //         _id:idM,
-  //         name:billerName,
-  //         paid: orderId,
-  //         created_at: new Date(),
-  //       }).save();
-  //     }
-  //   });
 };
 module.exports = billerPaymentController;

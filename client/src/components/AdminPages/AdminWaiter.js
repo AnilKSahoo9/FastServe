@@ -53,14 +53,14 @@ const AdminWaiter = () => {
                     {" "}
                     <Card.Header
                       style={{
-                        color:"white",borderRadius: '7px',fontSize:"25px",
-                         padding: "3px", marginLeft: "10px", marginRight: "10px", marginBottom: "10px", marginTop: "10px"
+                        color: "white", borderRadius: '7px', fontSize: "25px",
+                        padding: "3px", marginLeft: "10px", marginRight: "10px", marginBottom: "10px", marginTop: "10px"
                       }}
                     >
-                     <b> {user.name} </b>
+                      <b> {user.name} </b>
                     </Card.Header>
                   </h4>
-                  <Card.Body style={{color:"white",fontSize:"15px",padding:"0px",paddingBottom:"10px"}}>
+                  <Card.Body style={{ color: "white", fontSize: "15px", padding: "0px", paddingBottom: "10px" }}>
                     <b>Status:</b> {user.status}
                     <br />
                     <b>Total Order Taken:</b> {user.ordertaken}
@@ -69,8 +69,8 @@ const AdminWaiter = () => {
                     {user.tableno}
                     <br />
                     <br />
-                    <Button style={{backgroundColor:"#d11d72"}}
-                    // #F6C700
+                    <Button style={{ backgroundColor: "#d11d72" }}
+                      // #F6C700
                       variant="primary"
                       onClick={handleShow}
                       value={user.name}
@@ -89,8 +89,8 @@ const AdminWaiter = () => {
                         {waiter.map((users) =>
                           users.name === val
                             ? users.orderdetails.map((number) => (
-                                <li>{number}</li>
-                              ))
+                              <li>{number}</li>
+                            ))
                             : ""
                         )}
                       </Modal.Body>
@@ -108,8 +108,8 @@ const AdminWaiter = () => {
                 <Card
                   className="waitercard text-center mb-3 mt-3"
                   style={{
-                      maxwidth: '100%',
-                    height:"12rem",
+                    maxwidth: '100%',
+                    height: "12rem",
                     // maxheight: "16rem",
 
                     // color: 'black',
@@ -119,22 +119,22 @@ const AdminWaiter = () => {
                     borderWidth: '3px',
                     borderRadius: '25px',
                     // boxShadow: '20px 20px 50px grey',
-                      backgroundImage: `linear-gradient(to right bottom,#ff4500,#800080,#ff1493)`
+                    backgroundImage: `linear-gradient(to right bottom,#ff4500,#800080,#ff1493)`
                   }}
                 >
-                {/* #ffbc00,#ff1493 */}
+                  {/* #ffbc00,#ff1493 */}
                   <h4>
                     {" "}
                     <Card.Header
                       style={{
-                        color:"white",borderRadius: '7px',fontSize:"25px",
-                         padding: "3px", marginLeft: "10px", marginRight: "10px", marginBottom: "10px", marginTop: "10px"
+                        color: "white", borderRadius: '7px', fontSize: "25px",
+                        padding: "3px", marginLeft: "10px", marginRight: "10px", marginBottom: "10px", marginTop: "10px"
                       }}
                     >
-                     <b> {user.name}</b>
+                      <b> {user.name}</b>
                     </Card.Header>
                   </h4>
-                  <Card.Body style={{color:"white",fontSize:"15px"}}>
+                  <Card.Body style={{ color: "white", fontSize: "15px" }}>
                     <b>Status:</b> {user.status}
                   </Card.Body>
                 </Card>
