@@ -23,7 +23,7 @@ function Carousel() {
         </div>
         <div className="center">
           <h3>{images[currImg].title}</h3>
-          <p>{images[currImg].subtitle}</p>
+          <text>{images[currImg].subtitle}</text>
         </div>
         <div
           className="right"
@@ -49,7 +49,7 @@ function Carousel() {
         </div>
         <div className="center1">
           <h3>{images[currImg].title}</h3>
-          <p>{images[currImg].subtitle}</p>
+          <text>{images[currImg].subtitle}</text>
         </div>
         <div
           className="right1"
