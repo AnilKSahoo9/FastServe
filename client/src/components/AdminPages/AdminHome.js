@@ -95,13 +95,13 @@ const AdminHome = () => {
                             borderWidth: '3px',
                             borderRadius: '7px', padding: "3px", margin: "0px"
                         }}>
-                            <CardTitle>Tables</CardTitle>
+                            <CardTitle><b>Active Tables</b></CardTitle>
                         </CardHeader>
                     </h5>
                     <CardBody >
 
                         <hr></hr>
-                        <CardText >{data.Tables}</CardText>
+                        <CardText >{data.ActiveTables}</CardText>
                         <p>No. of Tables Active</p>
                     </CardBody>
                 </Card>
@@ -123,15 +123,16 @@ const AdminHome = () => {
                             borderWidth: '3px',
                             borderRadius: '7px', padding: "3px", margin: "0px"
                         }}>
-                            <CardTitle>Parcels</CardTitle>
+                            <CardTitle><b>Tables</b></CardTitle>
                         </CardHeader>
                     </h5>
                     <CardBody>
                         <hr></hr>
-                        <CardTitle>{data.Parcels}</CardTitle>
-                        <p>No. of Parcel Placed</p>
+                        <CardTitle>{data.Tables}</CardTitle>
+                        <p>No. of Table Order Placed</p>
                     </CardBody>
                 </Card>
+
                 <Card body outline color="info" style={{
                     maxwidth: '100%',
                     maxHeight: "100rem",
@@ -150,7 +151,41 @@ const AdminHome = () => {
                             borderWidth: '3px',
                             borderRadius: '7px', padding: "3px", margin: "0px"
                         }}>
-                            <CardTitle>Waiter</CardTitle>
+                            <CardTitle><b>Parcels</b></CardTitle>
+                        </CardHeader>
+                    </h5>
+                    <CardBody>
+                        <hr></hr>
+                        <CardTitle>{data.Parcels}</CardTitle>
+                        <p>No. of Parcel Order Placed</p>
+                    </CardBody>
+                </Card>
+
+
+
+
+                
+            </CardGroup>
+            <CardGroup >
+            <Card body outline color="info" style={{
+                    maxwidth: '100%',
+                    maxHeight: "100rem",
+                    margin: '1rem',
+                    borderStyle: 'groove',
+                    borderWidth: '3px',
+                    borderRadius: '7px',
+                    color: 'black',
+                    fontFamily: "Times New Roman, Times, serif",
+                    boxShadow: '20px 20px 50px grey',
+                    backgroundImage: `linear-gradient(to right bottom, #051437, #004782, #0081a7, #00b98a, #12eb25)`
+                }}>
+                    <h5>
+                        <CardHeader style={{
+                            backgroundColor: "white", borderStyle: 'groove',
+                            borderWidth: '3px',
+                            borderRadius: '7px', padding: "3px", margin: "0px"
+                        }}>
+                            <CardTitle><b>Waiter</b></CardTitle>
                         </CardHeader>
                     </h5>
                     <CardBody>
@@ -160,8 +195,7 @@ const AdminHome = () => {
                         <p>No. of Waiters Working</p>
                     </CardBody>
                 </Card>
-            </CardGroup>
-            <CardGroup >
+
                 <Card body outline color="info" style={{
                     maxwidth: '100%',
                     maxHeight: "100rem",
@@ -180,7 +214,7 @@ const AdminHome = () => {
                             borderWidth: '3px',
                             borderRadius: '7px', padding: "3px", margin: "0px"
                         }}>
-                            <CardTitle>Kichens</CardTitle>
+                            <CardTitle><b>Kitchens</b></CardTitle>
                         </CardHeader>
                     </h5>
                     <CardBody>
@@ -208,7 +242,7 @@ const AdminHome = () => {
                             borderWidth: '3px',
                             borderRadius: '7px', padding: "3px", margin: "0px"
                         }}>
-                            <CardTitle>Billers</CardTitle>
+                            <CardTitle><b>Billers</b></CardTitle>
                         </CardHeader>
                     </h5>
                     <CardBody>
@@ -218,7 +252,7 @@ const AdminHome = () => {
                         <p>Total amount collected by Biller</p>
                     </CardBody>
                 </Card>
-                <Card body outline color="info" style={{
+                {/* <Card body outline color="info" style={{
                     maxwidth: '100%',
                     maxHeight: "100rem",
                     color: 'black',
@@ -245,7 +279,7 @@ const AdminHome = () => {
                         <CardTitle>{data.Customers}</CardTitle>
                         <p>No. of Customers Visited</p>
                     </CardBody>
-                </Card>
+                </Card> */}
 
             </CardGroup>
         </div>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Col, Row, Table, Card, CardBody, CardHeader, CardText, CardTitle } from 'reactstrap'
 // import OrderData from "../../StaticData/BillerOrderData"
-const BillerKichen = () => {
+const BillerKitchen = () => {
     var OrderData = [
         {
             Order: 1,
@@ -71,7 +71,7 @@ const BillerKichen = () => {
                     </Row>
                 </Col>
                 <Col md={5} xs={12} style={{
-                    backgroundImage: `linear-gradient(to right bottom, #051437, #004782, #0081a7, #00b98a, #12eb25)`, color: "white", margin: '1rem',
+                    backgroundImage: `linear-gradient(to right bottom,  #004170, #00b98a, #009b7d,#0070BB, #132257)`, color: "white", margin: '1rem',
                     borderStyle: 'groove',
                     borderWidth: '3px',
                     borderRadius: '7px',
@@ -110,4 +110,4 @@ const BillerKichen = () => {
     )
 }
 
-export default BillerKichen
+export default BillerKitchen

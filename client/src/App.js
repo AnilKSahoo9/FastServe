@@ -13,7 +13,7 @@ import NavBar from "./components/shared/NavBar/NavBar";
 import SideBar from "./components/shared/SideBar/SideBar";
 import { BillerReport } from "./components/BillerPages/BillerReport";
 import { BillerWaiter } from "./components/BillerPages/BillerWaiter";
-import BillerKichen from "./components/BillerPages/BillerKichen";
+import BillerKitchen from "./components/BillerPages/BillerKitchen";
 import BillerHome from "./components/BillerPages/BillerHome";
 // import Customer from "./components/BillerPages/Customer";
 import Login from "./components/login/Login";
@@ -88,7 +88,7 @@ const App = () => {
               <Route path="/additems" component={AddItem} exact />
               <Route path="/billerHome" component={BillerHome} exact />
               <Route path="/billerWaiter" component={BillerWaiter} exact />
-              <Route path="/billerKichen" component={BillerKichen} exact />
+              <Route path="/billerKitchen" component={BillerKitchen} exact />
               <Route path="/billerReport" component={BillerReport} exact />
               <Route path="/customer" component={Customer} exact />
               <Route path="/kitchenDashboard" component={KitchenDashbard} />
