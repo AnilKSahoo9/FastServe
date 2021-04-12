@@ -178,7 +178,7 @@ if(Joindate == ""){
             </FormGroup>
             <FormGroup row>
               <Label for="Date" sm={2}>
-                *DATE OF JOINING
+                * DATE OF JOINING
               </Label>
               <Col sm={10}>
                 <Input
