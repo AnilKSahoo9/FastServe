@@ -7,6 +7,11 @@ const sessionSchema = new mongoose.Schema({
     waiterName: { type: String },
     billStatus:{type:String},
     orderStatus:{type:String},
-    required_time:{type:String}
-  });
+    required_time:{type:String},
+    created_at:{type:String}
+  },
+  {
+    timestamps:true
+  }
+  );
   module.exports = mongoose.model("sessions", sessionSchema);
