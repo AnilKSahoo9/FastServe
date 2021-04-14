@@ -38,7 +38,7 @@ const AdminTotalOrder = React.lazy(() =>
 );
 const Customer = React.lazy(() => import("./components/Customer/Customer"));
 const CustomerData = React.lazy(() => import("./components/Customer/CustomerData"));
-const reportWebVitals = React.lazy(() => import("./components/Customer/reportWebVitals"));
+
 
 const KitchenDashbard = React.lazy(() =>
   import("./components/KitchenPages/KitchenDashbard.js")

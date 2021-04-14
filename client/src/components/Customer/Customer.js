@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Customer.css";
-import { images } from "../Customer/CustomerData";
+import { images, image } from "../Customer/CustomerData";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 
@@ -34,10 +34,11 @@ function Carousel() {
           <ArrowForwardIosIcon style={{ fontSize: 30 }} />
         </div>
       </div>
+      
       <div className="carousel1">
       <div
         className="carouselInner1"
-        style={{ backgroundImage: `url(${images[currImg].img})` }}
+        style={{ backgroundImage: `url(${image[currImg].img})` }}
       >
         <div
           className="left1"
@@ -48,13 +49,13 @@ function Carousel() {
           <ArrowBackIosIcon style={{ fontSize: 30 }} />
         </div>
         <div className="center1">
-          <h3>{images[currImg].title}</h3>
-          <text>{images[currImg].subtitle}</text>
+          <h3>{image[currImg].title}</h3>
+          <text>{image[currImg].subtitle}</text>
         </div>
         <div
           className="right1"
           onClick={() => {
-            currImg < images.length - 1 && setCurrImg(currImg + 1);
+            currImg < image.length - 1 && setCurrImg(currImg + 1);
           }}
         >
           <ArrowForwardIosIcon style={{ fontSize: 30 }} />

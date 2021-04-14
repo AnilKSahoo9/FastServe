@@ -151,7 +151,7 @@ const AdminHome = () => {
                     <CardBody>
                         <hr></hr>
                         <CardTitle>{data.Parcels}</CardTitle>
-                        <p>No. of Parcel Order Placed</p>
+                        <p style={{color: "white", fontSize: "20px"}}>No. of Parcel Order Placed</p>
                     </CardBody>
                 </Card>
 

@@ -22,9 +22,12 @@
     /* -webkit-filter: blur(5px); */
 }
 
-.carouselInner .left {
-    cursor: pointer;   
+.carouselInner .left:hover {
+    
+    cursor: pointer;  
+    transition: all 0.5s ease-in; 
 }
+
 .carouselInner .center {
     flex: 80%;
     height: 80%;
@@ -33,6 +36,7 @@
     font-family: Arial, Helvetica, sans-serif; 
     text-align: justify;
     text-align-last: center;
+    
 }
 h3 {
     font-size: 5rem;
@@ -64,9 +68,9 @@ h3, text {
     border-radius: 9px;
 }
 
-.carouselInner .right {
+.carouselInner .right:hover {
     cursor: pointer;
-    
+    transition: all 0.5s ease-in;
 }
 .carousel1 {
     width: 100%;

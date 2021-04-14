@@ -36,15 +36,13 @@ const AdminTable = () => {
                     style={{
                       width: "100%",
                       height: "16rem",
-                      color: "black",
                       fontFamily: "Times New Roman, Times, serif",
-                      margin: "1rem",
-                      borderStyle: "groove",
-                      borderWidth: "3px",
-                      borderRadius: "7px",
-                      boxShadow: "20px 20px 50px grey",
-                      // backgroundImage: `linear-gradient(to bottom,#4dff03,#00d0ff )`
-                      backgroundImage: `linear-gradient(to right bottom, #051437, #004782, #0081a7, #00b98a, #12eb25)`,
+                      margin: '2rem',
+                      borderStyle: 'groove',
+                      borderWidth: '3px',
+                      borderRadius: '25px',
+                      boxShadow: '0 4px 8px 0 rgba(0,0,0,1.0);',
+                      backgroundImage: `linear-gradient(to right bottom, #0070BB, #132257, #004170, #00b98a, #009b7d)`
                     }}
                   >
                     {/* <Card.Img
@@ -57,20 +55,16 @@ const AdminTable = () => {
                       {" "}
                       <Card.Header
                         style={{
-                          backgroundColor: "white",
-                          borderStyle: "groove",
-                          borderWidth: "3px",
-                          borderRadius: "7px",
-                          padding: "3px",
-                          margin: "1rem",
+                          color: "white", borderRadius: '7px', fontSize: "25px",
+                        padding: "3px", marginLeft: "10px", marginRight: "10px", marginBottom: "10px", marginTop: "10px"
                         }}
                       >
                         Table no {user.name}
                       </Card.Header>
                     </h5>
                     <Card.Body>
-                      <Card.Text> Status: {user.status}</Card.Text>
-                      <Card.Text>Sessions no: {user.sessionsno}</Card.Text>
+                      <Card.Text style={{color: "white", fontSize: "15px"}}> Status: {user.status}</Card.Text>
+                      <Card.Text style={{color: "white", fontSize: "15px"}}>Sessions no: {user.sessionsno}</Card.Text>
                       {/* <Card.Text>Table no:{user.tableno}</Card.Text> */}
                       <Button
                         variant="primary"
@@ -108,14 +102,13 @@ const AdminTable = () => {
                     style={{
                       width: "100%",
                       height: "16rem",
-                      color: "black",
                       fontFamily: "Times New Roman, Times, serif",
-                      margin: "1rem",
-                      borderStyle: "groove",
-                      borderWidth: "3px",
-                      borderRadius: "7px",
-                      boxShadow: "20px 20px 50px grey",
-                      backgroundImage: `linear-gradient(to bottom,  #ffbc00,#ff0058)`,
+                      margin: '2rem',
+                      borderStyle: 'groove',
+                      borderWidth: '3px',
+                      borderRadius: '25px',
+                      boxShadow: '0 4px 8px 0 rgba(0,0,0,1.0);',
+                      backgroundImage: `linear-gradient(to right bottom, #0070BB, #132257, #004170, #00b98a, #009b7d)`
                     }}
                   >
                     {/* <Card.Img
@@ -128,12 +121,8 @@ const AdminTable = () => {
                       {" "}
                       <Card.Header
                         style={{
-                          backgroundColor: "white",
-                          borderStyle: "groove",
-                          borderWidth: "3px",
-                          borderRadius: "7px",
-                          padding: "3px",
-                          margin: "1rem",
+                          color: "white", borderRadius: '7px', fontSize: "25px",
+                        padding: "3px", marginLeft: "10px", marginRight: "10px", marginBottom: "10px", marginTop: "10px"
                         }}
                       >
                         {" "}
@@ -141,7 +130,7 @@ const AdminTable = () => {
                       </Card.Header>
                     </h5>
                     <Card.Body>
-                      <Card.Text> Status: {user.status}</Card.Text>
+                      <Card.Text style={{color: "white", fontSize: "15px"}}> Status: {user.status}</Card.Text>
                     </Card.Body>
                   </Card>
                 </CardDeck>
