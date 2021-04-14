@@ -78,13 +78,14 @@ const AdminHome = () => {
       <CardGroup >
                 <Card body outline color="info"
                     style={{
-                        maxwidth: '100%',
-                        maxHeight: "100rem",
-                        fontFamily: "Times New Roman, Times, serif",
+                    maxwidth: '100%',
+                    maxHeight: "100rem",
+                    fontFamily: "Times New Roman, Times, serif",
                     margin: '2rem',
                     borderStyle: 'groove',
                     borderWidth: '3px',
-                    borderRadius: '25px',
+                    // borderRadius: '25px',
+                    sharpcorner: '20px',
                     boxShadow: '0 4px 8px 0 rgba(0,0,0,1.0);',
                     backgroundImage: `linear-gradient(to right bottom, #0070BB, #132257, #004170, #00b98a, #009b7d)`
                     }}>
@@ -110,7 +111,8 @@ const AdminHome = () => {
                     margin: '2rem',
                     borderStyle: 'groove',
                     borderWidth: '3px',
-                    borderRadius: '25px',
+                    // borderRadius: '25px',
+                    sharpcorner: '20px',
                     boxShadow: '0 4px 8px 0 rgba(0,0,0,1.0);',
                     backgroundImage: `linear-gradient(to right bottom, #0070BB, #132257, #004170, #00b98a, #009b7d)`
                 }}>
@@ -136,7 +138,8 @@ const AdminHome = () => {
                     margin: '2rem',
                     borderStyle: 'groove',
                     borderWidth: '3px',
-                    borderRadius: '25px',
+                    // borderRadius: '25px',
+                    sharpcorner: '20px',
                     boxShadow: '0 4px 8px 0 rgba(0,0,0,1.0);',
                     backgroundImage: `linear-gradient(to right bottom, #0070BB, #132257, #004170, #00b98a, #009b7d)`
                 }}>
@@ -168,7 +171,8 @@ const AdminHome = () => {
                     margin: '2rem',
                     borderStyle: 'groove',
                     borderWidth: '3px',
-                    borderRadius: '25px',
+                    // borderRadius: '25px',
+                    sharpcorner: '20px',
                     boxShadow: '0 4px 8px 0 rgba(0,0,0,1.0);',
                     backgroundImage: `linear-gradient(to right bottom, #0070BB, #132257, #004170, #00b98a, #009b7d)`
                 }}>
@@ -195,7 +199,8 @@ const AdminHome = () => {
                     margin: '2rem',
                     borderStyle: 'groove',
                     borderWidth: '3px',
-                    borderRadius: '25px',
+                    // borderRadius: '25px',
+                    sharpcorner: '20px',
                     boxShadow: '0 4px 8px 0 rgba(0,0,0,1.0);',
                     backgroundImage: `linear-gradient(to right bottom, #0070BB, #132257, #004170, #00b98a, #009b7d)`
                 }}>
@@ -221,7 +226,8 @@ const AdminHome = () => {
                     margin: '2rem',
                     borderStyle: 'groove',
                     borderWidth: '3px',
-                    borderRadius: '25px',
+                    // borderRadius: '25px',
+                    sharpcorner: '20px',
                     boxShadow: '0 4px 8px 0 rgba(0,0,0,1.0);',
                     backgroundImage: `linear-gradient(to right bottom, #0070BB, #132257, #004170, #00b98a, #009b7d)`
                 }}>
