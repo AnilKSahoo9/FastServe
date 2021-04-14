@@ -1,16 +1,34 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { Table, Button, Form } from "react-bootstrap";
 import { data } from "../../StaticData/kitchenData";
+
+import axios from "axios";
 import "./notification.css";
 function KitchenDashbard() {
   const [timerHours, setTimerHours] = useState("00");
   const [timerMin, setTimerMin] = useState("00");
   const [timerSec, setTimerSec] = useState("00");
   const [display, setDisplay] = useState({
-    statusval: "notselected",
+    orderStatusval: "notselected",
     rowKey: null,
   });
+  const [kitchendata, setKitchenData] = useState([]);
+  useEffect(() => {
+    axios
+      .get(`http://localhost:4000/getkitchendata/`)
+      .then((response) => {
+        //success call
+        console.log(response.data);
+        setKitchenData(response.data);
+      })
+      .catch((error) => {
+        //for error happen
+        console.log(error);
+      });
+  }, []);
 
+  // console.log(data);
+  // console.log(kitchendata.map((val) => val));
   //to reduce the counterdown
   let interval = useRef();
   const startTimer = () => {
@@ -47,11 +65,11 @@ function KitchenDashbard() {
   //when order is aceepted
 
   const acceptedOrder = (e) => {
-    setDisplay({ statusval: "accepted", rowKey: e.target.value });
+    setDisplay({ orderStatusval: "accepted", rowKey: e.target.value });
 
-    data.map((val, index) => {
+    kitchendata.map((val, index) => {
       if (index == e.target.value) {
-        val.status = "accepted";
+        val.orderStatus = "accepted";
       }
     });
     changeTheTimer();
@@ -60,43 +78,45 @@ function KitchenDashbard() {
   //when order is canceled
 
   const orderDecline = (e) => {
-    data.map((val, index) => {
+    kitchendata.map((val, index) => {
       if (index == e.target.value) {
-        val.status = "decline";
+        val.orderStatus = "decline";
       }
     });
-    setDisplay({ statusval: "decline", rowKey: e.target.value });
+    setDisplay({ orderStatusval: "decline", rowKey: e.target.value });
   };
 
   return (
     <div class="container-fluid">
+      {/* {kitchendata.map((val) => val.items.map((no) => console.log(no)))} */}
       <Table striped bordered hover className="tableDisplay" variant="blue">
         <thead>
           <tr>
             <th>~:Order No:~</th>
             <th>~:Order Type:~</th>
             <th>~:Order Id:~</th>
-            <th>~:Status:~</th>
+            <th>~:Order Status:~</th>
             <th>~:Show Details:~</th>
           </tr>
         </thead>
-        {data.map((no, index) => (
+        {kitchendata.map((no, index) => (
           <tbody hover={true}>
             <tr
               key={index}
               style={
-                no.status === "accepted" && display.rowKey == index
+                no.orderStatus === "accepted" && display.rowKey == index
                   ? { background: "#d9ffb3" }
-                  : no.status === "decline" && display.rowKey == index
+                  : no.orderStatus === "decline" && display.rowKey == index
                   ? { background: "#ff9999" }
                   : { background: "#ffffe6" }
               }
             >
               <td>{index}</td>
-              <td>{no.orderType}</td>
-              <td>{no.orderId}</td>
+              {!no.tableNo ? <td>Parcel</td> : <td>Table:{no.tableNo}</td>}
+
+              <td>{no._id}</td>
               <td>
-                {no.status === "accepted" && display.rowKey == index ? (
+                {no.orderStatus === "accepted" && display.rowKey == index ? (
                   <div>
                     {" "}
                     <h5 className="blink">Order Processing......</h5>
@@ -128,7 +148,7 @@ function KitchenDashbard() {
                       <Button variant="success">Completed</Button>
                     </div>
                   </div>
-                ) : no.status === "decline" && display.rowKey == index ? (
+                ) : no.orderStatus === "decline" && display.rowKey == index ? (
                   <h3 className="blink">Order cancel</h3>
                 ) : (
                   <>
@@ -168,8 +188,8 @@ function KitchenDashbard() {
               </td>
               <td>
                 <ul>
-                  {no.orderDetails.map((val) => (
-                    <li>{val.items + "  " + "=>" + "  " + val.quantity}</li>
+                  {no.items.map((val) => (
+                    <li>{val.name + "  " + "=>" + "  " + val.quantity}</li>
                   ))}
                 </ul>
               </td>
