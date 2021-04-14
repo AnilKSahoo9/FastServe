@@ -10,8 +10,8 @@ const sessionSchema = new mongoose.Schema({
     required_time:{type:String},
     created_at:{type:String}
   },
-  {
-    timestamps:true
-  }
+  // {
+  //   timestamps:true
+  // }
   );
   module.exports = mongoose.model("sessions", sessionSchema);
