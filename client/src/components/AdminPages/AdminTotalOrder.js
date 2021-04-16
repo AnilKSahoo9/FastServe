@@ -28,7 +28,7 @@ const AdminTotalOrder = () => {
 
 useEffect(() => {
   socket = io(ENDPOINT,connectionOptions);
-  //console.log(socket);
+  console.log(socket);
  socket.on('parcelData',(parcelData) => {
   //console.log(parcelData);
   let parcelData2 = {};
