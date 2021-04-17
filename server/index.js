@@ -53,6 +53,8 @@ io.of("/api/socket").on("connection", (socket) => {
           ],
         });
       //console.log(change.fullDocument);
+      //for kitchen
+      socket.emit("kitchenData2",change.fullDocument);
     }
   });
 

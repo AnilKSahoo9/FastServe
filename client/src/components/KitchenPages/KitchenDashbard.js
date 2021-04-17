@@ -32,7 +32,8 @@ function KitchenDashbard() {
 
   useEffect(() => {
     socket = io(ENDPOINT,connectionOptions);
-    console.log(socket);
+    //console.log(socket);
+
     socket.on('kitchenData',(kitchenData) => {
       //console.log(kitchenData);
       let kitchenData2 = {};
@@ -40,6 +41,13 @@ function KitchenDashbard() {
       kitchendata.push(kitchenData2);
       socket.emit('forkitchen',{name:'aarti'});
     });
+
+    socket.on('kitchenData2',(kitchenData) => {
+      let kitchenData2 = {};
+      kitchenData2 = kitchenData;
+      kitchendata.push(kitchenData2);
+    });
+    
     fetchData();
   }, [kitchendata]);
 
