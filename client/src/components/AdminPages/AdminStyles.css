@@ -1,12 +1,12 @@
-.inner-container{
-    width: 80vw;
-    max-width: 80vw;
-    margin-left: -2rem;
-    /* margin-left: 2rem; */
-    margin-top: 5vh;
-    padding: 0px;
-    
-    /* margin: 0; */
+.inner-container {
+  width: 80vw;
+  max-width: 80vw;
+  margin-left: -2rem;
+  /* margin-left: 2rem; */
+  margin-top: 5vh;
+  padding: 0px;
+
+  /* margin: 0; */
 }
 /* .container{
   padding-left: 0%;
@@ -14,24 +14,64 @@
 } */
 
 @media (max-width: 640px) {
-    .inner-container {
-      margin-left: 3px;
-    }
+  .inner-container {
+    margin-left: 3px;
   }
+}
 
 .waitercard {
-    box-shadow: 5px 10px 20px 5px rgba(0, 0, 0, 0.253) !important;
-    /* border-style: solid;
+  box-shadow: 5px 10px 20px 5px rgba(0, 0, 0, 0.253) !important;
+  /* border-style: solid;
   border-color: rgba(27, 26, 26, 0.993); */
-    border-radius: 0.6rem;
-    margin-left: 15px;
-    width: 30%;
-    /* margin-right: 20px; */
+  border-radius: 0.6rem;
+  margin-left: 15px;
+  width: 30%;
+  /* margin-right: 20px; */
 }
 
 .waitercard:hover {
-    box-shadow: 10px 15px 25px 10px rgba(6, 15, 22, 0.336) !important;
+  box-shadow: 10px 15px 25px 10px rgba(6, 15, 22, 0.336) !important;
 }
 /* .btn{
   background-color: #d11d72;
 } */
+
+/* Add item page css */
+
+.menu-column {
+  overflow: auto;
+  height: 200px;
+}
+.val-item {
+  position: absolute;
+  left: 10px;
+  color: #80d4ff;
+  font-size: 130%;
+}
+.price {
+  position: relative;
+  left: 70px;
+  font-size: 120%;
+  color: azure;
+}
+.item-name {
+  color: #290f75;
+  font-size: 150%;
+  font-weight: bold;
+  background-color: #ccf0ec;
+  background-size: 200px;
+}
+.heading {
+  color: blanchedalmond;
+  text-decoration: underline;
+}
+.menu-value {
+  padding-top: 10px;
+}
+.image {
+  height: 200px;
+  width: 250px;
+}
+.menu-divison {
+  padding-top: 20px;
+}
