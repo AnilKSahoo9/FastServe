@@ -3,6 +3,18 @@ export const itemData = {
     { name: "bread", price: "20" },
     { name: "idli", price: "10" },
     { name: "dosa", price: "40" },
+    { name: "Coke", price: "30" },
+    { name: "Pepsi", price: "35" },
+    { name: "Cappuccino", price: "50" },
+    { name: "Masala Chai", price: "20" },
+    { name: "Espresso", price: "40" },
+    { name: "Coke", price: "30" },
+    { name: "Pepsi", price: "35" },
+    { name: "Cappuccino", price: "50" },
+
+    { name: "Cappuccino", price: "50" },
+    { name: "Masala Chai", price: "20" },
+    { name: "Espresso", price: "40" },
   ],
   bevergaes: [
     { name: "Coke", price: "30" },

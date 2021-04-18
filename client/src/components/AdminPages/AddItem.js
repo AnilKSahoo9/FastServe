@@ -10,35 +10,20 @@ import {
   Card,
   Row,
   Col,
+  Image,
   Table,
 } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import Swal from "sweetalert2";
 import { itemData } from "../../StaticData/itemData";
-
+import breakfast from "./image/breakfast.webp";
+import dessert from "./image/ic.jpg";
+import bevergaes from "./image/drink.jpg";
+import rice from "./image/fried-rice.jpg";
+import chicken from "./image/chicken.jpg";
+import "./AdminStyles.css";
 const AddItem = () => {
-  // useEffect(() => {
-  //   // if (itemData.breakfast && itemData.breakfast.length > 0) {
-  //   //   {
-  //   //     itemData.breakfast.map((a) => console.log(a.name));
-  //   //   }
-  //   // } else if (itemData.dessert && itemData.dessert.length > 0) {
-  //   //   {
-  //   //     itemData.dessert.map((a) => console.log(a.name));
-  //   //   }
-  //   // }
-  //   const keys = Object.keys(itemData);
-  //   console.log(keys);
-  //   Object.keys(itemData).map((a) => console.log(itemData.a));
-  //   // keys.map((a) => itemData.a.map((val) => console.log(val)));
-  //   // keys.map((a) => itemData.a.map((val) => console.log(val)));
-  //   console.log(itemData.bevergaes);
-
-  //   if (itemData.dessert && itemData.dessert.length > 0) {
-  //     console.log(itemData.dessert);
-  //   }
-  // });
   const [modalShow, setModalShow] = useState(false);
   const [itemName, setItemName] = useState("");
   const [itemPrice, setitemPrice] = useState("");
@@ -106,9 +91,62 @@ const AddItem = () => {
     }
     setArrData([...arrData, data]);
   };
+  // const postData = () => {
+  //   const payload = {
+  //     switch()
+  //     breakfast:
+  //     dessert:
+  //     rice:
+
+  //   };
+  //   axios
+  //     .post(
+  //       `http://localhost:4000/additems/`,
+  //       //JSON.stringify(payload),
+  //       payload,
+  //       {
+  //         header: {
+  //           "Content-type":
+  //             "application/json,application/x-www-form-urlencoded, charset=UTF-8",
+  //         },
+  //       }
+  //     )
+  //     .then((response) => {
+  //       console.log(response);
+  //       if (response.status === 200) {
+
+  //         console.log(response.data);
+
+  //       }
+
+  // const postData =()=>{
+  //   const requestOptions = {
+  //     method: 'POST',
+  //     headers: { 'Content-Type': 'application/json' },
+  //     body: JSON.stringify({ title: 'React POST Request Example' })
+  // };
+  // fetch('https://jsonplaceholder.typicode.com/invalid-url', requestOptions)
+  //     .then(async response => {
+  //         const data = await response.json();
+
+  //         // check for error response
+  //         if (!response.ok) {
+  //             // get error message from body or default to response status
+  //             const error = (data && data.message) || response.status;
+  //             return Promise.reject(error);
+  //         }
+
+  //         this.setState({ postId: data.id })
+  //     })
+  //     .catch(error => {
+  //         this.setState({ errorMessage: error.toString() });
+  //         console.error('There was an error!', error);
+  //     });
+  // }
+
   console.log(arrData);
   return (
-    <div>
+    <div className="container-fluid">
       <div style={{ float: "right" }}>
         {" "}
         <Button
@@ -220,10 +258,10 @@ const AddItem = () => {
           : ""}
       </div> */}
       <div>
-        <h2>Menu Item</h2>
+        <h2 className="heading">~:Menu Item:~</h2>
         <div style={{ marginTop: "40px" }}>
-          <Row>
-            <Col xs={12} md={6} lg={3}>
+          {/* <Row>
+            <Cul xs={12} md={6} lg={3}>
               {itemData.breakfast && itemData.breakfast.length > 0 ? (
                 <Table striped bordered hover variant="dark">
                   <thead>
@@ -250,7 +288,7 @@ const AddItem = () => {
                 ""
               )}
             </Col>
-            <Col xs={12} md={6} lg={3}>
+            <Cul xs={12} md={6} lg={3}>
               {itemData.bevergaes && itemData.bevergaes.length > 0 ? (
                 <Table striped bordered hover variant="dark">
                   <thead>
@@ -274,7 +312,7 @@ const AddItem = () => {
                 ""
               )}
             </Col>
-            <Col xs={12} md={6} lg={3}>
+            <Cul xs={12} md={6} lg={3}>
               {itemData.dessert && itemData.dessert.length > 0 ? (
                 <Table striped bordered hover variant="dark">
                   <thead>
@@ -298,7 +336,7 @@ const AddItem = () => {
                 ""
               )}
             </Col>
-            <Col xs={12} md={6} lg={3}>
+            <Cul xs={12} md={6} lg={3}>
               {itemData.rice && itemData.rice.length > 0 ? (
                 <Table striped bordered hover variant="dark">
                   <thead>
@@ -322,7 +360,7 @@ const AddItem = () => {
                 ""
               )}
             </Col>
-            <Col xs={12} md={6} lg={3}>
+            <Cul xs={12} md={6} lg={3}>
               {itemData.dal && itemData.dal.length > 0 ? (
                 <Table striped bordered hover variant="dark">
                   <thead>
@@ -346,7 +384,7 @@ const AddItem = () => {
                 ""
               )}
             </Col>
-            <Col xs={12} md={6} lg={3}>
+            <Cul xs={12} md={6} lg={3}>
               {itemData.nonveg && itemData.nonveg.length > 0 ? (
                 <Table striped bordered hover variant="dark">
                   <thead>
@@ -370,7 +408,7 @@ const AddItem = () => {
                 ""
               )}
             </Col>
-            <Col xs={12} md={6} lg={3}>
+            <Cul xs={12} md={6} lg={3}>
               {itemData.nonveg.chicken && itemData.nonveg.chicken.length > 0 ? (
                 <Table striped bordered hover variant="dark">
                   <thead>
@@ -394,7 +432,7 @@ const AddItem = () => {
                 ""
               )}
             </Col>
-            <Col xs={12} md={6} lg={3}>
+            <Cul xs={12} md={6} lg={3}>
               {itemData.nonveg.mutton && itemData.nonveg.mutton.length > 0 ? (
                 <Table striped bordered hover variant="dark">
                   <thead>
@@ -418,9 +456,131 @@ const AddItem = () => {
                 ""
               )}
             </Col>
+          </Row> */}
+          <Row>
+            <Col xs={6}>
+              {itemData.breakfast && itemData.breakfast.length > 0 ? (
+                <div className="menu-divison">
+                  <span className="item-name">--- Breakfast ---</span>
+                  <Row>
+                    <Col className="menu-column">
+                      {itemData.breakfast.map((val, index) => (
+                        <div className="menu-value">
+                          <span className="val-item">{val.name}</span>
+                          <span className="price">
+                            ----------- ${val.price}
+                          </span>
+                        </div>
+                      ))}
+                    </Col>
+                    <Col>
+                      <Image src={breakfast} className="image"></Image>
+                    </Col>
+                  </Row>
+                </div>
+              ) : (
+                ""
+              )}
+            </Col>
+            <Col xs={6}>
+              {itemData.bevergaes && itemData.bevergaes.length > 0 ? (
+                <div className="menu-divison">
+                  <span className="item-name">--- Beverages ---</span>
+                  <Row>
+                    <Col className="menu-column">
+                      {itemData.bevergaes.map((val, index) => (
+                        <div className="menu-value">
+                          <span className="val-item">{val.name}</span>
+
+                          <span className="price">
+                            ----------- ${val.price}
+                          </span>
+                        </div>
+                      ))}
+                    </Col>
+                    <Col>
+                      <Image src={bevergaes} className="image"></Image>
+                    </Col>
+                  </Row>
+                </div>
+              ) : (
+                ""
+              )}
+            </Col>
+            <Col xs={6}>
+              {itemData.dessert && itemData.dessert.length > 0 ? (
+                <div className="menu-divison">
+                  <span className="item-name">--- Dessert ---</span>
+                  <Row>
+                    <Col className="menu-column">
+                      {itemData.dessert.map((val, index) => (
+                        <div className="menu-value">
+                          <span className="val-item">{val.name}</span>
+                          <span className="price">
+                            ----------- ${val.price}
+                          </span>
+                        </div>
+                      ))}
+                    </Col>
+                    <Col>
+                      <Image src={dessert} className="image"></Image>
+                    </Col>
+                  </Row>
+                </div>
+              ) : (
+                ""
+              )}
+            </Col>
+            <Col xs={6}>
+              {itemData.rice && itemData.rice.length > 0 ? (
+                <div className="menu-divison">
+                  <span className="item-name">--- Rice ---</span>
+                  <Row>
+                    <Col className="menu-column">
+                      {itemData.rice.map((val, index) => (
+                        <div className="menu-value">
+                          <span className="val-item">{val.name}</span>
+                          <span className="price">
+                            ----------- ${val.price}
+                          </span>
+                        </div>
+                      ))}
+                    </Col>
+                    <Col>
+                      <Image src={rice} className="image"></Image>
+                    </Col>
+                  </Row>
+                </div>
+              ) : (
+                ""
+              )}
+            </Col>
+            <Col xs={6}>
+              {itemData.nonveg.chicken && itemData.nonveg.chicken.length > 0 ? (
+                <div className="menu-divison">
+                  <span className="item-name">--- Chicken ---</span>
+                  <Row>
+                    <Col className="menu-column">
+                      {itemData.nonveg.chicken.map((val, index) => (
+                        <div className="menu-value">
+                          <span className="val-item">{val.name}</span>
+                          <span className="price">
+                            ----------- ${val.price}
+                          </span>
+                        </div>
+                      ))}
+                    </Col>
+                    <Col>
+                      <Image src={chicken} className="image"></Image>
+                    </Col>
+                  </Row>
+                </div>
+              ) : (
+                ""
+              )}
+            </Col>
           </Row>
         </div>
-        {console.log(itemData.nonveg.chicken)}
       </div>
     </div>
   );
