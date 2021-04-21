@@ -19,7 +19,7 @@ const server = http.createServer(app);
 const io = socketio(server);
 
 io.of("/api/socket").on("connection", (socket) => {
-  console.log("we'va a new connection!!!!");
+  //console.log("we'va a new connection!!!!");
 
   const parcelChangeStream = parcelSchema.watch();
   parcelChangeStream.on("change", (change) => {
@@ -31,6 +31,10 @@ io.of("/api/socket").on("connection", (socket) => {
         socket.on("my", (data) => {
           //console.log(data);
         });
+
+        //for kitchen
+        socket.emit("kitchenData",change.fullDocument);
+        socket.on("forkitchen",(data) => {});
     }
   });
   const sessionChangeStream = sessionSchema.watch();
@@ -49,11 +53,13 @@ io.of("/api/socket").on("connection", (socket) => {
           ],
         });
       //console.log(change.fullDocument);
+      //for kitchen
+      socket.emit("kitchenData2",change.fullDocument);
     }
   });
 
   socket.on("disconnect", () => {
-    console.log("user had left!!!!");
+    //console.log("user had left!!!!");
   });
 });
 

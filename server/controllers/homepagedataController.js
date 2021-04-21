@@ -8,7 +8,7 @@ const homepagedata = async(req,res) => {
   let parcelOrdersTillNow = [];
   let totalWaitersWorking = [];
   let acceptedTableOrders = [];
-
+  var TAT;
   await sessionSchema.find({billStatus:"unpaid",created_at:new Date().toISOString().replace('-','/').split('T')[0].replace('-','/')},(err,doc) => {
     if(err){
       res.status(500).json({msg:"failed"});
@@ -51,18 +51,27 @@ await employeeSchema.find({status:"present"},(err,doc) => {
 });
 
 await sessionSchema.find({orderStatus:"accept",created_at:new Date().toISOString().replace('-','/').split('T')[0].replace('-','/')},(err,doc) => {
-  if(doc){
+  //console.log(doc.length);
+  if(doc.length > 0){
     acceptedTableOrders = doc;
     let totalAmountTable = doc.map((item) => item.totalAmount);
-    let TAT = totalAmountTable.reduce((a,b) => {return a + b});
-    parcelSchema.find({created_at:new Date().toISOString().replace('-','/').split('T')[0].replace('-','/'),orderStatus:"accept"},(err2,doc2) => {
-      if(doc2){
-        let totalAmountParcel = doc2.map((item) => item.totalAmount);
-        let TAP = totalAmountParcel.reduce((a,b) => {return a + b ;});
-        //console.log(TAP)
-        res.status(200).json({"tables active":tablesActive.length,"tableorderstillnow":tableOrdersTillNow.length,"parcelorderstillnow":parcelOrdersTillNow.length,"totalwaitersworking":totalWaitersWorking.length,"totalordersacceptedbykitchen":acceptedTableOrders.length + doc2.length,"totalamountcollected":TAP + TAT});
-      }
-    });
+   TAT = totalAmountTable.reduce((a,b) => {return a + b});
+  }
+});
+//console.log(TAT);
+if(TAT === undefined){
+TAT = 0;
+}
+//console.log(TAT)
+await parcelSchema.find({created_at:new Date().toISOString().replace('-','/').split('T')[0].replace('-','/'),orderStatus:"accept"},(err,doc) => {
+  if(doc.length > 0){
+    let totalAmountParcel = doc.map((item) => item.totalAmount);
+    let TAP = totalAmountParcel.reduce((a,b) => {return a + b ;});
+    //console.log(TAP)
+    return res.status(200).json({"TablesActive":tablesActive.length,"TableOrdersTillNow":tableOrdersTillNow.length,"ParcelOrdersTillNow":parcelOrdersTillNow.length,"TotalWaitersWorking":totalWaitersWorking.length,"TotalOrdersAcceptedByKitchen":acceptedTableOrders.length + doc.length,"TotalAmountCollected": TAP + TAT});
+  }
+  else{
+    return res.status(500).json({msg:"no data inside db"});
   }
 });
 }

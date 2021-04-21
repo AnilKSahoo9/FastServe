@@ -26,6 +26,7 @@ let parcelDetails = [];
         tableOrders:tableDetails.map((elem,index) => ({
             sessionNo:elem._id,
             tableNo:elem.tableNo,
+            waiterName:elem.waiterName,
             totalAmount:elem.totalAmount,
             status:elem.billStatus,
             items:elem.items.map((z) => ({
@@ -35,6 +36,7 @@ let parcelDetails = [];
         })),
         parcelOrders:parcelDetails.map((elem,index) => ({
             parcelNo:elem._id,
+            billerName:elem.billerName,
             totalAmount:elem.totalAmount,
             status:elem.billStatus,
             items:elem.items.map((z) => ({

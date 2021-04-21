@@ -4,6 +4,9 @@ import { data } from "../../StaticData/kitchenData";
 
 import axios from "axios";
 import "./notification.css";
+import io from 'socket.io-client';
+let socket;
+
 function KitchenDashbard() {
   const [timerHours, setTimerHours] = useState("00");
   const [timerMin, setTimerMin] = useState("00");
@@ -13,22 +16,41 @@ function KitchenDashbard() {
     rowKey: null,
   });
   const [kitchendata, setKitchenData] = useState([]);
-  useEffect(() => {
-    axios
+  const ENDPOINT = 'ws://localhost:4000/api/socket';
+  let connectionOptions = 
+    {
+      "force new connection" : true,
+      "reconnectionAttempts": "Infinity", 
+      "timeout" : 10000,                  
+      "transports" : ["websocket"]
+  };
+  const fetchData = async() => {
+    const response = await axios
       .get(`http://localhost:4000/getkitchendata/`)
-      .then((response) => {
-        //success call
-        console.log(response.data);
         setKitchenData(response.data);
-      })
-      .catch((error) => {
-        //for error happen
-        console.log(error);
-      });
-  }, []);
+  }
 
-  // console.log(data);
-  // console.log(kitchendata.map((val) => val));
+  useEffect(() => {
+    socket = io(ENDPOINT,connectionOptions);
+    //console.log(socket);
+
+    socket.on('kitchenData',(kitchenData) => {
+      //console.log(kitchenData);
+      let kitchenData2 = {};
+      kitchenData2 = kitchenData;
+      kitchendata.push(kitchenData2);
+      socket.emit('forkitchen',{name:'aarti'});
+    });
+
+    socket.on('kitchenData2',(kitchenData) => {
+      let kitchenData2 = {};
+      kitchenData2 = kitchenData;
+      kitchendata.push(kitchenData2);
+    });
+    
+    fetchData();
+  }, [kitchendata]);
+
   //to reduce the counterdown
   let interval = useRef();
   const startTimer = () => {
