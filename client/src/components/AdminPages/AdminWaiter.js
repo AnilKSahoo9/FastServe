@@ -47,7 +47,7 @@ const AdminWaiter = () => {
                     sharpcorner: '20px',
                     boxShadow: '0 4px 8px 0 rgba(0,0,0,1.0);',
                     // backgroundImage: `linear-gradient(to bottom,#4dff03,#00d0ff )`
-                    backgroundImage: `linear-gradient(to right bottom, #0070BB, #132257, #004170, #00b98a, #009b7d)`
+                    backgroundImage: `linear-gradient(to right bottom, #0070BB, #0070BB,#0070BB, #00b98a, #009b7d)`
                   }}
                 >
                   <h4>

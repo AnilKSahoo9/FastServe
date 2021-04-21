@@ -1,8 +1,8 @@
 .carousel {
-    width: 40%;
-    height: 700px;
+    width: 100%;
+    height: 120px;
     background-color: black;
-    margin-left: 2rem;
+    margin-left: -3rem;
 }
 @media (max-width: 768px) {
     .carousel {
@@ -18,16 +18,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
-    /* filter: blur(3px); */
-    /* -webkit-filter: blur(5px); */
 }
-
-.carouselInner .left:hover {
-    
-    cursor: pointer;  
-    transition: all 0.5s ease-in; 
-}
-
 .carouselInner .center {
     flex: 80%;
     height: 80%;
@@ -36,18 +27,44 @@
     font-family: Arial, Helvetica, sans-serif; 
     text-align: justify;
     text-align-last: center;
-    
 }
-h3 {
-    font-size: 5rem;
-    background-color: rgb(255, 255, 255, 0.8);   
+.title{
+    margin-top: -5px;
+}
+h5 {
+    font-size: 25px;
+    font-weight: bold;
+    color:#fff;
+    /* background-color: rgb(255, 255, 255, 0.8);   */
+    /* animation: animate 6s linear infinite;  */
 }
 
+/* @keyframes animate {
+    0%
+    {
+        width: 0;
+    }
+    70%
+    {
+        width: 100%;
+    }
+    
+} */
+.subtitle{
+    margin-top: -25px;
+    text-align: justify;
+}
+@media  (max-width: 768px) {
+    .subtitle {
+        font-size: 13px;
+
+    }
+  }
 text {
-    font-size: 3rem;
+    font-size: 23px;
     animation: animate 6s linear infinite;
     font-weight: bold;
-    color: red;
+    color:#fff;
 }
 @keyframes drop {
     0%
@@ -62,24 +79,33 @@ text {
 }
 
 
-h3, text {
+h5, text {
     /* background-color: rgba(250, 245, 245, 0.8); */
     padding: 20px;
     border-radius: 9px;
 }
-
-.carouselInner .right:hover {
-    cursor: pointer;
-    transition: all 0.5s ease-in;
-}
 .carousel1 {
     width: 100%;
-    height: 700px;
+    height: 120px;
     background-color: black;
-    margin-left: 38rem;
-    margin-top: -43.5rem;
-
+    margin-left: 0.2rem;
+    margin-top: 3rem;
 }
+
+#div1 {
+    
+    animation: mymove 5s infinite;
+}
+#div1 {animation-timing-function: linear;}
+#div2 {animation-timing-function: ease;}
+#div3 {animation-timing-function: ease-in;}
+#div4 {animation-timing-function: ease-out;}
+#div5 {animation-timing-function: ease-in-out;}
+
+@keyframes mymove {
+    from {left: 0px;}
+    to {left: 300px;}
+  }
 @media  (max-width: 768px) {
     .carousel1 {
         margin-left: 0rem;
@@ -99,10 +125,7 @@ h3, text {
     
 }
 
-.carouselInner1 .left1 {
-    cursor: pointer;
-    
-}
+
 .carouselInner1 .center1 {
     flex: 80%;
     height: 80%;
@@ -111,22 +134,46 @@ h3, text {
     font-family: Arial, Helvetica, sans-serif;
     text-align: justify;
     text-align-last: center;
-}
-h3 {
-    font-size: 5rem;
-    background-color: rgb(255, 255, 255, 0.8);
+    filter: blur(100%);
 }
 
-text {
-    font-size: 3.5rem;
+
+.carousel2 {
+    width: 100%;
+    height: 120px;
+    background-color: black;
+    margin-left: 0.2rem;
+    margin-top: 3rem;
+
+}
+@media  (max-width: 768px) {
+    .carousel2 {
+        margin-left: 0rem;
+        margin-top: 2rem;
+        width: 100%;
+        height: 600px;
+    }
+  }
+
+.carouselInner2 {
+    height: 100%;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    
 }
 
-text {
-    /* background-color: rgba(207, 20, 20, 0.8); */
-    padding: 20px;
-    border-radius: 9px;
+
+.carouselInner2 .center2 {
+    flex: 80%;
+    height: 80%;
+    display: grid;
+    place-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: justify;
+    text-align-last: center;
+    filter: blur(100%);
 }
 
-.carouselInner1 .right1 {
-    cursor: pointer; 
-} 

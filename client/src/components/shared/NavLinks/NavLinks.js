@@ -1,14 +1,16 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "./NavLinks.css";
-
+import HomeIcon from '@material-ui/icons/Home';
 const NavLinks = (props) => {
   return (
     <div className="Nav-bar">
       <ul className="nav-links">
         <li>
           <NavLink to="/home" className="home">
+          <HomeIcon style={{marginRight:"5px"}} />
           Home
+          
           </NavLink>
 
         </li>

@@ -30,22 +30,7 @@ const AdminTable = () => {
             <Col xs={12} lg={4} md={6}>
               {user.status === "Active" ? (
                 <CardDeck>
-                  <Card
-                    border="secondary"
-                    className="text-center mb-3 mt-3"
-                    style={{
-                      width: "100%",
-                      height: "16rem",
-                      fontFamily: "Times New Roman, Times, serif",
-                      margin: '2rem',
-                      borderStyle: 'groove',
-                      borderWidth: '3px',
-                      // borderRadius: '25px',
-                      sharpcorner: '20px',
-                      boxShadow: '0 4px 8px 0 rgba(0,0,0,1.0);',
-                      backgroundImage: `linear-gradient(to right bottom, #0070BB, #132257, #004170, #00b98a, #009b7d)`
-                    }}
-                  >
+                  <Card className="text-center mb-3 mt-3">
                     {/* <Card.Img
                     variant="top"
                     src={present}
@@ -54,18 +39,13 @@ const AdminTable = () => {
                   /> */}
                     <h5>
                       {" "}
-                      <Card.Header
-                        style={{
-                          color: "white", borderRadius: '7px', fontSize: "25px",
-                        padding: "3px", marginLeft: "10px", marginRight: "10px", marginBottom: "10px", marginTop: "10px"
-                        }}
-                      >
+                      <Card.Header className="cardheader">
                         Table no {user.name}
                       </Card.Header>
                     </h5>
                     <Card.Body>
-                      <Card.Text style={{color: "white", fontSize: "15px"}}> Status: {user.status}</Card.Text>
-                      <Card.Text style={{color: "white", fontSize: "15px"}}>Sessions no: {user.sessionsno}</Card.Text>
+                      <Card.Text className="cardtext" > Status: {user.status}</Card.Text>
+                      <Card.Text className="cardtext">Sessions no: {user.sessionsno}</Card.Text>
                       {/* <Card.Text>Table no:{user.tableno}</Card.Text> */}
                       <Button
                         variant="primary"
@@ -99,40 +79,15 @@ const AdminTable = () => {
                 <CardDeck>
                   <Card
                     border="secondary"
-                    className="text-center mb-3 mt-3"
-                    style={{
-                      width: "100%",
-                      height: "16rem",
-                      fontFamily: "Times New Roman, Times, serif",
-                      margin: '2rem',
-                      borderStyle: 'groove',
-                      borderWidth: '3px',
-                      // borderRadius: '25px',
-                      sharpcorner: '20px',
-                      boxShadow: '0 4px 8px 0 rgba(0,0,0,1.0);',
-                      backgroundImage: `linear-gradient(to right bottom,#ff4500,#800080,#ff1493)`
-                    }}
-                  >
-                    {/* <Card.Img
-                    variant="top"
-                    src={notpresent}
-                    alt="Card image cap"
-                    style={{ height: 30 }}
-                  /> */}
-                    <h5>
-                      {" "}
-                      <Card.Header
-                        style={{
-                          color: "white", borderRadius: '7px', fontSize: "25px",
-                        padding: "3px", marginLeft: "10px", marginRight: "10px", marginBottom: "10px", marginTop: "10px"
-                        }}
-                      >
+                    className="text-center1 mb-3 mt-3">
+                    <h5>{" "}
+                      <Card.Header className="cardheader">
                         {" "}
                         Table no {user.name}
                       </Card.Header>
                     </h5>
                     <Card.Body>
-                      <Card.Text style={{color: "white", fontSize: "15px"}}> Status: {user.status}</Card.Text>
+                      <Card.Text className="cardtext"> Status: {user.status}</Card.Text>
                     </Card.Body>
                   </Card>
                 </CardDeck>
