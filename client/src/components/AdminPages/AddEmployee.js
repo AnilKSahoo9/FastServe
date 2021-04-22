@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./AdminStyles.css";
 import {
   Col,
   Dropdown,
@@ -67,24 +68,9 @@ if(Joindate == ""){
   };
   return (
     <div
-      className="inner-container"
-      style={{
-        width: "70%",
-        margin: "3rem",
-        backgroundColor: "lightgray",
-        marginLeft: "15%",
-        borderTop: "solid",
-        borderColor: "darkgreen",
-      }}
-    >
+      className="table">
       <span
-        className="border border-info rounded m-0 p-5"
-        style={{
-          width: "100%",
-          height: "100%",
-          display: "inline-block",
-        }}
-      >
+        className="border border-info rounded m-0 p-5">
         <div>
           <Form>
             {/* className="mx-3 " */}

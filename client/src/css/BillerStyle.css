@@ -9,6 +9,18 @@
     /* display: inline;
     justify-content: center; */
 }
+/* .cardsname{
+    max-width: 100%;
+    max-height: 100rem;
+    color: white;
+    background-color:#0a2351;
+    font-family: Times New Roman, Times, serif;
+    margin: 1rem;
+    margin-left:1rem;
+    border-style: groove;
+    border-width: 3px;
+    border-radius: 7px;
+} */
 .chart{
     margin-left: 12%;
     margin-right: 15%;

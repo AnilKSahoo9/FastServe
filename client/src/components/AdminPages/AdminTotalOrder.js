@@ -54,29 +54,17 @@ socket.on('sessionData',(sessionData) => {
 
   return (
     <div
-      classname="main"
-      style={{
-        width: "175vh",
-      }}
-    >
+      classname="main" >
       <Row>
         <Col md={6} xs={12}>
           <h2>-:Table Order Details:-</h2>
           {tableOrders.map((val, index) => (
-            <Accordion
-              style={{
-                boxShadow: "5px 10px 20px 5px rgba(0, 0, 0, 0.253)",
-                borderRadius: "0.10rem",
-                
-              }}
-            >
-              <Card style={{ backgroundColor: "#ffe6ff" }}>
-                <Card.Header style={{ backgroundColor: "#e6ccff" }}>
-                  <Accordion.Toggle
+            <Accordion className="accordion">
+              <Card className="cards">
+                <Card.Header className="headers">
+                  <Accordion.Toggle className="accordiontoggle"
                     as={Card.Header}
-                    eventKey={String(index)}
-                    style={{ backgroundColor: "#f3e6ff" }}
-                  >
+                    eventKey={String(index)}>
                     <h5>Table: {val.tableNo}</h5>
                   </Accordion.Toggle>
                 </Card.Header>
@@ -85,12 +73,10 @@ socket.on('sessionData',(sessionData) => {
                     {val.sessions.map((value, index) => (
                       <Accordion>
                         <Card>
-                          <Card.Header style={{ backgroundColor: "#e6ccff" }}>
-                            <Accordion.Toggle
+                          <Card.Header className="headers">
+                            <Accordion.Toggle className="accordiontoggle"
                               as={Card.Header}
-                              eventKey={String(index)}
-                              style={{ backgroundColor: "#f3e6ff" }}
-                            >
+                              eventKey={String(index)}>
                               <h5>Session:{val.sessions.length}</h5>
                             </Accordion.Toggle>
                           </Card.Header>
@@ -100,16 +86,16 @@ socket.on('sessionData',(sessionData) => {
                               <Table striped bordered hover>
                                 <thead>
                                   <tr>
-                                    <th style={{ backgroundColor: "#ffe6ff" }}>
+                                    <th className="th" >
                                       Sl no.
                                     </th>
-                                    <th style={{ backgroundColor: "#ffe6ff" }}>
+                                    <th className="th">
                                       Item
                                     </th>
-                                    <th style={{ backgroundColor: "#ffe6ff" }}>
+                                    <th className="th">
                                       Quantity
                                     </th>
-                                    <th style={{ backgroundColor: "#ffe6ff" }}>
+                                    <th className="th">
                                       Price
                                     </th>
                                   </tr>
@@ -118,37 +104,21 @@ socket.on('sessionData',(sessionData) => {
                                 {value.orderDetails.map((valueitem, index) => (
                                   <tbody>
                                     <tr>
-                                      <td
-                                        style={{
-                                          backgroundColor: "white",
-                                        }}
-                                      >
+                                      <td className="td">
                                         {index + 1}
                                       </td>
-                                      <td
-                                        style={{
-                                          backgroundColor: "white",
-                                        }}
-                                      >
+                                      <td className="td">
                                         {valueitem.name}
                                       </td>
-                                      <td
-                                        style={{
-                                          backgroundColor: "white",
-                                        }}
-                                      >
+                                      <td className="td">
                                         {valueitem.quantity}
                                       </td>
-                                      <td
-                                        style={{
-                                          backgroundColor: "white",
-                                        }}
-                                      >
+                                      <td className="td">
                                         {valueitem.price}
                                       </td>
                                     </tr>
                                     <tr>
-                                  <th style={{ backgroundColor: "#ffe6ff" }}>
+                                  <th className="th">
                                     Total:
                                   </th>
                                   <td colspan="3">{valueitem.quantity * valueitem.price}</td>
@@ -171,19 +141,12 @@ socket.on('sessionData',(sessionData) => {
           <h2>-:Parcel Details:-</h2>
           {/* {console.log(parcelOrders)} */}
           {parcelOrders.map((val,index) =>
-              <Accordion
-                style={{
-                  boxShadow: "5px 10px 20px 5px rgba(0, 0, 0, 0.253)",
-                  borderRadius: "0.10rem",
-                }}
-              >
+              <Accordion className="accordion">
                 <Card>
-                  <Card.Header style={{ backgroundColor: "#e6ccff" }}>
-                    <Accordion.Toggle
+                  <Card.Header className="headers">
+                    <Accordion.Toggle className="accordiontoggle"
                       as={Card.Header}
-                      eventKey={String(index)}
-                      style={{ backgroundColor: "#f3e6ff" }}
-                    >
+                      eventKey={String(index)}>
                       <h5>ParcelNo:</h5>
                     </Accordion.Toggle>
                   </Card.Header>
@@ -193,14 +156,14 @@ socket.on('sessionData',(sessionData) => {
                       <Table striped bordered hover>
                         <thead>
                           <tr>
-                            <th style={{ backgroundColor: "#ffe6ff" }}>
+                            <th className="th" >
                               Sl no.
                             </th>
-                            <th style={{ backgroundColor: "#ffe6ff" }}>Item</th>
-                            <th style={{ backgroundColor: "#ffe6ff" }}>
+                            <th className="th" >Item</th>
+                            <th className="th">
                               Quantity
                             </th>
-                            <th style={{ backgroundColor: "#ffe6ff" }}>
+                            <th className="th">
                               Price
                             </th>
                           </tr>
@@ -209,37 +172,21 @@ socket.on('sessionData',(sessionData) => {
                         {val.items.map((valueitem, index) => (
                           <tbody>
                             <tr>
-                              <td
-                                style={{
-                                  backgroundColor: "white",
-                                }}
-                              >
+                              <td className="td">
                                 {index + 1}
                               </td>
-                              <td
-                                style={{
-                                  backgroundColor: "white",
-                                }}
-                              >
+                              <td className="td">
                                 {valueitem.name}
                               </td>
-                              <td
-                                style={{
-                                  backgroundColor: "white",
-                                }}
-                              >
+                              <td className="td">
                                 {valueitem.quantity}
                               </td>
-                              <td
-                                style={{
-                                  backgroundColor: "white",
-                                }}
-                              >
+                              <td className="td">
                                 {valueitem.price}
                               </td>
                             </tr>
                             <tr>
-                                  <th style={{ backgroundColor: "#ffe6ff" }}>
+                                  <th className="th">
                                     Total:
                                   </th>
                                   <td colspan="3">{valueitem.quantity * valueitem.price}</td>

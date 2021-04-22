@@ -1,3 +1,16 @@
+.table{
+  width: 70%;
+  margin: 3rem;
+  background-color: lightgray;
+  margin-left: 15%;
+  border-top: solid;
+  border-color: darkgreen;
+}
+.border{
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+}
 .inner-container{
     width: 80vw;
     max-width: 80vw;
@@ -101,6 +114,41 @@ background-image: linear-gradient(to right bottom, #0070BB, #0070BB,#0070BB, #00
 } */
 /* .btn{
   background-color: #d11d72;
+} */
+/* Admin Total order */
+.main{
+  width: 175vh;
+}
+.accordion{
+  box-shadow:5px 10px 20px 5px rgba(0, 0, 0, 0.253);
+  border-radius: 0.10rem;
+}
+.cards{
+  background-color: #ffe6ff;
+}
+.headers{
+  background-color: #e6ccff;
+}
+.accordiontoggle{
+  background-color: #f3e6ff;
+}
+.th{
+  background-color:#ffe6ff;
+}
+.td{
+  background-color: white;
+}
+
+/* showEmployee */
+.inner-container1{
+  width: 80%;
+  margin-left: 10%;
+}
+/* .ml{
+  font-family: 'Times New Roman', Times, serif;
+  border-style: groove;
+  border-width: 3px;
+  border-radius: 7px;
 } */
 
 /* Add item page css */

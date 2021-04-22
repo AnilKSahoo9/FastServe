@@ -32,7 +32,7 @@ const ShowEmployee = (props) => {
     }
   };
   return (
-    <div className="inner-container " style={{ width: "80%", marginLeft: "10%" }}>
+    <div className="inner-container1 ">
       <div className="ml-4 mr-4 mb-3 mt-4" style={{
         fontFamily: "Times New Roman, Times, serif",
         // margin: '2rem',margin: "3rem", 

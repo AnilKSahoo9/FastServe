@@ -31,12 +31,6 @@ const AdminTable = () => {
               {user.status === "Active" ? (
                 <CardDeck>
                   <Card className="text-center mb-3 mt-3">
-                    {/* <Card.Img
-                    variant="top"
-                    src={present}
-                    alt="Card image cap"
-                    style={{ height: 30 }}
-                  /> */}
                     <h5>
                       {" "}
                       <Card.Header className="cardheader">
