@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from "react";
+import { React, useState } from "react";
 import {
   Button,
   Modal,
@@ -6,12 +6,9 @@ import {
   DropdownButton,
   InputGroup,
   FormControl,
-  Accordion,
-  Card,
   Row,
   Col,
   Image,
-  Table,
 } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
@@ -22,7 +19,7 @@ import dessert from "./image/ic.jpg";
 import bevergaes from "./image/drink.jpg";
 import rice from "./image/fried-rice.jpg";
 import chicken from "./image/chicken.jpg";
-import "./AdminStyles.css";
+import "../../css/admin.css";
 const AddItem = () => {
   const [modalShow, setModalShow] = useState(false);
   const [itemName, setItemName] = useState("");
@@ -31,7 +28,7 @@ const AddItem = () => {
   const [value1, setValue1] = useState("Types of Non-Veg Main Course");
   const [value2, setValue2] = useState(" Types of Veg Course");
   const [arrData, setArrData] = useState([]);
-  const [newsortedArr, SetNewSortedArray] = useState({});
+  // const [newsortedArr, SetNewSortedArray] = useState({});
   const handleSelect = (e) => {
     setValue(e);
   };

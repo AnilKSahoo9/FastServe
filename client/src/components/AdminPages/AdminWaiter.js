@@ -21,9 +21,6 @@ const AdminWaiter = () => {
     setShow(true);
     setname(event.target.value);
   };
-  const color1 = "";
-  const color2 = "#B408A4";
-  console.log(val);
 
   return (
     <Container className="inner-container">
@@ -32,36 +29,14 @@ const AdminWaiter = () => {
           <Col xs={12} lg={4} md={6}>
             {user.status === "Active" ? (
               <CardDeck>
-                <Card
-                  className="waitercard text-center mb-3 mt-3"
-                  style={{
-                    maxwidth: '100%',
-                    // height:"15rem",
-                    maxheight: "100rem",
-                    // color: 'black',
-                    fontFamily: "Times New Roman, Times, serif",
-                    margin: '2rem',
-                    borderStyle: 'groove',
-                    borderWidth: '3px',
-                    // borderRadius: '25px',
-                    sharpcorner: '20px',
-                    boxShadow: '0 4px 8px 0 rgba(0,0,0,1.0);',
-                    // backgroundImage: `linear-gradient(to bottom,#4dff03,#00d0ff )`
-                    backgroundImage: `linear-gradient(to right bottom, #0070BB, #0070BB,#0070BB, #00b98a, #009b7d)`
-                  }}
-                >
+                <Card className="waiterCard text-center mb-3 mt-3">
                   <h4>
                     {" "}
-                    <Card.Header
-                      style={{
-                        color: "white", borderRadius: '7px', fontSize: "25px",
-                        padding: "3px", marginLeft: "10px", marginRight: "10px", marginBottom: "10px", marginTop: "10px"
-                      }}
-                    >
+                    <Card.Header className="waiterCardHeader">
                       <b> {user.name} </b>
                     </Card.Header>
                   </h4>
-                  <Card.Body style={{ color: "white", fontSize: "15px", padding: "0px", paddingBottom: "10px" }}>
+                  <Card.Body className="waiterCardBody">
                     <b>Status:</b> {user.status}
                     <br />
                     <b>Total Order Taken:</b> {user.ordertaken}
@@ -70,9 +45,8 @@ const AdminWaiter = () => {
                     {user.tableno}
                     <br />
                     <br />
-                    <Button style={{ backgroundColor: "#d11d72" }}
-                      // #F6C700
-                      variant="primary"
+                    <Button
+                      className="waiterButton"
                       onClick={handleShow}
                       value={user.name}
                     >
@@ -90,8 +64,8 @@ const AdminWaiter = () => {
                         {waiter.map((users) =>
                           users.name === val
                             ? users.orderdetails.map((number) => (
-                              <li>{number}</li>
-                            ))
+                                <li>{number}</li>
+                              ))
                             : ""
                         )}
                       </Modal.Body>
@@ -106,37 +80,14 @@ const AdminWaiter = () => {
               </CardDeck>
             ) : (
               <CardDeck>
-                <Card
-                  className="waitercard text-center mb-3 mt-3"
-                  style={{
-                    maxwidth: '100%',
-                    height: "12rem",
-                    // maxheight: "16rem",
-
-                    // color: 'black',
-                    fontFamily: "Times New Roman, Times, serif",
-                    margin: '2rem',
-                    borderStyle: 'groove',
-                    borderWidth: '3px',
-                    // borderRadius: '25px',
-                    sharpcorner: '20px',
-                    // boxShadow: '20px 20px 50px grey',
-                    backgroundImage: `linear-gradient(to right bottom,#ff4500,#800080,#ff1493)`
-                  }}
-                >
-                  {/* #ffbc00,#ff1493 */}
+                <Card className="waiterAbsentCard text-center mb-3 mt-3">
                   <h4>
                     {" "}
-                    <Card.Header
-                      style={{
-                        color: "white", borderRadius: '7px', fontSize: "25px",
-                        padding: "3px", marginLeft: "10px", marginRight: "10px", marginBottom: "10px", marginTop: "10px"
-                      }}
-                    >
+                    <Card.Header className="waiterCardHeader">
                       <b> {user.name}</b>
                     </Card.Header>
                   </h4>
-                  <Card.Body style={{ color: "white", fontSize: "15px" }}>
+                  <Card.Body className="waiterAbsentCardBody">
                     <b>Status:</b> {user.status}
                   </Card.Body>
                 </Card>

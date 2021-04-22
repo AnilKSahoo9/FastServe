@@ -86,26 +86,26 @@ background-image: linear-gradient(to right bottom, #0070BB, #0070BB,#0070BB, #00
   }
 }
 
-.waitercard {
-  box-shadow: 5px 10px 20px 5px rgba(0, 0, 0, 0.253) !important;
-  /* border-style: solid;
+/* .waitercard {
+  box-shadow: 5px 10px 20px 5px rgba(0, 0, 0, 0.253) !important; */
+/* border-style: solid;
   border-color: rgba(27, 26, 26, 0.993); */
-  border-radius: 0.6rem;
+/* border-radius: 0.6rem;
   margin-left: 15px;
-  width: 30%;
-  /* margin-right: 20px; */
-}
+  width: 30%; */
+/* margin-right: 20px; */
+/* } */
 
-.waitercard:hover {
+/* .waitercard:hover {
   box-shadow: 10px 15px 25px 10px rgba(6, 15, 22, 0.336) !important;
-}
+} */
 /* .btn{
   background-color: #d11d72;
 } */
 
 /* Add item page css */
 
-.menu-column {
+/* .menu-column {
   overflow: auto;
   height: 200px;
 }
@@ -141,4 +141,4 @@ background-image: linear-gradient(to right bottom, #0070BB, #0070BB,#0070BB, #00
 }
 .menu-divison {
   padding-top: 20px;
-}
+} */

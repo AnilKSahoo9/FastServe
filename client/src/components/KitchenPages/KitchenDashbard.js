@@ -4,50 +4,52 @@ import { data } from "../../StaticData/kitchenData";
 
 import axios from "axios";
 import "./notification.css";
-import io from 'socket.io-client';
+import io from "socket.io-client";
+import { event } from "jquery";
+import { render, unstable_renderSubtreeIntoContainer } from "react-dom";
 let socket;
 
 function KitchenDashbard() {
   const [timerHours, setTimerHours] = useState("00");
   const [timerMin, setTimerMin] = useState("00");
   const [timerSec, setTimerSec] = useState("00");
+  const [inputTime, setTime] = useState("00");
   const [display, setDisplay] = useState({
     orderStatusval: "notselected",
     rowKey: null,
   });
   const [kitchendata, setKitchenData] = useState([]);
-  const ENDPOINT = 'ws://localhost:4000/api/socket';
-  let connectionOptions = 
-    {
-      "force new connection" : true,
-      "reconnectionAttempts": "Infinity", 
-      "timeout" : 10000,                  
-      "transports" : ["websocket"]
+  const ENDPOINT = "ws://localhost:4000/api/socket";
+  let connectionOptions = {
+    "force new connection": true,
+    reconnectionAttempts: "Infinity",
+    timeout: 10000,
+    transports: ["websocket"],
   };
-  const fetchData = async() => {
-    const response = await axios
-      .get(`http://localhost:4000/getkitchendata/`)
-        setKitchenData(response.data);
-  }
+  const fetchData = async () => {
+    const response = await axios.get(`http://localhost:4000/getkitchendata/`);
+    setKitchenData(response.data);
+    console.log(response.data);
+  };
 
   useEffect(() => {
-    socket = io(ENDPOINT,connectionOptions);
+    socket = io(ENDPOINT, connectionOptions);
     //console.log(socket);
 
-    socket.on('kitchenData',(kitchenData) => {
+    socket.on("kitchenData", (kitchenData) => {
       //console.log(kitchenData);
       let kitchenData2 = {};
       kitchenData2 = kitchenData;
       kitchendata.push(kitchenData2);
-      socket.emit('forkitchen',{name:'aarti'});
+      socket.emit("forkitchen", { name: "aarti" });
     });
 
-    socket.on('kitchenData2',(kitchenData) => {
+    socket.on("kitchenData2", (kitchenData) => {
       let kitchenData2 = {};
       kitchenData2 = kitchenData;
       kitchendata.push(kitchenData2);
     });
-    
+
     fetchData();
   }, [kitchendata]);
 
@@ -55,7 +57,7 @@ function KitchenDashbard() {
   let interval = useRef();
   const startTimer = () => {
     const time = new Date();
-    const countdowndate = new Date(time.getTime() + 10 * 60000);
+    const countdowndate = new Date(time.getTime() + Number(inputTime) * 60000);
 
     interval = setInterval(() => {
       const now = new Date().getTime();
@@ -74,8 +76,13 @@ function KitchenDashbard() {
         setTimerMin(minutes);
         setTimerSec(seconds);
       }
-      console.log(countdowndate);
     }, 1000);
+  };
+
+  const handleTimeChange = (event) => {
+    setTime(event.target.value);
+    console.log(event.target.value);
+    // setDisplay({ orderStatusval: "pending", rowKey: event.target.value });
   };
   const changeTheTimer = () => {
     startTimer();
@@ -84,24 +91,52 @@ function KitchenDashbard() {
     };
   };
 
-  //when order is aceepted
+  const postData = () => {
+    const payload = {
+      orderStatus: "accept",
+      _id: display.rowKey,
+      time: inputTime + "min",
+      orderType: "parcel",
+    };
+    axios
+      .post(
+        `http://localhost:4000/postkitchendata/`,
+        // JSON.stringify(payload),
+        payload,
+        {
+          header: {
+            "Content-type":
+              "application/json,application/x-www-form-urlencoded, charset=UTF-8",
+          },
+        }
+      )
+      .then((response) => {
+        console.log(response);
+        if (response.status === 200) {
+          console.log(response.data);
+        }
+      });
+  };
+  //when order is accepted
 
   const acceptedOrder = (e) => {
     setDisplay({ orderStatusval: "accepted", rowKey: e.target.value });
-
+    console.log(e.target.value);
     kitchendata.map((val, index) => {
-      if (index == e.target.value) {
+      if (val._id == e.target.value) {
         val.orderStatus = "accepted";
       }
     });
     changeTheTimer();
+    postData();
   };
+  // console.log(display.rowKey);
 
   //when order is canceled
 
   const orderDecline = (e) => {
     kitchendata.map((val, index) => {
-      if (index == e.target.value) {
+      if (val._id == e.target.value) {
         val.orderStatus = "decline";
       }
     });
@@ -109,7 +144,7 @@ function KitchenDashbard() {
   };
 
   return (
-    <div class="container-fluid">
+    <div className="container-fluid">
       {/* {kitchendata.map((val) => val.items.map((no) => console.log(no)))} */}
       <Table striped bordered hover className="tableDisplay" variant="blue">
         <thead>
@@ -126,9 +161,9 @@ function KitchenDashbard() {
             <tr
               key={index}
               style={
-                no.orderStatus === "accepted" && display.rowKey == index
+                no.orderStatus === "accepted" && display.rowKey == no._id
                   ? { background: "#d9ffb3" }
-                  : no.orderStatus === "decline" && display.rowKey == index
+                  : no.orderStatus === "decline" && display.rowKey == no._id
                   ? { background: "#ff9999" }
                   : { background: "#ffffe6" }
               }
@@ -138,7 +173,7 @@ function KitchenDashbard() {
 
               <td>{no._id}</td>
               <td>
-                {no.orderStatus === "accepted" && display.rowKey == index ? (
+                {no.orderStatus === "accepted" && display.rowKey == no._id ? (
                   <div>
                     {" "}
                     <h5 className="blink">Order Processing......</h5>
@@ -170,7 +205,8 @@ function KitchenDashbard() {
                       <Button variant="success">Completed</Button>
                     </div>
                   </div>
-                ) : no.orderStatus === "decline" && display.rowKey == index ? (
+                ) : no.orderStatus === "decline" &&
+                  display.rowKey === no._id ? (
                   <h3 className="blink">Order cancel</h3>
                 ) : (
                   <>
@@ -178,29 +214,29 @@ function KitchenDashbard() {
                       <Form>
                         <Form.Group controlId="exampleForm.ControlSelect1">
                           <Form.Label>Time Required</Form.Label>
-                          <Form.Control as="select">
-                            <option>5 min</option>
-                            <option>10 min</option>
-                            <option>15 min</option>
-                            <option>20 min</option>
-                            <option>25 min</option>
-                            <option>30 min</option>
-                            <option>40 min</option>
-                            <option>60 min</option>
+                          <Form.Control as="select" onChange={handleTimeChange}>
+                            <option value="5">5 min</option>
+                            <option value="10">10 min</option>
+                            <option value="15">15 min</option>
+                            <option value="20">20 min</option>
+                            <option value="25">25 min</option>
+                            <option value="30">30 min</option>
+                            <option value="40"> 40 min</option>
+                            <option value="60">60 min</option>
                           </Form.Control>
                         </Form.Group>
                       </Form>
                       <Button
                         variant="success"
                         onClick={acceptedOrder}
-                        value={index}
+                        value={no._id}
                       >
                         accept
                       </Button>{" "}
                       <Button
                         variant="danger"
                         onClick={orderDecline}
-                        value={index}
+                        value={no._id}
                       >
                         reject
                       </Button>

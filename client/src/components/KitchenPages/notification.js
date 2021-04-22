@@ -1,5 +1,5 @@
 import React from "react";
-import { Carousel, Card, Button, Row, Col, Badge } from "react-bootstrap";
+import { Carousel, Card, Row, Col, Badge } from "react-bootstrap";
 import { data } from "../../StaticData/kitchenData";
 import img from "./parcel.jpg";
 import table from "./tablepic.jpg";
