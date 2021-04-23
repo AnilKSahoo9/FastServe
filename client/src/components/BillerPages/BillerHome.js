@@ -35,30 +35,22 @@ const BillerHome = () => {
       {
         // label:"Chart of Table Order",
         data: [60, 40],
-        backgroundColor: [
-          "rgba(255,99,132,1)",
-          "rgba(255,205,86,1)"
-        ]
-      }
-    ]
-  }
-
-
-
-
-
+        backgroundColor: ["rgba(255,99,132,1)", "rgba(255,205,86,1)"],
+      },
+    ],
+  };
 
   const [tableOrders, setTableOrders] = useState([]);
   const [parcelOrders, setParcelOrders] = useState([]);
   const [tablepays, setTablepays] = useState({
-      orderType: "",
-      billStatus: "",
-      orderId: "",
-      waiterName: "",
-      successMessage: null,
-      error: null,
+    orderType: "",
+    billStatus: "",
+    orderId: "",
+    waiterName: "",
+    successMessage: null,
+    error: null,
   });
-  const [parcelpays, setParcelpays] = useState("unpaid");
+  const [paid, setPaid] = useState("unpaid");
   const [show, setShow] = useState(false);
   const [pshow, setPShow] = useState(false);
   const [value, setValue] = useState(null);
@@ -79,11 +71,15 @@ const BillerHome = () => {
   const handleClose = () => setShow(false);
   const handleClose1 = () => setPShow(false);
 
-  const Payment = (e) => {
-    fetchbillerTablepaymentData()
+  const Payment = (e, value) => {
     // setTablepays(billStatus="paid")
     setValue(e.target.value);
-    console.log(e.target.value);
+    // console.log(e, value);
+    let data = { orderId: value.sessionNo, orderStatus: "paid" };
+    data.billerName = "anil";
+    data.orderType = "table";
+    console.log(data);
+    fetchbillerTablepaymentData(data);
     var rowno = --e.target.value;
     tableOrders.map((value, index) => {
       if (index == rowno) {
@@ -93,58 +89,48 @@ const BillerHome = () => {
     });
   };
 
-  const fetchbillerTablepaymentData = async () => {
-    const paymentdetails = {
-      orderType: "table",
-       billStatus: "unpaid",
-       orderId:  "90fc5786-e3d1-453c-b734-36c19115d95a",
-         waiterName: "Rakesh"
-      // orderType: tablepays.orderType,
-      // billStatus: tablepays.billStatus,
-      // orderId: tablepays.orderId,
-      // waiterName: tablepays.waiterName
-    }
-    const res = await axios.
-    post(`http://localhost:4000/biller-payment/`, 
-      paymentdetails,
-      {
+  const fetchbillerTablepaymentData = async (data) => {
+    // const paymentdetails = {
+    //   orderType: "table",
+    //   billStatus: "unpaid",
+    //   orderId: "90fc5786-e3d1-453c-b734-36c19115d95a",
+    //   waiterName: "Rakesh",
+    //   // orderType: tablepays.orderType,
+    //   // billStatus: tablepays.billStatus,
+    //   // orderId: tablepays.orderId,
+    //   // waiterName: tablepays.waiterName
+    // };
+    await axios
+      .post(`http://localhost:4000/biller-payment/`, data, {
         header: {
           "Content-type":
             "application/json,application/x-www-form-urlencoded, charset=UTF-8",
-        
-      },
-    }).then((res) => {
-      console.log(res);
-      console.log(res.data);
-      Swal.fire({
-        position: "center",
-        icon: "success",
-        title: "Your Payment is successfull",
-        showConfirmButton: false,
-        timer: 1500,
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        console.log(res.data);
+        setPaid("Paid");
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Your Payment is successfull",
+          showConfirmButton: false,
+          timer: 1500,
+        });
       });
-    })
-
-  }
- 
-
-
-
+  };
 
   const fetchbillerhomeData = async () => {
-    const response = await axios.get(`http://localhost:4000/biller-home/`)
+    const response = await axios.get(`http://localhost:4000/biller-home/`);
     setTableOrders(response.data.tableOrders);
     setParcelOrders(response.data.parcelOrders);
-    console.log(response.data)
-  }
+    console.log(response.data);
+  };
 
   useEffect(() => {
-    fetchbillerhomeData()
-  }, [])
-
-  
-
-
+    fetchbillerhomeData();
+  }, []);
 
   const Payment1 = (e) => {
     fetchbillerParcelpaymentData();
@@ -155,48 +141,40 @@ const BillerHome = () => {
       if (index == rowno) {
         value.BillPayment = "Paid";
         console.log(value);
-
       }
     });
   };
   const fetchbillerParcelpaymentData = async () => {
     const paymentdetails = {
-      orderType: 'parcel',
-      billStatus: 'unpaid',
-      orderId: '67b29e85-81ac-48cd-93bb-92d610b03876',
-      billerName: 'Amit Singh'
-    }
-    const res = await axios.
-    post(`http://localhost:4000/biller-payment/`, 
-      paymentdetails,
-      {
+      orderType: "parcel",
+      billStatus: "unpaid",
+      orderId: "67b29e85-81ac-48cd-93bb-92d610b03876",
+      billerName: "Amit Singh",
+    };
+    const res = await axios
+      .post(`http://localhost:4000/biller-payment/`, paymentdetails, {
         header: {
           "Content-type":
             "application/json,application/x-www-form-urlencoded, charset=UTF-8",
-        
-      },
-    }).then((res) => {
-      console.log(res);
-      console.log(res.data);
-      Swal.fire({
-        position: "center",
-        icon: "success",
-        title: "Your Payment is successfull",
-        showConfirmButton: false,
-        timer: 1500,
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        console.log(res.data);
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Your Payment is successfull",
+          showConfirmButton: false,
+          timer: 1500,
+        });
       });
-    })
-
-  }
-
-
-
+  };
 
   return (
-
-    <div className="inner-container" >
+    <div className="inner-container">
       <div>
-        <CardGroup >
+        <CardGroup>
           <div className="cardsname">
             <Card
               body
@@ -212,7 +190,7 @@ const BillerHome = () => {
                 marginLeft: "1rem",
                 borderStyle: "groove",
                 borderWidth: "3px",
-                borderRadius: "7px"
+                borderRadius: "7px",
               }}
             >
               <h5>
@@ -231,12 +209,13 @@ const BillerHome = () => {
                   <CardTitle>Total No. of Table Order Placed</CardTitle>
                   {TotalOrder.map((totalorder) => (
                     <>
-                      <CardText><b>{totalorder.Data}</b></CardText>
+                      <CardText>
+                        <b>{totalorder.Data}</b>
+                      </CardText>
                     </>
                   ))}
                 </CardHeader>
               </h5>
-
             </Card>
           </div>
           <div className="cardsname">
@@ -254,7 +233,7 @@ const BillerHome = () => {
                 marginLeft: "2rem",
                 borderStyle: "groove",
                 borderWidth: "3px",
-                borderRadius: "7px"
+                borderRadius: "7px",
               }}
             >
               <h5>
@@ -273,7 +252,9 @@ const BillerHome = () => {
                   <CardTitle>Total No. of Parcel Order Placed</CardTitle>
                   {TotalParcel.map((totalparcel) => (
                     <>
-                      <CardText><b>{totalparcel.Data}</b></CardText>
+                      <CardText>
+                        <b>{totalparcel.Data}</b>
+                      </CardText>
                     </>
                   ))}
                 </CardHeader>
@@ -282,8 +263,7 @@ const BillerHome = () => {
           </div>
           <Card className="chartcard">
             <div className="chart">
-              <Doughnut data={data}
-                options={{ responsive: true }} />
+              <Doughnut data={data} options={{ responsive: true }} />
               <h5>Table order chart</h5>
             </div>
           </Card>
@@ -291,7 +271,9 @@ const BillerHome = () => {
       </div>
 
       <div className="Tabledesign">
-        <Table responsive size="sm"
+        <Table
+          responsive
+          size="sm"
           striped
           bordered
           hover
@@ -303,7 +285,7 @@ const BillerHome = () => {
             fontFamily: "Times New Roman, Times, serif",
             marginTop: "2rem",
             borderRadius: "20px",
-            borderCollapse: "collapse"
+            borderCollapse: "collapse",
           }}
         >
           <thead>
@@ -316,42 +298,74 @@ const BillerHome = () => {
             </tr>
           </thead>
           {tableOrders.map((val, index) => (
-
             <tbody>
               <tr>
                 <td>{index + 1}</td>
                 <td>{val.tableNo}</td>
                 <td>{val.sessionNo}</td>
                 <td>
-                  <Button style={{ backgroundColor: "#d11d72" }} onClick={Payment} value={val.tableno}>{val.status}=Rs.{val.totalAmount}</Button>
+                  <Button
+                    style={{ backgroundColor: "#d11d72" }}
+                    onClick={(e) => Payment(e, val)}
+                    // value={val.tableno}
+                  >
+                    {paid}=Rs.{val.totalAmount}
+                  </Button>
                 </td>
                 <td>
-                  <Button style={{ backgroundColor: "#d11d72" }} onClick={handleShow} value={val.sessionNo}>
+                  <Button
+                    style={{ backgroundColor: "#d11d72" }}
+                    onClick={handleShow}
+                    value={val.sessionNo}
+                  >
                     ShowDetails
                   </Button>
                 </td>
               </tr>
             </tbody>
-
           ))}
         </Table>
         <Modal show={show} onHide={handleClose}>
-          <Modal.Header closeButton><b>Table details</b></Modal.Header>
+          <Modal.Header closeButton>
+            <b>Table details</b>
+          </Modal.Header>
           <Modal.Body>
             {/* console.log(tableOrders); */}
             {tableOrders.map((Tval, index) =>
-              val == Tval.sessionNo
-                ?
-                (<ol><b><li> Table No =: {Tval.tableNo} </li></b>
-                  <b><li> Session Id =: {Tval.sessionNo} </li></b>
-                  <b><li> Waiter Name=: {Tval.waiterName} </li></b>
-                  <b><li> Total amount =: {Tval.totalAmount} </li></b>
-                  <b><li>Order Status =: {Tval.status}</li></b>
-                  <b><li>Ordered Items =: {Tval.items.map((item) => <ul><li>Item Name= {item.name}  ,  Quantity= {item.quantity}  ,  Price=   {item.price}</li></ul>)}</li></b>
+              val == Tval.sessionNo ? (
+                <ol>
+                  <b>
+                    <li> Table No =: {Tval.tableNo} </li>
+                  </b>
+                  <b>
+                    <li> Session Id =: {Tval.sessionNo} </li>
+                  </b>
+                  <b>
+                    <li> Waiter Name=: {Tval.waiterName} </li>
+                  </b>
+                  <b>
+                    <li> Total amount =: {Tval.totalAmount} </li>
+                  </b>
+                  <b>
+                    <li>Order Status =: {Tval.status}</li>
+                  </b>
+                  <b>
+                    <li>
+                      Ordered Items =:{" "}
+                      {Tval.items.map((item) => (
+                        <ul>
+                          <li>
+                            Item Name= {item.name} , Quantity= {item.quantity} ,
+                            Price= {item.price}
+                          </li>
+                        </ul>
+                      ))}
+                    </li>
+                  </b>
                 </ol>
-                )
-                : ""
-
+              ) : (
+                ""
+              )
             )}
           </Modal.Body>
           {/* <Modal.Footer>
@@ -360,8 +374,9 @@ const BillerHome = () => {
         </Modal>
       </div>
 
-
-      <Table responsive size="sm"
+      <Table
+        responsive
+        size="sm"
         striped
         bordered
         hover
@@ -394,13 +409,22 @@ const BillerHome = () => {
               <td>{index + 1}</td>
               <td>{val1.parcelNo}</td>
               <td>
-                <Button style={{ backgroundColor: "#d11d72" }}
-                  onClick={Payment1} value={val1.parcelNo}>{val1.status}=Rs.{val1.totalAmount}</Button>
+                <Button
+                  style={{ backgroundColor: "#d11d72" }}
+                  onClick={Payment1}
+                  value={val1.parcelNo}
+                >
+                  {val1.status}=Rs.{val1.totalAmount}
+                </Button>
               </td>
               <td>
-                <Button style={{ backgroundColor: "#d11d72" }} onClick={handleShow1} value={val1.parcelNo}>
+                <Button
+                  style={{ backgroundColor: "#d11d72" }}
+                  onClick={handleShow1}
+                  value={val1.parcelNo}
+                >
                   ShowDetails
-                  </Button>
+                </Button>
               </td>
             </tr>
           </tbody>
@@ -410,17 +434,37 @@ const BillerHome = () => {
         <Modal.Header closeButton>Parcel details</Modal.Header>
         <Modal.Body>
           {parcelOrders.map((val1, index) =>
-            Pval == val1.parcelNo
-              ?
-              (<ol><b><li>  ParcelNo =: {val1.parcelNo} </li></b>
-                <b><li>  Biller Name =: {val1.billerName} </li></b>
-                <b><li> Total amount =: {val1.totalAmount} </li></b>
-                <b><li>Order Status =: {val1.status}</li></b>
-                <b><li>Ordered Items{val1.items.map((item) => <ul><li>Item Name= {item.name}  ,  Quantity= {item.quantity}  ,  Price=   {item.price}</li></ul>)}</li></b>
+            Pval == val1.parcelNo ? (
+              <ol>
+                <b>
+                  <li> ParcelNo =: {val1.parcelNo} </li>
+                </b>
+                <b>
+                  <li> Biller Name =: {val1.billerName} </li>
+                </b>
+                <b>
+                  <li> Total amount =: {val1.totalAmount} </li>
+                </b>
+                <b>
+                  <li>Order Status =: {val1.status}</li>
+                </b>
+                <b>
+                  <li>
+                    Ordered Items
+                    {val1.items.map((item) => (
+                      <ul>
+                        <li>
+                          Item Name= {item.name} , Quantity= {item.quantity} ,
+                          Price= {item.price}
+                        </li>
+                      </ul>
+                    ))}
+                  </li>
+                </b>
               </ol>
-              )
-              : ""
-
+            ) : (
+              ""
+            )
           )}
         </Modal.Body>
         {/* <Modal.Footer>
