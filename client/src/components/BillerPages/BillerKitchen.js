@@ -24,36 +24,14 @@ const BillerKitchen = () => {
         <div classname="inner-container">
 
             <Row>
-                <Col md={5} xs={12} style={{
-                    backgroundImage: `linear-gradient(to right bottom, #051437, #004782, #0081a7, #00b98a, #12eb25)`, color: "white", margin: '1rem', marginLeft: "3px",
-                    borderStyle: 'groove',
-                    borderWidth: '3px',
-                    margin:"3rem",
-                    borderRadius: '7px', height: "100%"
-                }}>
+                <Col className="col" md={5} xs={12}>
                 <hr></hr>
                     <h2>Message From Kichens</h2>
                     <hr></hr>
                     <Row>
-                        <Card body outline color="info"
-                            style={{
-                                width: '100%',
-                                maxHeight: "100rem",
-                                color: 'White',
-                                fontFamily: "Times New Roman, Times, serif",
-                                margin: '2rem',
-                                borderStyle: 'groove',
-                                borderWidth: '3px',
-                                borderRadius: '7px',
-                                boxShadow: '20px 20px 50px grey',
-                                backgroundImage: `linear-gradient(to right bottom, #051437, #004782, #0081a7, #00b98a, #12eb25)`
-                            }}>
+                        <Card className="card" body outline color="info">
                             <h5>
-                                <CardHeader style={{
-                                    backgroundColor: "rgb(128,128,128)", borderStyle: 'groove',
-                                    borderWidth: '3px',
-                                    borderRadius: '7px', padding: "3px", margin: "0px"
-                                }}>
+                                <CardHeader className="cardheader1">
                                     <CardTitle>Status for Order</CardTitle>
                                 </CardHeader>
                             </h5>
@@ -70,24 +48,11 @@ const BillerKitchen = () => {
                         </Card>
                     </Row>
                 </Col>
-                <Col md={5} xs={12} style={{
-                    backgroundImage: `linear-gradient(to right bottom,  #004170, #00b98a, #009b7d,#0070BB, #132257)`, color: "white", margin: '1rem',
-                    borderStyle: 'groove',
-                    borderWidth: '3px',
-                    borderRadius: '7px',
-                    margin:"3rem"
-                }}>
+                <Col className="cols" md={5} xs={12} >
                 <hr></hr>
                     <h2>Order Status From Kichens</h2>
                     <hr></hr>
-                    <Table striped bordered hover style={{ color: "white",
-                                width: '100%',
-                                maxHeight: "100rem",
-                                fontFamily: "Times New Roman, Times, serif",
-                                marginTop:"4rem",
-                                borderStyle: 'groove',
-                                borderWidth: '3px',
-                                borderRadius: '7px' }}>
+                    <Table className="table" striped bordered hover >
                         <thead>
                             <tr>
                                 <th>Order no.</th>

@@ -17,17 +17,8 @@ import {
   } from "reactstrap";
 export const BillerReport = () => {
     return (
-        <div className="inner-container" style={{ margin: "25px" }}>
-        <div  style={{
-             width: '80%',
-        // maxHeight: "16.5vh",
-        // height: "80%",
-        color: 'Black',
-        justifyContent:"center",
-        margin: '15px',
-        borderStyle: 'groove',
-        borderWidth: '3px',
-        borderRadius: '7px',}}>
+        <div className="inner-container" >
+        <div className="report">
             <Tabs defaultIndex={1} onSelect={index => console.log(index)}>
                 <TabList>
                     <Tab>Today</Tab>
@@ -52,7 +43,7 @@ export const BillerReport = () => {
             </Tabs>
             
         </div>
-        <Button outline color="info" style={{marginLeft:"35rem",marginTop:"15rem"}}>Download</Button>
+        <Button className="button" outline color="info">Download</Button>
         </div>
         
     )

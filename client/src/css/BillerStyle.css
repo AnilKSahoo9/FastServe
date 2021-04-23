@@ -5,6 +5,7 @@
     margin-right: "5rem";
     margin-top: "5rem";
     margin-left: 0%;
+    margin: 25px;
     
     /* display: inline;
     justify-content: center; */
@@ -78,3 +79,71 @@
 thead td{
     font-weight: 700;
 } */
+
+/* BillerKitchen */
+.col{
+    background-image: linear-gradient(to right bottom, #051437, #004782, #0081a7, #00b98a, #12eb25);
+    color: white;
+    margin: 1rem;
+    margin-left: 3px;
+    border-style: 3px;
+    border-width: 3px;
+    border-radius: 7px;
+    height: 100%;
+}
+
+.card{
+    width: 100%;
+    max-height: 100rem;
+    color: White;
+    font-family: Times New Roman, Times, serif;
+    margin: 2rem;
+    border-style: groove;
+    border-width: 3px;
+    border-radius: 7px;
+    box-shadow: 20px 20px 50px grey;
+    background-image: linear-gradient(to right bottom, #051437, #004782, #0081a7, #00b98a, #12eb25);
+}
+.cardheader1{
+    background-color:rgb(128,128,128);
+    border-style: groove;
+    border-width: 3px;
+    border-radius: 7px;
+    padding: 3px;
+    margin: 0px;
+}
+.cols{
+    background-image: linear-gradient(to right bottom,  #004170, #00b98a, #009b7d,#0070BB, #132257);
+    color: white; 
+    margin: 1rem;
+    border-style: groove;
+    border-width: 3px;
+    border-radius: 7px;
+    margin:3rem;
+}
+.table{
+    color: white;
+    width: 100%;
+    max-height: 100rem;
+    font-family: Times New Roman, Times, serif;
+    margin-top:4rem;
+    border-style: groove;
+    border-width: 3px;
+    border-radius: 7px;
+}
+
+/* BillerReport */
+
+.report{
+    width: 80%;
+    color: Black;
+    justify-content:center;
+    margin: 15px;
+    border-style: groove;
+    border-width: 3px;
+    border-radius: 7px;
+} 
+ .button{
+    margin-top: 15rem;
+    margin-left: 35rem;
+}
