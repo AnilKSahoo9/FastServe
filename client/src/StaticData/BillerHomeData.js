@@ -10,8 +10,10 @@ export var TotalParcel = [
 ];
 export var TableOrder = [
   {
+    OrderId:101,
     TableNo: 1,
     SessionId: "Ses1",
+    WaiterName:"Sagar",
     BillPayment: "Pay",
     Totalamount:350,
     OrderStatus: "Completed",
@@ -22,8 +24,10 @@ export var TableOrder = [
     ],
   },
   {
+    OrderId:102,
     TableNo: 2,
     SessionId: "Ses2",
+    WaiterName:"Suraj",
     BillPayment: "Pay",
     Totalamount:450,
     OrderStatus: "Completed",
@@ -33,24 +37,30 @@ export var TableOrder = [
     ],
   },
   {
+    OrderId:103,
     TableNo: 3,
     SessionId: "Ses3",
+    WaiterName:"Saras",
     BillPayment: "Pay",
     Totalamount:250,
     OrderStatus: "Completed",
     items: [{ name: "rice", price: 250,quantity:1 }],
   },
   {
+    OrderId:104,
     TableNo: 4,
     SessionId: "Ses4",
+    WaiterName:"Saswat",
     BillPayment: "Pay",
     Totalamount:250,
     OrderStatus: "Completed",
     items: [{ name: "veg chowmin", price: 250,quantity:1 }],
   },
   {
+    OrderId:105,
     TableNo: 5,
     SessionId: "Ses5",
+    WaiterName:"Saumya",
     BillPayment: "Pay",
     Totalamount:700,
     OrderStatus: "Completed",
@@ -64,6 +74,7 @@ export var TableOrder = [
 export var ParcelOrder = [
   {
     ParcelNo: 1,
+    BillerName:"Rajesh",
     BillPayment: "Pay",
     OrderStatus: "Completed",
     Totalamount:250,
@@ -74,6 +85,7 @@ export var ParcelOrder = [
   },
   {
     ParcelNo: 2,
+     BillerName:"Rakesh",
     BillPayment: "Pay",
     OrderStatus: "Completed",
     Totalamount:450,
@@ -84,6 +96,7 @@ export var ParcelOrder = [
   },
   {
     ParcelNo: 3,
+     BillerName:"Ramesh",
     BillPayment: "Pay",
     OrderStatus: "Completed",
     Totalamount:500,
@@ -95,6 +108,7 @@ export var ParcelOrder = [
   },
   {
     ParcelNo: 4,
+     BillerName:"Raj",
     BillPayment: "Pay",
     OrderStatus: "Completed",
     Totalamount:650,

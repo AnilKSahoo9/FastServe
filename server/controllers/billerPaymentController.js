@@ -14,6 +14,7 @@ const billerPaymentController =  (req, res) => {
           // if (err) {
           //   res.status(500).json({ msg: "error occured" });
           // }
+          
           if (doc) {
             billerSchema.findOne({name:billerName},(err2,doc2) => {
               if(doc2){

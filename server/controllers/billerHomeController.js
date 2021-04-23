@@ -41,6 +41,7 @@ let parcelDetails = [];
             status:elem.billStatus,
             items:elem.items.map((z) => ({
                 name:z.name,
+                quantity:z.quantity,
                 price:z.price
             }))
         }))
