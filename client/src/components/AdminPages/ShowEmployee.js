@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button, Table } from "reactstrap";
 import { userDetails, billerDetails, chefDetails, workerDetails } from "../../StaticData/showemployeeData"
 import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import "../../css/showemployee.css";
 const ShowEmployee = (props) => {
  
   const [show, setShow] = useState(false);
@@ -33,20 +34,14 @@ const ShowEmployee = (props) => {
   };
   return (
     <div className="inner-container1 ">
-      <div className="ml-4 mr-4 mb-3 mt-4" style={{
-        fontFamily: "Times New Roman, Times, serif",
-        // margin: '2rem',margin: "3rem", 
-        borderStyle: 'groove',
-        borderWidth: '3px',
-        borderRadius: '7px',
-      }} >
-        <div style={{ backgroundColor: "lightgray", color: "black" }}>
+      <div className="showemp ml-4 mr-4 mb-3 mt-4"  >
+        <div className="showline">
           <h4>Waiter</h4>
         </div>
         <div>
           <Table responsive size="sm">
             <thead>
-              <tr style={{ width: "30%" }}>
+              <tr className="tr">
                 <th>No.</th>
                 <th>Waiter Name </th>
                 <th>Attendance for Today</th>
@@ -93,20 +88,14 @@ const ShowEmployee = (props) => {
       </div>
 
 
-      <div className="ml-4 mr-4 mb-3 mt-4" style={{
-        fontFamily: "Times New Roman, Times, serif",
-        margin: '2rem',
-        borderStyle: 'groove',
-        borderWidth: '3px',
-        borderRadius: '7px',
-      }} >
-        <div style={{ backgroundColor: "lightgray", color: "black" }}>
+      <div className="showemp ml-4 mr-4 mb-3 mt-4"  >
+        <div className="showline">
           <h4>Billers</h4>
         </div>
         <div>
           <Table responsive size="sm">
             <thead>
-              <tr style={{ width: "30%" }}>
+              <tr className="tr">
                 <th>No.</th>
                 <th>Billers Name</th>
                 <th>Attendance for Today</th>
@@ -150,15 +139,8 @@ const ShowEmployee = (props) => {
           </div>) : null}
       </div>
 
-      <div className="ml-4 mr-4 mb-3 mt-4 "
-        style={{
-          fontFamily: "Times New Roman, Times, serif",
-          margin: '2rem',
-          borderStyle: 'groove',
-          borderWidth: '3px',
-          borderRadius: '7px',
-        }} >
-        <div style={{ backgroundColor: "lightgray", color: "black" }}>
+      <div className="showemp ml-4 mr-4 mb-3 mt-4 " >
+        <div className="showline">
           <h4>Kichens</h4>
         </div>
         <div>
@@ -208,15 +190,8 @@ const ShowEmployee = (props) => {
           </div>) : null}
       </div>
 
-      <div className="ml-4 mr-4 mb-3 mt-4 "
-        style={{
-          fontFamily: "Times New Roman, Times, serif",
-          margin: '2rem',
-          borderStyle: 'groove',
-          borderWidth: '3px',
-          borderRadius: '7px',
-        }} >
-        <div style={{ backgroundColor: "lightgray", color: "black" }}>
+      <div className="showemp ml-4 mr-4 mb-3 mt-4 " >
+        <div className="showline">
           <h4>Other Workers</h4>
         </div>
         <div>

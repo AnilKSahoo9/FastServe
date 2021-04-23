@@ -1,0 +1,14 @@
+.showemp{
+    font-family: 'Times New Roman', Times, serif;
+    border-style: groove;
+    border-width: 3px;
+    border-radius: 7px;
+  }
+  .showline{
+    background-color:lightgray;
+    color: black;
+  }
+  .tr{
+      width: 30%;
+  }
+  
