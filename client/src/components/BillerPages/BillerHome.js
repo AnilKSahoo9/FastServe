@@ -75,7 +75,7 @@ const BillerHome = () => {
     // setTablepays(billStatus="paid")
     setValue(e.target.value);
     // console.log(e, value);
-    let data = { orderId: value.sessionNo, orderStatus: "paid" };
+    let data = { orderId: value.sessionNo, billStatus: "paid" };
     data.billerName = "anil";
     data.orderType = "table";
     console.log(data);
