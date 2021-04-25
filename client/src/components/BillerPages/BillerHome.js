@@ -42,14 +42,7 @@ const BillerHome = () => {
 
   const [tableOrders, setTableOrders] = useState([]);
   const [parcelOrders, setParcelOrders] = useState([]);
-  const [tablepays, setTablepays] = useState({
-    orderType: "",
-    billStatus: "",
-    orderId: "",
-    waiterName: "",
-    successMessage: null,
-    error: null,
-  });
+  // const [tablepays, setTablepays] = useState("unpaid")
   const [paid, setPaid] = useState("unpaid");
   const [show, setShow] = useState(false);
   const [pshow, setPShow] = useState(false);
@@ -74,6 +67,7 @@ const BillerHome = () => {
   const Payment = (e, value) => {
     // setTablepays(billStatus="paid")
     setValue(e.target.value);
+    console.log(e.target.value);
     // console.log(e, value);
     let data = { orderId: value.sessionNo, billStatus: "paid" };
     data.billerName = "anil";
@@ -90,16 +84,6 @@ const BillerHome = () => {
   };
 
   const fetchbillerTablepaymentData = async (data) => {
-    // const paymentdetails = {
-    //   orderType: "table",
-    //   billStatus: "unpaid",
-    //   orderId: "90fc5786-e3d1-453c-b734-36c19115d95a",
-    //   waiterName: "Rakesh",
-    //   // orderType: tablepays.orderType,
-    //   // billStatus: tablepays.billStatus,
-    //   // orderId: tablepays.orderId,
-    //   // waiterName: tablepays.waiterName
-    // };
     await axios
       .post(`http://localhost:4000/biller-payment/`, data, {
         header: {
@@ -132,27 +116,28 @@ const BillerHome = () => {
     fetchbillerhomeData();
   }, []);
 
-  const Payment1 = (e) => {
-    fetchbillerParcelpaymentData();
+  const Payment1 = (e,value1) => {
     setValue(e.target.value);
     console.log(e.target.value);
+    let data = {orderId: value1.parcelNo, billStatus: "paid" };
+    data.billerName = "anil";
+    data.orderType = "parcel";
+    console.log(data);
+    fetchbillerParcelpaymentData(data);
+    
     var rowno = --e.target.value;
-    ParcelOrder.map((value, index) => {
+    parcelOrders.map((value, index) => {
       if (index == rowno) {
         value.BillPayment = "Paid";
         console.log(value);
       }
     });
   };
-  const fetchbillerParcelpaymentData = async () => {
-    const paymentdetails = {
-      orderType: "parcel",
-      billStatus: "unpaid",
-      orderId: "67b29e85-81ac-48cd-93bb-92d610b03876",
-      billerName: "Amit Singh",
-    };
-    const res = await axios
-      .post(`http://localhost:4000/biller-payment/`, paymentdetails, {
+ 
+  const fetchbillerParcelpaymentData = async (data) => {
+   
+    await axios
+      .post(`http://localhost:4000/biller-payment/`, data, {
         header: {
           "Content-type":
             "application/json,application/x-www-form-urlencoded, charset=UTF-8",
@@ -161,6 +146,7 @@ const BillerHome = () => {
       .then((res) => {
         console.log(res);
         console.log(res.data);
+        setPaid("Paid");
         Swal.fire({
           position: "center",
           icon: "success",
@@ -170,42 +156,18 @@ const BillerHome = () => {
         });
       });
   };
-
   return (
     <div className="inner-container">
       <div>
         <CardGroup>
-          <div className="cardsname">
-            <Card
+        <div>
+            <Card className="cardsname"
               body
               outline
               color="info"
-              style={{
-                maxwidth: "100%",
-                maxHeight: "100rem",
-                color: "white",
-                backgroundColor: "#0a2351",
-                fontFamily: "Times New Roman, Times, serif",
-                margin: "1rem",
-                marginLeft: "1rem",
-                borderStyle: "groove",
-                borderWidth: "3px",
-                borderRadius: "7px",
-              }}
             >
               <h5>
-                <CardHeader
-                  style={{
-                    backgroundColor: "white",
-                    borderBottom: "groove",
-                    backgroundColor: "#0a2351",
-                    borderWidth: "2px",
-                    borderBottomColor: "#ffffff",
-                    borderRadius: "7px",
-                    padding: "3px",
-                    margin: "0px",
-                  }}
-                >
+                <CardHeader className="cardHeadersname">
                   <CardTitle>Total No. of Table Order Placed</CardTitle>
                   {TotalOrder.map((totalorder) => (
                     <>
@@ -217,39 +179,16 @@ const BillerHome = () => {
                 </CardHeader>
               </h5>
             </Card>
-          </div>
-          <div className="cardsname">
-            <Card
+            </div>
+            <div className= "cardstyle">
+            <Card className="cardsname"
               body
               outline
               color="info"
-              style={{
-                maxwidth: "100%",
-                maxHeight: "100rem",
-                color: "white",
-                backgroundColor: "#0a2351",
-                fontFamily: "Times New Roman, Times, serif",
-                margin: "1rem",
-                marginLeft: "2rem",
-                borderStyle: "groove",
-                borderWidth: "3px",
-                borderRadius: "7px",
-              }}
             >
               <h5>
-                <CardHeader
-                  style={{
-                    backgroundColor: "white",
-                    borderBottom: "groove",
-                    backgroundColor: "#0a2351",
-                    borderWidth: "2px",
-                    borderBottomColor: "#ffffff",
-                    borderRadius: "7px",
-                    padding: "3px",
-                    margin: "0px",
-                  }}
-                >
-                  <CardTitle>Total No. of Parcel Order Placed</CardTitle>
+                <CardHeader className="cardHeadersname">
+                  <CardTitle>Total No.of Parcel Order Placed</CardTitle>
                   {TotalParcel.map((totalparcel) => (
                     <>
                       <CardText>
@@ -260,7 +199,7 @@ const BillerHome = () => {
                 </CardHeader>
               </h5>
             </Card>
-          </div>
+            </div>
           <Card className="chartcard">
             <div className="chart">
               <Doughnut data={data} options={{ responsive: true }} />
@@ -270,23 +209,16 @@ const BillerHome = () => {
         </CardGroup>
       </div>
 
-      <div className="Tabledesign">
-        <Table
+      <div>
+        <Table className="Tabledesign"
           responsive
           size="sm"
           striped
           bordered
           hover
-          style={{
-            color: "white",
-            backgroundImage: `linear-gradient(to right,#0E3386,#0047AB, #002D62, #0a2351)`,
-            maxwidth: "80%",
-            maxHeight: "100rem",
-            fontFamily: "Times New Roman, Times, serif",
-            marginTop: "2rem",
-            borderRadius: "20px",
-            borderCollapse: "collapse",
-          }}
+       style={{
+        backgroundImage: `linear-gradient(to right,#0E3386,#0047AB, #002D62, #0a2351)`
+        }}
         >
           <thead>
             <tr>
@@ -368,32 +300,16 @@ const BillerHome = () => {
               )
             )}
           </Modal.Body>
-          {/* <Modal.Footer>
-          <Button onClick={() => handleClose()}>Close</Button>
-        </Modal.Footer> */}
         </Modal>
       </div>
 
-      <Table
+      <Table className="Tabledesign"
         responsive
         size="sm"
         striped
         bordered
         hover
-        style={{
-          color: "white",
-          // backgroundColor:"#20B2AA",
-          //  background: `linear-gradient(to right, #56ccf2, #2f80ed)`,
-          // background:"#073980",
-          backgroundImage: `linear-gradient(to right,#0E3386,#0047AB, #002D62, #0a2351)`,
-          maxwidth: "80%",
-          maxHeight: "100rem",
-          fontFamily: "Times New Roman, Times, serif",
-          marginTop: "2rem",
-          // borderStyle: "groove",
-          borderWidth: "3px",
-          borderRadius: "20px",
-        }}
+        style={{ backgroundImage: `linear-gradient(to right,#0E3386,#0047AB, #002D62, #0a2351)`}}
       >
         <thead>
           <tr>
@@ -411,11 +327,13 @@ const BillerHome = () => {
               <td>
                 <Button
                   style={{ backgroundColor: "#d11d72" }}
-                  onClick={Payment1}
-                  value={val1.parcelNo}
+                  onClick={(e)=> Payment1(e,val1)}
+                  
+                  // value={val1.parcelNo}
                 >
-                  {val1.status}=Rs.{val1.totalAmount}
+                  {paid}=Rs.{val1.totalAmount}
                 </Button>
+                
               </td>
               <td>
                 <Button
@@ -467,9 +385,6 @@ const BillerHome = () => {
             )
           )}
         </Modal.Body>
-        {/* <Modal.Footer>
-          <Button onClick={() => handleClose1()}>Close</Button>
-        </Modal.Footer> */}
       </Modal>
     </div>
   );

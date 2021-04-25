@@ -31,9 +31,9 @@ const AdminHome = () => {
   return (
       <div className="inner-container">
       <CardGroup >
-                <Card className="card" body outline color="info">
+                <Card className="card-design" body outline color="info">
                     <h5>
-                        <CardHeader className="cardheader" >
+                        <CardHeader className="card-header" >
                             <CardTitle><b>Active Tables</b></CardTitle>
                         </CardHeader>
                     </h5>
@@ -43,9 +43,9 @@ const AdminHome = () => {
                         <p>No. of Tables Active</p>
                     </CardBody>
                 </Card>
-                <Card className="card" body outline color="info">
+                <Card className="card-design" body outline color="info">
                     <h5>
-                        <CardHeader className="cardheader" >
+                        <CardHeader className="card-header" >
                             <CardTitle><b>Tables</b></CardTitle>
                         </CardHeader>
                     </h5>
@@ -56,9 +56,9 @@ const AdminHome = () => {
                     </CardBody>
                 </Card>
 
-                <Card className="card" body outline color="info" >
+                <Card className="card-design" body outline color="info" >
                     <h5>
-                        <CardHeader className="cardheader" >
+                        <CardHeader className="card-header" >
                             <CardTitle><b>Parcels</b></CardTitle>
                         </CardHeader>
                     </h5>
@@ -70,9 +70,9 @@ const AdminHome = () => {
                 </Card>
             </CardGroup>
             <CardGroup >
-            <Card className="card" body outline color="info" >
+            <Card className="card-design" body outline color="info" >
                     <h5>
-                        <CardHeader className="cardheader" >
+                        <CardHeader className="card-header" >
                             <CardTitle><b>Waiter</b></CardTitle>
                         </CardHeader>
                     </h5>
@@ -84,9 +84,9 @@ const AdminHome = () => {
                     </CardBody>
                 </Card>
 
-                <Card className="card" body outline color="info" >
+                <Card className="card-design" body outline color="info" >
                     <h5>
-                        <CardHeader className="cardheader">
+                        <CardHeader className="card-header">
                             <CardTitle><b>Kitchens</b></CardTitle>
                         </CardHeader>
                     </h5>
@@ -97,9 +97,9 @@ const AdminHome = () => {
                         <p >No. of Orders Accepted by Kitchen</p>
                     </CardBody>
                 </Card>
-                <Card className="card" body outline color="info" >
+                <Card className="card-design" body outline color="info" >
                     <h5>
-                        <CardHeader className="cardheader" >
+                        <CardHeader className="card-header" >
                             <CardTitle><b>Billers</b></CardTitle>
                         </CardHeader>
                     </h5>

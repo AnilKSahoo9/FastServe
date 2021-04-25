@@ -22,7 +22,7 @@
     
     /* margin: 0; */
 }
-.card{
+.card-design{
 max-width: 100%;
 max-height: 100rem;
 font-family: 'Times New Roman', Times, serif;
@@ -33,7 +33,7 @@ border-width: 3px;
 box-shadow: 0 4px 8px 0 rgba(0,0,0,1.0);
 background-image:linear-gradient(to right bottom, #0070BB, #213ea7, #1480ce, #00b98a, #009b7d) ;
 }
-.cardheader
+.card-header
 {
   color: white;
   border-radius: 7px;
