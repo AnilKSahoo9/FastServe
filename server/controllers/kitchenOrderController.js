@@ -3,8 +3,8 @@ let parcelSchema = require('../models/parcelModel');
 let kitchenSchema = require('../models/kitchenModel');
 
 const kitchenOrderGetController = async(req,res) => {
-    await sessionSchema.find({orderStatus:"pending"},(err,doc) => {
-         parcelSchema.find({orderStatus:"pending"},(err2,doc2) => {
+    await sessionSchema.find({orderStatus:{$in:["pending","accept"]},created_at:new Date().toISOString().replace('-','/').split('T')[0].replace('-','/')},(err,doc) => {
+         parcelSchema.find({orderStatus:{$in:["pending","accept"]},created_at:new Date().toISOString().replace('-','/').split('T')[0].replace('-','/')},(err2,doc2) => {
             if(err2 || err){
                 res.status(500).json({msg:'data not found'});
             }
@@ -18,7 +18,7 @@ const kitchenOrderGetController = async(req,res) => {
 const kitchenOrderPostController = (req,res) => {
 
     let {_id,orderStatus,orderType,time} = req.body;
-
+//console.log(req.body)
     orderStatus === "accept" && orderType === "parcel"?  kitchenSchema.updateOne({},{ $push:{accept:_id} } ,(err,doc) => {
         if(err){
             return res.status(500).json({msg:'Error occured'});

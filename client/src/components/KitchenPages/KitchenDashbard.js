@@ -1,13 +1,10 @@
 import React, { useRef, useState, useEffect } from "react";
 import { Table, Button, Form } from "react-bootstrap";
-import { data } from "../../StaticData/kitchenData";
-
 import axios from "axios";
 import "./notification.css";
-import io from "socket.io-client";
-import { event } from "jquery";
-import { render, unstable_renderSubtreeIntoContainer } from "react-dom";
-let socket;
+
+// import io from "socket.io-client";
+// let socket;
 
 function KitchenDashbard() {
   const [timerHours, setTimerHours] = useState("00");
@@ -19,39 +16,41 @@ function KitchenDashbard() {
     rowKey: null,
   });
   const [kitchendata, setKitchenData] = useState([]);
-  const ENDPOINT = "ws://localhost:4000/api/socket";
-  let connectionOptions = {
-    "force new connection": true,
-    reconnectionAttempts: "Infinity",
-    timeout: 10000,
-    transports: ["websocket"],
-  };
+
+  // const ENDPOINT = "ws://localhost:4000/api/socket";
+  // let connectionOptions = {
+  //   "force new connection": true,
+  //   reconnectionAttempts: "Infinity",
+  //   timeout: 10000,
+  //   transports: ["websocket"],
+  // };
+
   const fetchData = async () => {
     const response = await axios.get(`http://localhost:4000/getkitchendata/`);
     setKitchenData(response.data);
-    console.log(response.data);
+    //console.log(response.data);
   };
 
   useEffect(() => {
-    socket = io(ENDPOINT, connectionOptions);
-    //console.log(socket);
+    // socket = io(ENDPOINT, connectionOptions);
+    // console.log(socket);
 
-    socket.on("kitchenData", (kitchenData) => {
-      //console.log(kitchenData);
-      let kitchenData2 = {};
-      kitchenData2 = kitchenData;
-      kitchendata.push(kitchenData2);
-      socket.emit("forkitchen", { name: "aarti" });
-    });
+    // socket.on("kitchenData", (kitchenData) => {
+    //   //console.log(kitchenData);
+    //   let kitchenData2 = {};
+    //   kitchenData2 = kitchenData;
+    //   kitchendata.push(kitchenData2);
+    //   socket.emit("forkitchen", { name: "aarti" });
+    // });
 
-    socket.on("kitchenData2", (kitchenData) => {
-      let kitchenData2 = {};
-      kitchenData2 = kitchenData;
-      kitchendata.push(kitchenData2);
-    });
+    // socket.on("kitchenData2", (kitchenData) => {
+    //   let kitchenData2 = {};
+    //   kitchenData2 = kitchenData;
+    //   kitchendata.push(kitchenData2);
+    // });
 
     fetchData();
-  }, [kitchendata]);
+  }, []);
 
   //to reduce the counterdown
   let interval = useRef();
@@ -72,7 +71,6 @@ function KitchenDashbard() {
         clearInterval(interval.current);
       } else {
         setTimerHours(hours);
-
         setTimerMin(minutes);
         setTimerSec(seconds);
       }
@@ -81,9 +79,9 @@ function KitchenDashbard() {
 
   const handleTimeChange = (event) => {
     setTime(event.target.value);
-    console.log(event.target.value);
-    // setDisplay({ orderStatusval: "pending", rowKey: event.target.value });
+    //console.log(event.target.value);
   };
+
   const changeTheTimer = () => {
     startTimer();
     return () => {
@@ -111,29 +109,27 @@ function KitchenDashbard() {
         }
       )
       .then((response) => {
-        console.log(response);
+        //console.log(response);
         if (response.status === 200) {
           console.log(response.data);
         }
       });
   };
-  //when order is accepted
 
+  //when order is accepted
   const acceptedOrder = (e) => {
     setDisplay({ orderStatusval: "accepted", rowKey: e.target.value });
-    console.log(e.target.value);
+    //console.log(e.target.value);
     kitchendata.map((val, index) => {
       if (val._id == e.target.value) {
         val.orderStatus = "accepted";
       }
     });
     changeTheTimer();
-    postData();
+    //postData();  //see above
   };
-  // console.log(display.rowKey);
 
   //when order is canceled
-
   const orderDecline = (e) => {
     kitchendata.map((val, index) => {
       if (val._id == e.target.value) {
