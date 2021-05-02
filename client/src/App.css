@@ -41,8 +41,11 @@
 } */
 *{
   margin-top: 0;
+ 
 }
 .App {
+  line-height: 1.3;
+  background-color: #1F305E;
   text-align: center;
   height: 100vh;
   /* overflow-y: hidden; */

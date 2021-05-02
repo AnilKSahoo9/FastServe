@@ -20,6 +20,8 @@ import bevergaes from "./image/drink.jpg";
 import rice from "./image/fried-rice.jpg";
 import chicken from "./image/chicken.jpg";
 import "../../css/admin.css";
+import "../AdminPages/AdminStyles.css";
+
 const AddItem = () => {
   const [modalShow, setModalShow] = useState(false);
   const [itemName, setItemName] = useState("");
@@ -143,7 +145,7 @@ const AddItem = () => {
 
   console.log(arrData);
   return (
-    <div className="container-fluid">
+    <div className="inner-container">
       <div style={{ float: "right" }}>
         {" "}
         <Button
@@ -246,214 +248,10 @@ const AddItem = () => {
           </Modal.Footer>
         </Modal>
       </div>
-      {/* <div>{itemData[0].map((value) => console.log(value))}</div> */}
-      {/* <div>
-        {itemData.breakfast && itemData.breakfast.length > 0
-          ? itemData.breakfast.map((a) => console.log(a.name))
-          : itemData.dessert && itemData.dessert.length > 0
-          ? itemData.dessert.map((a) => console.log(a.name))
-          : ""}
-      </div> */}
+
       <div>
         <h2 className="heading">~:Menu Item:~</h2>
         <div style={{ marginTop: "40px" }}>
-          {/* <Row>
-            <Cul xs={12} md={6} lg={3}>
-              {itemData.breakfast && itemData.breakfast.length > 0 ? (
-                <Table striped bordered hover variant="dark">
-                  <thead>
-                    <tr>
-                      <th colSpan="3">Breakfast</th>
-                    </tr>
-                    <tr>
-                      <th>Sl no.</th>
-                      <th>Item Name</th>
-                      <th>Price</th>
-                    </tr>
-                  </thead>
-                  {itemData.breakfast.map((val, index) => (
-                    <tbody>
-                      <tr>
-                        <td>{index + 1}</td>
-                        <td>{val.name}</td>
-                        <td>{val.price}</td>
-                      </tr>
-                    </tbody>
-                  ))}
-                </Table>
-              ) : (
-                ""
-              )}
-            </Col>
-            <Cul xs={12} md={6} lg={3}>
-              {itemData.bevergaes && itemData.bevergaes.length > 0 ? (
-                <Table striped bordered hover variant="dark">
-                  <thead>
-                    <tr>
-                      <th>Sl no.</th>
-                      <th>Item Name</th>
-                      <th>Price</th>
-                    </tr>
-                  </thead>
-                  {itemData.bevergaes.map((val, index) => (
-                    <tbody>
-                      <tr>
-                        <td>{index + 1}</td>
-                        <td>{val.name}</td>
-                        <td>{val.price}</td>
-                      </tr>
-                    </tbody>
-                  ))}
-                </Table>
-              ) : (
-                ""
-              )}
-            </Col>
-            <Cul xs={12} md={6} lg={3}>
-              {itemData.dessert && itemData.dessert.length > 0 ? (
-                <Table striped bordered hover variant="dark">
-                  <thead>
-                    <tr>
-                      <th>Sl no.</th>
-                      <th>Item Name</th>
-                      <th>Price</th>
-                    </tr>
-                  </thead>
-                  {itemData.dessert.map((val, index) => (
-                    <tbody>
-                      <tr>
-                        <td>{index + 1}</td>
-                        <td>{val.name}</td>
-                        <td>{val.price}</td>
-                      </tr>
-                    </tbody>
-                  ))}
-                </Table>
-              ) : (
-                ""
-              )}
-            </Col>
-            <Cul xs={12} md={6} lg={3}>
-              {itemData.rice && itemData.rice.length > 0 ? (
-                <Table striped bordered hover variant="dark">
-                  <thead>
-                    <tr>
-                      <th>Sl no.</th>
-                      <th>Item Name</th>
-                      <th>Price</th>
-                    </tr>
-                  </thead>
-                  {itemData.rice.map((val, index) => (
-                    <tbody>
-                      <tr>
-                        <td>{index + 1}</td>
-                        <td>{val.name}</td>
-                        <td>{val.price}</td>
-                      </tr>
-                    </tbody>
-                  ))}
-                </Table>
-              ) : (
-                ""
-              )}
-            </Col>
-            <Cul xs={12} md={6} lg={3}>
-              {itemData.dal && itemData.dal.length > 0 ? (
-                <Table striped bordered hover variant="dark">
-                  <thead>
-                    <tr>
-                      <th>Sl no.</th>
-                      <th>Item Name</th>
-                      <th>Price</th>
-                    </tr>
-                  </thead>
-                  {itemData.dal.map((val, index) => (
-                    <tbody>
-                      <tr>
-                        <td>{index + 1}</td>
-                        <td>{val.name}</td>
-                        <td>{val.price}</td>
-                      </tr>
-                    </tbody>
-                  ))}
-                </Table>
-              ) : (
-                ""
-              )}
-            </Col>
-            <Cul xs={12} md={6} lg={3}>
-              {itemData.nonveg && itemData.nonveg.length > 0 ? (
-                <Table striped bordered hover variant="dark">
-                  <thead>
-                    <tr>
-                      <th>Sl no.</th>
-                      <th>Item Name</th>
-                      <th>Price</th>
-                    </tr>
-                  </thead>
-                  {itemData.nonveg.chicken.map((val, index) => (
-                    <tbody>
-                      <tr>
-                        <td>{index + 1}</td>
-                        <td>{val.name}</td>
-                        <td>{val.price}</td>
-                      </tr>
-                    </tbody>
-                  ))}
-                </Table>
-              ) : (
-                ""
-              )}
-            </Col>
-            <Cul xs={12} md={6} lg={3}>
-              {itemData.nonveg.chicken && itemData.nonveg.chicken.length > 0 ? (
-                <Table striped bordered hover variant="dark">
-                  <thead>
-                    <tr>
-                      <th>Sl no.</th>
-                      <th>Item Name</th>
-                      <th>Price</th>
-                    </tr>
-                  </thead>
-                  {itemData.nonveg.chicken.map((val, index) => (
-                    <tbody>
-                      <tr>
-                        <td>{index + 1}</td>
-                        <td>{val.name}</td>
-                        <td>{val.price}</td>
-                      </tr>
-                    </tbody>
-                  ))}
-                </Table>
-              ) : (
-                ""
-              )}
-            </Col>
-            <Cul xs={12} md={6} lg={3}>
-              {itemData.nonveg.mutton && itemData.nonveg.mutton.length > 0 ? (
-                <Table striped bordered hover variant="dark">
-                  <thead>
-                    <tr>
-                      <th>Sl no.</th>
-                      <th>Item Name</th>
-                      <th>Price</th>
-                    </tr>
-                  </thead>
-                  {itemData.nonveg.mutton.map((val, index) => (
-                    <tbody>
-                      <tr>
-                        <td>{index + 1}</td>
-                        <td>{val.name}</td>
-                        <td>{val.price}</td>
-                      </tr>
-                    </tbody>
-                  ))}
-                </Table>
-              ) : (
-                ""
-              )}
-            </Col>
-          </Row> */}
           <Row>
             <Col xs={6}>
               {itemData.breakfast && itemData.breakfast.length > 0 ? (

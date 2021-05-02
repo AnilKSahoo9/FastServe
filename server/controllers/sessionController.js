@@ -9,7 +9,7 @@ const sessionController = (req,res) => {
      new sessionSchema({_id:idB,items:items,totalAmount:totalAmount,tableNo:tableNo,waiterName:waiterName,billStatus:billStatus,orderStatus:orderStatus,required_time:null,created_at:new Date().toISOString().replace('-','/').split('T')[0].replace('-','/')}).save();
     tableSchema.updateOne(
       { tableNo: tableNo },
-      { $push:{session:idB} },
+      { $push:{session:idB},tableStatus: "active" },
       function (err, docs) {
         if (err) {
           console.log(err);

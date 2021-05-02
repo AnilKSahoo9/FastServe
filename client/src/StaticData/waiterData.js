@@ -30,4 +30,12 @@ export var waiter = [
     tableno: "2",
     orderdetails: ["friedrice", "manchurian", "dry chana"],
   },
+  { name: "Sagar Panda", status: "Inactive" },
+  {
+    name: "Suraj Pradhan",
+    status: "Active",
+    ordertaken: "3",
+    tableno: "5",
+    orderdetails: ["friedrice", "manchurian", "dry chana"],
+  },
 ];

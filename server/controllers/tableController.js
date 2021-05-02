@@ -5,7 +5,8 @@ const tableController = (req,res) => {
       let tables = new tableSchema({
         tableNo: Number(tableNo) + i,
         session: [],
-        tableStatus: null,
+        tableStatus: "inactive",
+        created_at:new Date().toISOString().replace('-','/').split('T')[0].replace('-','/')
       });
       tables.save();
     }

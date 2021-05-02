@@ -8,18 +8,7 @@ let sessionSchema = require("./models/sessionModel");
 let parcelSchema = require("./models/parcelModel");
 
 const PORT = 4000;
-
 const socketio = require('socket.io');
-// const users = {};
-// socketio.on('connection',socket =>{
-//   socket.on('new-user-joined',name => {
-//     users[socket.id] = name;
-//     socket.broadcast.emit('user-joined',name);
-//   });
-//   socket.on('send',message =>{
-//     socket.broadcast.emit('receive',{message: message,name:user[socket.id]})
-//   });
-// })
 const http = require("http");
 const app = express();
 app.use(cors());
@@ -27,17 +16,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 const server = http.createServer(app);
 const io = socketio(server);
-
-// io.on('connection', socket => {
-//   socket.on('message', ({ name, message }) => {
-//     io.emit('message', { name, message })
-//   })
-// })
-
-// http.listen(4000, function() {
-//   console.log('listening on port 4000')
-// })
-
 
 io.of("/api/socket").on("connection", (socket) => {
   //console.log("we'va a new connection!!!!");
@@ -54,8 +32,8 @@ io.of("/api/socket").on("connection", (socket) => {
         });
 
         //for kitchen
-        socket.emit("kitchenData",change.fullDocument);
-        socket.on("forkitchen",(data) => {});
+        // socket.emit("kitchenData",change.fullDocument);
+        // socket.on("forkitchen",(data) => {});
     }
   });
   const sessionChangeStream = sessionSchema.watch();
@@ -74,8 +52,9 @@ io.of("/api/socket").on("connection", (socket) => {
           ],
         });
       //console.log(change.fullDocument);
+
       //for kitchen
-      socket.emit("kitchenData2",change.fullDocument);
+      //socket.emit("kitchenData2",change.fullDocument);
     }
   });
 
@@ -104,17 +83,3 @@ mongoose
   .catch((err) => {
     console.log(err);
   });
-
-// socket.removeAllListeners('parcelData');
-// socket.removeAllListeners('disconnection');
-// io.removeAllListeners('connection'); inside socket.disconnect()
-
-// socket.emit('news',{hello:'world'});
-// socket.on('my other event',(data) => {
-//   console.log(data);
-// }); inside io.of()
-
-// socket.on('news',(data) => {
-//   console.log(data);
-//   socket.emit('my other event',{my:'data'});
-// }); this has to be written inside useeffect of client where socket conn is established

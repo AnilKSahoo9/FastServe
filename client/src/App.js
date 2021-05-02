@@ -10,6 +10,7 @@ import ClipLoader from "react-spinners/ClipLoader";
 
 import React, { Suspense } from "react";
 import NavBar from "./components/shared/NavBar/NavBar";
+import NavLinks from "./components/shared/NavLinks/NavLinks";
 import SideBar from "./components/shared/SideBar/SideBar";
 import { BillerReport } from "./components/BillerPages/BillerReport";
 import { BillerWaiter } from "./components/BillerPages/BillerWaiter";
@@ -32,7 +33,7 @@ const AdminTable = React.lazy(() =>
   import("./components/AdminPages/AdminTable")
 );
 const AddItem = React.lazy(() => import("./components/AdminPages/AddItem"));
-// const BillerReport = React.lazy(() => import("./components/BillerPages/BillerReport"));
+//const BillerReport = React.lazy(() => import("./components/BillerPages/BillerReport"));
 const AdminTotalOrder = React.lazy(() =>
   import("./components/AdminPages/AdminTotalOrder")
 );
@@ -54,26 +55,26 @@ const Listmenu = React.lazy(() => import("./components/Waiterpages/Listmenu"));
 const App = () => {
   return (
     <div>
-      <div
-        className="gap"
-        style={{ width: "100% !important", height: "100% !important" }}
-      >
-        <BrowserRouter>
-          <Switch>
-            <Route path="/" exact component={Login} />
-          </Switch>
-        </BrowserRouter>
-      </div>
+      {/* <div className="gap" style={{width:"100% !important",height:"100% !important"}}>
+      <BrowserRouter>
+      <Switch>
+      
+      <Route path="/" exact component={Login} />
+      
+      </Switch>
+      </BrowserRouter>
+      </div> */}
       <div className="App">
         <Router>
           <NavBar />
+          {/* <NavLinks/> */}
           <SideBar />
           <div className="content">
             <Suspense
               fallback={
                 <div style={{ marginTop: "250px" }}>
                   <ClipLoader
-                    color="black"
+                    color="white"
                     loading={true}
                     css={""}
                     size={100}
@@ -82,24 +83,25 @@ const App = () => {
               }
             >
               <Switch>
+                <Route path="/" exact component={Login} />
                 {/* <Route path="/" exact component={Login} /> */}
-                <Route path="/home" component={AdminHome} exact />
-                <Route path="/addemployee" component={AddEmployee} exact />
-                <Route path="/showemployee" component={ShowEmployee} exact />
-                <Route path="/waiter" component={AdminWaiter} exact />
-                <Route path="/totalorder" component={AdminTotalOrder} exact />
-                <Route path="/table" component={AdminTable} exact />
-                <Route path="/additems" component={AddItem} exact />
-                <Route path="/billerHome" component={BillerHome} exact />
-                <Route path="/billerWaiter" component={BillerWaiter} exact />
-                <Route path="/billerKitchen" component={BillerKitchen} exact />
-                <Route path="/billerReport" component={BillerReport} exact />
-                <Route path="/customer" component={Customer} exact />
+                <Route path="/home" component={AdminHome} />
+                <Route path="/addemployee" component={AddEmployee} />
+                <Route path="/showemployee" component={ShowEmployee} />
+                <Route path="/waiter" component={AdminWaiter} />
+                <Route path="/totalorder" component={AdminTotalOrder} />
+                <Route path="/table" component={AdminTable} />
+                <Route path="/additems" component={AddItem} />
+                <Route path="/billerHome" component={BillerHome} />
+                <Route path="/billerWaiter" component={BillerWaiter} />
+                <Route path="/billerKitchen" component={BillerKitchen} />
+                <Route path="/billerReport" component={BillerReport} />
+                <Route path="/customer" component={Customer} />
                 <Route path="/kitchenDashboard" component={KitchenDashbard} />
                 <Route path="/notification" component={Notification} />
-                <Route path="/place_order" component={Tablepage} />
-                {/* <Route path="/Catagorypage" component={Catagorypage} /> */}
-                {/* <Route path="/Listmenu" component={Listmenu} /> */}
+                <Route path="/Tablepage" component={Tablepage} />
+                <Route path="/Catagorypage" component={Catagorypage} />
+                <Route path="/Listmenu" component={Listmenu} />
 
                 <Redirect to="/" />
               </Switch>
