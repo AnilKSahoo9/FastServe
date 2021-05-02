@@ -2,9 +2,9 @@ let sessionSchema = require("../models/sessionModel");
 let parcelSchema = require("../models/parcelModel");
 let billerSchema = require("../models/billerModel");
 const { v4: uuidv4 } = require("uuid");
-
+let tableSchema = require("../models/tableModel");
 const billerPaymentController =  (req, res) => {
-  let { billStatus, orderType, orderId ,billerName} = req.body;
+  let { billStatus, orderType, orderId ,billerName ,tableNo} = req.body;
   let idM = uuidv4();
   orderType === "parcel"
     ?  parcelSchema.updateOne(
@@ -45,6 +45,11 @@ const billerPaymentController =  (req, res) => {
           //   res.status(500).json({ msg: "error occured" });
           // }
           if (doc) {
+            tableSchema.updateOne({tableNo:tableNo},{tableStatus: "inactive"},(err4,doc4) => {
+              if(doc4){
+                console.log("successfully updated");
+              }
+            });
             billerSchema.findOne({name:billerName},(err2,doc2) => {
               if(doc2){
                 billerSchema.updateOne({name:billerName},{ $push:{paid:orderId}},(err3,doc3) => {
