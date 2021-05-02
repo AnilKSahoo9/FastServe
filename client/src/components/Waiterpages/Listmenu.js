@@ -4,19 +4,18 @@ import { Prev } from "react-bootstrap/esm/PageItem";
 
 const Listmenu = () => {
   const [count, setCount] = useState(0);
-    const[num,setNum]=useState(0);
-    const incNum=()=>{
-      setNum(num +1)
-    };
-    const decNum=()=>{
-      if (num>0){
-        setNum(num-1)
-      }else{
-        alert('Sorry,Zero LIMIT Reached')
-        setNum(0)
-      }
+  const [num, setNum] = useState(0);
+  const incNum = () => {
+    setNum(num + 1);
+  };
+  const decNum = () => {
+    if (num > 0) {
+      setNum(num - 1);
+    } else {
+      alert("Sorry,Zero LIMIT Reached");
+      setNum(0);
     }
-
+  };
 
   const list = {
     breakfast: [
@@ -37,14 +36,16 @@ const Listmenu = () => {
         <tr>
           <th>Sl.no</th>
           <th>item Name</th>
-          <th></th>
+          <th>Price per plate</th>
+          <th>Quantity</th>
         </tr>
       </thead>
       {list.breakfast.map((e, index) => (
         <tbody>
           <tr key={index}>
-            <td>{e.no}</td>
+            <td>{index + 1}</td>
             <td>{e.name}</td>
+            <td></td>
             <td>
               <button onClick={() => setCount(count + 1)}>+</button>
               <button>{count}</button>
@@ -54,9 +55,11 @@ const Listmenu = () => {
         </tbody>
       ))}
       <tr>
-      <th colSpan="3">
-        <button style={{marginLeft:"800px" , color:"blue"}}>Add more items</button>
-      </th>
+        <th colSpan="3">
+          <button style={{ marginLeft: "800px", color: "blue" }}>
+            Add more items
+          </button>
+        </th>
       </tr>
     </Table>
   );

@@ -1,50 +1,95 @@
-export var placeorder = [
+export let tablesList = [
   {
-    name: "Table 1",
+    no: 101,
   },
   {
-    name: "Table 2",
+    no: 102,
   },
   {
-    name: "Table 3",
+    no: 103,
   },
   {
-    name: "Table 4",
+    no: 104,
   },
   {
-    name: "Table 5",
+    no: 105,
   },
   {
-    name: "Table 6",
+    no: 106,
   },
   {
-    name: "Table 7",
+    no: 107,
   },
   {
-    name: "Table 8",
+    no: 108,
   },
   {
-    name: "Table 9",
+    no: 109,
   },
   {
-    name: "Table 10",
+    no: 110,
   },
   {
-    name: "Table 11",
+    no: 111,
   },
   {
-    name: "Table 12",
-  },
-  {
-    name: "Table 13",
-  },
-  {
-    name: "Table 14",
-  },
-  {
-    name: "Table 15",
-  },
-  {
-    name: "Table 16",
+    no: 112,
   },
 ];
+
+export let categoryList = [
+  {
+    name: "Breakfast",
+  },
+  {
+    name: "Veg",
+  },
+  {
+    name: "Nonveg",
+  },
+  {
+    name: "Dal",
+  },
+  {
+    name: "Desserts",
+  },
+  {
+    name: "Rice",
+  },
+  {
+    name: "Snacks",
+  },
+  {
+    name: "Sweets",
+  },
+  {
+    name: "Drinks",
+  },
+  {
+    name: "vegies",
+  },
+  {
+    name: "Noodles",
+  },
+  {
+    name: "Curry",
+  },
+];
+
+export const menuItems = {
+  Breakfast: [
+    { name: "itli", price: 10, count: 0 },
+    { name: "Dosha", price: 20, count: 0 },
+    { name: "dahibara", price: 30, count: 0 },
+    { name: "samosha", price: 40, count: 0 },
+    { name: "chapati", price: 50, count: 0 },
+    { name: "upma", price: 60, count: 0 },
+  ],
+  Rice: [
+    { name: "Plain Rice", price: 10, count: 0 },
+    { name: "Jeera Rice", price: 20, count: 0 },
+    { name: "Lemon Rice", price: 30, count: 0 },
+    { name: "Scented Rice", price: 40, count: 0 },
+    { name: "Pakhala", price: 50, count: 0 },
+  ],
+};

@@ -1,18 +1,16 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "./NavLinks.css";
-import HomeIcon from '@material-ui/icons/Home';
+import HomeIcon from "@material-ui/icons/Home";
 const NavLinks = (props) => {
   return (
     <div className="Nav-bar">
       <ul className="nav-links">
         <li>
           <NavLink to="/home" className="home">
-          <HomeIcon style={{marginRight:"5px"}} />
-          Home
-          
+            <HomeIcon style={{ marginRight: "5px" }} />
+            Home
           </NavLink>
-
         </li>
         <li>
           <NavLink to="/totalorder" className="table">
@@ -86,15 +84,16 @@ const NavLinks = (props) => {
           </NavLink>
         </li>
         <li>
-      <NavLink to="/Tablepage"className="Tablepage">Tablepage</NavLink>
-    </li> 
-    <li>
+          <NavLink to="/place_order" className="place_order">
+            Place Order
+          </NavLink>
+        </li>
+        {/* <li>
       <NavLink to="/Catagorypage"className="Catagorypage">Catagorypage</NavLink>
     </li>
     <li>
       <NavLink to="/Listmenu"className="Listmenu">Listmenu</NavLink>
-    </li>
-   
+    </li> */}
       </ul>
     </div>
   );
@@ -107,7 +106,7 @@ export default NavLinks;
 
 // const NavLinks = (props) => {
 //   return (
-    
+
 //     <div className="Nav-bar">
 //       <ul className="nav-links">
 //         <li>
@@ -177,23 +176,21 @@ export default NavLinks;
 //           </NavLink>
 //         </li>
 //         <li>
-         
-    // <li>
-    //   <NavLink to="/Tablepage"className="Tablepage">Tablepage</NavLink>
-    // </li> 
-    // <li>
-    //   <NavLink to="/Catagorypage"className="Catagorypage">Catagorypage</NavLink>
-    // </li>
-    // <li>
-    //   <NavLink to="/Listmenu"className="Listmenu">Listmenu</NavLink>
-    // </li>
-   
 
+// <li>
+//   <NavLink to="/Tablepage"className="Tablepage">Tablepage</NavLink>
+// </li>
+// <li>
+//   <NavLink to="/Catagorypage"className="Catagorypage">Catagorypage</NavLink>
+// </li>
+// <li>
+//   <NavLink to="/Listmenu"className="Listmenu">Listmenu</NavLink>
+// </li>
 
 //         {/* <li>
 //       <NavLink to="/showuser"className="showuser">ShowUser</NavLink>
 //     </li> */}
-    
+
 //       <li>
 //           <NavLink to="/billerHome" className="billerHome">
 //             Biller Home
@@ -214,7 +211,7 @@ export default NavLinks;
 //             Biller Report
 //           </NavLink>
 //         </li>
-        
+
 //         <li>
 //       <NavLink to="/logout"className="logout">LogOut</NavLink>
 //     </li>

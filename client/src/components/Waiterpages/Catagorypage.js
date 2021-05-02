@@ -28,6 +28,9 @@ function Catagorypage() {
     //   </div>
     // );
   };
+  const handleBack = () => {
+    setShowItems(false);
+  };
 
   return (
     <div>
@@ -69,8 +72,12 @@ function Catagorypage() {
           })}
         </Grid>
       )}
-      {showItems && <Listmenu />}
-      {/* <Button></Button> */}
+      {showItems && (
+        <div>
+          <Listmenu />
+          <Button onClick={handleBack}>Back</Button>
+        </div>
+      )}
     </div>
   );
 }

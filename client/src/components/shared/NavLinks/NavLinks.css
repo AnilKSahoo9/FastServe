@@ -9,9 +9,10 @@
   justify-content: center;
   align-items: center;
 }
+
 .nav-links li {
   margin-bottom: 1.3rem;
- 
+
 }
 
 .nav-links li .home {
@@ -22,7 +23,7 @@
   font-size: 20px;
   top: 1cm;
   margin: 1rem;
- /* margin-bottom: 0.7rem; */
+  /* margin-bottom: 0.7rem; */
   padding: 0.2rem;
   list-style-type: none;
   font-weight: bold;
@@ -31,13 +32,13 @@
 .nav-links li .table {
   position: absolute;
   left: -0.3cm;
-  width:4.7cm;
+  width: 4.7cm;
   text-align: center;
   font-size: 20px;
   top: 2cm;
   margin: 1rem;
   padding: 0.2rem;
-  
+
   list-style-type: none;
   font-weight: bold;
 }
@@ -45,13 +46,13 @@
 .nav-links li .Order {
   position: absolute;
   left: -0.3cm;
-  width:4.7cm;
+  width: 4.7cm;
   text-align: center;
   font-size: 20px;
   top: 3cm;
   margin: 1rem;
   padding: 0.2rem;
-  
+
   list-style-type: none;
   font-weight: bold;
 }
@@ -59,7 +60,7 @@
 .nav-links li .waiter {
   position: absolute;
   left: -0.3cm;
-  width:4.7cm;
+  width: 4.7cm;
   text-align: center;
   font-size: 20px;
   top: 4cm;
@@ -85,7 +86,7 @@
 .nav-links li .biller {
   position: absolute;
   left: -0.3cm;
-  width:4.7cm;
+  width: 4.7cm;
   text-align: center;
   font-size: 20px;
   top: 6cm;
@@ -98,7 +99,7 @@
 .nav-links li .adduser {
   position: absolute;
   left: -0.3cm;
-  width:4.7cm;
+  width: 4.7cm;
   text-align: center;
   font-size: 20px;
   top: 7cm;
@@ -111,7 +112,7 @@
 .nav-links li .billerHome {
   position: absolute;
   left: -0.3cm;
-  width:4.7cm;
+  width: 4.7cm;
   text-align: center;
   font-size: 20px;
   top: 8cm;
@@ -120,6 +121,7 @@
   list-style-type: none;
   font-weight: bold;
 }
+
 .nav-links li .billerWaiter {
   position: absolute;
   left: -0.3cm;
@@ -132,10 +134,11 @@
   list-style-type: none;
   font-weight: bold;
 }
+
 .nav-links li .billerKitchen {
   position: absolute;
   left: -0.3cm;
-  width:4.7cm;
+  width: 4.7cm;
   text-align: center;
   font-size: 20px;
   top: 10cm;
@@ -144,6 +147,7 @@
   list-style-type: none;
   font-weight: bold;
 }
+
 .nav-links li .billerReport {
   position: absolute;
   left: -0.3cm;
@@ -156,6 +160,7 @@
   list-style-type: none;
   font-weight: bold;
 }
+
 .nav-links li .customer {
   position: absolute;
   left: -0.3cm;
@@ -168,6 +173,7 @@
   list-style-type: none;
   font-weight: bold;
 }
+
 .nav-links li .timer {
   position: absolute;
   left: -0.3cm;
@@ -180,6 +186,7 @@
   list-style-type: none;
   font-weight: bold;
 }
+
 /* .nav-links li .Tablepage {
   position: absolute;
   left: -0.3cm;
@@ -205,11 +212,12 @@
   list-style-type: none;
   font-weight: bold;
 }
+
 .nav-links li .kitchenpage {
   position: absolute;
   overflow: hidden;
   left: -0.3cm;
-  width:4.7cm;
+  width: 4.7cm;
   text-align: center;
   font-size: 20px;
   top: 13.9cm;
@@ -218,6 +226,7 @@
   list-style-type: none;
   font-weight: bold;
 }
+
 .nav-links li .notification {
 
   position: absolute;
@@ -231,19 +240,21 @@
   list-style-type: none;
   font-weight: bold;
 }
-.nav-links li .Tablepage{
+
+.nav-links li .place_order {
   position: absolute;
   left: -0.3cm;
   width: 4.7cm;
   text-align: center;
   font-size: 20px;
-  top:15.9cm;
+  top: 15.9cm;
   margin: 1rem;
   padding: 0;
   list-style-type: none;
   font-weight: bold;
 }
-.nav-links li .Catagorypage{
+/* 
+.nav-links li .Catagorypage {
   position: absolute;
   left: -0.3cm;
   width: 4.7cm;
@@ -255,7 +266,8 @@
   list-style-type: none;
   font-weight: bold;
 }
-.nav-links li .Listmenu{
+
+.nav-links li .Listmenu {
   position: absolute;
   left: -0.3cm;
   width: 4.7cm;
@@ -266,11 +278,12 @@
   padding: 0.2rem;
   list-style-type: none;
   font-weight: bold;
-}
+} */
+
 .nav-links a {
   border: 0px solid transparent;
   border-radius: 30px 0px 0px 30px;
-  color:#fff;
+  color: #fff;
   text-decoration: none;
   padding: 0.5rem;
   display: block;
