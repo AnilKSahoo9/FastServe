@@ -17,6 +17,7 @@ const billerHomeController = require("../controllers/billerHomeController");
 const billerPaymentController = require("../controllers/billerPaymentController");
 const kitchenController = require("../controllers/kitchenController");
 const kitchenOrderController = require("../controllers/kitchenOrderController");
+const adminTableController = require("../controllers/adminTableController");
 //const billerController = require("../controllers/billerController");
 const waiters = [
   {
@@ -76,7 +77,7 @@ const routes = (app) => {
 
   app.get("/showitems", showItemController);
 
-  app.post("/admin-tables", tableController);
+  app.post("/tables", tableController);
 
   app.post("/sessions", sessionController);
 
@@ -91,6 +92,7 @@ const routes = (app) => {
   app.post("/postkitchendata",kitchenOrderController.kitchenOrderPostController);
 
   app.get("/homepagedata",homepageController);
+  app.get("/admin-tables",adminTableController);
   //app.post('/billers',billerController.billerController);
   //app.get('/billerpaymentdetails',billerController.billerPaidController);
   
