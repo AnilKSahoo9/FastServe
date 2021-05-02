@@ -1,4 +1,4 @@
-/* 
+
 .main-navigation__menu-btn {
   width: 1rem;
   height: 3rem;
@@ -47,9 +47,9 @@
   .main-navigation__header-nav {
     display: block;
   }
-} */
+} 
 
-.main-navigation__menu-btn {
+ .main-navigation__menu-btn {
   
   width: 1rem;
   height: 3rem;

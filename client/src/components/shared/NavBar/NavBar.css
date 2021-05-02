@@ -1,16 +1,12 @@
 .navbar {
-  /* background-image: linear-gradient(
-    to left top,
-    #37051d,
-    #732820,
-    #96610c,
-    #8ea61f,
-    #12eb83
-  ); */
   width: 100%;
-  background-color: rgba(245, 245, 245, 0.836);
+  background-color:#fff;
   height: 3rem;
-  
-
+  position: fixed;
+  overflow: hidden;
   padding-left: 0;
+}
+.logoutbtn{
+  display: block;
+  right: 0px;
 }

@@ -1,7 +1,7 @@
 .table{
   width: 70%;
   margin: 3rem;
-  background-color: lightgray;
+  /* background-color: lightgray; */
   margin-left: 15%;
   border-top: solid;
   border-color: darkgreen;
@@ -23,15 +23,20 @@
     /* margin: 0; */
 }
 .card-design{
-max-width: 100%;
-max-height: 100rem;
 font-family: 'Times New Roman', Times, serif;
 margin: 2rem;
 border-style: groove;
 border-width: 3px;
 /* border-radius:20px; */
 box-shadow: 0 4px 8px 0 rgba(0,0,0,1.0);
-background-image:linear-gradient(to right bottom, #0070BB, #213ea7, #1480ce, #00b98a, #009b7d) ;
+background-image: linear-gradient(
+    to right bottom,
+    #0070bb,
+    #132257,
+    #004170,
+    #00b98a,
+    #009b7d
+  );
 }
 .card-header
 {
@@ -44,40 +49,60 @@ background-image:linear-gradient(to right bottom, #0070BB, #213ea7, #1480ce, #00
   margin-top: 10px;
   margin-bottom: 10px;
 }
-.cardbody{
+.card-body{
   color: white;
   font-size: 20px;
+  padding: 0px;
+  padding-bottom: 10px;
 }
-.text-center{
-  border: secondary;
-  width: 100%;
-  height: 16rem;
-  font-family: Times New Roman, Times, serif;
-  margin: 2rem;
-  border-style: groove;
-  border-width: 3px;
-  /* border-radius: 25px; */
-  /* sharpcorner: 20px; */
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,1.0);
-  background-image: linear-gradient(to right bottom, #0070BB, #0070BB, #0070BB, #00b98a, #009b7d);
+.Tableactivecard{
+  font-family: 'Times New Roman', Times, serif;
+margin: 2rem;
+border-style: groove;
+border-width: 3px;
+/* border-radius:20px; */
+box-shadow: 0 4px 8px 0 rgba(0,0,0,1.0);
+background-image: linear-gradient(
+    to right bottom,
+    #0070bb,
+    #132257,
+    #004170,
+    #00b98a,
+    #009b7d
+  );
 }
-.text-center1{
-  border: secondary;
-  width: 100%;
-  height: 16rem;
-  font-family: Times New Roman, Times, serif;
-  margin: 2rem;
-  border-style: groove;
-  border-width: 3px;
-  /* border-radius: 25px; */
-  /* sharpcorner: 20px; */
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,1.0);
-  background-image: linear-gradient(to right bottom,#ff4500,#800080,#ff1493);
+.Tablecardheader{
+  color: white;
+  border-radius: 7px;
+  font-size: 25px;
+  padding: 3px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
-.cardtext{
+.Tablecardbody{
   color: white;
   font-size: 15px;
+  padding: 0px;
+  padding-bottom: 10px;
 }
+.Tableinactivecard{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1) !important;
+  width: 17rem;
+  height: 12rem;
+
+  font-family: "Times New Roman", Times, serif;
+  margin: 2em;
+  border-style: groove;
+  border-width: 3px;
+  background-image: linear-gradient(to right bottom, #ff4500, #800080, #ff1493);
+}
+
+/* .cardtext{
+  color: white;
+  font-size: 15px;
+} */
 
 @media (max-width: 640px) {
   .inner-container {

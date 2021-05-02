@@ -22,6 +22,7 @@ const AdminWaiter = () => {
     setname(event.target.value);
   };
 
+  
   return (
     <Container className="inner-container">
       <Row>

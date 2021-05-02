@@ -2,97 +2,132 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "./NavLinks.css";
 import HomeIcon from '@material-ui/icons/Home';
+import KitchenTwoToneIcon from '@material-ui/icons/KitchenTwoTone';
+import NotificationsActiveIcon from '@material-ui/icons/NotificationsActive';
+import AssessmentIcon from '@material-ui/icons/Assessment';
+import ChatIcon from '@material-ui/icons/Chat';
+import PersonAddIcon from '@material-ui/icons/PersonAdd';
+import PostAddIcon from '@material-ui/icons/PostAdd';
+import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
+import VisibilityIcon from '@material-ui/icons/Visibility';
+import RoomServiceIcon from '@material-ui/icons/RoomService';
+import AirlineSeatReclineNormalIcon from '@material-ui/icons/AirlineSeatReclineNormal';
+import PersonIcon from '@material-ui/icons/Person';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import GroupIcon from '@material-ui/icons/Group';
 const NavLinks = (props) => {
   return (
     <div className="Nav-bar">
+    
       <ul className="nav-links">
         <li>
           <NavLink to="/home" className="home">
-          <HomeIcon style={{marginRight:"5px"}} />
+          <HomeIcon className="icons" />
           Home
-          
           </NavLink>
-
         </li>
         <li>
-          <NavLink to="/totalorder" className="table">
+          <NavLink to="/totalorder" className="Order">
+          <RoomServiceIcon className="icons"  />
             Total Order
           </NavLink>
         </li>
         <li>
-          <NavLink to="/table" className="Order">
+          <NavLink to="/table" className="table">
+          <AirlineSeatReclineNormalIcon className="icons"  />
             Table
           </NavLink>
         </li>
         <li>
           <NavLink to="/waiter" className="waiter">
+          <EmojiPeopleIcon className="icons"  />
             Waiters
           </NavLink>
         </li>
         <li>
-          <NavLink to="/additems" className="kitchen">
+          <NavLink to="/additems" className="additem">
+          <PostAddIcon className="icons"  />
             Add Items
           </NavLink>
         </li>
         <li>
-          <NavLink to="/addemployee" className="biller">
+          <NavLink to="/addemployee" className="adduser">
+          <PersonAddIcon className="icons"  />
             Add Employee
           </NavLink>
         </li>
         <li>
-          <NavLink to="/showemployee" className="adduser">
+          <NavLink to="/showemployee" className="showuser">
+          <GroupIcon className="icons"  />
             Show Employee
           </NavLink>
         </li>
         <li>
           <NavLink to="/billerHome" className="billerHome">
+          <HomeIcon className="icons"  />
             Biller Home
           </NavLink>
         </li>
         <li>
           <NavLink to="/billerWaiter" className="billerWaiter">
+          <EmojiPeopleIcon className="icons"  />
             Biller Waiter
           </NavLink>
         </li>
         <li>
           <NavLink to="/billerKitchen" className="billerKitchen">
-            Biller Kitchen
+          <ChatIcon className="icons"  />
+            Biller Chat
           </NavLink>
         </li>
         <li>
           <NavLink to="/billerReport" className="billerReport">
+          <AssessmentIcon className="icons"  />
             Biller Report
           </NavLink>
         </li>
         <li>
           <NavLink to="/logout" className="logout">
+          <ExitToAppIcon className="icons"  />
             LogOut
           </NavLink>
         </li>
         <li>
           <NavLink to="/customer" className="customer">
+          <PersonIcon className="icons"  />
             Customer
           </NavLink>
         </li>
         <li>
           <NavLink to="/kitchenDashboard" className="kitchenpage">
-            Kitchen Dashboard
+          <KitchenTwoToneIcon className="icons"  />
+            Kitchen 
           </NavLink>
         </li>
 
         <li>
           <NavLink to="/notification" className="notification">
+          <NotificationsActiveIcon className="icons"  />
             Notification
           </NavLink>
         </li>
         <li>
-      <NavLink to="/Tablepage"className="Tablepage">Tablepage</NavLink>
+      <NavLink to="/Tablepage" className="Tablepage">
+      <RoomServiceIcon className="icons"  />
+      Tablepage
+      </NavLink>
     </li> 
     <li>
-      <NavLink to="/Catagorypage"className="Catagorypage">Catagorypage</NavLink>
+      <NavLink to="/Catagorypage" className="Catagorypage">
+      
+      Catagorypage
+      </NavLink>
     </li>
     <li>
-      <NavLink to="/Listmenu"className="Listmenu">Listmenu</NavLink>
+      <NavLink to="/Listmenu" className="Listmenu">
+     
+      Listmenu
+      </NavLink>
     </li>
    
       </ul>

@@ -1,9 +1,10 @@
 .main-header {
-  width: 185px;
+  width: 250px;
   height: 100vh;
   display: flex;
   align-items: top;
   position: fixed;
+  justify-content: center;
   top: 0;
   left: 0;
   background:#0a2351;
