@@ -11,8 +11,8 @@ import React, { Suspense } from "react";
 import NavBar from "./components/shared/NavBar/NavBar";
 // import NavLinks from "./components/shared/NavLinks/NavLinks";
 import SideBar from "./components/shared/SideBar/SideBar";
-import { BillerReport } from "./components/BillerPages/BillerReport";
-import { BillerWaiter } from "./components/BillerPages/BillerWaiter";
+//import  BillerReport  from "./components/BillerPages/BillerReport";
+import { BillerWaiter} from "./components/BillerPages/BillerWaiter";
 import BillerKitchen from "./components/BillerPages/BillerKitchen";
 import BillerHome from "./components/BillerPages/BillerHome";
 // import Customer from "./components/BillerPages/Customer";
@@ -32,7 +32,7 @@ const AdminTable = React.lazy(() =>
   import("./components/AdminPages/AdminTable")
 );
 const AddItem = React.lazy(() => import("./components/AdminPages/AddItem"));
-//const BillerReport = React.lazy(() => import("./components/BillerPages/BillerReport"));
+const BillerReport = React.lazy(() => import("./components/BillerPages/BillerReport"));
 const AdminTotalOrder = React.lazy(() =>
   import("./components/AdminPages/AdminTotalOrder")
 );

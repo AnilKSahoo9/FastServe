@@ -18,16 +18,41 @@
   margin-bottom: 1.3rem;
  
 } 
-
+.Nav-bar .nav-links .icons{
+  margin-left: 17px;
+  margin-right: 7px;
+  padding-left: 5px;
+  font-size: 2.5rem;
+}
+/* .Nav-bar .nav-links .home,.Order,.table,.waiter,.additem,.adduser,.showuser,.billerHome,.billerWaiter,.billerKitchen,.billerReport,.logout,.customer,.kitchenpage,.notification,.place_order{
+  display: block;
+ 
+} */
 .nav-links li .home {
+ 
   position: absolute;
   left: -0.3cm;
   width: 6.5cm;
   text-align: left;
-  font-size: 20px;
+  font-size: 22px;
   top: 1cm;
   margin: 1rem;
-  padding: 0.2rem;
+  padding: 0.4rem;
+  list-style-type: none;
+  font-weight: bold;
+}
+
+.nav-links li .Order {
+  
+  position: absolute;
+  left: -0.3cm;
+  width:6.5cm;
+  text-align: left;
+  font-size: 22px;
+  top: 2.5cm;
+  margin: 1rem;
+  padding: 0.4rem;
+
   list-style-type: none;
   font-weight: bold;
 }
@@ -37,24 +62,10 @@
   left: -0.3cm;
   width:6.5cm;
   text-align: left;
-  font-size: 20px;
-  top: 2cm;
+  font-size: 22px;
+  top: 4cm;
   margin: 1rem;
-  padding: 0.2rem;
-
-  list-style-type: none;
-  font-weight: bold;
-}
-
-.nav-links li .Order {
-  position: absolute;
-  left: -0.3cm;
-  width:6.5cm;
-  text-align: left;
-  font-size: 20px;
-  top: 3cm;
-  margin: 1rem;
-  padding: 0.2rem;
+  padding: 0.4rem;
 
   list-style-type: none;
   font-weight: bold;
@@ -65,10 +76,10 @@
   left: -0.3cm;
   width:6.5cm;
   text-align: left;
-  font-size: 20px;
-  top: 4cm;
+  font-size: 22px;
+  top: 5.5cm;
   margin: 1rem;
-  padding: 0.2rem;
+  padding: 0.4rem;
   list-style-type: none;
   font-weight: bold;
 }
@@ -78,10 +89,10 @@
   left: -0.3cm;
   width: 6.5cm;
   text-align: left;
-  font-size: 20px;
-  top: 5cm;
+  font-size: 22px;
+  top: 7cm;
   margin: 1rem;
-  padding: 0.2rem;
+  padding: 0.4rem;
   list-style-type: none;
   font-weight: bold;
 }
@@ -91,10 +102,10 @@
   left: -0.3cm;
   width:6.5cm;
   text-align: left;
-  font-size: 20px;
-  top: 6cm;
+  font-size: 22px;
+  top: 8.5cm;
   margin: 1rem;
-  padding: 0.2rem;
+  padding: 0.4rem;
   list-style-type: none;
   font-weight: bold;
 }
@@ -104,10 +115,10 @@
   left: -0.3cm;
   width:6.5cm;
   text-align: left;
-  font-size: 20px;
-  top: 7cm;
+  font-size: 22px;
+  top: 10cm;
   margin: 1rem;
-  padding: 0.2rem;
+  padding: 0.4rem;
   list-style-type: none;
   font-weight: bold;
 }
@@ -117,10 +128,10 @@
   left: -0.3cm;
   width:6.5cm;
   text-align: left;
-  font-size: 20px;
-  top: 8cm;
+  font-size: 22px;
+  top:11.5cm;
   margin: 1rem;
-  padding: 0.2rem;
+  padding: 0.4rem;
   list-style-type: none;
   font-weight: bold;
 }
@@ -130,10 +141,10 @@
   left: -0.3cm;
   width: 6.5cm;
   text-align: left;
-  font-size: 20px;
-  top: 9cm;
+  font-size: 22px;
+  top: 13cm;
   margin: 1rem;
-  padding: 0.2rem;
+  padding: 0.4rem;
   list-style-type: none;
   font-weight: bold;
 }
@@ -143,10 +154,10 @@
   left: -0.3cm;
   width:6.5cm;
   text-align: left;
-  font-size: 20px;
-  top: 10cm;
+  font-size: 22px;
+  top: 14.5cm;
   margin: 1rem;
-  padding: 0.2rem;
+  padding: 0.4rem;
   list-style-type: none;
   font-weight: bold;
 }
@@ -156,10 +167,23 @@
   left: -0.3cm;
   width: 6.5cm;
   text-align: left;
-  font-size: 20px;
-  top: 11cm;
+  font-size: 22px;
+  top: 16cm;
   margin: 1rem;
-  padding: 0.2rem;
+  padding: 0.4rem;
+  list-style-type: none;
+  font-weight: bold;
+}
+
+.nav-links li .logout {
+  position: absolute;
+  left: -0.3cm;
+  width: 6.5cm;
+  text-align: left;
+  font-size: 22px;
+  top: 17.5cm;
+  margin: 1rem;
+  padding: 0.4rem;
   list-style-type: none;
   font-weight: bold;
 }
@@ -169,52 +193,39 @@
   left: -0.3cm;
   width: 6.5cm;
   text-align: left;
-  font-size: 20px;
-  top: 11.9cm;
+  font-size: 22px;
+  top: 19cm;
   margin: 1rem;
-  padding: 0.2rem;
-  list-style-type: none;
-  font-weight: bold;
-}
-
-.nav-links li .timer {
-  position: absolute;
-  left: -0.3cm;
-  width: 6.5cm;
-  text-align: left;
-  font-size: 20px;
-  top: 12.9cm;
-  margin: 1rem;
-  padding: 0;
+  padding: 0.4rem;
   list-style-type: none;
   font-weight: bold;
 } 
- .nav-links li .logout {
+ .nav-links li .kitchenpage {
   position: absolute;
   left: -0.3cm;
   width: 6.5cm;
   text-align: left;
-  font-size: 20px;
-  top: 12.9cm;
+  font-size: 22px;
+  top: 20.5cm;
   margin: 1rem;
-  padding: 0.2rem;
+  padding: 0.4rem;
   list-style-type: none;
   font-weight: bold;
 }
 
-.nav-links li .kitchenpage {
+/* .nav-links li .kitchenpage {
   position: absolute;
   overflow: hidden;
   left: -0.3cm;
   width:6.5cm;
   text-align: left;
-  font-size: 20px;
-  top: 13.9cm;
+  font-size: 22px;
+  top: 22cm;
   margin: 1rem;
-  padding: 0.2rem;
+  padding: 0.4rem;
   list-style-type: none;
   font-weight: bold;
-}
+} */
 
 .nav-links li .notification {
 
@@ -222,10 +233,10 @@
   left: -0.3cm;
   width: 6.5cm;
   text-align: left;
-  font-size: 20px;
-  top: 14.9cm;
+  font-size: 22px;
+  top: 22cm;
   margin: 1rem;
-  padding: 0;
+  padding: 0.4rem;
   list-style-type: none;
   font-weight: bold;
 }
@@ -235,10 +246,10 @@
   left: -0.3cm;
   width: 6.5cm;
   text-align: left;
-  font-size: 20px;
-  top: 15.9cm;
+  font-size: 22px;
+  top: 23.5cm;
   margin: 1rem;
-  padding: 0;
+  padding: 0.4rem;
   list-style-type: none;
   font-weight: bold;
 }
@@ -264,7 +275,7 @@
   font-size: 20px;
   top: 17.9cm;
   margin: 1rem;
-  padding: 0.2rem;
+  padding: 0.4rem;
   list-style-type: none;
   font-weight: bold;
 } */

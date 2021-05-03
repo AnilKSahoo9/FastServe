@@ -97,11 +97,10 @@ const AddEmployee = () => {
   };
   console.log(form);
   return (
-    <div className="table">
-      <span className="border border-info rounded m-0 p-5">
+    <div className="add_user_table">
+      <span className="add_user_border border-info rounded mx-0 p-5">
         <div>
           <Form>
-            {/* className="mx-3 " */}
             <FormGroup row>
               <Label for="Select" sm={2}>
                 Type of Employee

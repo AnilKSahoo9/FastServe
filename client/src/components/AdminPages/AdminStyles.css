@@ -1,12 +1,12 @@
-.table{
+.add_user_table{
   width: 70%;
   margin: 3rem;
-  /* background-color: lightgray; */
+  background-color: lightgray;
   margin-left: 15%;
   border-top: solid;
   border-color: darkgreen;
 }
-.border{
+.add_user_border{
   width: 100%;
   height: 100%;
   display: inline-block;
@@ -15,14 +15,11 @@
     width: 80vw;
     max-width: 80vw;
     margin-left: -2rem;
-    /* margin-left: 2rem; */
-    margin-top: 7vh;
+    margin-top: 5vh;
     padding: 0px;
     margin-right: 7rem;
-    
-    /* margin: 0; */
 }
-.card-design{
+.admin_card_design{
 font-family: 'Times New Roman', Times, serif;
 margin: 2rem;
 border-style: groove;
@@ -38,7 +35,7 @@ background-image: linear-gradient(
     #009b7d
   );
 }
-.card-header
+.admin_card_header
 {
   color: white;
   border-radius: 7px;
@@ -49,13 +46,13 @@ background-image: linear-gradient(
   margin-top: 10px;
   margin-bottom: 10px;
 }
-.card-body{
+.admin_card_body{
   color: white;
   font-size: 20px;
   padding: 0px;
   padding-bottom: 10px;
 }
-.Tableactivecard{
+.tableactivecard{
   font-family: 'Times New Roman', Times, serif;
 margin: 2rem;
 border-style: groove;
@@ -71,7 +68,7 @@ background-image: linear-gradient(
     #009b7d
   );
 }
-.Tablecardheader{
+.tablecardheader{
   color: white;
   border-radius: 7px;
   font-size: 25px;
@@ -81,13 +78,13 @@ background-image: linear-gradient(
   margin-bottom: 10px;
   margin-top: 10px;
 }
-.Tablecardbody{
+.tablecardbody{
   color: white;
   font-size: 15px;
   padding: 0px;
   padding-bottom: 10px;
 }
-.Tableinactivecard{
+.tableinactivecard{
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1) !important;
   width: 17rem;
   height: 12rem;
@@ -115,25 +112,25 @@ background-image: linear-gradient(
 .main{
   width: 175vh;
 }
-.accordion{
+.accordion_total_order{
   box-shadow:5px 10px 20px 5px rgba(0, 0, 0, 0.253);
   border-radius: 0.10rem;
 }
-.cards{
-  background-color: #ffe6ff;
+.cards_total_order{
+  background-color: #1e2083;
 }
-.headers{
-  background-color: #e6ccff;
+.headers_total_order{
+  background-color: #29b3bd;
 }
 .accordiontoggle{
-  background-color: #f3e6ff;
+  background-color: #12b30c;
 }
-.th{
+/* .th_total_order{
   background-color:#ffe6ff;
 }
-.td{
+.td_total_order{
   background-color: white;
-}
+} */
 
 /* showEmployee */
 .inner-container1{
