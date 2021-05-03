@@ -67,13 +67,12 @@ if(Joindate == ""){
     });
   };
   return (
-    <div
-      className="table">
+    <div className="add_user_table">
       <span
-        className="border border-info rounded m-0 p-5">
+        className="add_user_border border-info rounded mx-0 p-5"
+        >
         <div>
           <Form>
-            {/* className="mx-3 " */}
             <FormGroup row>
               <Label for="Select" sm={2}>
                 TYPE OF USER

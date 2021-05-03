@@ -1,4 +1,12 @@
-
+/* .logo{
+  height: 50px;
+    top: 0px;
+    margin: 2px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border: solid;
+    border-radius: 50%;
+} */
 .main-navigation__menu-btn {
   width: 1rem;
   height: 3rem;

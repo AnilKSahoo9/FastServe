@@ -30,14 +30,14 @@ const AdminTable = () => {
             <Col xs={12} lg={4} md={6}>
               {user.status === "Active" ? (
                 <CardDeck>
-                  <Card className="Tableactivecard text-center mb-3 mt-3">
+                  <Card className="tableactivecard text-center mb-3 mt-3">
                     <h5>
                       {" "}
-                      <Card.Header className="Tablecardheader">
+                      <Card.Header className="tablecardheader">
                         Table no {user.name}
                       </Card.Header>
                     </h5>
-                    <Card.Body className="Tablecardbody">
+                    <Card.Body className="tablecardbody">
                       <Card.Text> Status: {user.status}</Card.Text>
                       <Card.Text>Sessions no: {user.sessionsno}</Card.Text>
                       {/* <Card.Text>Table no:{user.tableno}</Card.Text> */}
@@ -73,14 +73,14 @@ const AdminTable = () => {
                 <CardDeck>
                   <Card
                     border="secondary"
-                    className="Tableinactivecard text-center mb-3 mt-3">
+                    className="tableinactivecard text-center mb-3 mt-3">
                     <h5>{" "}
-                      <Card.Header className="Tablecardheader">
+                      <Card.Header className="tablecardheader">
                         {" "}
                         Table no {user.name}
                       </Card.Header>
                     </h5>
-                    <Card.Body className="Tablecardbody">
+                    <Card.Body className="tablecardbody">
                       <Card.Text> Status: {user.status}</Card.Text>
                     </Card.Body>
                   </Card>

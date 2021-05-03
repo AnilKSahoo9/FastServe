@@ -73,11 +73,10 @@ const AdminTotalOrder = () => {
                 <Accordion.Collapse eventKey={String(index)}>
                   <Card.Body>
                     {val.sessions.map((value, index) => (
-                      <Accordion>
-                        <Card>
-                          <Card.Header className="headers">
-                            <Accordion.Toggle
-                              className="accordiontoggle"
+                      <Accordion className="accordion_total_order"  >
+                        <Card className="cards_total_order" style={{backgroundColor:"#1e2083"}}>
+                          <Card.Header className="headers_total_order" style={{backgroundColor:"#29b3bd"}}>
+                            <Accordion.Toggle className="accordiontoggle"
                               as={Card.Header}
                               eventKey={String(index)}
                             >
@@ -87,32 +86,46 @@ const AdminTotalOrder = () => {
                           <Accordion.Collapse eventKey={String(index)}>
                             <Card.Body>
                               <h5>Order delivered by {value.waiterName}</h5>
-                              <Table striped bordered hover>
+                              <Table striped bordered hover style={{ backgroundImage: `linear-gradient(to right,#0E3386,#0047AB, #002D62, #0a2351)`}}>
                                 <thead>
                                   <tr>
-                                    <th className="th">Sl no.</th>
-                                    <th className="th">Item</th>
-                                    <th className="th">Quantity</th>
-                                    <th className="th">Price</th>
+                                    <th className="th_total_order" >
+                                      Sl no.
+                                    </th>
+                                    <th className="th_total_order">
+                                      Item
+                                    </th>
+                                    <th className="th_total_order">
+                                      Quantity
+                                    </th>
+                                    <th className="th_total_order">
+                                      Price
+                                    </th>
                                   </tr>
                                 </thead>
 
                                 {value.orderDetails.map((valueitem, index) => (
                                   <tbody>
                                     <tr>
-                                      <td className="td">{index + 1}</td>
-                                      <td className="td">{valueitem.name}</td>
-                                      <td className="td">
+                                      <td className="td_total_order">
+                                        {index + 1}
+                                      </td>
+                                      <td className="td_total_order">
+                                        {valueitem.name}
+                                      </td>
+                                      <td className="td_total_order">
                                         {valueitem.quantity}
                                       </td>
-                                      <td className="td">{valueitem.price}</td>
-                                    </tr>
-                                    <tr>
-                                      <th className="th">Total:</th>
-                                      <td colspan="3">
-                                        {valueitem.quantity * valueitem.price}
+                                      <td className="td_total_order">
+                                        {valueitem.price}
                                       </td>
                                     </tr>
+                                    <tr>
+                                  <th className="th_total_order">
+                                    Total:
+                                  </th>
+                                  <td colspan="3">{valueitem.quantity * valueitem.price}</td>
+                                </tr>
                                   </tbody>
                                 ))}
                               </Table>
@@ -130,54 +143,66 @@ const AdminTotalOrder = () => {
         <Col md={6} xs={12}>
           <h2>-:Parcel Details:-</h2>
           {/* {console.log(parcelOrders)} */}
-          {parcelOrders.map((val, index) => (
-            <Accordion className="accordion">
-              <Card>
-                <Card.Header className="headers">
-                  <Accordion.Toggle
-                    className="accordiontoggle"
-                    as={Card.Header}
-                    eventKey={String(index)}
-                  >
-                    <h5>ParcelNo:</h5>
-                  </Accordion.Toggle>
-                </Card.Header>
-                <Accordion.Collapse eventKey={String(index)}>
-                  <Card.Body>
-                    <h5>Order delivered by {val.billerName}</h5>
-                    <Table striped bordered hover>
-                      <thead>
-                        <tr>
-                          <th className="th">Sl no.</th>
-                          <th className="th">Item</th>
-                          <th className="th">Quantity</th>
-                          <th className="th">Price</th>
-                        </tr>
-                      </thead>
+          {parcelOrders.map((val,index) =>
+              <Accordion className="accordion_total_order">
+                <Card className="cards_total_order">
+                  <Card.Header className="headers_total_order">
+                    <Accordion.Toggle className="accordiontoggle"
+                      as={Card.Header}
+                      eventKey={String(index)}>
+                      <h5>ParcelNo:</h5>
+                    </Accordion.Toggle>
+                  </Card.Header>
+                  <Accordion.Collapse eventKey={String(index)}>
+                    <Card.Body>
+                      <h5>Order delivered by {val.billerName}</h5>
+                      <Table striped bordered hover>
+                        <thead>
+                          <tr>
+                            <th className="th_total_order" >
+                              Sl no.
+                            </th>
+                            <th className="th_total_order" >Item</th>
+                            <th className="th_total_order">
+                              Quantity
+                            </th>
+                            <th className="th_total_order">
+                              Price
+                            </th>
+                          </tr>
+                        </thead>
 
-                      {val.items.map((valueitem, index) => (
-                        <tbody>
-                          <tr>
-                            <td className="td">{index + 1}</td>
-                            <td className="td">{valueitem.name}</td>
-                            <td className="td">{valueitem.quantity}</td>
-                            <td className="td">{valueitem.price}</td>
-                          </tr>
-                          <tr>
-                            <th className="th">Total:</th>
-                            <td colspan="3">
-                              {valueitem.quantity * valueitem.price}
-                            </td>
-                          </tr>
-                        </tbody>
-                      ))}
-                    </Table>
-                  </Card.Body>
-                </Accordion.Collapse>
-              </Card>
-            </Accordion>
-          ))}
-        </Col>
+                        {val.items.map((valueitem, index) => (
+                          <tbody>
+                            <tr>
+                              <td className="td_total_order">
+                                {index + 1}
+                              </td>
+                              <td className="td_total_order">
+                                {valueitem.name}
+                              </td>
+                              <td className="td_total_order">
+                                {valueitem.quantity}
+                              </td>
+                              <td className="td_total_order">
+                                {valueitem.price}
+                              </td>
+                            </tr>
+                            <tr>
+                                  <th className="th_total_order">
+                                    Total:
+                                  </th>
+                                  <td colspan="3">{valueitem.quantity * valueitem.price}</td>
+                                </tr>
+                          </tbody>
+                        ))}
+                      </Table>
+                    </Card.Body>
+                  </Accordion.Collapse>
+                </Card>
+              </Accordion>
+          )}
+          </Col>
       </Row>
     </div>
   );
