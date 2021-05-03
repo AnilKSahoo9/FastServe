@@ -8,7 +8,7 @@ import {
   menuItems,
 } from "../../StaticData/placeorderData";
 
-const Tables = () => {
+const Waiter_Place_Order = () => {
   const [showCategory, setShowCategory] = useState(false);
   const [showItems, setShowItems] = useState(false);
   const [itemArray, setItemArray] = useState([]);
@@ -243,7 +243,7 @@ const Tables = () => {
   );
 };
 
-export default Tables;
+export default Waiter_Place_Order;
 
 // const MenuItems = () => {
 //   const [count, setCount] = useState(0);

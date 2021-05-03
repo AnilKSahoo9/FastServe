@@ -15,107 +15,126 @@ import AirlineSeatReclineNormalIcon from "@material-ui/icons/AirlineSeatReclineN
 import PersonIcon from "@material-ui/icons/Person";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import GroupIcon from "@material-ui/icons/Group";
+import { getUserType } from "../utils/common";
 const NavLinks = (props) => {
+  const userType = getUserType();
+  console.log(userType);
   return (
     <div className="Nav-bar">
       <ul className="nav-links">
-        <li>
-          <NavLink to="/home" className="home">
-            <HomeIcon className="icons" />
-            Home
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/totalorder" className="Order">
-            <RoomServiceIcon className="icons" />
-            Total Order
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/table" className="table">
-            <AirlineSeatReclineNormalIcon className="icons" />
-            Table
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/waiter" className="waiter">
-            <EmojiPeopleIcon className="icons" />
-            Waiters
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/additems" className="additem">
-            <PostAddIcon className="icons" />
-            Add Items
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/addemployee" className="adduser">
-            <PersonAddIcon className="icons" />
-            Add Employee
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/showemployee" className="showuser">
-            <GroupIcon className="icons" />
-            Show Employee
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/billerHome" className="billerHome">
-            <HomeIcon className="icons" />
-            Biller Home
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/billerWaiter" className="billerWaiter">
-            <EmojiPeopleIcon className="icons" />
-            Biller Waiter
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/billerKitchen" className="billerKitchen">
-            <ChatIcon className="icons" />
-            Biller Chat
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/billerReport" className="billerReport">
-            <AssessmentIcon className="icons" />
-            Biller Report
-          </NavLink>
-        </li>
-        <li>
+        {userType === "admin" && (
+          <div>
+            <li>
+              <NavLink to="/home" className="home">
+                <HomeIcon className="icons" />
+                Home
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/totalorder" className="Order">
+                <RoomServiceIcon className="icons" />
+                Total Order
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/table" className="table">
+                <AirlineSeatReclineNormalIcon className="icons" />
+                Tables
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/waiter" className="waiter">
+                <EmojiPeopleIcon className="icons" />
+                Waiters
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/additems" className="additem">
+                <PostAddIcon className="icons" />
+                Add Items
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/addemployee" className="adduser">
+                <PersonAddIcon className="icons" />
+                Add Employees
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/showemployee" className="showuser">
+                <GroupIcon className="icons" />
+                Show Employees
+              </NavLink>
+            </li>
+          </div>
+        )}
+        {userType === "biller" && (
+          <div>
+            <li>
+              <NavLink to="/billerHome" className="billerHome">
+                <HomeIcon className="icons" />
+                Home
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/billerWaiter" className="billerWaiter">
+                <EmojiPeopleIcon className="icons" />
+                Waiter
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/billerKitchen" className="billerKitchen">
+                <ChatIcon className="icons" />
+                Chat
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/billerReport" className="billerReport">
+                <AssessmentIcon className="icons" />
+                Report
+              </NavLink>
+            </li>
+          </div>
+        )}
+        {userType === "kitchen" && (
+          <div>
+            <li>
+              <NavLink to="/kitchenhome" className="kitchenpage">
+                <KitchenTwoToneIcon className="icons" />
+                Home
+              </NavLink>
+            </li>
+
+            <li>
+              <NavLink to="/kitchen-notification" className="notification">
+                <NotificationsActiveIcon className="icons" />
+                Notifications
+              </NavLink>
+            </li>
+          </div>
+        )}
+        {userType === "waiter" && (
+          <div>
+            <li>
+              <NavLink to="/placeorder" className="place_order">
+                <RoomServiceIcon className="icons" />
+                Place Order
+              </NavLink>
+            </li>
+          </div>
+        )}
+        {/* <li>
           <NavLink to="/logout" className="logout">
             <ExitToAppIcon className="icons" />
             LogOut
           </NavLink>
-        </li>
-        <li>
+        </li> */}
+        {/* <li>
           <NavLink to="/customer" className="customer">
             <PersonIcon className="icons" />
             Customer
           </NavLink>
-        </li>
-        <li>
-          <NavLink to="/kitchenDashboard" className="kitchenpage">
-            <KitchenTwoToneIcon className="icons" />
-            Kitchen
-          </NavLink>
-        </li>
-
-        <li>
-          <NavLink to="/notification" className="notification">
-            <NotificationsActiveIcon className="icons" />
-            Notification
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/Tablepage" className="place_order">
-            <RoomServiceIcon className="icons" />
-            Place Order
-          </NavLink>
-        </li>
+        </li> */}
       </ul>
     </div>
   );

@@ -1,7 +1,7 @@
 const ObjectId = require("mongodb").ObjectID;
 
 const homepageController = require("../controllers/homepagedataController");
-//const adminRegisterController = require("../controllers/adminLoginController");
+const adminRegisterController = require("../controllers/adminLoginController");
 const adminLoginController = require("../controllers/adminLoginController");
 const addEmployeeController = require("../controllers/addEmployeeController");
 const employeeLoginController = require("../controllers/employeeLoginController");
@@ -48,7 +48,7 @@ const routes = (app) => {
   //   .route("/homepagedata")
   //   .get((req, res) => res.send(Home))
   //   .post((req, res) => res.send("POST request successful!"));
-  
+
   app.get("/admin-home", homepageController);
 
   // app.route('/login').post((req,res) =>
@@ -57,13 +57,13 @@ const routes = (app) => {
   // app.post('/login',(req,res) =>
   // res.send(msg))
 
-  //app.post("/admin-register",adminRegisterController);
+  // app.post("/admin-register", adminRegisterController);
   app.post("/admin-login", adminLoginController);
 
   app.post("/addemployee", addEmployeeController);
 
   app.post("/employee-login", employeeLoginController);
-  app.post("/employee-logout",employeeLogoutController);
+  app.post("/employee-logout", employeeLogoutController);
 
   app.get("/showemployees", showEmployeeController);
 
@@ -87,15 +87,17 @@ const routes = (app) => {
 
   app.post("/biller-payment", billerPaymentController);
 
-  app.post("/kitchens",kitchenController);
-  app.get("/getkitchendata",kitchenOrderController.kitchenOrderGetController);
-  app.post("/postkitchendata",kitchenOrderController.kitchenOrderPostController);
+  app.post("/kitchens", kitchenController);
+  app.get("/getkitchendata", kitchenOrderController.kitchenOrderGetController);
+  app.post(
+    "/postkitchendata",
+    kitchenOrderController.kitchenOrderPostController
+  );
 
-  app.get("/homepagedata",homepageController);
-  app.get("/admin-tables",adminTableController);
+  app.get("/homepagedata", homepageController);
+  app.get("/admin-tables", adminTableController);
   //app.post('/billers',billerController.billerController);
   //app.get('/billerpaymentdetails',billerController.billerPaidController);
-  
 };
 
 module.exports = routes;

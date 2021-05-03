@@ -1,3 +1,17 @@
+.login-form{
+  background-color: white;
+  width:40%;
+  /* align-self: center; */
+  margin:17vh 0 0 17vw;
+  border-radius: 8px;
+}
+.type{
+  display: flex;
+}
+.login {
+  width:70% !important;
+}
+
 /* .slideimg {
   height: 685px;
   width: 100%;

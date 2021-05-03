@@ -4,13 +4,12 @@ import {
   Route,
   Redirect,
   Switch,
-  BrowserRouter,
 } from "react-router-dom";
 import ClipLoader from "react-spinners/ClipLoader";
 
 import React, { Suspense } from "react";
 import NavBar from "./components/shared/NavBar/NavBar";
-import NavLinks from "./components/shared/NavLinks/NavLinks";
+// import NavLinks from "./components/shared/NavLinks/NavLinks";
 import SideBar from "./components/shared/SideBar/SideBar";
 import { BillerReport } from "./components/BillerPages/BillerReport";
 import { BillerWaiter } from "./components/BillerPages/BillerWaiter";
@@ -38,36 +37,20 @@ const AdminTotalOrder = React.lazy(() =>
   import("./components/AdminPages/AdminTotalOrder")
 );
 const Customer = React.lazy(() => import("./components/Customer/Customer"));
-const CustomerData = React.lazy(() =>
-  import("./components/Customer/CustomerData")
+
+const KitchenHome = React.lazy(() =>
+  import("./components/KitchenPages/KitchenHome.js")
+);
+const Waiter_Place_Order = React.lazy(() =>
+  import("./components/Waiterpages/PlaceOrder")
 );
 
-const KitchenDashbard = React.lazy(() =>
-  import("./components/KitchenPages/KitchenDashbard.js")
-);
-const Tablepage = React.lazy(() =>
-  import("./components/Waiterpages/Tablepage")
-);
-const Catagorypage = React.lazy(() =>
-  import("./components/Waiterpages/Catagorypage")
-);
-const Listmenu = React.lazy(() => import("./components/Waiterpages/Listmenu"));
 const App = () => {
   return (
     <div>
-      {/* <div className="gap" style={{width:"100% !important",height:"100% !important"}}>
-      <BrowserRouter>
-      <Switch>
-      
-      <Route path="/" exact component={Login} />
-      
-      </Switch>
-      </BrowserRouter>
-      </div> */}
       <div className="App">
         <Router>
           <NavBar />
-          {/* <NavLinks/> */}
           <SideBar />
           <div className="content">
             <Suspense
@@ -84,7 +67,6 @@ const App = () => {
             >
               <Switch>
                 <Route path="/" exact component={Login} />
-                {/* <Route path="/" exact component={Login} /> */}
                 <Route path="/home" component={AdminHome} />
                 <Route path="/addemployee" component={AddEmployee} />
                 <Route path="/showemployee" component={ShowEmployee} />
@@ -97,12 +79,9 @@ const App = () => {
                 <Route path="/billerKitchen" component={BillerKitchen} />
                 <Route path="/billerReport" component={BillerReport} />
                 <Route path="/customer" component={Customer} />
-                <Route path="/kitchenDashboard" component={KitchenDashbard} />
-                <Route path="/notification" component={Notification} />
-                <Route path="/Tablepage" component={Tablepage} />
-                <Route path="/Catagorypage" component={Catagorypage} />
-                <Route path="/Listmenu" component={Listmenu} />
-
+                <Route path="/kitchenhome" component={KitchenHome} />
+                <Route path="/kitchen-notification" component={Notification} />
+                <Route path="/placeorder" component={Waiter_Place_Order} />
                 <Redirect to="/" />
               </Switch>
             </Suspense>
