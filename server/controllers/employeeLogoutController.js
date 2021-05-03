@@ -1,8 +1,8 @@
 let employeeSchema = require("../models/employeeModel");
 
 const employeeLogoutController = (req,res) => {
-let {name} = req.body;
-employeeSchema.updateOne({name:name},{status:"absent"},(err,doc) =>{
+let {username} = req.body;
+employeeSchema.updateOne({username:username},{status:"absent"},(err,doc) =>{
     if(err){
         return res.status(500).json({msg:"error occured"});
     }
@@ -11,4 +11,4 @@ employeeSchema.updateOne({name:name},{status:"absent"},(err,doc) =>{
     }
 });
 };
-module.exports = employeeLogoutController
+module.exports = employeeLogoutController;

@@ -22,7 +22,7 @@ const addEmployeeController = (req, res) => {
     password: password,
     gender: gender,
     documents: documents,
-    created_at: new Date(),
+    created_at: new Date().toISOString().replace('-','/').split('T')[0].replace('-','/'),
     status: "absent",
   });
 
