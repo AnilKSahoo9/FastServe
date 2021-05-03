@@ -32,8 +32,7 @@ const adminLoginController = (req, res) => {
                   return res.status(200).json({
                     msg: "successfully logged in",
                     type: "admin",
-                    // success: true,
-                    // token: access_token,
+                    token: access_token,
                     // message: user,
                   });
                 }
