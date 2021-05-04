@@ -60,10 +60,14 @@ const KitchenNotification = React.lazy(() =>
 const Waiter_Place_Order = React.lazy(() =>
   import("./components/Waiterpages/PlaceOrder")
 );
+const Waiter_Notification = React.lazy(() =>
+  import("./components/Waiterpages/Waiternotification")
+);
 //customer dashboard
 const Customer = React.lazy(() => import("./components/Customer/Customer"));
 
 // import Notification from "./components/KitchenPages/notification";
+
 
 const App = () => {
   return (
@@ -106,6 +110,10 @@ const App = () => {
                 <Route
                   path="/waiter-place-order"
                   component={Waiter_Place_Order}
+                />
+                <Route
+                  path="/waiter-notification"
+                  component={Waiter_Notification}
                 />
                 <Route path="/customer" component={Customer} />
                 <Redirect to="/" />

@@ -3,7 +3,8 @@ import { Card, Table, Row, Col } from "react-bootstrap";
 import Accordion from "react-bootstrap/Accordion";
 import axios from "axios";
 import io from "socket.io-client";
-import "../AdminPages/AdminStyles.css";
+// import "../AdminPages/AdminStyles.css";
+import "../../css/AdminStyles.css";
 let socket;
 
 const AdminTotalOrder = () => {
@@ -55,9 +56,9 @@ const AdminTotalOrder = () => {
 
   return (
     <div className="inner-container">
-      <Row>
+      <Row className="admin_totalorder_row">
         <Col md={6} xs={12}>
-          <h2>-:Table Order Details:-</h2>
+          <h2>-: Table Order Details :-</h2>
           {tableOrders.map((val, index) => (
             <Accordion className="accordion">
               <Card className="cards">
@@ -141,7 +142,7 @@ const AdminTotalOrder = () => {
           ))}
         </Col>
         <Col md={6} xs={12}>
-          <h2>-:Parcel Details:-</h2>
+          <h2>-: Parcel Details :-</h2>
           {/* {console.log(parcelOrders)} */}
           {parcelOrders.map((val,index) =>
               <Accordion className="accordion_total_order">

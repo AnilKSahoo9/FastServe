@@ -1,6 +1,6 @@
 import React from "react";
 import "../../css/admin.css";
-
+import "../../css/AdminStyles.css";
 import {
   Button,
   Modal,
@@ -24,12 +24,13 @@ const AdminWaiter = () => {
 
   
   return (
-    <Container className="inner-container">
-      <Row>
+    <div className="inner-container">
+    <div className="admin_parent_div_cards">
+      <Row className="admin_table_Design">
         {waiter.map((user) => (
           <Col xs={12} lg={4} md={6}>
             {user.status === "Active" ? (
-              <CardDeck>
+              <CardDeck className="waiter_parent_card">
                 <Card className="waiterCard text-center mb-3 mt-3">
                   <h4>
                     {" "}
@@ -97,7 +98,8 @@ const AdminWaiter = () => {
           </Col>
         ))}
       </Row>
-    </Container>
+      </div>
+    </div>
   );
 };
 

@@ -33,6 +33,14 @@ export var table = [
         sessionsno: "2",
         currentorder: ["friedrice", "manchurian", "dry chana"],
       },
+      { name: "8", status: "Inactive" },
+      {
+        name: "9",
+        status: "Active",
+        ordertaken: "3",
+        sessionsno: "2",
+        currentorder: ["friedrice", "manchurian", "dry chana"],
+      },
     // { 
     //     Tablename: "1", 
     //     sessionno: "3", 

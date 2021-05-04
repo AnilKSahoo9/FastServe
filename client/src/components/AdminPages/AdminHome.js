@@ -14,7 +14,8 @@ import {
   Table,
 } from "reactstrap";
 import base_Url from "../../Api/Homeapi";
-import "./AdminStyles.css";
+// import "./AdminStyles.css";
+import "../../css/AdminStyles.css";
 const AdminHome = () => {
   const [data, setData] = useState({});
   useEffect(() => {
@@ -30,7 +31,9 @@ const AdminHome = () => {
   }, []);
   return (
       <div className="inner-container">
+      <div className="admin_parent_div_cards">
       <CardGroup >
+      <div className="admin_style_card">
                 <Card className="admin_card_design" body outline color="info">
                     <h5>
                         <CardHeader className="admin_card_header" >
@@ -43,6 +46,8 @@ const AdminHome = () => {
                         <p>No. of Tables Active</p>
                     </CardBody>
                 </Card>
+                </div>
+                <div className="admin_style_card">
                 <Card className="admin_card_design" body outline color="info">
                     <h5>
                         <CardHeader className="admin_card_header" >
@@ -52,9 +57,11 @@ const AdminHome = () => {
                     <CardBody className="admin_card_body">
                         <hr></hr>
                         <CardTitle>{data.Parcels}</CardTitle>
-                        <p >No. of Parcel Placed</p>
+                        <p >No. of Table Order Placed</p>
                     </CardBody>
                 </Card>
+                </div>
+                <div className="admin_style_card">
                 <Card className="admin_card_design" body outline color="info" >
                     <h5>
                         <CardHeader className="admin_card_header" >
@@ -67,8 +74,10 @@ const AdminHome = () => {
                         <p >No. of Parcel Order Placed</p>
                     </CardBody>
                 </Card>
+                </div>
             </CardGroup>
             <CardGroup >
+            <div className="admin_style_card">
                 <Card className="admin_card_design" body outline color="info" >
                     <h5>
                         <CardHeader className="admin_card_header" >
@@ -82,6 +91,8 @@ const AdminHome = () => {
                         <p >No. of Waiters Working</p>
                     </CardBody>
                 </Card>
+                </div>
+                <div className="admin_style_card"> 
                 <Card className="admin_card_design" body outline color="info" >
                     <h5>
                         <CardHeader className="admin_card_header">
@@ -95,6 +106,8 @@ const AdminHome = () => {
                         <p >No. of Orders Accepted by Kitchen</p>
                     </CardBody>
                 </Card>
+                </div>
+                <div className="admin_style_card">
                 <Card className="admin_card_design" body outline color="info" >
                     <h5>
                         <CardHeader className="admin_card_header" >
@@ -108,8 +121,9 @@ const AdminHome = () => {
                         <p style={{color: "white", fontSize: "20px"}}>Total amount collected by Biller</p>
                     </CardBody>
                 </Card>
-                
+                </div>
             </CardGroup>
+            </div>
         </div>
 
 

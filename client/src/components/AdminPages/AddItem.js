@@ -20,8 +20,8 @@ import bevergaes from "./image/drink.jpg";
 import rice from "./image/fried-rice.jpg";
 import chicken from "./image/chicken.jpg";
 import "../../css/admin.css";
-import "../AdminPages/AdminStyles.css";
-
+// import "../AdminPages/AdminStyles.css";
+import "../../css/AdminStyles.css";
 const AddItem = () => {
   const [modalShow, setModalShow] = useState(false);
   const [itemName, setItemName] = useState("");
@@ -146,13 +146,14 @@ const AddItem = () => {
   console.log(arrData);
   return (
     <div className="inner-container">
+    <div className="admin_additems">
       <div style={{ float: "right" }}>
         {" "}
-        <Button
-          variant="primary"
+        <Button 
+        className="additem_btnstyle"
           size="lg"
           onClick={() => setModalShow(true)}
-          active
+          // active
         >
           Add Item {"  "}
           <FontAwesomeIcon icon={faPlus} />
@@ -239,10 +240,10 @@ const AddItem = () => {
             </InputGroup>
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="primary" type="submit" onClick={addMoreItem}>
+            <Button className="additem_btnstyle" type="submit" onClick={addMoreItem}>
               Add more item
             </Button>
-            <Button variant="primary" type="submit" onClick={mySubmitHandler}>
+            <Button className="additem_btnstyle"type="submit" onClick={mySubmitHandler}>
               Submit
             </Button>
           </Modal.Footer>
@@ -250,8 +251,8 @@ const AddItem = () => {
       </div>
 
       <div>
-        <h2 className="heading">~:Menu Item:~</h2>
-        <div style={{ marginTop: "40px" }}>
+        <h2 className="heading"><b>Menu Item </b></h2>
+        <div className="additembg">
           <Row>
             <Col xs={6}>
               {itemData.breakfast && itemData.breakfast.length > 0 ? (
@@ -376,6 +377,7 @@ const AddItem = () => {
             </Col>
           </Row>
         </div>
+      </div>
       </div>
     </div>
   );

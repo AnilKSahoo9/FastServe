@@ -96,7 +96,7 @@ const NavLinks = (props) => {
             </li>
           </div>
         )}
-        {userType === "kitchen" && (
+        {userType === "chef" && (
           <div>
             <li>
               <NavLink to="/kitchen-home" className="kitchenpage">
@@ -121,6 +121,18 @@ const NavLinks = (props) => {
                 Place Order
               </NavLink>
             </li>
+            <li>
+              <NavLink to="/waiter-notification" className="Waiter_notification">
+                <NotificationsActiveIcon className="icons" />
+                Notification
+              </NavLink>
+            </li>
+            {/* <li>
+              <NavLink to="/placeorder" className="place_order">
+                <RoomServiceIcon className="icons" />
+                Place Order
+              </NavLink>
+            </li> */}
           </div>
         )}
         {/* <li>

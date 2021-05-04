@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { Button, Table } from "reactstrap";
 import { userDetails, billerDetails, chefDetails, workerDetails } from "../../StaticData/showemployeeData"
 import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
-import "../../css/showemployee.css";
+import "../../css/AdminStyles.css";
+// import "../../css/showemployee.css";
 const ShowEmployee = (props) => {
  
   const [show, setShow] = useState(false);
@@ -34,12 +35,13 @@ const ShowEmployee = (props) => {
   };
   return (
     <div className="inner-container1 ">
-      <div className="showemp ml-4 mr-4 mb-3 mt-4"  >
+      <div className="showemp"  >
         <div className="showline">
-          <h4>Waiter</h4>
+          Waiter
         </div>
         <div>
-          <Table responsive size="sm">
+          <Table className="showemp_table" 
+          responsive size="sm">
             <thead>
               <tr className="tr">
                 <th>No.</th>
@@ -56,8 +58,10 @@ const ShowEmployee = (props) => {
                   <td>{user.status}</td>
                   <td>
                     <Button
+                    className="showemp_btn"
+                  
                       outline
-                      color="primary"
+                      
                       onClick={() => handleShowDetails(user.modal)
                       }
                     >
@@ -88,12 +92,13 @@ const ShowEmployee = (props) => {
       </div>
 
 
-      <div className="showemp ml-4 mr-4 mb-3 mt-4"  >
+      <div className="showemp"  >
         <div className="showline">
-          <h4>Billers</h4>
+          Billers
         </div>
         <div>
-          <Table responsive size="sm">
+          <Table className="showemp_table" 
+          responsive size="sm">
             <thead>
               <tr className="tr">
                 <th>No.</th>
@@ -110,7 +115,8 @@ const ShowEmployee = (props) => {
                   <td>{biller.status}</td>
                   <td><Button
                     outline
-                    color="primary"
+                    className="showemp_btn"
+                    
                     onClick={() => handleShowDetails(biller.modal)
                     }
                   >
@@ -139,12 +145,13 @@ const ShowEmployee = (props) => {
           </div>) : null}
       </div>
 
-      <div className="showemp ml-4 mr-4 mb-3 mt-4 " >
+      <div className="showemp" >
         <div className="showline">
-          <h4>Kichens</h4>
+          Kitchens
         </div>
         <div>
-          <Table responsive size="sm">
+          <Table className="showemp_table" 
+          responsive size="sm">
             <thead>
               <tr>
                 <th>No.</th>
@@ -161,7 +168,8 @@ const ShowEmployee = (props) => {
                   <td>{chef.status}</td>
                   <td><Button
                     outline
-                    color="primary"
+                    className="showemp_btn"
+                   
                     onClick={() => handleShowDetails(chef.modal)
                     }
                   >
@@ -190,12 +198,13 @@ const ShowEmployee = (props) => {
           </div>) : null}
       </div>
 
-      <div className="showemp ml-4 mr-4 mb-3 mt-4 " >
+      <div className="showemp" >
         <div className="showline">
-          <h4>Other Workers</h4>
+          Other Workers
         </div>
         <div>
-          <Table responsive size="sm">
+          <Table className="showemp_table"
+           responsive size="sm">
             <thead>
               <tr>
                 <th>No.</th>
@@ -212,7 +221,8 @@ const ShowEmployee = (props) => {
                   <td>{worker.status}</td>
                   <td><Button
                     outline
-                    color="primary"
+                    className="showemp_btn"
+                    
                     onClick={() => handleShowDetails(worker.modal)
                     }
                   >

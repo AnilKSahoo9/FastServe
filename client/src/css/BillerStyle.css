@@ -4,31 +4,42 @@
     margin-left: 0%;
     margin: 25px;
 }
-.inner-container .row{
+/* .inner-container .row{
     margin: 0%;
+} */
+.biller_home_style{
+    margin: 3rem;
+}
+.btn_table{
+    background-color: #d11d72;
+    border: 2px solid black;
+    border-radius: 6px;
+    height: 25px;
+    line-height: 1.0;
+    color: white;
 }
 .chart{
     margin-left: 12%;
     margin-right: 15%;
     /* display: flex; */
     /* position: absolute; */
-    background-color:#0a2351;
+    /* background-color:#0a2351; */
     justify-content: center;
     width: 250px;
     height: 150px;
     
 }
-.cardstyle{
+/* .cardstyle{
     margin-left: 2rem;
-}
+} */
 .cardsname{
     max-width: 80%;
     max-height: 100rem;
     color: white;
     background-color: rgb(10,35,81);
     font-family: "Times New Roman, Times, serif";
-    margin: 1rem;
-    margin-left: 1rem;
+    margin: 0rem;
+    margin-left: 0rem;
     border-style: "groove";
     border-width: 3px;
     border-radius: 10px;
@@ -69,14 +80,13 @@
     border: 0px;
   
 }
-.table{
-   
+/* .table{
     width:92%;
-}
+} */
 .row .Container {
    background-color:white;
    height: 300px;
-   padding: 30px;
+   padding: 15px;
    display: block;
    overflow-y: auto;
    background-position: center;
@@ -85,11 +95,18 @@
    margin-bottom: 23px;
 }
 .row .Container .message{
-    background-color:#4444FF;
+    background-color:#1F305E;
     line-height: 1.0;
     padding: 10px;
-    margin: 17px;
+    margin: 10px;
+    font-weight: bolder;
     border: 0px solid black;
+}
+.chatcolumn{
+    background-color:#1F305E;  
+    margin: 1rem;
+    font-weight: bolder;
+    margin-left: 3px; 
 }
 .left{
     float: left;
@@ -121,47 +138,35 @@
     margin-bottom: 30px;
     height: 35px;
 }
-.btn{
-    cursor: pointer;
-    border: 2px solid black;
-    border-radius: 6px;
-    /* height: 25px; */
-    line-height: 1.0;
-    color: white;
-}
 .Tabledesign{   
     color: white;
-    width:100%;
+    width:90%;
     max-height: 100rem;
     font-family: "Times New Roman, Times, serif";
-    margin-top: 4rem;
+    margin-top: 2rem;
+    margin-left: 3.5rem;
     border-width: 3px;
     border-radius: 20px;
     border-collapse: "collapse";
 }
 
 
-
-
-
 /* BillerKitchen */
 .chatStyle{
-    margin: '1rem'; 
-    margin-left: "3px";
-    border-style: 'groove';
-    border-width: '3px';
-    width: "100%";
-    border-radius: '7px';
-    height: "100%";
+    margin: 3rem; 
+    margin-left: 3px;
+    /* border-style: groove;
+    border-width: 3px; */
+    width: 45%;
+    /* border-radius: 7px; */
+    height: 100%;
 }
 .chatbox-Design{
     color: white;
-    margin: 1rem;
+    margin: 5rem;
     margin-left: 3rem;
-    border-style: 3px;
-    border-width: 3px;
-    border-radius: 7px;
     height: 100%;
+    width: 100%;
     
 }
 .card{
@@ -180,14 +185,28 @@
 
 .report{
     width: 80%;
-    color: Black;
+    color: #fff;
+    background-color: #1F305E;
     justify-content:center;
-    margin: 15px;
-    border-style: groove;
-    border-width: 3px;
+    margin:7rem;
+    font-weight: bolder;
+    border-style: double;
+    border-width: 5px;
     border-radius: 7px;
 } 
- .button{
+ .reportbtn{
+    background-color: #d11d72;
+    color: #fff;
+    font-weight: bolder;
     margin-top: 15rem;
-    margin-left: 35rem;
+    margin-left: 50rem;
+}
+.msgbtn{
+    background-color: #d11d72;
+    cursor: pointer;
+    border: 2px solid black;
+    border-radius: 6px;
+    height: 25px;
+    line-height: 1.0;
+    color: white;
 }

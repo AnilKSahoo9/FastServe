@@ -1,5 +1,6 @@
 import React from "react";
-import "./AdminStyles.css";
+// import "./AdminStyles.css";
+import "../../css/AdminStyles.css";
 // import present from "../image/download.jpg";
 // import notpresent from "../image/download (1).png";
 import {
@@ -24,8 +25,9 @@ const AdminTable = () => {
 
   return (
     <div className="inner-container">
-      <Container>
-        <Row>
+    <div className="admin_parent_div_cards">
+      {/* <Container> */}
+        <Row className="admin_table_Design">
           {table.map((user) => (
             <Col xs={12} lg={4} md={6}>
               {user.status === "Active" ? (
@@ -34,15 +36,15 @@ const AdminTable = () => {
                     <h5>
                       {" "}
                       <Card.Header className="tablecardheader">
-                        Table no {user.name}
+                       <b> Table no {user.name}</b>
                       </Card.Header>
                     </h5>
                     <Card.Body className="tablecardbody">
-                      <Card.Text> Status: {user.status}</Card.Text>
-                      <Card.Text>Sessions no: {user.sessionsno}</Card.Text>
+                      <Card.Text> <b>Status: {user.status} </b></Card.Text>
+                      <Card.Text><b>Sessions no: {user.sessionsno}</b></Card.Text>
                       {/* <Card.Text>Table no:{user.tableno}</Card.Text> */}
                       <Button
-                        variant="primary"
+                         className="admintable_btnstyle"
                         onClick={handleShow}
                         value={user.name}
                       >
@@ -77,11 +79,11 @@ const AdminTable = () => {
                     <h5>{" "}
                       <Card.Header className="tablecardheader">
                         {" "}
-                        Table no {user.name}
+                       <b> Table no {user.name} </b>
                       </Card.Header>
                     </h5>
                     <Card.Body className="tablecardbody">
-                      <Card.Text> Status: {user.status}</Card.Text>
+                      <Card.Text> <b>Status: {user.status}</b></Card.Text>
                     </Card.Body>
                   </Card>
                 </CardDeck>
@@ -89,7 +91,8 @@ const AdminTable = () => {
             </Col>
           ))}
         </Row>
-      </Container>
+      {/* </Container> */}
+      </div>
     </div>
   );
 };

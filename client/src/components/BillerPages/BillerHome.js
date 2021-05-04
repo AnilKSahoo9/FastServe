@@ -158,7 +158,7 @@ const BillerHome = () => {
   };
   return (
     <div className="inner-container">
-      <div>
+      <div className="biller_home_style">
         <CardGroup>
         <div>
             <Card className="cardsname"
@@ -215,7 +215,7 @@ const BillerHome = () => {
           size="sm"
           striped
           bordered
-          hover
+          // hover
        style={{
         backgroundImage: `linear-gradient(to right,#0E3386,#0047AB, #002D62, #0a2351)`
         }}
@@ -236,8 +236,7 @@ const BillerHome = () => {
                 <td>{val.tableNo}</td>
                 <td>{val.sessionNo}</td>
                 <td>
-                  <Button
-                    style={{ backgroundColor: "#d11d72" }}
+                  <Button className="btn_table"
                     onClick={(e) => Payment(e, val)}
                     // value={val.tableno}
                   >
@@ -246,7 +245,7 @@ const BillerHome = () => {
                 </td>
                 <td>
                   <Button
-                    style={{ backgroundColor: "#d11d72" }}
+                   className="btn_table"
                     onClick={handleShow}
                     value={val.sessionNo}
                   >

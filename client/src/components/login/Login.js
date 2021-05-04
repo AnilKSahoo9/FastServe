@@ -105,7 +105,7 @@ const Login = () => {
             setUserSession(res.data.type);
             res.data.type === "biller" && history.push("/biller-home");
             res.data.type === "waiter" && history.push("/waiter-place-order");
-            res.data.type === "kitchen" && history.push("/kitchen-home");
+            res.data.type === "chef" && history.push("/kitchen-home");
             // res.data.type === "biller" && history.push("/billerhome");
             // history.push("/home");
           }

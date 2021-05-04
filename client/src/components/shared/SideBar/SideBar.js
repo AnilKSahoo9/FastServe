@@ -38,8 +38,8 @@ const SideBar = (props) => {
             <span />
           </button>
           
-          <h1 className="main-navigation__title">
-            <div style={{ marginLeft: "17px", marginTop: "5px" }}>
+          <h2 className="main-navigation__title">
+            <div style={{ marginLeft: "0px", marginTop: "3px",marginRight:"15px" }}>
             <span className="logo"><img
                variant="top" 
                src={logo}
@@ -52,7 +52,7 @@ const SideBar = (props) => {
     border: "solid",
     borderRadius: "50%" }}
                 /></span>
-              <Link to="/">Hotel </Link>
+              <Link to="/">Fast-Serve </Link>
               
             </div>
             {/* <div>
@@ -74,7 +74,7 @@ const SideBar = (props) => {
                     style={{ height: 40, }}
                   /> }
                   </div> */}
-          </h1>
+          </h2>
           <nav className="main-navigation__header-nav">
             <NavLinks />
           </nav>

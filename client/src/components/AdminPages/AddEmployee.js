@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "./AdminStyles.css";
+// import "./AdminStyles.css";
+import "../../css/AdminStyles.css";
 import {
   Col,
   // Dropdown,
@@ -97,6 +98,7 @@ const AddEmployee = () => {
   };
   console.log(form);
   return (
+    <div className="inner-container">
     <div className="add_user_table">
       <span className="add_user_border border-info rounded mx-0 p-5">
         <div>
@@ -240,12 +242,13 @@ const AddEmployee = () => {
                 <Input type="file" name="file" id="file" />
               </Col>
             </FormGroup>
-            <Button color="success" onClick={handleSubmit}>
+            <Button className="empbtn" onClick={handleSubmit}>
               Create Employee
             </Button>
           </Form>
         </div>
       </span>
+    </div>
     </div>
   );
 };
