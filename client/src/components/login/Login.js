@@ -103,9 +103,9 @@ const Login = () => {
           console.log(res);
           if (res.status === 200) {
             setUserSession(res.data.type);
-            res.data.type === "biller" && history.push("/billerhome");
-            res.data.type === "waiter" && history.push("/placeorder");
-            res.data.type === "kitchen" && history.push("/kitchenhome");
+            res.data.type === "biller" && history.push("/biller-home");
+            res.data.type === "waiter" && history.push("/waiter-place-order");
+            res.data.type === "kitchen" && history.push("/kitchen-home");
             // res.data.type === "biller" && history.push("/billerhome");
             // history.push("/home");
           }

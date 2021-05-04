@@ -12,12 +12,13 @@ import NavBar from "./components/shared/NavBar/NavBar";
 // import NavLinks from "./components/shared/NavLinks/NavLinks";
 import SideBar from "./components/shared/SideBar/SideBar";
 //import  BillerReport  from "./components/BillerPages/BillerReport";
-import { BillerWaiter} from "./components/BillerPages/BillerWaiter";
-import BillerKitchen from "./components/BillerPages/BillerKitchen";
-import BillerHome from "./components/BillerPages/BillerHome";
+// import { BillerWaiter } from "./components/BillerPages/BillerWaiter";
+// import BillerKitchen from "./components/BillerPages/BillerKitchen";
+// import BillerHome from "./components/BillerPages/BillerHome";
 // import Customer from "./components/BillerPages/Customer";
-import Login from "./components/login/Login";
-import Notification from "./components/KitchenPages/notification";
+// import Login from "./components/login/Login";
+const Login = React.lazy(() => import("./components/login/Login"));
+//admin dashboard
 const AdminHome = React.lazy(() => import("./components/AdminPages/AdminHome"));
 const AddEmployee = React.lazy(() =>
   import("./components/AdminPages/AddEmployee")
@@ -32,18 +33,37 @@ const AdminTable = React.lazy(() =>
   import("./components/AdminPages/AdminTable")
 );
 const AddItem = React.lazy(() => import("./components/AdminPages/AddItem"));
-const BillerReport = React.lazy(() => import("./components/BillerPages/BillerReport"));
 const AdminTotalOrder = React.lazy(() =>
   import("./components/AdminPages/AdminTotalOrder")
 );
-const Customer = React.lazy(() => import("./components/Customer/Customer"));
-
+//biller dashboard
+const BillerReport = React.lazy(() =>
+  import("./components/BillerPages/BillerReport")
+);
+const BillerHome = React.lazy(() =>
+  import("./components/BillerPages/BillerHome")
+);
+const BillerChat = React.lazy(() =>
+  import("./components/BillerPages/BillerKitchen")
+);
+const BillerWaiter = React.lazy(() =>
+  import("./components/BillerPages/BillerWaiter")
+);
+//kitchen dashboard
 const KitchenHome = React.lazy(() =>
   import("./components/KitchenPages/KitchenHome.js")
 );
+const KitchenNotification = React.lazy(() =>
+  import("./components/KitchenPages/notification")
+);
+//waiter dashboard
 const Waiter_Place_Order = React.lazy(() =>
   import("./components/Waiterpages/PlaceOrder")
 );
+//customer dashboard
+const Customer = React.lazy(() => import("./components/Customer/Customer"));
+
+// import Notification from "./components/KitchenPages/notification";
 
 const App = () => {
   return (
@@ -68,20 +88,26 @@ const App = () => {
               <Switch>
                 <Route path="/" exact component={Login} />
                 <Route path="/home" component={AdminHome} />
-                <Route path="/addemployee" component={AddEmployee} />
-                <Route path="/showemployee" component={ShowEmployee} />
-                <Route path="/waiter" component={AdminWaiter} />
-                <Route path="/totalorder" component={AdminTotalOrder} />
-                <Route path="/table" component={AdminTable} />
-                <Route path="/additems" component={AddItem} />
-                <Route path="/billerHome" component={BillerHome} />
-                <Route path="/billerWaiter" component={BillerWaiter} />
-                <Route path="/billerKitchen" component={BillerKitchen} />
-                <Route path="/billerReport" component={BillerReport} />
+                <Route path="/add-employee" component={AddEmployee} />
+                <Route path="/show-employees" component={ShowEmployee} />
+                <Route path="/waiters" component={AdminWaiter} />
+                <Route path="/total-orders" component={AdminTotalOrder} />
+                <Route path="/tables" component={AdminTable} />
+                <Route path="/add-items" component={AddItem} />
+                <Route path="/biller-home" component={BillerHome} />
+                <Route path="/biller-waiters" component={BillerWaiter} />
+                <Route path="/biller-chat" component={BillerChat} />
+                <Route path="/biller-report" component={BillerReport} />
+                <Route path="/kitchen-home" component={KitchenHome} />
+                <Route
+                  path="/kitchen-notification"
+                  component={KitchenNotification}
+                />
+                <Route
+                  path="/waiter-place-order"
+                  component={Waiter_Place_Order}
+                />
                 <Route path="/customer" component={Customer} />
-                <Route path="/kitchenhome" component={KitchenHome} />
-                <Route path="/kitchen-notification" component={Notification} />
-                <Route path="/placeorder" component={Waiter_Place_Order} />
                 <Redirect to="/" />
               </Switch>
             </Suspense>

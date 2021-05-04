@@ -31,37 +31,37 @@ const NavLinks = (props) => {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/totalorder" className="Order">
+              <NavLink to="/total-orders" className="Order">
                 <RoomServiceIcon className="icons" />
                 Total Order
               </NavLink>
             </li>
             <li>
-              <NavLink to="/table" className="table">
+              <NavLink to="/tables" className="table">
                 <AirlineSeatReclineNormalIcon className="icons" />
                 Tables
               </NavLink>
             </li>
             <li>
-              <NavLink to="/waiter" className="waiter">
+              <NavLink to="/waiters" className="waiter">
                 <EmojiPeopleIcon className="icons" />
                 Waiters
               </NavLink>
             </li>
             <li>
-              <NavLink to="/additems" className="additem">
+              <NavLink to="/add-items" className="additem">
                 <PostAddIcon className="icons" />
                 Add Items
               </NavLink>
             </li>
             <li>
-              <NavLink to="/addemployee" className="adduser">
+              <NavLink to="/add-employee" className="adduser">
                 <PersonAddIcon className="icons" />
                 Add Employees
               </NavLink>
             </li>
             <li>
-              <NavLink to="/showemployee" className="showuser">
+              <NavLink to="/show-employees" className="showuser">
                 <GroupIcon className="icons" />
                 Show Employees
               </NavLink>
@@ -71,25 +71,25 @@ const NavLinks = (props) => {
         {userType === "biller" && (
           <div>
             <li>
-              <NavLink to="/billerHome" className="billerHome">
+              <NavLink to="/biller-home" className="billerHome">
                 <HomeIcon className="icons" />
                 Home
               </NavLink>
             </li>
             <li>
-              <NavLink to="/billerWaiter" className="billerWaiter">
+              <NavLink to="/biller-waiters" className="billerWaiter">
                 <EmojiPeopleIcon className="icons" />
                 Waiter
               </NavLink>
             </li>
             <li>
-              <NavLink to="/billerKitchen" className="billerKitchen">
+              <NavLink to="/biller-chat" className="billerKitchen">
                 <ChatIcon className="icons" />
                 Chat
               </NavLink>
             </li>
             <li>
-              <NavLink to="/billerReport" className="billerReport">
+              <NavLink to="/biller-report" className="billerReport">
                 <AssessmentIcon className="icons" />
                 Report
               </NavLink>
@@ -99,7 +99,7 @@ const NavLinks = (props) => {
         {userType === "kitchen" && (
           <div>
             <li>
-              <NavLink to="/kitchenhome" className="kitchenpage">
+              <NavLink to="/kitchen-home" className="kitchenpage">
                 <KitchenTwoToneIcon className="icons" />
                 Home
               </NavLink>
@@ -116,7 +116,7 @@ const NavLinks = (props) => {
         {userType === "waiter" && (
           <div>
             <li>
-              <NavLink to="/placeorder" className="place_order">
+              <NavLink to="/waiter-place-order" className="place_order">
                 <RoomServiceIcon className="icons" />
                 Place Order
               </NavLink>

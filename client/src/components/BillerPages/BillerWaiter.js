@@ -1,9 +1,11 @@
-import AdminWaiter from "../AdminPages/AdminWaiter"
+import AdminWaiter from "../AdminPages/AdminWaiter";
 
-export const BillerWaiter = () => {
-    return (
-        <div>
-            <AdminWaiter />
-        </div>
-    )
-}
+const BillerWaiter = () => {
+  return (
+    <div>
+      <AdminWaiter />
+    </div>
+  );
+};
+
+export default BillerWaiter;
