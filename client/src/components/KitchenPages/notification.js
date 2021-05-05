@@ -4,7 +4,7 @@ import { data } from "../../StaticData/kitchenData";
 import img from "./parcel.jpg";
 import table from "./tablepic.jpg";
 import _ from "lodash";
-import "./notification.css";
+import "../../css/KitchenStyle.css"
 export default function Notification() {
   var arr = _.chunk(
     data.map((val) => val),
@@ -13,7 +13,8 @@ export default function Notification() {
   console.log(arr);
 
   return (
-    <div className="container-fluid">
+    <div classname="inner-container">
+    <div className="kitchen_notification">
       <Carousel>
         {arr.map((no) => (
           <Carousel.Item interval={2000}>
@@ -31,23 +32,16 @@ export default function Notification() {
                       <Card.Img variant="top" src={img} className="parcelImg" />
                     )}
                     <Card.Body>
-                      <Card.Title style={{ color: "red", fontSize: "2em" }}>
-                        <Badge variant="info">{val.orderType}</Badge>{" "}
+                      <Card.Title>
+                        <Badge
+                        className="card_badge_style"
+                        >{val.orderType}</Badge>{" "}
                       </Card.Title>
                       <Card.Text>
                         <h5>Order Id: {val.orderId}</h5>
                       </Card.Text>
-                      <p
-                        style={{
-                          color: "#0039e6",
-                          backgroundColor: "#d9d9d9",
-                          height: "40px",
-                          verticalAlign: "center",
-                          fontSize: "1.4em",
-                          fontWeight: "bold",
-                        }}
-                      >
-                        ~:Order Details:~
+                      <p className="notification_card_body">
+                        Order Details
                       </p>
                       <ul>
                         {val.orderDetails.map((no, index = 1) => (
@@ -64,6 +58,7 @@ export default function Notification() {
           </Carousel.Item>
         ))}
       </Carousel>
+      </div>
     </div>
   );
 }

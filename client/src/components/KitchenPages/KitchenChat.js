@@ -1,9 +1,9 @@
 import React from "react";
 import chatbg from "../../image/chatbg.png";
 import { Col, Row } from "reactstrap";
-import "../../css/BillerStyle.css";
+import "../../css/KitchenStyle.css";
 // import OrderData from "../../StaticData/BillerOrderData"
-const BillerChat = () => {
+const KitchenChat = () => {
   var OrderData = [
     {
       Order: 1,
@@ -22,17 +22,14 @@ const BillerChat = () => {
     <div classname="inner-container">
       <Row className="chatbox-Design">
             <div className="chatStyle">
-                <Col  className="chatcolumn" 
-                // style={{backgroundImage: `linear-gradient(to right bottom, #4444FF,#000080,#0F52BA)`, margin: "1rem",
-                // marginLeft: "3px"}}
-                    >
+                <Col  className="chatcolumn">
                     <hr></hr>
-                    <h2>Chat With Kitchen</h2>
+                    <h2>Chat With Waiter</h2>
                     <hr></hr>
                     <Row className="Container" style={{ backgroundImage: `url(${chatbg})` }}>
 
-                        <div className="message right">Biller: Hey Kitchen, What is the Problem?</div>
-                        <div className="message left">Kitchen:Hey Biller,Please Help Me Out!!! </div>
+                        <div className="message right">Kitchen:Hey Waiter, Receive that order</div>
+                        <div className="message left">Waiter: Hey Chef, Make the order for the table? </div>
                     </Row>
                         <div className="send">
                             <form action="#" id="send-container">
@@ -43,17 +40,14 @@ const BillerChat = () => {
                 </Col>
                 </div>
                 <div className="chatStyle">
-                <Col  className="chatcolumn" 
-                // style={{backgroundImage: `linear-gradient(to right bottom, #4444FF,#000080,#0F52BA)`,margin: "1rem",
-                //     marginLeft: "3px"}}
-                >
+                <Col  className="chatcolumn">
                 <hr></hr>
-                    <h2>Chat With Waiter</h2>
+                    <h2>Chat With Biller</h2>
                     <hr></hr>
                     <Row className="Container" style={{backgroundImage:`url(${chatbg})` }}>
 
-                    <div className="message right">Biller: Hey Waiter, What is the Problem?</div>
-                    <div className="message left">Waiter:Hey Biller,Please Help Me Out!!! </div>
+                    <div className="message right">Kitchen: Hey Biller, This Parcel order was completed.</div>
+                    <div className="message left">Biller:Hey Kitchen, make the parcel order </div>
                     </Row>
                     <div className="send">
                         <form action="#" id="send-container">
@@ -67,4 +61,4 @@ const BillerChat = () => {
     </div>
   );
 };
-export default BillerChat;
+export default KitchenChat;

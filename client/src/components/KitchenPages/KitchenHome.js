@@ -1,8 +1,8 @@
 import React, { useRef, useState, useEffect } from "react";
 import { Table, Button, Form } from "react-bootstrap";
 import axios from "axios";
-import "./notification.css";
-
+//import "./notification.css";
+import "../../css/KitchenStyle.css"
 // import io from "socket.io-client";
 // let socket;
 
@@ -140,16 +140,20 @@ function KitchenDashbard() {
   };
 
   return (
-    <div className="container-fluid">
+    <div classname="inner-container">
       {/* {kitchendata.map((val) => val.items.map((no) => console.log(no)))} */}
-      <Table striped bordered hover className="tableDisplay" variant="blue">
+      <div className="kitchen_home_design">
+      <Table 
+      striped bordered hover 
+      className="kitchen_tableDisplay"
+       variant="blue">
         <thead>
           <tr>
-            <th>~:Order No:~</th>
-            <th>~:Order Type:~</th>
-            <th>~:Order Id:~</th>
-            <th>~:Order Status:~</th>
-            <th>~:Show Details:~</th>
+            <th>Order No</th>
+            <th>Order Type</th>
+            <th>Order Id</th>
+            <th>Order Status</th>
+            <th>Show Details</th>
           </tr>
         </thead>
         {kitchendata.map((no, index) => (
@@ -251,6 +255,7 @@ function KitchenDashbard() {
           </tbody>
         ))}
       </Table>
+      </div>
     </div>
   );
 }

@@ -106,7 +106,8 @@ const Waiter_Place_Order = () => {
   // console.log(showCategory, showItems);
   console.log(orderData);
   return (
-    <div>
+    <div className="inner-container">
+    <div style={{marginTop:"5rem"}}>
       {!showCategory && !showItems && (
         <Grid container spacing={3}>
           {tablesList.map((eachTable) => {
@@ -118,17 +119,17 @@ const Waiter_Place_Order = () => {
                 xs={12}
                 onClick={(event) => handleTableClick(eachTable, event)}
               >
-                <Card
+                <Card className="waiterhome_card_style"
                   style={{
                     marginTop: "40px",
-                    backgroundColor: "lightgreen",
+                    backgroundColor: "#ca4483ea",
                     marginRight: "30px",
                     fontSize: "50px",
                     marginLeft: "30px",
                   }}
                 >
                   <Card.Body>
-                    <Card.Header style={{ backgroundColor: "green" }}>
+                    <Card.Header style={{ backgroundColor: "#1F305E" }}>
                       <Card.Title style={{ color: "white" }}>
                         {eachTable.no}
                       </Card.Title>
@@ -164,11 +165,12 @@ const Waiter_Place_Order = () => {
                     borderWidth: "3px",
                     borderRadius: "7px",
                     boxShadow: "20px 20px 50px grey",
-                    backgroundImage: `linear-gradient(to right bottom, #051437, #004782, #0081a7, #00b98a, #12eb25)`,
+                    backgroundColor: "#ca4483ea",
+                    //backgroundImage: `linear-gradient(to right bottom, #051437, #004782, #0081a7, #00b98a, #12eb25)`,
                   }}
                 >
                   <Card.Body>
-                    <Card.Header style={{ backgroundColor: "black" }}>
+                    <Card.Header style={{ backgroundColor: "#1F305E" }}>
                       <Card.Title>{categoryItem.name}</Card.Title>
                     </Card.Header>
                   </Card.Body>
@@ -239,6 +241,7 @@ const Waiter_Place_Order = () => {
       {(showCategory || showItems) && (
         <Button onClick={handleBack}>Back</Button>
       )}
+      </div>
     </div>
   );
 };

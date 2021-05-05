@@ -83,61 +83,7 @@
 /* .table{
     width:92%;
 } */
-.row .Container {
-   background-color:white;
-   height: 300px;
-   padding: 15px;
-   display: block;
-   overflow-y: auto;
-   background-position: center;
-   background-repeat: no-repeat;
-   background-size: cover;
-   margin-bottom: 23px;
-}
-.row .Container .message{
-    background-color:#1F305E;
-    line-height: 1.0;
-    padding: 10px;
-    margin: 10px;
-    font-weight: bolder;
-    border: 0px solid black;
-}
-.chatcolumn{
-    background-color:#1F305E;  
-    margin: 1rem;
-    font-weight: bolder;
-    margin-left: 3px; 
-}
-.left{
-    float: left;
-    min-height: 50px;
-    border-bottom-left-radius: 25px;
-  
-    height: 50px;
-    clear: both;
-}
-.right{
-    float: right;
-    min-height: 50px;
-    border-bottom-right-radius: 25px;
-    height: 50px;
-    clear: both;
-}
-#send-container{
-    text-align: center;
-    max-width: 985px;
-    width: 100%;
-    display: block;
-    margin: auto;
-}
-#msgimp{
-    width:50%;
-    border: 2px solid black;
-    border-radius: 6px;
-    margin: 8px;
-    margin-bottom: 30px;
-    height: 35px;
-}
+
 .Tabledesign{   
     color: white;
     width:90%;
@@ -180,6 +126,61 @@
     border-radius: 7px;
    
 } 
+.row .Container {
+    background-color:white;
+    height: 300px;
+    padding: 15px;
+    display: block;
+    overflow-y: auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: 23px;
+ }
+ .row .Container .message{
+     background-color:#1F305E;
+     line-height: 1.0;
+     padding: 10px;
+     margin: 10px;
+     font-weight: bolder;
+     border: 0px solid black;
+ }
+ .chatcolumn{
+     background-color:#1F305E;  
+     margin: 1rem;
+     font-weight: bolder;
+     margin-left: 3px; 
+ }
+ .left{
+     float: left;
+     min-height: 50px;
+     border-bottom-left-radius: 25px;
+   
+     height: 50px;
+     clear: both;
+ }
+ .right{
+     float: right;
+     min-height: 50px;
+     border-bottom-right-radius: 25px;
+     height: 50px;
+     clear: both;
+ }
+ #send-container{
+     text-align: center;
+     max-width: 985px;
+     width: 100%;
+     display: block;
+     margin: auto;
+ }
+ #msgimp{
+     width:50%;
+     border: 2px solid black;
+     border-radius: 6px;
+     margin: 8px;
+     margin-bottom: 30px;
+     height: 35px;
+ }
 
 /* BillerReport */
 

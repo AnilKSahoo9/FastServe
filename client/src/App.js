@@ -56,12 +56,18 @@ const KitchenHome = React.lazy(() =>
 const KitchenNotification = React.lazy(() =>
   import("./components/KitchenPages/notification")
 );
+const Kitchen_Chat = React.lazy(() =>
+  import("./components/KitchenPages/KitchenChat")
+);
 //waiter dashboard
 const Waiter_Place_Order = React.lazy(() =>
   import("./components/Waiterpages/PlaceOrder")
 );
 const Waiter_Notification = React.lazy(() =>
   import("./components/Waiterpages/Waiternotification")
+);
+const Waiter_Chat = React.lazy(() =>
+  import("./components/Waiterpages/WaiterChat")
 );
 //customer dashboard
 const Customer = React.lazy(() => import("./components/Customer/Customer"));
@@ -108,12 +114,20 @@ const App = () => {
                   component={KitchenNotification}
                 />
                 <Route
+                  path="/kitchen-chat"
+                  component={Kitchen_Chat}
+                />
+                <Route
                   path="/waiter-place-order"
                   component={Waiter_Place_Order}
                 />
                 <Route
                   path="/waiter-notification"
                   component={Waiter_Notification}
+                />
+                <Route
+                  path="/waiter-chat"
+                  component={Waiter_Chat}
                 />
                 <Route path="/customer" component={Customer} />
                 <Redirect to="/" />

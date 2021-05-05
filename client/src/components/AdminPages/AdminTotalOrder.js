@@ -58,13 +58,13 @@ const AdminTotalOrder = () => {
     <div className="inner-container">
       <Row className="admin_totalorder_row">
         <Col md={6} xs={12}>
-          <h2>-: Table Order Details :-</h2>
+           <span className="order_heading">Table Order Details</span> 
           {tableOrders.map((val, index) => (
-            <Accordion className="accordion">
-              <Card className="cards">
-                <Card.Header className="headers">
+            <Accordion className="accordion_total_order">
+              <Card className="cards_total_order">
+                <Card.Header className="headers_total_order">
                   <Accordion.Toggle
-                    className="accordiontoggle"
+                    className="accordiontoggle_total_order"
                     as={Card.Header}
                     eventKey={String(index)}
                   >
@@ -75,9 +75,9 @@ const AdminTotalOrder = () => {
                   <Card.Body>
                     {val.sessions.map((value, index) => (
                       <Accordion className="accordion_total_order"  >
-                        <Card className="cards_total_order" style={{backgroundColor:"#1e2083"}}>
-                          <Card.Header className="headers_total_order" style={{backgroundColor:"#29b3bd"}}>
-                            <Accordion.Toggle className="accordiontoggle"
+                        <Card className="cards_total_order">
+                          <Card.Header className="headers_total_order">
+                            <Accordion.Toggle className="accordiontoggle_total_order"
                               as={Card.Header}
                               eventKey={String(index)}
                             >
@@ -87,19 +87,21 @@ const AdminTotalOrder = () => {
                           <Accordion.Collapse eventKey={String(index)}>
                             <Card.Body>
                               <h5>Order delivered by {value.waiterName}</h5>
-                              <Table striped bordered hover style={{ backgroundImage: `linear-gradient(to right,#0E3386,#0047AB, #002D62, #0a2351)`}}>
+                              <Table 
+                              className="table_design_total_order"
+                              striped bordered hover style={{ backgroundImage: `linear-gradient(to right,#0E3386,#0047AB, #002D62, #0a2351)`}}>
                                 <thead>
                                   <tr>
-                                    <th className="th_total_order" >
+                                    <th>
                                       Sl no.
                                     </th>
-                                    <th className="th_total_order">
+                                    <th>
                                       Item
                                     </th>
-                                    <th className="th_total_order">
+                                    <th>
                                       Quantity
                                     </th>
-                                    <th className="th_total_order">
+                                    <th>
                                       Price
                                     </th>
                                   </tr>
@@ -108,21 +110,21 @@ const AdminTotalOrder = () => {
                                 {value.orderDetails.map((valueitem, index) => (
                                   <tbody>
                                     <tr>
-                                      <td className="td_total_order">
+                                      <td>
                                         {index + 1}
                                       </td>
-                                      <td className="td_total_order">
+                                      <td>
                                         {valueitem.name}
                                       </td>
-                                      <td className="td_total_order">
+                                      <td>
                                         {valueitem.quantity}
                                       </td>
-                                      <td className="td_total_order">
+                                      <td>
                                         {valueitem.price}
                                       </td>
                                     </tr>
                                     <tr>
-                                  <th className="th_total_order">
+                                  <th>
                                     Total:
                                   </th>
                                   <td colspan="3">{valueitem.quantity * valueitem.price}</td>
@@ -142,7 +144,7 @@ const AdminTotalOrder = () => {
           ))}
         </Col>
         <Col md={6} xs={12}>
-          <h2>-: Parcel Details :-</h2>
+        <span className="order_heading">Parcel Order Details</span> 
           {/* {console.log(parcelOrders)} */}
           {parcelOrders.map((val,index) =>
               <Accordion className="accordion_total_order">
@@ -160,14 +162,14 @@ const AdminTotalOrder = () => {
                       <Table striped bordered hover>
                         <thead>
                           <tr>
-                            <th className="th_total_order" >
+                            <th>
                               Sl no.
                             </th>
-                            <th className="th_total_order" >Item</th>
-                            <th className="th_total_order">
+                            <th>Item</th>
+                            <th>
                               Quantity
                             </th>
-                            <th className="th_total_order">
+                            <th>
                               Price
                             </th>
                           </tr>

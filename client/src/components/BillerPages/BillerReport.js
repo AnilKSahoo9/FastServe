@@ -1,20 +1,9 @@
 import React from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
+import "../../css/BillerStyle.css";
 // import { Button } from 'reactstrap';
-import {
-  Card,
-  CardImg,
-  CardHeader,
-  CardText,
-  CardBody,
-  CardTitle,
-  CardActions,
-  CardSubtitle,
-  Button,
-  CardGroup,
-  Table,
-} from "reactstrap";
+import {Button} from "reactstrap";
 const BillerReport = () => {
   return (
     <div className="inner-container">
@@ -41,7 +30,7 @@ const BillerReport = () => {
           </TabPanel>
         </Tabs>
       </div>
-      <Button className="button" outline color="info">
+      <Button className="reportbtn" outline color="info">
         Download
       </Button>
     </div>
