@@ -88,7 +88,7 @@ const AdminHome = () => {
 
                         <hr></hr>
                         <CardTitle>{data.Waiters}</CardTitle>
-                        <p >No. of Waiters Working</p>
+                        <p >No. of Waiters Working till Now</p>
                     </CardBody>
                 </Card>
                 </div>
