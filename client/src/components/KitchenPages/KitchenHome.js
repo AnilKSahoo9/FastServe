@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import { Table, Button, Form } from "react-bootstrap";
 import axios from "axios";
 import "./notification.css";
+import Countdown from 'react-countdown';
 
 // import io from "socket.io-client";
 // let socket;
@@ -10,9 +11,9 @@ function KitchenDashbard() {
   const [timerHours, setTimerHours] = useState("00");
   const [timerMin, setTimerMin] = useState("00");
   const [timerSec, setTimerSec] = useState("00");
-  const [inputTime, setTime] = useState("00");
+  const [inputTime, setTime] = useState("0");
   const [display, setDisplay] = useState({
-    orderStatusval: "notselected",
+    orderStatusval: "pending",
     rowKey: null,
   });
   const [kitchendata, setKitchenData] = useState([]);
@@ -79,7 +80,7 @@ function KitchenDashbard() {
 
   const handleTimeChange = (event) => {
     setTime(event.target.value);
-    //console.log(event.target.value);
+    console.log(event.target.value);
   };
 
   const changeTheTimer = () => {
@@ -89,43 +90,46 @@ function KitchenDashbard() {
     };
   };
 
-  const postData = () => {
-    const payload = {
-      orderStatus: "accept",
-      _id: display.rowKey,
-      time: inputTime + "min",
-      orderType: "parcel",
-    };
-    axios
-      .post(
-        `http://localhost:4000/postkitchendata/`,
-        // JSON.stringify(payload),
-        payload,
-        {
-          header: {
-            "Content-type":
-              "application/json,application/x-www-form-urlencoded, charset=UTF-8",
-          },
-        }
-      )
-      .then((response) => {
-        //console.log(response);
-        if (response.status === 200) {
-          console.log(response.data);
-        }
-      });
-  };
+  // const postData = () => {
+  //   const payload = {
+  //     orderStatus: "accept",
+  //     _id: display.rowKey,
+  //     time: inputTime + "min",
+  //     orderType: "parcel",
+  //   };
+  //   axios
+  //     .post(
+  //       `http://localhost:4000/postkitchendata/`,
+  //       // JSON.stringify(payload),
+  //       payload,
+  //       {
+  //         header: {
+  //           "Content-type":
+  //             "application/json,application/x-www-form-urlencoded, charset=UTF-8",
+  //         },
+  //       }
+  //     )
+  //     .then((response) => {
+  //       //console.log(response);
+  //       if (response.status === 200) {
+  //         console.log(response.data);
+  //       }
+  //     });
+  // };
 
   //when order is accepted
   const acceptedOrder = (e) => {
-    setDisplay({ orderStatusval: "accepted", rowKey: e.target.value });
+    setDisplay({ orderStatusval: "accept", rowKey: e.target.value });
+    // console.log(kitchendata.map((item, index) =>
+    //   [...item]
+    // ))
     //console.log(e.target.value);
     kitchendata.map((val, index) => {
       if (val._id == e.target.value) {
-        val.orderStatus = "accepted";
+        val.orderStatus = "accept";
       }
     });
-    changeTheTimer();
+    // changeTheTimer();
     //postData();  //see above
   };
 
@@ -138,7 +142,7 @@ function KitchenDashbard() {
     });
     setDisplay({ orderStatusval: "decline", rowKey: e.target.value });
   };
-
+  console.log(kitchendata)
   return (
     <div className="container-fluid">
       {/* {kitchendata.map((val) => val.items.map((no) => console.log(no)))} */}
@@ -152,29 +156,31 @@ function KitchenDashbard() {
             <th>~:Show Details:~</th>
           </tr>
         </thead>
-        {kitchendata.map((no, index) => (
+        {kitchendata.map((eachOrder, index) => (
           <tbody hover={true}>
             <tr
               key={index}
               style={
-                no.orderStatus === "accepted" && display.rowKey == no._id
+                eachOrder.orderStatus === "accept" && display.rowKey == eachOrder._id
                   ? { background: "#d9ffb3" }
-                  : no.orderStatus === "decline" && display.rowKey == no._id
-                  ? { background: "#ff9999" }
-                  : { background: "#ffffe6" }
+                  : eachOrder.orderStatus === "decline" && display.rowKey == eachOrder._id
+                    ? { background: "#ff9999" }
+                    : { background: "#ffffe6" }
               }
             >
-              <td>{index}</td>
-              {!no.tableNo ? <td>Parcel</td> : <td>Table:{no.tableNo}</td>}
+              <td>{index + 1}</td>
+              {!eachOrder.tableNo ? <td>Parcel</td> : <td>Table:{eachOrder.tableNo}</td>}
 
-              <td>{no._id}</td>
+              <td>{eachOrder._id}</td>
               <td>
-                {no.orderStatus === "accepted" && display.rowKey == no._id ? (
+                {eachOrder.orderStatus === "accept" && display.rowKey == eachOrder._id ? (
                   <div>
                     {" "}
                     <h5 className="blink">Order Processing......</h5>
                     <section className="timer">
-                      <div>
+                      <Countdown date={Date.now() + 600000} />
+
+                      {/* <div>
                         <section>
                           <p>{timerHours}</p>
                           <p>
@@ -195,14 +201,14 @@ function KitchenDashbard() {
                             <small>sec</small>
                           </p>
                         </section>
-                      </div>
+                      </div> */}
                     </section>
                     <div className="acceptButton">
                       <Button variant="success">Completed</Button>
                     </div>
                   </div>
-                ) : no.orderStatus === "decline" &&
-                  display.rowKey === no._id ? (
+                ) : eachOrder.orderStatus === "decline" &&
+                  display.rowKey === eachOrder._id ? (
                   <h3 className="blink">Order cancel</h3>
                 ) : (
                   <>
@@ -211,9 +217,9 @@ function KitchenDashbard() {
                         <Form.Group controlId="exampleForm.ControlSelect1">
                           <Form.Label>Time Required</Form.Label>
                           <Form.Control as="select" onChange={handleTimeChange}>
-                            <option value="5">5 min</option>
-                            <option value="10">10 min</option>
-                            <option value="15">15 min</option>
+                            <option value="300000">5 min</option>
+                            <option value="600000">10 min</option>
+                            <option value="900000">15 min</option>
                             <option value="20">20 min</option>
                             <option value="25">25 min</option>
                             <option value="30">30 min</option>
@@ -225,14 +231,14 @@ function KitchenDashbard() {
                       <Button
                         variant="success"
                         onClick={acceptedOrder}
-                        value={no._id}
+                        value={eachOrder._id}
                       >
                         accept
                       </Button>{" "}
                       <Button
                         variant="danger"
                         onClick={orderDecline}
-                        value={no._id}
+                        value={eachOrder._id}
                       >
                         reject
                       </Button>
@@ -242,7 +248,7 @@ function KitchenDashbard() {
               </td>
               <td>
                 <ul>
-                  {no.items.map((val) => (
+                  {eachOrder.items.map((val) => (
                     <li>{val.name + "  " + "=>" + "  " + val.quantity}</li>
                   ))}
                 </ul>

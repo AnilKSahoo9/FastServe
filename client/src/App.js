@@ -81,7 +81,7 @@ const App = () => {
               fallback={
                 <div style={{ marginTop: "250px" }}>
                   <ClipLoader
-                    color="white"
+                    color="#1f305e"
                     loading={true}
                     css={""}
                     size={100}
