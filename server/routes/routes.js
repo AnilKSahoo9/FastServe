@@ -1,6 +1,6 @@
 const ObjectId = require("mongodb").ObjectID;
 
-const homepageController = require("../controllers/homepagedataController");
+const adminHomeController = require("../controllers/adminHomeController");
 const adminRegisterController = require("../controllers/adminLoginController");
 const adminLoginController = require("../controllers/adminLoginController");
 const addEmployeeController = require("../controllers/addEmployeeController");
@@ -18,6 +18,7 @@ const billerPaymentController = require("../controllers/billerPaymentController"
 const kitchenController = require("../controllers/kitchenController");
 const kitchenOrderController = require("../controllers/kitchenOrderController");
 const adminTableController = require("../controllers/adminTableController");
+const customerDBController = require("../controllers/customerDBController");
 //const billerController = require("../controllers/billerController");
 const waiters = [
   {
@@ -49,7 +50,7 @@ const routes = (app) => {
   //   .get((req, res) => res.send(Home))
   //   .post((req, res) => res.send("POST request successful!"));
 
-  app.get("/admin-home", homepageController);
+  app.get("/admin-home", adminHomeController);
 
   // app.route('/login').post((req,res) =>
   // res.send(msg))
@@ -93,9 +94,8 @@ const routes = (app) => {
     "/postkitchendata",
     kitchenOrderController.kitchenOrderPostController
   );
-
-  app.get("/homepagedata", homepageController);
   app.get("/admin-tables", adminTableController);
+  app.get("/customer-dashboard",customerDBController);
   //app.post('/billers',billerController.billerController);
   //app.get('/billerpaymentdetails',billerController.billerPaidController);
 };

@@ -2,51 +2,47 @@ let sessionSchema = require("../models/sessionModel");
 let parcelSchema = require("../models/parcelModel");
 let employeeSchema = require("../models/employeeModel");
 
-const homepagedata = async(req,res) => {
+const adminHomeController = async(req,res) => {
   let tablesActive = [];
   let tableOrdersTillNow = [];
   let parcelOrdersTillNow = [];
   let totalWaitersWorking = [];
   let acceptedTableOrders = [];
-  var TAT;
+  var TAT,TAP;
   await sessionSchema.find({billStatus:"unpaid",created_at:new Date().toISOString().replace('-','/').split('T')[0].replace('-','/')},(err,doc) => {
-    if(err){
-      res.status(500).json({msg:"failed"});
-    }
     if(doc){
       tablesActive = doc;
-      //res.status(200).json({"tables active":tablesActive.length});
+    }
+    else{
+      console.log("no data having billstatus unpaid in session");
     }
   }
   );
 
   await sessionSchema.find({created_at:new Date().toISOString().replace('-','/').split('T')[0].replace('-','/')},(err,doc) => {
-    if(err){
-      res.status(500).json({msg:"failed"});
-    }
     if(doc){
       tableOrdersTillNow = doc;
-      //res.status(200).json({"tables active":tablesActive.length,"tableorderstillnow":tableOrdersTillNow.length});
+    }
+    else{
+      console.log("no data inside session of current date");
     }
   });
 
 await parcelSchema.find({created_at:new Date().toISOString().replace('-','/').split('T')[0].replace('-','/')},(err,doc) => {
-  if(err){
-    res.status(500).json({msg:"failed"});
-  }
   if(doc){
     parcelOrdersTillNow = doc;
-    // res.status(200).json({"tables active":tablesActive.length,"tableorderstillnow":tableOrdersTillNow.length,"parcelorderstillnow":parcelOrdersTillNow.length});
+  }
+  else{
+    console.log("no data inside parcel of current date");
   }
 });
 
 await employeeSchema.find({status:"present"},(err,doc) => {
-  if(err){
-    res.status(500).json({msg:"failed"});
-  }
   if(doc){
     totalWaitersWorking = doc;
-    // res.status(200).json({"tables active":tablesActive.length,"tableorderstillnow":tableOrdersTillNow.length,"parcelorderstillnow":parcelOrdersTillNow.length,"totalwaitersworking":totalWaitersWorking.length});
+  }
+  else{
+    console.log("no waiter status is present now");
   }
 });
 
@@ -56,6 +52,10 @@ await sessionSchema.find({orderStatus:"accept",created_at:new Date().toISOString
     acceptedTableOrders = doc;
     let totalAmountTable = doc.map((item) => item.totalAmount);
    TAT = totalAmountTable.reduce((a,b) => {return a + b});
+   //console.log(TAT)
+  }
+  else{
+    console.log("no tableorder is accepted by kitchen till now");
   }
 });
 //console.log(TAT);
@@ -66,13 +66,16 @@ TAT = 0;
 await parcelSchema.find({created_at:new Date().toISOString().replace('-','/').split('T')[0].replace('-','/'),orderStatus:"accept"},(err,doc) => {
   if(doc.length > 0){
     let totalAmountParcel = doc.map((item) => item.totalAmount);
-    let TAP = totalAmountParcel.reduce((a,b) => {return a + b ;});
-    //console.log(TAP)
-    return res.status(200).json({"TablesActive":tablesActive.length,"TableOrdersTillNow":tableOrdersTillNow.length,"ParcelOrdersTillNow":parcelOrdersTillNow.length,"TotalWaitersWorking":totalWaitersWorking.length,"TotalOrdersAcceptedByKitchen":acceptedTableOrders.length + doc.length,"TotalAmountCollected": TAP + TAT});
+     TAP = totalAmountParcel.reduce((a,b) => {return a + b ;});
   }
   else{
-    return res.status(500).json({msg:"no data inside db"});
+    console.log("no parcelorder is accepted by kitchen till now");
   }
+  //console.log(TAP);
+  if(TAP === undefined){
+    TAP = 0;
+  }
+  return res.status(200).json({"TablesActive":tablesActive.length,"TableOrdersTillNow":tableOrdersTillNow.length,"ParcelOrdersTillNow":parcelOrdersTillNow.length,"TotalWaitersWorking":totalWaitersWorking.length,"TotalOrdersAcceptedByKitchen":acceptedTableOrders.length + doc.length,"TotalAmountCollected": TAT + TAP});
 });
 }
-module.exports = homepagedata;
+module.exports = adminHomeController;

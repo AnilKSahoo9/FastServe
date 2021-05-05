@@ -3,17 +3,24 @@
 }
 .admin_totalorder_row{
   margin-top: 5rem;
-  color: #fff;
+  color: #0a2351;
+ 
+}
+.order_heading{
+  font-weight: bolder;
+  font-size: 40px;
 }
 .admin_additems{
   margin-top: 4rem;
-  margin-right: 3rem;
+  margin-right: 0rem;
+  margin-left: 2.5rem;
 }
 .admin_style_card{
   width: 30%;
-    max-width: 30%;
-    margin: 15px;
-    height: 250px;
+    max-width: 32%;
+    margin: 10px;
+    height: 300px;
+    max-height: 300px;
 }
 .add_user_table{
   width: 80%;
@@ -23,7 +30,7 @@
   font-weight: bolder;
   font-size: 15px;
   color:#fff;
-  margin-left: 7%;
+  margin-left: 11%;
   border-top: solid;
   /* border-color: rgb(100, 0, 87); */
 }
@@ -60,6 +67,7 @@ background-image: linear-gradient(
 .admin_parent_div_cards{
   /* margin: 5%; */
   margin-right: 6%;
+  margin-left: 6%;
   margin-top: 5%;
   justify-content: center;
   align-items: center;
@@ -223,13 +231,18 @@ background-image: linear-gradient(
   border-radius: 0.10rem;
 }
 .cards_total_order{
-  background-color: #1e2083;
+  background-color: #6f7faa8f;
+  color: #fff;
+  
 }
 .headers_total_order{
-  background-color: #29b3bd;
+  background-color: #ca4483ea;
 }
-.accordiontoggle{
-  background-color: #12b30c;
+.accordiontoggle_total_order{
+  background-color: #1F305E;
+}
+.table_design_total_order{
+  color: #fff;
 }
 /* .th_total_order{
   background-color:#ffe6ff;

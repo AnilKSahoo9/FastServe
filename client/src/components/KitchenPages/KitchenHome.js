@@ -144,43 +144,47 @@ function KitchenDashbard() {
   };
   console.log(kitchendata)
   return (
-    <div className="container-fluid">
+    <div classname="inner-container">
       {/* {kitchendata.map((val) => val.items.map((no) => console.log(no)))} */}
-      <Table striped bordered hover className="tableDisplay" variant="blue">
-        <thead>
-          <tr>
-            <th>~:Order No:~</th>
-            <th>~:Order Type:~</th>
-            <th>~:Order Id:~</th>
-            <th>~:Order Status:~</th>
-            <th>~:Show Details:~</th>
-          </tr>
-        </thead>
-        {kitchendata.map((eachOrder, index) => (
-          <tbody hover={true}>
-            <tr
-              key={index}
-              style={
-                eachOrder.orderStatus === "accept" && display.rowKey == eachOrder._id
-                  ? { background: "#d9ffb3" }
-                  : eachOrder.orderStatus === "decline" && display.rowKey == eachOrder._id
-                    ? { background: "#ff9999" }
-                    : { background: "#ffffe6" }
-              }
-            >
-              <td>{index + 1}</td>
-              {!eachOrder.tableNo ? <td>Parcel</td> : <td>Table:{eachOrder.tableNo}</td>}
+      <div className="kitchen_home_design">
+        <Table
+          striped bordered hover
+          className="kitchen_tableDisplay"
+          variant="blue">
+          <thead>
+            <tr>
+              <th>Order No</th>
+              <th>Order Type</th>
+              <th>Order Id</th>
+              <th>Order Status</th>
+              <th>Show Details</th>
+            </tr>
+          </thead>
+          {kitchendata.map((eachOrder, index) => (
+            <tbody hover={true}>
+              <tr
+                key={index}
+                style={
+                  eachOrder.orderStatus === "accept" && display.rowKey == eachOrder._id
+                    ? { background: "#d9ffb3" }
+                    : eachOrder.orderStatus === "decline" && display.rowKey == eachOrder._id
+                      ? { background: "#ff9999" }
+                      : { background: "#ffffe6" }
+                }
+              >
+                <td>{index + 1}</td>
+                {!eachOrder.tableNo ? <td>Parcel</td> : <td>Table:{eachOrder.tableNo}</td>}
 
-              <td>{eachOrder._id}</td>
-              <td>
-                {eachOrder.orderStatus === "accept" && display.rowKey == eachOrder._id ? (
-                  <div>
-                    {" "}
-                    <h5 className="blink">Order Processing......</h5>
-                    <section className="timer">
-                      <Countdown date={Date.now() + 600000} />
+                <td>{eachOrder._id}</td>
+                <td>
+                  {eachOrder.orderStatus === "accept" && display.rowKey == eachOrder._id ? (
+                    <div>
+                      {" "}
+                      <h5 className="blink">Order Processing......</h5>
+                      <section className="timer">
+                        <Countdown date={Date.now() + 600000} />
 
-                      {/* <div>
+                        {/* <div>
                         <section>
                           <p>{timerHours}</p>
                           <p>
@@ -202,61 +206,62 @@ function KitchenDashbard() {
                           </p>
                         </section>
                       </div> */}
-                    </section>
-                    <div className="acceptButton">
-                      <Button variant="success">Completed</Button>
+                      </section>
+                      <div className="acceptButton">
+                        <Button variant="success">Completed</Button>
+                      </div>
                     </div>
-                  </div>
-                ) : eachOrder.orderStatus === "decline" &&
-                  display.rowKey === eachOrder._id ? (
-                  <h3 className="blink">Order cancel</h3>
-                ) : (
-                  <>
-                    <div>
-                      <Form>
-                        <Form.Group controlId="exampleForm.ControlSelect1">
-                          <Form.Label>Time Required</Form.Label>
-                          <Form.Control as="select" onChange={handleTimeChange}>
-                            <option value="300000">5 min</option>
-                            <option value="600000">10 min</option>
-                            <option value="900000">15 min</option>
-                            <option value="20">20 min</option>
-                            <option value="25">25 min</option>
-                            <option value="30">30 min</option>
-                            <option value="40"> 40 min</option>
-                            <option value="60">60 min</option>
-                          </Form.Control>
-                        </Form.Group>
-                      </Form>
-                      <Button
-                        variant="success"
-                        onClick={acceptedOrder}
-                        value={eachOrder._id}
-                      >
-                        accept
+                  ) : eachOrder.orderStatus === "decline" &&
+                    display.rowKey === eachOrder._id ? (
+                    <h3 className="blink">Order cancel</h3>
+                  ) : (
+                    <>
+                      <div>
+                        <Form>
+                          <Form.Group controlId="exampleForm.ControlSelect1">
+                            <Form.Label>Time Required</Form.Label>
+                            <Form.Control as="select" onChange={handleTimeChange}>
+                              <option value="300000">5 min</option>
+                              <option value="600000">10 min</option>
+                              <option value="900000">15 min</option>
+                              <option value="20">20 min</option>
+                              <option value="25">25 min</option>
+                              <option value="30">30 min</option>
+                              <option value="40"> 40 min</option>
+                              <option value="60">60 min</option>
+                            </Form.Control>
+                          </Form.Group>
+                        </Form>
+                        <Button
+                          variant="success"
+                          onClick={acceptedOrder}
+                          value={eachOrder._id}
+                        >
+                          accept
                       </Button>{" "}
-                      <Button
-                        variant="danger"
-                        onClick={orderDecline}
-                        value={eachOrder._id}
-                      >
-                        reject
+                        <Button
+                          variant="danger"
+                          onClick={orderDecline}
+                          value={eachOrder._id}
+                        >
+                          reject
                       </Button>
-                    </div>
-                  </>
-                )}
-              </td>
-              <td>
-                <ul>
-                  {eachOrder.items.map((val) => (
-                    <li>{val.name + "  " + "=>" + "  " + val.quantity}</li>
-                  ))}
-                </ul>
-              </td>
-            </tr>
-          </tbody>
-        ))}
-      </Table>
+                      </div>
+                    </>
+                  )}
+                </td>
+                <td>
+                  <ul>
+                    {eachOrder.items.map((val) => (
+                      <li>{val.name + "  " + "=>" + "  " + val.quantity}</li>
+                    ))}
+                  </ul>
+                </td>
+              </tr>
+            </tbody>
+          ))}
+        </Table>
+      </div>
     </div>
   );
 }

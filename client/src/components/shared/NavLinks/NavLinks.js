@@ -111,6 +111,12 @@ const NavLinks = (props) => {
                 Notifications
               </NavLink>
             </li>
+            <li>
+              <NavLink to="/kitchen-chat" className="kitchen_chat">
+                <ChatIcon className="icons" />
+                Chat
+              </NavLink>
+            </li>
           </div>
         )}
         {userType === "waiter" && (
@@ -122,17 +128,17 @@ const NavLinks = (props) => {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/waiter-notification" className="Waiter_notification">
+              <NavLink to="/waiter-notification" className="waiter_notification">
                 <NotificationsActiveIcon className="icons" />
                 Notification
               </NavLink>
             </li>
-            {/* <li>
-              <NavLink to="/placeorder" className="place_order">
-                <RoomServiceIcon className="icons" />
-                Place Order
+            <li>
+              <NavLink to="/waiter-chat" className="waiter_chat">
+                <ChatIcon className="icons" />
+                Chat
               </NavLink>
-            </li> */}
+            </li>
           </div>
         )}
         {/* <li>
