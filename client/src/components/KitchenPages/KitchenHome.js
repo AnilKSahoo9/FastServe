@@ -1,16 +1,16 @@
 import React, { useRef, useState, useEffect } from "react";
 import { Table, Button, Form } from "react-bootstrap";
 import axios from "axios";
-import "./notification.css";
+import "../../css/KitchenStyle.css";
 import Countdown from 'react-countdown';
 
 // import io from "socket.io-client";
 // let socket;
 
 function KitchenDashbard() {
-  const [timerHours, setTimerHours] = useState("00");
-  const [timerMin, setTimerMin] = useState("00");
-  const [timerSec, setTimerSec] = useState("00");
+  // const [timerHours, setTimerHours] = useState("00");
+  // const [timerMin, setTimerMin] = useState("00");
+  // const [timerSec, setTimerSec] = useState("00");
   const [inputTime, setTime] = useState("0");
   const [display, setDisplay] = useState({
     orderStatusval: "pending",
@@ -71,9 +71,9 @@ function KitchenDashbard() {
         //stop our timer
         clearInterval(interval.current);
       } else {
-        setTimerHours(hours);
-        setTimerMin(minutes);
-        setTimerSec(seconds);
+        // setTimerHours(hours);
+        // setTimerMin(minutes);
+        // setTimerSec(seconds);
       }
     }, 1000);
   };
