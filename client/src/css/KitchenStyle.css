@@ -140,28 +140,11 @@
     background-color: #d11d72;
     font-size: 1.5rem;
 }
-
-/* notification page css */
-/* .container-fluid {
-    margin-top: 20px;
-  } */
-  .tableImg {
-    height: 180px;
-  }
-  .parcelImg {
-    height: 180px;
-  }
-  .notCard {
-    box-shadow: 5px 5px 8px 10px rgba(241, 241, 239, 0.945) !important;
-  }
   /*waiterchat page css*/
   .chatStyle{
     margin: 3rem; 
     margin-left: 3px;
-    /* border-style: groove;
-    border-width: 3px; */
     width: 45%;
-    /* border-radius: 7px; */
     height: 100%;
 }
 .chatbox-Design{

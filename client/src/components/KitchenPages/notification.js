@@ -13,7 +13,7 @@ export default function Notification() {
   console.log(arr);
 
   return (
-    <div classname="inner-container">
+    <div className="inner-container">
     <div className="kitchen_notification">
       <Carousel>
         {arr.map((no) => (

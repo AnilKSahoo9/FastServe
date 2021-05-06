@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Grid } from "@material-ui/core";
 import { Card, Button } from "react-bootstrap";
 import { Table } from "react-bootstrap";
+import "../../css/WaiterStyle.css";
 import {
   tablesList,
   categoryList,
@@ -107,12 +108,14 @@ const Waiter_Place_Order = () => {
   console.log(orderData);
   return (
     <div className="inner-container">
-    <div style={{marginTop:"5rem"}}>
+    <div className="waiter_home_style"
+    // style={{marginTop:"5rem"}}
+    >
       {!showCategory && !showItems && (
         <Grid container spacing={3}>
           {tablesList.map((eachTable) => {
             return (
-              <Grid
+              <Grid 
                 md={4}
                 lg={3}
                 sm={12}
@@ -120,15 +123,15 @@ const Waiter_Place_Order = () => {
                 onClick={(event) => handleTableClick(eachTable, event)}
               >
                 <Card className="waiterhome_card_style"
-                  style={{
-                    marginTop: "40px",
-                    backgroundColor: "#ca4483ea",
-                    marginRight: "30px",
-                    fontSize: "50px",
-                    marginLeft: "30px",
-                  }}
+                  // style={{
+                  //   marginTop: "40px",
+                  //   backgroundColor: "#ca4483ea",
+                  //   marginRight: "30px",
+                  //   fontSize: "50px",
+                  //   marginLeft: "30px",
+                  // }}
                 >
-                  <Card.Body>
+                  <Card.Body className="place_order_card">
                     <Card.Header style={{ backgroundColor: "#1F305E" }}>
                       <Card.Title style={{ color: "white" }}>
                         {eachTable.no}

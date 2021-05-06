@@ -19,7 +19,7 @@ const BillerChat = () => {
     },
   ];
   return (
-    <div classname="inner-container">
+    <div className="inner-container">
       <Row className="chatbox-Design">
             <div className="chatStyle">
                 <Col  className="chatcolumn" 

@@ -50,9 +50,11 @@
 }
 .admin_card_design{
 font-family: 'Times New Roman', Times, serif;
-margin: 2rem;
+margin: 0.5rem;
 border-style: groove;
 border-width: 3px;
+height: 258px;
+/* width: 300px; */
 /* border-radius:20px; */
 box-shadow: 0 4px 8px 0 rgba(0,0,0,1.0);
 background-image: linear-gradient(
@@ -71,7 +73,7 @@ background-image: linear-gradient(
   margin-top: 5%;
   justify-content: center;
   align-items: center;
- 
+  /* height: 258cm; */
  
 }
 .admin_card_header
@@ -126,7 +128,7 @@ background-image: linear-gradient(
 .tableinactivecard{
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1) !important;
   width: 17rem;
-  height: 11.5rem;
+  height: 11.8rem;
 
   font-family: "Times New Roman", Times, serif;
   margin: 2rem;
@@ -171,7 +173,7 @@ background-image: linear-gradient(
 .waiterAbsentCard {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1) !important;
   width: 17rem;
-  height: 11.7rem;
+  height: 12.15rem;
 
   font-family: "Times New Roman", Times, serif;
   margin: 2rem;
@@ -236,13 +238,14 @@ background-image: linear-gradient(
   
 }
 .headers_total_order{
-  background-color: #ca4483ea;
+  background-color: rgba(255, 255, 255, 0.575);
 }
 .accordiontoggle_total_order{
   background-color: #1F305E;
 }
 .table_design_total_order{
-  color: #fff;
+  color:black;
+  font-weight: bolder;
 }
 /* .th_total_order{
   background-color:#ffe6ff;

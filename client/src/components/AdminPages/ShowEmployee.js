@@ -34,7 +34,7 @@ const ShowEmployee = (props) => {
     }
   };
   return (
-    <div className="inner-container1 ">
+    <div className="inner-container">
       <div className="showemp"  >
         <div className="showline">
           Waiter

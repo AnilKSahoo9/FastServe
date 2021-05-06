@@ -16,19 +16,75 @@ import {
 import base_Url from "../../Api/Homeapi";
 // import "./AdminStyles.css";
 import "../../css/AdminStyles.css";
+
+import io from "socket.io-client";
+let socket;
+
 const AdminHome = () => {
   const [data, setData] = useState({});
-  useEffect(() => {
+  //const [POTD,setPOTD] = useState(0);
+
+  const ENDPOINT = "ws://localhost:4000/api/admin/socket";
+  let connectionOptions = {
+    "force new connection": true,
+    reconnectionAttempts: "Infinity",
+    timeout: 10000,
+    transports: ["websocket"],
+  };
+
+  const fetchData = () => {
     axios
-      .get(`${base_Url}`)
-      .then((response) => {
-        console.log(response);
-        setData(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    .get(`http://localhost:4000/admin-home/`)
+    .then((response) => {
+      //console.log(response.data);
+      setData(response.data);
+      //setPOTD(response.data.ParcelOrdersTillNow)
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  }
+
+  useEffect(() => {
+    socket = io(ENDPOINT, connectionOptions);
+    //console.log(socket);
+    socket.on("adminData", (adminDataP) => {
+        //console.log(adminData);
+        setData((prev) => ({...prev,ParcelOrdersTillNow:prev.ParcelOrdersTillNow + adminDataP}));
+        socket.emit("admin", { name: "swetapj" });
+    });
+    socket.on("adminDataS",(adminDataS) => {
+        //console.log(adminDataS);
+        setData((prev) => ({...prev,TableOrdersTillNow:adminDataS}));
+        socket.emit("adminS",{name : "sweta"});
+    });
+    socket.on("adminDataTA",(adminDataTA) => {
+        //console.log(adminDataTA);
+        setData((prev) => ({...prev,TablesActive:adminDataTA}));
+        socket.emit("adminTA",{name : "swetap"});
+    });
+    socket.on("parcelsAccepted",(parcelsAccepted) => {
+        setData((prev) => ({...prev,TotalOrdersAcceptedByKitchen:parcelsAccepted}));
+        socket.emit("PA",{name :"anil"});
+    });
+    socket.on("sessionsAccepted",(sessionsAccepted) => {
+        setData((prev) => ({...prev,TotalOrdersAcceptedByKitchen:prev.TotalOrdersAcceptedByKitchen + sessionsAccepted}));
+        socket.emit("SA",{name :"bhabs"});
+    });
+    socket.on("totalAmountTable",(totalAmountTable) => {
+        socket.emit("TAT");
+    });
+    socket.on("totalAmountParcel",(totalAmountParcel) => {
+        socket.emit("TAP");
+    });
+    socket.on("waitersWorking",(waitersWorking) => {
+        setData((prev) => ({...prev,TotalWaitersWorking: prev.TotalWaitersWorking + waitersWorking}));
+        socket.emit("WW");
+    });
+      fetchData();
   }, []);
+
+  //console.log(data);
   return (
       <div className="inner-container">
       <div className="admin_parent_div_cards">
@@ -42,7 +98,7 @@ const AdminHome = () => {
                     </h5>
                     <CardBody className="admin_card_body" >
                            <hr></hr>
-                        <CardText >{data.Tables}</CardText>
+                        <CardText >{data.TablesActive}</CardText>
                         <p>No. of Tables Active</p>
                     </CardBody>
                 </Card>
@@ -56,7 +112,7 @@ const AdminHome = () => {
                     </h5>
                     <CardBody className="admin_card_body">
                         <hr></hr>
-                        <CardTitle>{data.Parcels}</CardTitle>
+                        <CardTitle>{data.TableOrdersTillNow}</CardTitle>
                         <p >No. of Table Order Placed</p>
                     </CardBody>
                 </Card>
@@ -70,7 +126,7 @@ const AdminHome = () => {
                     </h5>
                     <CardBody className="admin_card_body">
                         <hr></hr>
-                        <CardTitle>{data.Parcels}</CardTitle>
+                        <CardTitle>{data.ParcelOrdersTillNow}</CardTitle>
                         <p >No. of Parcel Order Placed</p>
                     </CardBody>
                 </Card>
@@ -87,7 +143,7 @@ const AdminHome = () => {
                     <CardBody className="admin_card_body">
 
                         <hr></hr>
-                        <CardTitle>{data.Waiters}</CardTitle>
+                        <CardTitle>{data.TotalWaitersWorking}</CardTitle>
                         <p >No. of Waiters Working till Now</p>
                     </CardBody>
                 </Card>
@@ -102,7 +158,7 @@ const AdminHome = () => {
                     <CardBody className="admin_card_body">
 
                         <hr></hr>
-                        <CardTitle>{data.Kitchens}</CardTitle>
+                        <CardTitle>{data.TotalOrdersAcceptedByKitchen}</CardTitle>
                         <p >No. of Orders Accepted by Kitchen</p>
                     </CardBody>
                 </Card>
@@ -117,7 +173,7 @@ const AdminHome = () => {
                     <CardBody className="admin_card_body">
 
                         <hr></hr>
-                        <CardTitle>{data.Billers}</CardTitle>
+                        <CardTitle>{data.TotalAmountCollected}</CardTitle>
                         <p style={{color: "white", fontSize: "20px"}}>Total amount collected by Biller</p>
                     </CardBody>
                 </Card>
