@@ -5,15 +5,45 @@
 .waiterhome_card_style{
   margin-top: 40px;
   /* margin-right: 10px; */
-  background-color: #ca4483ea;
+  background-color: #6f7faa8f;
   margin-right: 30px;
   font-size: 50px;
+  color: #fff;
   margin-left: 30px;
 }
 .place_order_card{
   margin-right: 10px;
 }
-
+.place_order_btn{
+  background-color: #d11d72;
+  margin-top: 3rem;
+  margin-left: 2rem;
+}
+.place_order_back_btn{
+  background-color: #d11d72;
+  display:inline-block;
+  margin-top:2rem;
+  /* margin-left: 2rem; */
+}
+.itemTable{
+  color: white;
+    /* width:100%; */
+    font-weight: bolder;
+    font-size: 17px;
+    max-height: 100rem;
+    font-family: "Times New Roman, Times, serif";
+    margin-top: 2rem;
+    margin-left: 1.5rem;
+    border-width: 3px;
+    border-radius: 20px;
+    border-collapse: "collapse";
+    background-color:#1F305E ;
+}
+/* .Catagory_Cards{
+  color: #1F305E;
+  font-size: 40px;
+  font-weight: bolder;
+} */
 
 /* notification page css */
 .container-fluid {
@@ -121,8 +151,26 @@
      margin-bottom: 30px;
      height: 35px;
  }
- .kitchen_notification{
-    margin-top: 6rem;
+ .waiter_notification{
+    margin: 5rem;
+    margin-left: 6rem;
+    
+}
+.waiter_notification_card{
+  background-color:#1F305E;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 25px;
+}
+.waiter_notification_cardbody{
+  color:#fff;
+  background-color:#1F305E;
+  font-weight: bolder;
+  width: 100%;
+  font-size: x-large;
+  
+  height: 70px;
 }
 .notification_card_body{
   color: #fff;

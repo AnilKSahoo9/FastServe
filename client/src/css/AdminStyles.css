@@ -3,6 +3,7 @@
 }
 .admin_totalorder_row{
   margin-top: 5rem;
+  margin-left: 3rem;
   color: #0a2351;
  
 }
@@ -23,14 +24,14 @@
     max-height: 300px;
 }
 .add_user_table{
-  width: 80%;
+  width: 90%;
   margin: 5rem;
   /* margin-top: 3rem; */
   background-color: #0a2351;
   font-weight: bolder;
-  font-size: 15px;
+  font-size: 17px;
   color:#fff;
-  margin-left: 11%;
+  margin-left: 7%;
   border-top: solid;
   /* border-color: rgb(100, 0, 87); */
 }
@@ -314,6 +315,7 @@ background-image: linear-gradient(
   margin: 5rem;
   color:#fff;
   background-color:#1F305E;
+  font-size: 20px;
   font-family: 'Times New Roman', Times, serif;
   border-style: groove;
   border-width: 3px;

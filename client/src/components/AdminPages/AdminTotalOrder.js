@@ -89,7 +89,7 @@ const AdminTotalOrder = () => {
                               <h5>Order delivered by {value.waiterName}</h5>
                               <Table 
                               className="table_design_total_order"
-                              striped bordered hover style={{ backgroundImage: `linear-gradient(to right,#0E3386,#0047AB, #002D62, #0a2351)`}}>
+                              striped bordered hover>
                                 <thead>
                                   <tr>
                                     <th>
