@@ -1,4 +1,5 @@
 import { React, useState } from "react";
+import axios from "axios"
 import {
   Button,
   Modal,
@@ -23,125 +24,109 @@ import "../../css/AdminStyles.css";
 const AddItem = () => {
   const [modalShow, setModalShow] = useState(false);
   const [itemName, setItemName] = useState("");
-  const [itemPrice, setitemPrice] = useState("");
-  const [value, setValue] = useState("Select the item category");
-  const [value1, setValue1] = useState("Types of Non-Veg Main Course");
-  const [value2, setValue2] = useState(" Types of Veg Course");
-  const [arrData, setArrData] = useState([]);
+  const [itemPrice, setItemPrice] = useState("");
+  const [value, setValue] = useState("Select the Item Category");
+  const [nonveg, setNonveg] = useState("Types of Non-Veg Main Courses");
+  const [veg, setVeg] = useState(" Types of Veg Courses");
+  const [itemsArray, setItemsArray] = useState([]);
   // const [newsortedArr, SetNewSortedArray] = useState({});
-  const handleSelect = (e) => {
+  const handleCategoryHandler = (e) => {
     setValue(e);
   };
-  const handleSelect1 = (e) => {
-    setValue1(e);
+  const handleSubcategoryhandler = (e) => {
+    console.log(value)
+    value === "Veg" && setVeg(e);
+    value === "NonVeg" && setNonveg(e);
   };
-  const handleSelect2 = (e) => {
-    setValue2(e);
-  };
-  const handleChange = (e) => {
+  // const handleSubcategoryhandler = (e) => {
+  //   setVeg(e);
+  // };
+  const handleItemChange = (e) => {
     setItemName(e.target.value);
   };
 
-  const handleChangePrice = (e) => {
-    setitemPrice(e.target.value);
+  const handlePriceChange = (e) => {
+    setItemPrice(e.target.value);
   };
   const handleClose = (event) => {
     setModalShow(false);
   };
 
-  const mySubmitHandler = (event, resetForm) => {
+
+  const addMoreItemHandler = () => {
+    setValue("Select the Item Category");
+    setItemName("");
+    setItemPrice("");
+    setNonveg("Types of Non-Veg Main Courses");
+    setVeg("Types of Veg Courses");
+    let data = {};
+    data.category = value;
+    data.name = itemName;
+    data.price = JSON.parse(itemPrice);
+    if (value === "Veg") {
+      data.subcategory = veg;
+    } else if (value === "NonVeg") {
+      data.subcategory = nonveg;
+    }
+    setItemsArray([...itemsArray, data]);
+    setValue("Select the Item Category");
+    setItemName("");
+    setItemPrice("");
+    setNonveg("Types of Non-Veg Main Courses");
+    setVeg("Types of Veg Courses");
+  };
+
+  const submitHandler = (event) => {
+    event.preventDefault()
     setModalShow(false);
     let data = {};
     data.category = value;
     data.name = itemName;
-    data.price = itemPrice;
-    if (value === "Veg Main Course") {
-      data.subcategory = value2;
-    } else if (value === "Non-Veg Main Course") {
-      data.subcategory = value1;
+    data.price = JSON.parse(itemPrice);
+    if (value === "Veg") {
+      data.subcategory = veg;
+    } else if (value === "NonVeg") {
+      data.subcategory = nonveg;
     }
-    setArrData([...arrData, data]);
+    let payload = [...itemsArray, data]
+    setItemsArray([...itemsArray, data]);
+    console.log(payload)
+    axios
+      .post(
+        `http://localhost:4000/additems/`,
+        //JSON.stringify(payload),
+        payload,
+        {
+          header: {
+            "Content-type":
+              "application/json,application/x-www-form-urlencoded, charset=UTF-8",
+          },
+        }
+      )
+      .then((response) => {
+        // console.log(response);
+        if (response.status === 200) {
+          console.log(response.data);
+          Swal.fire({
+            title: "Menu Items Added",
+            showDenyButton: false,
+            showCancelButton: false,
+            showConfirmButton: false,
+            icon: "success",
+            timer: 1000,
+          });
+          setValue("Select the Item Category");
+          setItemName("");
+          setItemPrice("");
+          setNonveg("Types of Non-Veg Main Courses");
+          setVeg("Types of Veg Courses");
+        }
+      }).catch(err => console.log(err))
 
-    Swal.fire("Good job!", "Submit data sucessfully", "success");
-
-    setitemPrice("");
-    setValue("Select the item category");
-    setItemName("");
-    setValue1("Types of Non-Veg Main Course");
-    setValue2("Types of Veg Course");
   };
 
-  const addMoreItem = () => {
-    setitemPrice("");
-    setValue("Select the item category");
-    setItemName("");
-    setValue1("Types of Non-Veg Main Course");
-    setValue2("Types of Veg Course");
-    let data = {};
-    data.category = value;
-    data.name = itemName;
-    data.price = itemPrice;
-    if (value === "Veg Main Course") {
-      data.subcategory = value2;
-    } else if (value === "Non-Veg Main Course") {
-      data.subcategory = value1;
-    }
-    setArrData([...arrData, data]);
-  };
-  // const postData = () => {
-  //   const payload = {
-  //     switch()
-  //     breakfast:
-  //     dessert:
-  //     rice:
 
-  //   };
-  //   axios
-  //     .post(
-  //       `http://localhost:4000/additems/`,
-  //       //JSON.stringify(payload),
-  //       payload,
-  //       {
-  //         header: {
-  //           "Content-type":
-  //             "application/json,application/x-www-form-urlencoded, charset=UTF-8",
-  //         },
-  //       }
-  //     )
-  //     .then((response) => {
-  //       console.log(response);
-  //       if (response.status === 200) {
-
-  //         console.log(response.data);
-
-  //       }
-
-  // const postData =()=>{
-  //   const requestOptions = {
-  //     method: 'POST',
-  //     headers: { 'Content-Type': 'application/json' },
-  //     body: JSON.stringify({ title: 'React POST Request Example' })
-  // };
-  // fetch('https://jsonplaceholder.typicode.com/invalid-url', requestOptions)
-  //     .then(async response => {
-  //         const data = await response.json();
-
-  //         // check for error response
-  //         if (!response.ok) {
-  //             // get error message from body or default to response status
-  //             const error = (data && data.message) || response.status;
-  //             return Promise.reject(error);
-  //         }
-
-  //         this.setState({ postId: data.id })
-  //     })
-  //     .catch(error => {
-  //         this.setState({ errorMessage: error.toString() });
-  //         console.error('There was an error!', error);
-  //     });
-  // }
-
-  console.log(arrData);
+  console.log(itemsArray);
   return (
     <div className="inner-container">
       <div className="admin_additems">
@@ -151,19 +136,19 @@ const AddItem = () => {
             className="additem_btnstyle"
             size="lg"
             onClick={() => setModalShow(true)}
-            // active
+          // active
           >
-            Add Item {"  "}
+            Add Menu Items {"  "}
             <FontAwesomeIcon icon={faPlus} />
           </Button>
           <Modal
             show={modalShow}
             onHide={handleClose}
-            size="lg"
+            size="md"
             aria-labelledby="contained-modal-title-vcenter"
             centered
           >
-            <Modal.Header closeButton>
+            <Modal.Header>
               <Modal.Title id="contained-modal-title-vcenter">
                 Item Details
               </Modal.Title>
@@ -172,42 +157,42 @@ const AddItem = () => {
               <DropdownButton
                 id="dropdown-basic-button"
                 title={value}
-                onSelect={handleSelect}
+                onSelect={handleCategoryHandler}
                 value={value}
               >
-                <Dropdown.Item eventKey="Starters">Starters</Dropdown.Item>
-                <Dropdown.Item eventKey="Chinese">Chinese</Dropdown.Item>
-                <Dropdown.Item eventKey="Veg Main Course">
-                  Veg Main Course
+                <Dropdown.Item eventKey="Breakfast">Breakfast</Dropdown.Item>
+                {/* <Dropdown.Item eventKey="Chinese">Chinese</Dropdown.Item> */}
+                <Dropdown.Item eventKey="Rice">Rice</Dropdown.Item>
+                <Dropdown.Item eventKey="Dal">Dal</Dropdown.Item>
+                <Dropdown.Item eventKey="Desserts">Desserts</Dropdown.Item>
+                <Dropdown.Item eventKey="Veg">
+                  Veg Main Courses
                 </Dropdown.Item>
-                <Dropdown.Item eventKey="Drink">Drink</Dropdown.Item>
-                <Dropdown.Item eventKey="Salad">Salad</Dropdown.Item>
-                <Dropdown.Item eventKey="Dessert">Dessert</Dropdown.Item>
-                <Dropdown.Item eventKey="Non-Veg Main Course">
-                  Non-Veg Main Course
+                <Dropdown.Item eventKey="NonVeg">
+                  Non-Veg Main Courses
                 </Dropdown.Item>
               </DropdownButton>
-              {value === "Non-Veg Main Course" ? (
+              {value === "NonVeg" ? (
                 <DropdownButton
                   id="dropdown-basic-button"
-                  title={value1}
-                  onSelect={handleSelect1}
-                  value={value1}
+                  title={nonveg}
+                  onSelect={handleSubcategoryhandler}
+                  value={nonveg}
                 >
                   <Dropdown.Item eventKey="Chicken">Chicken</Dropdown.Item>
                   <Dropdown.Item eventKey="Mutton">Mutton</Dropdown.Item>
                   <Dropdown.Item eventKey="Fish">Fish</Dropdown.Item>
                 </DropdownButton>
-              ) : value === "Veg Main Course" ? (
+              ) : value === "Veg" ? (
                 <DropdownButton
                   id="dropdown-basic-button"
-                  title={value2}
-                  onSelect={handleSelect2}
-                  value={value2}
+                  title={veg}
+                  onSelect={handleSubcategoryhandler}
+                  value={veg}
                 >
                   <Dropdown.Item eventKey="Paneer">Paneer</Dropdown.Item>
                   <Dropdown.Item eventKey="Mushroom">Mushroom</Dropdown.Item>
-                  <Dropdown.Item eventKey="Fish">Fish</Dropdown.Item>
+                  {/* <Dropdown.Item eventKey="Fish">Fish</Dropdown.Item> */}
                 </DropdownButton>
               ) : (
                 ""
@@ -218,9 +203,10 @@ const AddItem = () => {
                   <InputGroup.Text>Item Name :</InputGroup.Text>
                 </InputGroup.Prepend>
                 <FormControl
-                  as="textarea"
+                  // as="text"
+                  type="text"
                   aria-label="With textarea"
-                  onChange={handleChange}
+                  onChange={handleItemChange}
                   value={itemName}
                 />
               </InputGroup>
@@ -230,9 +216,10 @@ const AddItem = () => {
                   <InputGroup.Text>Item Price :</InputGroup.Text>
                 </InputGroup.Prepend>
                 <FormControl
-                  as="textarea"
+                  // as="number"
+                  type="number"
                   aria-label="With textarea"
-                  onChange={handleChangePrice}
+                  onChange={handlePriceChange}
                   value={itemPrice}
                 />
               </InputGroup>
@@ -241,16 +228,16 @@ const AddItem = () => {
               <Button
                 className="additem_btnstyle"
                 type="submit"
-                onClick={addMoreItem}
+                onClick={addMoreItemHandler}
               >
-                Add more item
+                Add more items
               </Button>
               <Button
                 className="additem_btnstyle"
                 type="submit"
-                onClick={mySubmitHandler}
+                onClick={submitHandler}
               >
-                Submit
+                Save
               </Button>
             </Modal.Footer>
           </Modal>
@@ -258,7 +245,7 @@ const AddItem = () => {
 
         <div>
           <h2 className="heading">
-            <b>Menu Item </b>
+            <b>Menu Items </b>
           </h2>
           <div className="additembg">
             <Row>
@@ -361,7 +348,7 @@ const AddItem = () => {
               </Col>
               <Col xs={6}>
                 {itemData.nonveg.chicken &&
-                itemData.nonveg.chicken.length > 0 ? (
+                  itemData.nonveg.chicken.length > 0 ? (
                   <div className="menu-divison">
                     <span className="item-name">--- Chicken ---</span>
                     <Row>

@@ -244,8 +244,9 @@ background-image: linear-gradient(
   background-color: #1F305E;
 }
 .table_design_total_order{
-  color:black;
+  color:white;
   font-weight: bolder;
+  font-size: 1.2rem;
 }
 /* .th_total_order{
   background-color:#ffe6ff;

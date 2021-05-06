@@ -18,7 +18,7 @@ import GroupIcon from "@material-ui/icons/Group";
 import { getUserType } from "../utils/common";
 const NavLinks = (props) => {
   const userType = getUserType();
-  console.log(userType);
+  // console.log(userType);
   return (
     <div className="Nav-bar">
       <ul className="nav-links">
