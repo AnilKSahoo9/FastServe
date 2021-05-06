@@ -144,7 +144,7 @@ function KitchenDashbard() {
   };
   console.log(kitchendata)
   return (
-    <div classname="inner-container">
+    <div className="inner-container">
       {/* {kitchendata.map((val) => val.items.map((no) => console.log(no)))} */}
       <div className="kitchen_home_design">
         <Table

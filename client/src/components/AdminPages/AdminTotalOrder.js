@@ -150,7 +150,7 @@ const AdminTotalOrder = () => {
               <Accordion className="accordion_total_order">
                 <Card className="cards_total_order">
                   <Card.Header className="headers_total_order">
-                    <Accordion.Toggle className="accordiontoggle"
+                    <Accordion.Toggle className="accordiontoggle_total_order"
                       as={Card.Header}
                       eventKey={String(index)}>
                       <h5>ParcelNo:</h5>
@@ -159,7 +159,9 @@ const AdminTotalOrder = () => {
                   <Accordion.Collapse eventKey={String(index)}>
                     <Card.Body>
                       <h5>Order delivered by {val.billerName}</h5>
-                      <Table striped bordered hover>
+                      <Table 
+                      className="table_design_total_order"
+                      striped bordered hover>
                         <thead>
                           <tr>
                             <th>

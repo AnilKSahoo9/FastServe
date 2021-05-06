@@ -2,15 +2,17 @@
 .waiter_home_style{
   margin-top: 7rem;
 }
-/* .waiterhome_card_style{
+.waiterhome_card_style{
   margin-top: 40px;
-  
+  /* margin-right: 10px; */
   background-color: #ca4483ea;
   margin-right: 30px;
   font-size: 50px;
   margin-left: 30px;
-} */
-
+}
+.place_order_card{
+  margin-right: 10px;
+}
 
 
 /* notification page css */
@@ -44,7 +46,7 @@
     width: 100%;
     
 }
-.card{
+/* .card{
     width: 100%;
     max-height: 100rem;
     color: White;
@@ -54,7 +56,7 @@
     border-width: 3px;
     border-radius: 7px;
    
-} 
+}  */
 .msgbtn{
     background-color: #d11d72;
     cursor: pointer;
