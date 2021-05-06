@@ -31,9 +31,10 @@ io.of("/api/socket").on("connection", (socket) => {
           //console.log(data);
         });
 
-        //for kitchen
-        // socket.emit("kitchenData",change.fullDocument);
-        // socket.on("forkitchen",(data) => {});
+        // for kitchen
+        socket.emit("parcelKitchenData", change.fullDocument);
+        socket.on("forkitchen", (data) => { });
+
     }
   });
   const sessionChangeStream = sessionSchema.watch();
@@ -51,10 +52,10 @@ io.of("/api/socket").on("connection", (socket) => {
             },
           ],
         });
-      //console.log(change.fullDocument);
+        //console.log(change.fullDocument);
 
-      //for kitchen
-      //socket.emit("kitchenData2",change.fullDocument);
+        //for kitchen
+        socket.emit("tableKitchenData", change.fullDocument);
     }
   });
 
@@ -63,6 +64,30 @@ io.of("/api/socket").on("connection", (socket) => {
   });
 });
 
+// io.of('/api/kitchen/socket').on("connection", (socket) => {
+//   const parcelChangeStream = parcelSchema.watch();
+//   parcelChangeStream.on("change", (change) => {
+//     console.log(change)
+//     switch (change.operationType) {
+//       case "update":
+//         // //let parcelOrder = [];
+//         // //.push({_id:change.fullDocument._id,totalAmount:change.fullDocument.totalAmount,orderDetails:change.fullDocument.items,billerName:change.fullDocument.billerName,parcelNo:123456})
+//         // socket.emit("parcelData", change.fullDocument);
+//         // socket.on("my", (data) => {
+//         //   //console.log(data); 
+//         // });
+
+//         // for kitchen
+//         console.log("inside", { _id: change.documentKey._id, ...change.updateDescription.updatedFields })
+//         socket.emit("kitchenData", JSON.stringify({ _id: change.documentKey._id, required_time: change.updateDescription.updatedFields.required_time, orderStatus: change.updateDescription.updatedFields.orderStatus }));
+//         socket.on("forkitchen", (data) => { });
+
+//     }
+//   });
+//   socket.on("disconnect", () => {
+//     //console.log("user had left!!!!");
+//   });
+// })
 routes(app);
 server.listen(PORT, () => console.log(`server listening in port ${PORT}`));
 

@@ -89,7 +89,7 @@ const Login = () => {
             showDenyButton: false,
             showCancelButton: false,
             showConfirmButton: false,
-            icon: "danger",
+            icon: "error",
             // confirmButtonText: `Save`,
             // denyButtonText: `Don't save`,
             timer: 2000,
@@ -173,8 +173,8 @@ const Login = () => {
                   name="username"
                   autoComplete="email"
                   onChange={handleInput}
-                  // value={userName}
-                  // onClick={handleChange}
+                // value={userName}
+                // onClick={handleChange}
                 />
                 <TextField
                   variant="outlined"
