@@ -52,6 +52,44 @@ io.of("/api/socket").on("connection", (socket) => {
     //console.log("user had left!!!!");
   });
 });
+io.of("/api/kitchen/socket").on("connection", (socket) => {
+  //console.log("we'va a new connection!!!!");
+
+  const parcelChangeStream = parcelSchema.watch();
+  parcelChangeStream.on("change", (change) => {
+    console.log(change)
+    switch (change.operationType) {
+      case "insert":
+        socket.emit("parcelKitchenData", change.fullDocument);
+      // socket.on("forkitchen", (data) => { });
+      // socket.emit("parcelData", change.fullDocument);
+      // socket.on("my", (data) => {
+      //   //console.log(data);
+      // });
+    }
+  });
+  const sessionChangeStream = sessionSchema.watch();
+  sessionChangeStream.on("change", (change) => {
+    switch (change.operationType) {
+      case "insert":
+        socket.emit("tableKitchenData", change.fullDocument);
+      // socket.emit("sessionData", {
+      //   _id: change.fullDocument._id,
+      //   tableNo: change.fullDocument.tableNo,
+      //   sessions: [
+      //     {
+      //       orderDetails: change.fullDocument.items,
+      //       totalAmount: change.fullDocument.totalAmount,
+      //       waiterName: change.fullDocument.waiterName,
+      //     },
+      //   ],
+      // });
+    }
+  });
+  socket.on("disconnect", () => {
+    //console.log("user had left!!!!");
+  });
+});
 
 io.of("/api/admin/socket").on("connection", (socket) => {
   var POTN = [];

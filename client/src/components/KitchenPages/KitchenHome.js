@@ -14,7 +14,7 @@ const KitchenHome = () => {
   const [time, setTime] = useState(0);
   const [kitchenData, setKitchenData] = useState([]);
   const [loading, setLoading] = useState(true)
-  const ENDPOINT = "ws://localhost:4000/api/socket";
+  const ENDPOINT = "ws://localhost:4000/api/kitchen/socket";
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(`http://localhost:4000/getkitchendata/`);
@@ -53,7 +53,7 @@ const KitchenHome = () => {
       // let kitchenData2 = {};
       // kitchenData2 = newKitchenData;
       // kitchenData.push(kitchenData2);
-      socket.emit("forkitchen", { name: "arti" });
+      // socket.emit("forkitchen", { name: "arti" });
     });
     socket.on("tableKitchenData", (newKitchenData) => {
       console.log(newKitchenData);
@@ -191,7 +191,7 @@ const KitchenHome = () => {
       }).catch(err => console.log(err))
   };
 
-  // console.log("outside", kitchenData.map(item => item.orderStatus))
+  console.log("outside", kitchenData.map(item => item.orderStatus))
   return (
     <div className="inner-container">
       {
