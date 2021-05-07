@@ -6,6 +6,7 @@ import {
   Switch,
 } from "react-router-dom";
 import ClipLoader from "react-spinners/ClipLoader";
+import PrivateRoute from "../src/components/shared/utils/PrivateRoute";
 
 import React, { Suspense } from "react";
 import NavBar from "./components/shared/NavBar/NavBar";
@@ -49,7 +50,7 @@ const BillerChat = React.lazy(() =>
 const BillerWaiter = React.lazy(() =>
   import("./components/BillerPages/BillerWaiter")
 );
-const Billerparcelorder = React.lazy(() =>
+const BillerParcelOrder = React.lazy(() =>
   import("./components/BillerPages/BillerParceleOrder")
 );
 //kitchen dashboard
@@ -100,20 +101,20 @@ const App = () => {
             >
               <Switch>
                 <Route path="/" exact component={Login} />
-                <Route path="/home" component={AdminHome} />
-                <Route path="/add-employee" component={AddEmployee} />
-                <Route path="/show-employees" component={ShowEmployee} />
-                <Route path="/waiters" component={AdminWaiter} />
-                <Route path="/total-orders" component={AdminTotalOrder} />
-                <Route path="/tables" component={AdminTable} />
-                <Route path="/add-items" component={AddItem} />
-                <Route path="/biller-home" component={BillerHome} />
-                <Route path="/biller-waiters" component={BillerWaiter} />
-                <Route path="/biller-parcel-order" component={Billerparcelorder} />
+                <PrivateRoute path="/home" component={AdminHome} />
+                <PrivateRoute path="/add-employee" component={AddEmployee} />
+                <PrivateRoute path="/show-employees" component={ShowEmployee} />
+                <PrivateRoute path="/waiters" component={AdminWaiter} />
+                <PrivateRoute path="/total-orders" component={AdminTotalOrder} />
+                <PrivateRoute path="/tables" component={AdminTable} />
+                <PrivateRoute path="/add-items" component={AddItem} />
+                <PrivateRoute path="/biller-home" component={BillerHome} />
+                <PrivateRoute path="/biller-waiters" component={BillerWaiter} />
+                <PrivateRoute path="/biller-parcel-order" component={BillerParcelOrder} />
                 {/* <Route path="/biller-chat" component={BillerChat} /> */}
                 {/* <Route path="/biller-report" component={BillerReport} /> */}
-                <Route path="/kitchen-home" component={KitchenHome} />
-                <Route
+                <PrivateRoute path="/kitchen-home" component={KitchenHome} />
+                <PrivateRoute
                   path="/kitchen-notification"
                   component={KitchenNotification}
                 />
@@ -121,11 +122,11 @@ const App = () => {
                   path="/kitchen-chat"
                   component={Kitchen_Chat}
                 /> */}
-                <Route
+                <PrivateRoute
                   path="/waiter-place-order"
                   component={Waiter_Place_Order}
                 />
-                <Route
+                <PrivateRoute
                   path="/waiter-notification"
                   component={Waiter_Notification}
                 />

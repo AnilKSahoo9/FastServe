@@ -33,6 +33,7 @@ const adminLoginController = (req, res) => {
                     msg: "successfully logged in",
                     type: "admin",
                     token: access_token,
+                    username: user.username
                     // message: user,
                   });
                 }

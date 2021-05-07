@@ -99,156 +99,156 @@ const AddEmployee = () => {
   console.log(form);
   return (
     <div className="inner-container">
-    <div className="add_user_table">
-      <span className="add_user_border border-info rounded mx-0 p-5">
-        <div>
-          <Form>
-            <FormGroup row>
-              <Label for="Select" sm={2}>
-                Type of Employee
+      <div className="add_user_table">
+        <span className="add_user_border border-info rounded mx-0 p-5">
+          <div>
+            <Form>
+              <FormGroup row>
+                <Label for="Select" sm={2}>
+                  Type of Employee
               </Label>
-              <Col sm={10}>
-                <Input
-                  type="select"
-                  name="type"
-                  id="Select"
-                  onChange={handleInput}
-                >
-                  <option>Select Type</option>
-                  <option value="waiter">Waiter</option>
-                  <option value="kitchen">Kitchen</option>
-                  <option value="biller">Biller</option>
-                </Input>
-              </Col>
-            </FormGroup>
-            <FormGroup row>
-              <Label for="Name" sm={2}>
-                *Name
+                <Col sm={10}>
+                  <Input
+                    type="select"
+                    name="type"
+                    id="Select"
+                    onChange={handleInput}
+                  >
+                    <option>Select Type</option>
+                    <option value="waiter">Waiter</option>
+                    <option value="kitchen">Kitchen</option>
+                    <option value="biller">Biller</option>
+                  </Input>
+                </Col>
+              </FormGroup>
+              <FormGroup row>
+                <Label for="Name" sm={2}>
+                  *Name
               </Label>
-              <Col sm={10}>
-                <Input
-                  type="text"
-                  name="name"
-                  id="name"
-                  placeholder="Enter Name"
-                  autocomplete="off"
-                  onChange={handleInput}
-                />
-                <span id="fname" class="spanname"></span>
-              </Col>
-            </FormGroup>
-            <FormGroup row>
-              <Label for="Email" sm={2}>
-                *Email Address
+                <Col sm={10}>
+                  <Input
+                    type="text"
+                    name="name"
+                    id="name"
+                    placeholder="Enter Name"
+                    autocomplete="off"
+                    onChange={handleInput}
+                  />
+                  <span id="fname" class="spanname"></span>
+                </Col>
+              </FormGroup>
+              <FormGroup row>
+                <Label for="Email" sm={2}>
+                  *Email Address
               </Label>
-              <Col sm={10}>
-                <Input
-                  type="email"
-                  name="email"
-                  id="email"
-                  placeholder="Enter Email Address"
-                  autocomplete="off"
-                  onChange={handleInput}
-                />
-                <span id="emailid" class="spanname"></span>
-              </Col>
-            </FormGroup>
-            <FormGroup row>
-              <Label for="Select" sm={2}>
-                *Gender
+                <Col sm={10}>
+                  <Input
+                    type="email"
+                    name="email"
+                    id="email"
+                    placeholder="Enter Email Address"
+                    autocomplete="off"
+                    onChange={handleInput}
+                  />
+                  <span id="emailid" class="spanname"></span>
+                </Col>
+              </FormGroup>
+              <FormGroup row>
+                <Label for="Select" sm={2}>
+                  *Gender
               </Label>
-              <Col sm={10}>
-                <Input
-                  type="select"
-                  name="gender"
-                  id="Select"
-                  onChange={handleInput}
-                >
-                  <option>Select Gender</option>
-                  <option>Male</option>
-                  <option>Female</option>
-                  <option>Other</option>
-                </Input>
-              </Col>
-            </FormGroup>
-            <FormGroup row>
-              <Label for="Mobile" sm={2}>
-                *Mobile Number
+                <Col sm={10}>
+                  <Input
+                    type="select"
+                    name="gender"
+                    id="Select"
+                    onChange={handleInput}
+                  >
+                    <option>Select Gender</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                    <option>Other</option>
+                  </Input>
+                </Col>
+              </FormGroup>
+              <FormGroup row>
+                <Label for="Mobile" sm={2}>
+                  *Mobile Number
               </Label>
-              <Col sm={10}>
-                <Input
-                  type="number"
-                  name="mobile"
-                  id="Mobile"
-                  placeholder="Enter Mobile Number"
-                  autocomplete="off"
-                  onChange={handleInput}
-                />
-                <span id="phone" class="spanname"></span>
-              </Col>
-            </FormGroup>
-            <FormGroup row>
-              <Label for="username" sm={2}>
-                *Username
+                <Col sm={10}>
+                  <Input
+                    type="number"
+                    name="mobile"
+                    id="Mobile"
+                    placeholder="Enter Mobile Number"
+                    autocomplete="off"
+                    onChange={handleInput}
+                  />
+                  <span id="phone" class="spanname"></span>
+                </Col>
+              </FormGroup>
+              <FormGroup row>
+                <Label for="username" sm={2}>
+                  *Username
               </Label>
-              <Col sm={10}>
-                <Input
-                  type="text"
-                  name="username"
-                  id="uname"
-                  placeholder="Enter Username"
-                  autocomplete="off"
-                  onChange={handleInput}
-                />
-                <span id="username" class="spanname"></span>
-              </Col>
-            </FormGroup>
-            <FormGroup row>
-              <Label for="password" sm={2}>
-                *Password
+                <Col sm={10}>
+                  <Input
+                    type="text"
+                    name="username"
+                    id="uname"
+                    placeholder="Enter Username"
+                    autocomplete="off"
+                    onChange={handleInput}
+                  />
+                  <span id="username" class="spanname"></span>
+                </Col>
+              </FormGroup>
+              <FormGroup row>
+                <Label for="password" sm={2}>
+                  *Password
               </Label>
-              <Col sm={10}>
-                <Input
-                  type="password"
-                  name="password"
-                  id="password"
-                  placeholder="Enter Password"
-                  autocomplete="off"
-                  onChange={handleInput}
-                />
-                <span id="Password" class="spanname"></span>
-              </Col>
-            </FormGroup>
-            <FormGroup row>
-              <Label for="Date" sm={2}>
-                * Date of Joining
+                <Col sm={10}>
+                  <Input
+                    type="password"
+                    name="password"
+                    id="password"
+                    placeholder="Enter Password"
+                    autocomplete="off"
+                    onChange={handleInput}
+                  />
+                  <span id="Password" class="spanname"></span>
+                </Col>
+              </FormGroup>
+              <FormGroup row>
+                <Label for="Date" sm={2}>
+                  * Date of Joining
               </Label>
-              <Col sm={10}>
-                <Input
-                  type="Date"
-                  name="doj"
-                  id="Date"
-                  placeholder="Enter Joining Date"
-                  onChange={handleInput}
-                />
-                <span id="date" class="spanname"></span>
-              </Col>
-            </FormGroup>
-            <FormGroup row>
+                <Col sm={10}>
+                  <Input
+                    type="Date"
+                    name="doj"
+                    id="Date"
+                    placeholder="Enter Joining Date"
+                    onChange={handleInput}
+                  />
+                  <span id="date" class="spanname"></span>
+                </Col>
+              </FormGroup>
+              {/* <FormGroup row>
               <Label for="File" sm={2}>
                 Documents
               </Label>
               <Col sm={10}>
                 <Input type="file" name="file" id="file" />
               </Col>
-            </FormGroup>
-            <Button className="empbtn" onClick={handleSubmit}>
-              Create Employee
+            </FormGroup> */}
+              <Button className="empbtn" onClick={handleSubmit}>
+                Create Employee
             </Button>
-          </Form>
-        </div>
-      </span>
-    </div>
+            </Form>
+          </div>
+        </span>
+      </div>
     </div>
   );
 };

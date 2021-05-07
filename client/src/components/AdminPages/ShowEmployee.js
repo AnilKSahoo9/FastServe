@@ -5,7 +5,7 @@ import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import "../../css/AdminStyles.css";
 // import "../../css/showemployee.css";
 const ShowEmployee = (props) => {
- 
+
   const [show, setShow] = useState(false);
   const [data, setData] = useState({});
   const [dataFromChild, setDataFromChild] = useState(null);
@@ -35,17 +35,16 @@ const ShowEmployee = (props) => {
   };
   return (
     <div className="inner-container">
-      <div className="showemp"  >
+      <div className="showemp" style={{ marginTop: "6rem" }} >
         <div className="showline">
-          Waiter
+          Waiters Employee Table
         </div>
         <div>
-          <Table className="showemp_table" 
-          responsive size="sm">
+          <Table className="showemp_table"
+            responsive size="sm">
             <thead>
               <tr className="tr">
-                <th>No.</th>
-                <th>Waiter Name </th>
+                <th>Serial No.</th>                <th>Waiter Name </th>
                 <th>Attendance for Today</th>
                 <th>Details</th>
               </tr>
@@ -58,10 +57,10 @@ const ShowEmployee = (props) => {
                   <td>{user.status}</td>
                   <td>
                     <Button
-                    className="showemp_btn"
-                  
+                      className="showemp_btn"
+
                       outline
-                      
+
                       onClick={() => handleShowDetails(user.modal)
                       }
                     >
@@ -94,15 +93,14 @@ const ShowEmployee = (props) => {
 
       <div className="showemp"  >
         <div className="showline">
-          Billers
+          Billers Employee Table
         </div>
         <div>
-          <Table className="showemp_table" 
-          responsive size="sm">
+          <Table className="showemp_table"
+            responsive size="sm">
             <thead>
               <tr className="tr">
-                <th>No.</th>
-                <th>Billers Name</th>
+                <th>Serial No.</th>                <th>Biller Name</th>
                 <th>Attendance for Today</th>
                 <th>Details</th>
               </tr>
@@ -116,7 +114,7 @@ const ShowEmployee = (props) => {
                   <td><Button
                     outline
                     className="showemp_btn"
-                    
+
                     onClick={() => handleShowDetails(biller.modal)
                     }
                   >
@@ -147,15 +145,15 @@ const ShowEmployee = (props) => {
 
       <div className="showemp" >
         <div className="showline">
-          Kitchens
+          Chefs Employee Table
         </div>
         <div>
-          <Table className="showemp_table" 
-          responsive size="sm">
+          <Table className="showemp_table"
+            responsive size="sm">
             <thead>
               <tr>
-                <th>No.</th>
-                <th>Chefstaff Name</th>
+                <th>Serial No.</th>
+                <th>Chef Name</th>
                 <th>Attendance for Today</th>
                 <th>Details</th>
               </tr>
@@ -169,7 +167,7 @@ const ShowEmployee = (props) => {
                   <td><Button
                     outline
                     className="showemp_btn"
-                   
+
                     onClick={() => handleShowDetails(chef.modal)
                     }
                   >
@@ -198,7 +196,7 @@ const ShowEmployee = (props) => {
           </div>) : null}
       </div>
 
-      <div className="showemp" >
+      {/* <div className="showemp" >
         <div className="showline">
           Other Workers
         </div>
@@ -249,7 +247,7 @@ const ShowEmployee = (props) => {
               </ModalFooter>
             </Modal>
           </div>) : null}
-      </div>
+      </div> */}
     </div>
 
   );

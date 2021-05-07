@@ -155,13 +155,13 @@ const AdminHome = () => {
                                 <Card className="admin_card_design" body outline color="info" >
                                     <h5>
                                         <CardHeader className="admin_card_header" >
-                                            <CardTitle><b>Waiter</b></CardTitle>
+                                            <CardTitle><b>Employees</b></CardTitle>
                                         </CardHeader>
                                     </h5>
                                     <CardBody className="admin_card_body">
                                         {/* <hr></hr> */}
                                         <CardTitle><strong>{data.TotalWaitersWorking}</strong></CardTitle>
-                                        <p >No. of Waiters Working Today</p>
+                                        <p >No. of Employees Working Today</p>
                                     </CardBody>
                                 </Card>
                             </div>

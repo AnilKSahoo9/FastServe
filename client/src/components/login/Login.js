@@ -72,13 +72,23 @@ const Login = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     // console.log(form);
+    Swal.fire({
+      title: `${form.username}Loging In........`,
+      showDenyButton: false,
+      showCancelButton: false,
+      showConfirmButton: false,
+      icon: "info",
+      // confirmButtonText: `Save`,
+      // denyButtonText: `Don't save`,
+      timer: 18000,
+    });
     if (userType === "Admin") {
       axios
         .post("http://localhost:4000/admin-login/", form)
         .then((res) => {
           console.log(res);
           if (res.status === 200) {
-            setUserSession(res.data.type);
+            setUserSession(res.data);
             history.push("/home");
           }
         })
@@ -102,7 +112,7 @@ const Login = () => {
         .then((res) => {
           console.log(res);
           if (res.status === 200) {
-            setUserSession(res.data.type);
+            setUserSession(res.data);
             res.data.type === "biller" && history.push("/biller-home");
             res.data.type === "waiter" && history.push("/waiter-place-order");
             res.data.type === "chef" && history.push("/kitchen-home");

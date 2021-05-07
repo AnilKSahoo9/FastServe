@@ -12,6 +12,16 @@ export const getUserType = () => {
   if (userType) return userType;
   else return "User";
 };
+export const getUserName = () => {
+  const userName = sessionStorage.getItem("name");
+  if (userName) return userName;
+  // else return "User";
+};
+export const getToken = () => {
+  const token = sessionStorage.getItem("token");
+  if (token) return token;
+  // else return "User";
+};
 
 // return the token from the session storage
 // export const getToken = () => {
@@ -48,16 +58,22 @@ export const getUserType = () => {
 export const removeUserSession = () => {
   //   sessionStorage.removeItem("token");
   sessionStorage.removeItem("type");
+  sessionStorage.removeItem("name");
+  sessionStorage.removeItem("token");
+
   //   sessionStorage.removeItem("refreshToken");
   //   sessionStorage.removeItem("started");
   //   sessionStorage.removeItem("name");
 };
 
 // set the token and user from the session storage
-export const setUserSession = (type) => {
+export const setUserSession = (data) => {
   //   sessionStorage.setItem("token", token.access);
   //   sessionStorage.setItem("refreshToken", token.refresh);
   sessionStorage.setItem("started", Date.now());
-  sessionStorage.setItem("type", type);
+  sessionStorage.setItem("type", data.type);
+  sessionStorage.setItem("name", data.username);
+  sessionStorage.setItem("token", data.token);
+
   //   sessionStorage.setItem("name", user.name ? user.name : "User");
 };
