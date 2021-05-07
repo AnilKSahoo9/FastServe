@@ -111,6 +111,7 @@ const Waiter_Place_Order = () => {
     <div className="waiter_home_style"
     // style={{marginTop:"5rem"}}
     >
+   
       {!showCategory && !showItems && (
         <Grid container spacing={3}>
           {tablesList.map((eachTable) => {
@@ -122,15 +123,7 @@ const Waiter_Place_Order = () => {
                 xs={12}
                 onClick={(event) => handleTableClick(eachTable, event)}
               >
-                <Card className="waiterhome_card_style"
-                  // style={{
-                  //   marginTop: "40px",
-                  //   backgroundColor: "#ca4483ea",
-                  //   marginRight: "30px",
-                  //   fontSize: "50px",
-                  //   marginLeft: "30px",
-                  // }}
-                >
+                <Card className="waiterhome_card_style">
                   <Card.Body className="place_order_card">
                     <Card.Header style={{ backgroundColor: "#1F305E" }}>
                       <Card.Title style={{ color: "white" }}>
@@ -144,9 +137,10 @@ const Waiter_Place_Order = () => {
           })}
         </Grid>
       )}
-
+      {/* <span className="Catagory_Cards">Table</span> */}
       {showCategory && !showItems && (
         <Grid container spacing={3}>
+        
           {categoryList.map((categoryItem) => {
             return (
               <Grid
@@ -156,23 +150,9 @@ const Waiter_Place_Order = () => {
                 xs={12}
                 onClick={(event) => handleCategoryClick(categoryItem, event)}
               >
-                <Card
-                  style={{
-                    maxwidth: "100%",
-                    maxHeight: "100rem",
-                    color: "white",
-                    fontFamily: "Times New Roman, Times, serif",
-                    marginTop: "70px",
-                    marginLeft: "30px",
-                    borderStyle: "groove",
-                    borderWidth: "3px",
-                    borderRadius: "7px",
-                    boxShadow: "20px 20px 50px grey",
-                    backgroundColor: "#ca4483ea",
-                    //backgroundImage: `linear-gradient(to right bottom, #051437, #004782, #0081a7, #00b98a, #12eb25)`,
-                  }}
-                >
-                  <Card.Body>
+             
+                <Card className="waiterhome_card_style">
+                  <Card.Body className="place_order_card">
                     <Card.Header style={{ backgroundColor: "#1F305E" }}>
                       <Card.Title>{categoryItem.name}</Card.Title>
                     </Card.Header>
@@ -186,10 +166,8 @@ const Waiter_Place_Order = () => {
       {showItems && (
         <div>
           <Table
+          className="itemTable"
             striped
-            bordered
-            hover
-            variant="dark"
             style={{ marginTop: "20px" }}
           >
             <thead>
@@ -230,8 +208,8 @@ const Waiter_Place_Order = () => {
               </tbody>
             ))}
           </Table>
-          <Button>Submit</Button>
-          <Button
+          <Button className="place_order_btn">Submit</Button>
+          <Button className="place_order_btn"
             onClick={() => {
               setShowCategory(true);
               setShowItems(false);
@@ -242,7 +220,7 @@ const Waiter_Place_Order = () => {
         </div>
       )}
       {(showCategory || showItems) && (
-        <Button onClick={handleBack}>Back</Button>
+        <Button className="place_order_back_btn" onClick={handleBack}>Back</Button>
       )}
       </div>
     </div>

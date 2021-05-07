@@ -160,7 +160,7 @@ const BillerHome = () => {
     <div className="inner-container">
       <div className="biller_home_style">
         <CardGroup>
-        <div>
+        <div className= "cardstyle">
             <Card className="cardsname"
               body
               outline
@@ -180,6 +180,7 @@ const BillerHome = () => {
               </h5>
             </Card>
             </div>
+           
             <div className= "cardstyle">
             <Card className="cardsname"
               body
@@ -200,14 +201,17 @@ const BillerHome = () => {
               </h5>
             </Card>
             </div>
-          <Card className="chartcard">
+           
+          {/* <Card className="chartcard"> */}
+          <span  className="chartcard">
             <div className="chart">
               <Doughnut data={data} options={{ responsive: true }} />
               <h5>Table order chart</h5>
             </div>
-          </Card>
-        </CardGroup>
-      </div>
+            </span>
+          {/* </Card> */}
+          </CardGroup>
+      
 
       <div>
         <Table className="Tabledesign"
@@ -307,7 +311,7 @@ const BillerHome = () => {
         size="sm"
         striped
         bordered
-        hover
+        // hover
         style={{ backgroundImage: `linear-gradient(to right,#0E3386,#0047AB, #002D62, #0a2351)`}}
       >
         <thead>
@@ -385,6 +389,7 @@ const BillerHome = () => {
           )}
         </Modal.Body>
       </Modal>
+      </div>
     </div>
   );
 };

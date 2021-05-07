@@ -103,10 +103,10 @@ const AdminTotalOrder = () => {
                               </Card.Header>
                               <Accordion.Collapse eventKey={String(index)}>
                                 <Card.Body>
-                                  <h5 style={{ "color": "black" }}>Ordered by Waiter:- <strong>{value.waiterName}</strong></h5>
+                                  <h5 style={{ "color": "black" }}>Ordered by Waiter:-<strong>{value.waiterName}+</strong></h5>
                                   <Table
                                     className="table_design_total_order"
-                                    striped bordered style={{ backgroundImage: `linear-gradient(to right,#0E3386,#0047AB, #002D62, #0a2351)` }}>
+                                    striped bordered hover>
                                     <thead>
                                       <tr>
                                         <th>
@@ -142,9 +142,9 @@ const AdminTotalOrder = () => {
                                         </tr>
                                         <tr>
                                           <th>
-                                            Total:
+                                            Total Amount:
                                   </th>
-                                          <td colspan="3">{valueitem.quantity * valueitem.price}</td>
+                                          <td colspan="3">{valueitem.totalAmount}</td>
                                         </tr>
                                       </tbody>
                                     ))}
@@ -215,7 +215,7 @@ const AdminTotalOrder = () => {
                                 <th className="th_total_order">
                                   Total:
                                   </th>
-                                <td colspan="3">{valueitem.quantity * valueitem.price}</td>
+                                <td colspan="3">{valueitem.totalAmount}</td>
                               </tr>
                             </tbody>
                           ))}
@@ -228,6 +228,7 @@ const AdminTotalOrder = () => {
             </Col>
           </Row>
         )}
+
     </div>
   );
 };

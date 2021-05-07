@@ -106,17 +106,17 @@ const App = () => {
                 <Route path="/add-items" component={AddItem} />
                 <Route path="/biller-home" component={BillerHome} />
                 <Route path="/biller-waiters" component={BillerWaiter} />
-                <Route path="/biller-chat" component={BillerChat} />
-                <Route path="/biller-report" component={BillerReport} />
+                {/* <Route path="/biller-chat" component={BillerChat} /> */}
+                {/* <Route path="/biller-report" component={BillerReport} /> */}
                 <Route path="/kitchen-home" component={KitchenHome} />
                 <Route
                   path="/kitchen-notification"
                   component={KitchenNotification}
                 />
-                <Route
+                {/* <Route
                   path="/kitchen-chat"
                   component={Kitchen_Chat}
-                />
+                /> */}
                 <Route
                   path="/waiter-place-order"
                   component={Waiter_Place_Order}
@@ -125,10 +125,10 @@ const App = () => {
                   path="/waiter-notification"
                   component={Waiter_Notification}
                 />
-                <Route
+                {/* <Route
                   path="/waiter-chat"
                   component={Waiter_Chat}
-                />
+                /> */}
                 <Route path="/customer" component={Customer} />
                 <Redirect to="/" />
               </Switch>

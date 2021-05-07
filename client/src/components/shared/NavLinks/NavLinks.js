@@ -82,7 +82,7 @@ const NavLinks = (props) => {
                 Waiter
               </NavLink>
             </li>
-            <li>
+            {/* <li>
               <NavLink to="/biller-chat" className="billerKitchen">
                 <ChatIcon className="icons" />
                 Chat
@@ -93,7 +93,7 @@ const NavLinks = (props) => {
                 <AssessmentIcon className="icons" />
                 Report
               </NavLink>
-            </li>
+            </li> */}
           </div>
         )}
         {userType === "chef" && (
@@ -111,12 +111,12 @@ const NavLinks = (props) => {
                 Notifications
               </NavLink>
             </li>
-            <li>
+            {/* <li>
               <NavLink to="/kitchen-chat" className="kitchen_chat">
                 <ChatIcon className="icons" />
                 Chat
               </NavLink>
-            </li>
+            </li> */}
           </div>
         )}
         {userType === "waiter" && (
@@ -133,12 +133,12 @@ const NavLinks = (props) => {
                 Notification
               </NavLink>
             </li>
-            <li>
+            {/* <li>
               <NavLink to="/waiter-chat" className="waiter_chat">
                 <ChatIcon className="icons" />
                 Chat
               </NavLink>
-            </li>
+            </li> */}
           </div>
         )}
         {/* <li>
