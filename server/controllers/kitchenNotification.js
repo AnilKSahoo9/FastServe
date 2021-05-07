@@ -18,7 +18,19 @@ const kitchenNotificationController = async(req,res) => {
         else{
             console.log("NO ORDER PENDING IN SESSION,,for kitchenNotf");
         }
-        res.status(200).json({sessionOrdersPending,parcelOrdersPending})
+        res.status(200).json({tableData:sessionOrdersPending.map((z) => ({
+            orderType:z.tableNo,
+            orderStatus:z.orderStatus,
+            orderId:z._id,
+            orderDetails:z.items
+        })),
+        parcelData:parcelOrdersPending.map((z) => ({
+            orderType:"parcel",
+            orderStatus:z.orderStatus,
+            orderId:z._id,
+            orderDetails:z.items
+        }))
+    })
     });
 }
 module.exports = kitchenNotificationController;
