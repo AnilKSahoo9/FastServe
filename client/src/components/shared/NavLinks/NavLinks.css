@@ -149,8 +149,19 @@
   list-style-type: none;
   font-weight: bold;
 }
-
-.nav-links li .billerKitchen {
+.nav-links li .billerparcelorder {
+  position: absolute;
+  left: -0.3cm;
+  width:6.5cm;
+  text-align: left;
+  font-size: 22px;
+  top: 6cm;
+  margin: 1rem;
+  padding: 0.4rem;
+  list-style-type: none;
+  font-weight: bold;
+}
+/* .nav-links li .billerKitchen {
   position: absolute;
   left: -0.3cm;
   width:6.5cm;
@@ -174,7 +185,7 @@
   padding: 0.4rem;
   list-style-type: none;
   font-weight: bold;
-}
+} */
 
 /* .nav-links li .logout {
   position: absolute;

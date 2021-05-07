@@ -16,6 +16,7 @@ import PersonIcon from "@material-ui/icons/Person";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import GroupIcon from "@material-ui/icons/Group";
 import { getUserType } from "../utils/common";
+
 const NavLinks = (props) => {
   const userType = getUserType();
   // console.log(userType);
@@ -80,6 +81,12 @@ const NavLinks = (props) => {
               <NavLink to="/biller-waiters" className="billerWaiter">
                 <EmojiPeopleIcon className="icons" />
                 Waiter
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/biller-parcel-order" className="billerparcelorder">
+                <RoomServiceIcon className="icons" />
+                Parcel Order
               </NavLink>
             </li>
             {/* <li>

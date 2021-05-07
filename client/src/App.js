@@ -49,6 +49,9 @@ const BillerChat = React.lazy(() =>
 const BillerWaiter = React.lazy(() =>
   import("./components/BillerPages/BillerWaiter")
 );
+const Billerparcelorder = React.lazy(() =>
+  import("./components/BillerPages/BillerParceleOrder")
+);
 //kitchen dashboard
 const KitchenHome = React.lazy(() =>
   import("./components/KitchenPages/KitchenHome.js")
@@ -106,6 +109,7 @@ const App = () => {
                 <Route path="/add-items" component={AddItem} />
                 <Route path="/biller-home" component={BillerHome} />
                 <Route path="/biller-waiters" component={BillerWaiter} />
+                <Route path="/biller-parcel-order" component={Billerparcelorder} />
                 {/* <Route path="/biller-chat" component={BillerChat} /> */}
                 {/* <Route path="/biller-report" component={BillerReport} /> */}
                 <Route path="/kitchen-home" component={KitchenHome} />

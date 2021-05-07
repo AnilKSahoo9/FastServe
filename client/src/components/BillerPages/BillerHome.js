@@ -211,14 +211,14 @@ const BillerHome = () => {
             </span>
           {/* </Card> */}
           </CardGroup>
-      
+          </div>
 
-      <div>
+      <div className="tablegroup_design">
         <Table className="Tabledesign"
           responsive
           size="sm"
           striped
-          bordered
+          // bordered
           // hover
        style={{
         backgroundImage: `linear-gradient(to right,#0E3386,#0047AB, #002D62, #0a2351)`
@@ -304,13 +304,13 @@ const BillerHome = () => {
             )}
           </Modal.Body>
         </Modal>
-      </div>
+     
 
       <Table className="Tabledesign"
         responsive
         size="sm"
         striped
-        bordered
+        // bordered
         // hover
         style={{ backgroundImage: `linear-gradient(to right,#0E3386,#0047AB, #002D62, #0a2351)`}}
       >
@@ -390,6 +390,7 @@ const BillerHome = () => {
         </Modal.Body>
       </Modal>
       </div>
+     
     </div>
   );
 };

@@ -8,9 +8,9 @@
     margin: 0%;
 } */
 .biller_home_style{
-    margin-top: 5rem;
-    margin-left: 3rem;
-    margin-right: 0rem;
+    margin-top: 6.5rem;
+    margin-left: 4rem;
+    margin-right: 3rem;
 }
 .btn_table{
     background-color: #d11d72;
@@ -54,12 +54,12 @@
    width: fit-content;
    height: 150px;
     color: white;
-    font-family: "Times New Roman, Times, serif";
+    font-family: Times New Roman, Times, serif;
     margin-left: 2rem;
     justify-content: center;
      border-style: groove;
-    border-width: "3px";
-      border-radius: "7px";
+    border-width: 3px;
+      border-radius: 7px;
                
 }
 .chart{
@@ -71,7 +71,7 @@
     
 }
 
-.table-bordered td {
+/* .table-bordered td {
     border: 0px;
 }
 .table-bordered th {
@@ -80,7 +80,11 @@
 .btn-primary{
     border: 0px;
   
-}
+} */
+.btn-primary{
+    border: 0px;
+  
+} 
 /* .table{
     width:92%;
 } */
@@ -95,8 +99,11 @@
     margin-top: 2rem;
     /* margin-left: 3.5rem; */
     border-width: 3px;
-    border-radius: 20px;
+    border-radius: 5px;
     border-collapse: "collapse";
+}
+.tablegroup_design{
+    margin-left: 4rem;
 }
 
 
@@ -129,7 +136,7 @@
     border-radius: 7px;
    
 }  */
-.row .Container {
+/* .row .Container {
     background-color:white;
     height: 300px;
     padding: 15px;
@@ -183,11 +190,11 @@
      margin: 8px;
      margin-bottom: 30px;
      height: 35px;
- }
+ } */
 
 /* BillerReport */
 
-.report{
+/* .report{
     width: 80%;
     color: #fff;
     background-color: #1F305E;
@@ -213,4 +220,4 @@
     height: 25px;
     line-height: 1.0;
     color: white;
-}
+} */
