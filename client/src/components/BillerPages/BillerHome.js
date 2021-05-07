@@ -3,7 +3,6 @@ import Swal from "sweetalert2";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Doughnut } from "react-chartjs-2";
 import "../../css/BillerStyle.css";
-
 import {
   TotalOrder,
   TotalParcel,
@@ -28,6 +27,9 @@ import { Button, Modal } from "react-bootstrap";
 import axios from "axios";
 import ClipLoader from "react-spinners/ClipLoader";
 
+import io from "socket.io-client";
+let socket;
+
 const BillerHome = () => {
   const data = {
     // lables:["received order","Pending Order"],
@@ -51,6 +53,15 @@ const BillerHome = () => {
   const [value, setValue] = useState(null);
   const [val, setName] = useState("");
   const [Pval, setPname] = useState("");
+
+  const ENDPOINT = "ws://localhost:4000/api/billerhome/socket";
+  let connectionOptions = {
+    "force new connection": true,
+    reconnectionAttempts: "Infinity",
+    timeout: 10000,
+    transports: ["websocket"],
+  };
+
   const handleShow = (event) => {
     setShow(true);
     setName(event.target.value);
@@ -116,6 +127,18 @@ const BillerHome = () => {
   };
 
   useEffect(() => {
+    socket = io(ENDPOINT, connectionOptions);
+    //console.log(socket);
+    socket.on("billerData", (billerData) => {
+      //console.log(billerData);
+      setParcelOrders(billerData.parcelOrders);
+      socket.emit("biller", { name: "bhabs" });
+  });
+  socket.on("billerDataForSession", (billerData) => {
+    console.log(billerData.tableOrders);
+    setTableOrders(billerData.tableOrders);
+    socket.emit("billerSession", { name: "bhabsession" });
+});
     fetchbillerhomeData();
   }, []);
 

@@ -179,6 +179,57 @@ io.of("/api/admin/socket").on("connection", (socket) => {
   socket.on("disconnect", () => { });
 });
 
+io.of("/api/billerhome/socket").on("connection",(socket) => {
+  const parcelChangeStream = parcelSchema.watch();
+  parcelChangeStream.on("change", (change) => {
+    //console.log(change);
+    switch (change.operationType) {
+      case "update":
+      parcelSchema.find({_id:change.documentKey._id},(err,doc) => {
+        socket.emit("billerData", {parcelOrders:doc.map((elem,index) => ({
+          parcelNo:elem._id,
+          billerName:elem.billerName,
+          totalAmount:elem.totalAmount,
+          status:elem.billStatus,
+          orderstatus:elem.orderStatus,
+          items:elem.items.map((z) => ({
+              name:z.name,
+              quantity:z.quantity,
+              price:z.price
+          }))
+      }))});
+      });
+        socket.on("biller", (data) => {});
+    }
+  });
+  const sessionChangeStream = sessionSchema.watch();
+  sessionChangeStream.on("change", (change) => {
+    //console.log(change);
+    switch (change.operationType) {
+      case "update":
+      sessionSchema.find({_id:change.documentKey._id,orderStatus:{ $in: ["accept","complete"] }},(err,doc) => {
+        console.log(doc);
+        socket.emit("billerDataForSession", {tableOrders:doc.map((elem,index) => ({
+          sessionNo:elem._id,
+          waiterName:elem.waiterName,
+          tableNo:elem.tableNo,
+          totalAmount:elem.totalAmount,
+          status:elem.billStatus,
+          orderstatus:elem.orderStatus,
+          items:elem.items.map((z) => ({
+              name:z.name,
+              quantity:z.quantity,
+              price:z.price
+          }))
+      }))});
+      });
+        socket.on("biller", (data) => {});
+        socket.on("billerSession",(data) => {});
+    }
+  });
+  socket.on("disconnect", () => { });
+});
+
 routes(app);
 server.listen(PORT, () => console.log(`server listening in port ${PORT}`));
 
