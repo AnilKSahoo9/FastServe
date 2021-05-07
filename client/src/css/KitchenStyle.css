@@ -1,8 +1,8 @@
 /* kitchen dashboard css */
 
 .kitchen_home_design{
-    margin-top: 4rem;
-    margin-left: 3rem;
+    margin-top: 6.5rem;
+    margin-left: 3.5rem;
    
 }
 .timer div {
@@ -125,6 +125,7 @@
   
   .kitchen_notification{
       margin-top: 6rem;
+      margin-left: 3.5rem;
   }
   .notification_card_body{
     color: #fff;
@@ -137,7 +138,7 @@
     font-weight: bolder,
   }
 .card_badge_style{
-    background-color: #d11d72;
+    /* background-color: #d11d72; */
     font-size: 1.5rem;
 }
   /*waiterchat page css*/

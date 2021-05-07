@@ -25,7 +25,7 @@ const AdminTable = () => {
 
   return (
     <div className="inner-container">
-    <div className="admin_parent_div_cards">
+    <div className="admin_parent_table_div_cards">
       {/* <Container> */}
         <Row className="admin_table_Design">
           {table.map((user) => (

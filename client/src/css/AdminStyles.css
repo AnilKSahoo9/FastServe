@@ -1,8 +1,10 @@
 .admin_table_Design{
   margin-top: 3rem;
+  /* font-weight: bolder;
+  font-size: 20px; */
 }
 .admin_totalorder_row{
-  margin-top: 5rem;
+  margin-top: 6rem;
   margin-left: 3rem;
   color: #0a2351;
  
@@ -12,9 +14,9 @@
   font-size: 40px;
 }
 .admin_additems{
-  margin-top: 4rem;
+  margin-top: 6rem;
   margin-right: 0rem;
-  margin-left: 2.5rem;
+  margin-left: 3.5rem;
 }
 .admin_style_card{
   width: 30%;
@@ -25,7 +27,7 @@
 }
 .add_user_table{
   width: 90%;
-  margin: 5rem;
+  margin: 6.5rem;
   /* margin-top: 3rem; */
   background-color: #0a2351;
   font-weight: bolder;
@@ -69,13 +71,27 @@ background-image: linear-gradient(
 }
 .admin_parent_div_cards{
   /* margin: 5%; */
-  margin-right: 6%;
-  margin-left: 6%;
-  margin-top: 5%;
+  margin-right: 4rem;
+  margin-left: 8rem;
+  margin-top: 6rem;
   justify-content: center;
   align-items: center;
   /* height: 258cm; */
  
+}
+.admin_parent_table_div_cards{
+  margin-right: 4rem;
+  margin-left: 7rem;
+  margin-top: 6rem;
+  justify-content: center;
+  align-items: center;
+}
+.admin_parent_div_waiter_cards{
+  margin-right: 4rem;
+  margin-left: 7rem;
+  margin-top: 6rem;
+  justify-content: center;
+  align-items: center;
 }
 .admin_card_header
 {
@@ -161,7 +177,7 @@ background-image: linear-gradient(
   margin: 2rem;
   border-style: groove;
   border-width: 3px;
-
+  
   background-image: linear-gradient(
     to right bottom,
     /* #0070bb, */
@@ -174,7 +190,7 @@ background-image: linear-gradient(
 .waiterAbsentCard {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1) !important;
   width: 17rem;
-  height: 12.15rem;
+  height: 13.8rem;
 
   font-family: "Times New Roman", Times, serif;
   margin: 2rem;
@@ -204,13 +220,13 @@ background-image: linear-gradient(
 }
 .waiterCardBody {
   color: white;
-  font-size: 15px;
+  font-size: 20px;
   padding: 0px;
   padding-bottom: 10px;
 }
 .waiterAbsentCardBody {
   color: white;
-  font-size: 15px;
+  font-size: 20px;
 }
 .waiterButton {
   background-color: #d11d72;
@@ -312,7 +328,8 @@ background-image: linear-gradient(
   margin-top: 40px;
 }
 .showemp{
-  margin: 5rem;
+  margin-top: 6rem;
+  margin-left: 3rem;
   color:#fff;
   background-color:#1F305E;
   font-size: 20px;

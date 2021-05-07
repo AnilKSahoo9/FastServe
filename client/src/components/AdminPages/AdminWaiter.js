@@ -24,7 +24,7 @@ const AdminWaiter = () => {
 
   return (
     <div className="inner-container">
-      <div className="admin_parent_div_cards">
+      <div className="admin_parent_div_waiter_cards">
         <Row className="admin_table_Design">
           {waiter.map((user) => (
             <Col xs={12} lg={4} md={6}>
