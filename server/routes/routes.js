@@ -19,6 +19,8 @@ const kitchenController = require("../controllers/kitchenController");
 const kitchenOrderController = require("../controllers/kitchenOrderController");
 const adminTableController = require("../controllers/adminTableController");
 const customerDBController = require("../controllers/customerDBController");
+const adminWaiterController =  require("../controllers/adminWaiterController");
+const kitchenNotificationController = require("../controllers/kitchenNotification");
 //const billerController = require("../controllers/billerController");
 const waiters = [
   {
@@ -96,6 +98,8 @@ const routes = (app) => {
   );
   app.get("/admin-tables", adminTableController);
   app.get("/customer-dashboard",customerDBController);
+  app.get("/admin-waiter",adminWaiterController);
+  app.get("/kitchen-not",kitchenNotificationController);
   //app.post('/billers',billerController.billerController);
   //app.get('/billerpaymentdetails',billerController.billerPaidController);
 };
