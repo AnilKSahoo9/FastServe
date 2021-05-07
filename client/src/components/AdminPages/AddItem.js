@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import axios from "axios"
 import {
   Button,
@@ -14,12 +14,12 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import Swal from "sweetalert2";
-import { itemData } from "../../StaticData/itemData";
+// import { menuList } from "../../StaticData/menuList";
 import breakfast from "./image/breakfast.webp";
 import dessert from "./image/ic.jpg";
-import bevergaes from "./image/drink.jpg";
+// import bevergaes from "./image/drink.jpg";
 import rice from "./image/fried-rice.jpg";
-import chicken from "./image/chicken.jpg";
+import dal from "./image/dal.jpg";
 import "../../css/AdminStyles.css";
 const AddItem = () => {
   const [modalShow, setModalShow] = useState(false);
@@ -29,6 +29,22 @@ const AddItem = () => {
   const [nonveg, setNonveg] = useState("Types of Non-Veg Main Courses");
   const [veg, setVeg] = useState(" Types of Veg Courses");
   const [itemsArray, setItemsArray] = useState([]);
+  const [menuList, setMenuList] = useState([])
+  useEffect(() => {
+    const fetchMenuList = () => {
+      axios
+        .get(
+          `http://localhost:4000/showitems/`,
+        ).then(res => {
+          console.log(res)
+          setMenuList(res.data)
+        }).catch(err => console.log(err))
+    }
+    fetchMenuList()
+    // return () => {
+    //   cleanup
+    // }
+  }, [])
   // const [newsortedArr, SetNewSortedArray] = useState({});
   const handleCategoryHandler = (e) => {
     setValue(e);
@@ -88,41 +104,63 @@ const AddItem = () => {
     } else if (value === "NonVeg") {
       data.subcategory = nonveg;
     }
-    let payload = [...itemsArray, data]
-    setItemsArray([...itemsArray, data]);
-    console.log(payload)
-    axios
-      .post(
-        `http://localhost:4000/additems/`,
-        //JSON.stringify(payload),
-        payload,
-        {
-          header: {
-            "Content-type":
-              "application/json,application/x-www-form-urlencoded, charset=UTF-8",
-          },
-        }
-      )
-      .then((response) => {
-        // console.log(response);
-        if (response.status === 200) {
-          console.log(response.data);
-          Swal.fire({
-            title: "Menu Items Added",
-            showDenyButton: false,
-            showCancelButton: false,
-            showConfirmButton: false,
-            icon: "success",
-            timer: 1000,
-          });
-          setValue("Select the Item Category");
-          setItemName("");
-          setItemPrice("");
-          setNonveg("Types of Non-Veg Main Courses");
-          setVeg("Types of Veg Courses");
-        }
-      }).catch(err => console.log(err))
-
+    if (!["Breakfast", "Rice", "Dal", "Desserts", "NonVeg", "Veg"].includes(data.category)) {
+      Swal.fire({
+        title: "Select The Category",
+        showDenyButton: false,
+        showCancelButton: false,
+        showConfirmButton: true,
+        icon: "error",
+        timer: 1000,
+      });
+    } else {
+      var payload = [...itemsArray, data];
+      setItemsArray([...itemsArray, data]);
+      // if (payload.find(item => !["Breakfast", "Rice", "Dal", "Dessert", "NonVeg", "Veg"].includes(item.category) && item.name !== "" && item.price !== "")) {
+      axios
+        .post(
+          `http://localhost:4000/additems/`,
+          //JSON.stringify(payload),
+          payload,
+          {
+            header: {
+              "Content-type":
+                "application/json,application/x-www-form-urlencoded, charset=UTF-8",
+            },
+          }
+        )
+        .then((response) => {
+          // console.log(response);
+          if (response.status === 200) {
+            console.log(response.data);
+            Swal.fire({
+              title: "Menu Items Added",
+              showDenyButton: false,
+              showCancelButton: false,
+              showConfirmButton: false,
+              icon: "success",
+              timer: 1000,
+            });
+            setValue("Select the Item Category");
+            setItemName("");
+            setItemPrice("");
+            setNonveg("Types of Non-Veg Main Courses");
+            setVeg("Types of Veg Courses");
+            setItemsArray([])
+          }
+        }).catch(err => console.log(err))
+      // } else {
+      //   Swal.fire({
+      //     title: "Missed Some Details",
+      //     showDenyButton: false,
+      //     showCancelButton: false,
+      //     showConfirmButton: true,
+      //     icon: "error",
+      //     timer: 1000,
+      //   });
+      // }
+    }
+    console.log(payload);
   };
 
 
@@ -250,16 +288,16 @@ const AddItem = () => {
           <div className="additembg">
             <Row>
               <Col xs={6}>
-                {itemData.breakfast && itemData.breakfast.length > 0 ? (
+                {menuList.Breakfast && menuList.Breakfast.length > 0 ? (
                   <div className="menu-divison">
-                    <span className="item-name">--- Breakfast ---</span>
+                    <span className="item-name">--------- Breakfast ---------</span>
                     <Row>
                       <Col className="menu-column">
-                        {itemData.breakfast.map((val, index) => (
+                        {menuList.Breakfast.map((val, index) => (
                           <div className="menu-value">
                             <span className="val-item">{val.name}</span>
                             <span className="price">
-                              ----------- ${val.price}
+                              Rs. {val.price}
                             </span>
                           </div>
                         ))}
@@ -274,23 +312,23 @@ const AddItem = () => {
                 )}
               </Col>
               <Col xs={6}>
-                {itemData.bevergaes && itemData.bevergaes.length > 0 ? (
+                {menuList.Dal && menuList.Dal.length > 0 ? (
                   <div className="menu-divison">
-                    <span className="item-name">--- Beverages ---</span>
+                    <span className="item-name">--------- Dal ---------</span>
                     <Row>
                       <Col className="menu-column">
-                        {itemData.bevergaes.map((val, index) => (
+                        {menuList.Dal.map((val, index) => (
                           <div className="menu-value">
                             <span className="val-item">{val.name}</span>
 
                             <span className="price">
-                              ----------- ${val.price}
+                              Rs. {val.price}
                             </span>
                           </div>
                         ))}
                       </Col>
                       <Col>
-                        <Image src={bevergaes} className="image"></Image>
+                        <Image src={dal} className="image"></Image>
                       </Col>
                     </Row>
                   </div>
@@ -299,16 +337,16 @@ const AddItem = () => {
                 )}
               </Col>
               <Col xs={6}>
-                {itemData.dessert && itemData.dessert.length > 0 ? (
+                {menuList.Desserts && menuList.Desserts.length > 0 ? (
                   <div className="menu-divison">
-                    <span className="item-name">--- Dessert ---</span>
+                    <span className="item-name">--------- Desserts ---------</span>
                     <Row>
                       <Col className="menu-column">
-                        {itemData.dessert.map((val, index) => (
+                        {menuList.Desserts.map((val, index) => (
                           <div className="menu-value">
                             <span className="val-item">{val.name}</span>
                             <span className="price">
-                              ----------- ${val.price}
+                              Rs. {val.price}
                             </span>
                           </div>
                         ))}
@@ -323,16 +361,16 @@ const AddItem = () => {
                 )}
               </Col>
               <Col xs={6}>
-                {itemData.rice && itemData.rice.length > 0 ? (
+                {menuList.Rice && menuList.Rice.length > 0 ? (
                   <div className="menu-divison">
-                    <span className="item-name">--- Rice ---</span>
+                    <span className="item-name">--------- Rice ---------</span>
                     <Row>
                       <Col className="menu-column">
-                        {itemData.rice.map((val, index) => (
+                        {menuList.Rice.map((val, index) => (
                           <div className="menu-value">
                             <span className="val-item">{val.name}</span>
                             <span className="price">
-                              ----------- ${val.price}
+                              Rs. {val.price}
                             </span>
                           </div>
                         ))}
@@ -346,14 +384,14 @@ const AddItem = () => {
                   ""
                 )}
               </Col>
-              <Col xs={6}>
-                {itemData.nonveg.chicken &&
-                  itemData.nonveg.chicken.length > 0 ? (
+              {/* <Col xs={6}>
+                {menuList.nonveg.chicken &&
+                  menuList.nonveg.chicken.length > 0 ? (
                   <div className="menu-divison">
                     <span className="item-name">--- Chicken ---</span>
                     <Row>
                       <Col className="menu-column">
-                        {itemData.nonveg.chicken.map((val, index) => (
+                        {menuList.nonveg.chicken.map((val, index) => (
                           <div className="menu-value">
                             <span className="val-item">{val.name}</span>
                             <span className="price">
@@ -370,7 +408,7 @@ const AddItem = () => {
                 ) : (
                   ""
                 )}
-              </Col>
+              </Col> */}
             </Row>
           </div>
         </div>

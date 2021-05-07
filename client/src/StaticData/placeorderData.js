@@ -1,5 +1,8 @@
 export let tablesList = [
   {
+    no: 100,
+  },
+  {
     no: 101,
   },
   {
@@ -8,33 +11,7 @@ export let tablesList = [
   {
     no: 103,
   },
-  {
-    no: 104,
-  },
-  {
-    no: 105,
-  },
-  {
-    no: 106,
-  },
-  {
-    no: 107,
-  },
-  {
-    no: 108,
-  },
-  {
-    no: 109,
-  },
-  {
-    no: 110,
-  },
-  {
-    no: 111,
-  },
-  {
-    no: 112,
-  },
+
 ];
 
 export let categoryList = [

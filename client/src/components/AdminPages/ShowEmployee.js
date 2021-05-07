@@ -1,15 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { Button, Table } from "reactstrap";
-import { userDetails, billerDetails, chefDetails, workerDetails } from "../../StaticData/showemployeeData"
+import { userDetails, billerDetails, chefDetails } from "../../StaticData/showemployeeData"
 import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import "../../css/AdminStyles.css";
 // import "../../css/showemployee.css";
-const ShowEmployee = (props) => {
+const ShowEmployee = () => {
 
   const [show, setShow] = useState(false);
   const [data, setData] = useState({});
-  const [dataFromChild, setDataFromChild] = useState(null);
+  const [employeeList, setEmployeeList] = useState({})
+  // const [dataFromChild, setDataFromChild] = useState(null);
   const [displayModal, setdisplayModal] = useState(false);
+
+  useEffect(() => {
+    const fetchMenuList = () => {
+      axios
+        .get(
+          `http://localhost:4000/showemployees/`,
+        ).then(res => {
+          console.log(res)
+          setEmployeeList(res.data)
+        }).catch(err => console.log(err))
+    }
+    fetchMenuList()
+    // return () => {
+    //   cleanup
+    // }
+  }, [])
 
   const handleShowDetails = (event) => {
     setShow(!show);
@@ -17,15 +35,8 @@ const ShowEmployee = (props) => {
     setdisplayModal(!displayModal);
   };
 
-  // const handleCallback = (childData) => {
-  //   //console.log(childData);
-  //   setDataFromChild(childData);
-  // };
-  //console.log(dataFromChild);
-
   const handleClick = () => {
     // show && displayModal && {setShow(false),setdisplayModal(false)}
-
     if (show && displayModal === true) {
       setShow(false);
       setdisplayModal(false);
@@ -33,6 +44,7 @@ const ShowEmployee = (props) => {
       console.log("fail");
     }
   };
+  console.log(employeeList)
   return (
     <div className="inner-container">
       <div className="showemp" style={{ marginTop: "6rem" }} >
@@ -44,17 +56,18 @@ const ShowEmployee = (props) => {
             responsive size="sm">
             <thead>
               <tr className="tr">
-                <th>Serial No.</th>                <th>Waiter Name </th>
+                <th>Serial No.</th>
+                <th>Waiter Name </th>
                 <th>Attendance for Today</th>
                 <th>Details</th>
               </tr>
             </thead>
             <tbody>
-              {userDetails.map((user, id) => (
+              {employeeList.waiters.map((user, id) => (
                 <tr>
-                  <th scope="row">{user.empId}</th>
+                  <th scope="row">{user.empId.slice(0, 8).toUpperCase()}</th>
                   <td>{user.name}</td>
-                  <td>{user.status}</td>
+                  <td>{user.modal.status.charAt(0).toUpperCase() + user.modal.status.slice(1)}</td>
                   <td>
                     <Button
                       className="showemp_btn"
@@ -64,7 +77,7 @@ const ShowEmployee = (props) => {
                       onClick={() => handleShowDetails(user.modal)
                       }
                     >
-                      Show Details
+                      Show Employee Details
                     </Button>
                   </td>
                 </tr>
@@ -76,12 +89,12 @@ const ShowEmployee = (props) => {
         {show ? (
           <div>
             <Modal isOpen={displayModal} toggle={displayModal}>
-              <ModalHeader>User Details</ModalHeader>
+              <ModalHeader>Employee Details</ModalHeader>
               <ModalBody><div>{Object.entries(data.data).map((item, index) => (<ol key={index}>{item}</ol>))}</div></ModalBody>
               <ModalFooter>
-                <Button color="primary">
+                {/* <Button color="primary">
                   Edit
-          </Button>{" "}
+          </Button>{" "} */}
                 <Button color="secondary" onClick={handleClick}>
                   Cancel
           </Button>
@@ -89,8 +102,6 @@ const ShowEmployee = (props) => {
             </Modal>
           </div>) : null}
       </div>
-
-
       <div className="showemp"  >
         <div className="showline">
           Billers Employee Table
@@ -100,7 +111,8 @@ const ShowEmployee = (props) => {
             responsive size="sm">
             <thead>
               <tr className="tr">
-                <th>Serial No.</th>                <th>Biller Name</th>
+                <th>Serial No.</th>
+                <th>Biller Name</th>
                 <th>Attendance for Today</th>
                 <th>Details</th>
               </tr>
@@ -195,61 +207,7 @@ const ShowEmployee = (props) => {
             </Modal>
           </div>) : null}
       </div>
-
-      {/* <div className="showemp" >
-        <div className="showline">
-          Other Workers
-        </div>
-        <div>
-          <Table className="showemp_table"
-           responsive size="sm">
-            <thead>
-              <tr>
-                <th>No.</th>
-                <th>Worker Name</th>
-                <th>Attendance for Today</th>
-                <th>Details</th>
-              </tr>
-            </thead>
-            <tbody>
-              {workerDetails.map((worker, id) => (
-                <tr>
-                  <th scope="row">{worker.empId}</th>
-                  <td>{worker.name}</td>
-                  <td>{worker.status}</td>
-                  <td><Button
-                    outline
-                    className="showemp_btn"
-                    
-                    onClick={() => handleShowDetails(worker.modal)
-                    }
-                  >
-                    Show Details
-                    </Button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </Table>
-        </div>
-        {show ? (
-          <div>
-            <Modal isOpen={displayModal} toggle={displayModal}>
-              <ModalHeader>User Details</ModalHeader>
-              <ModalBody><div>{Object.entries(data.data).map((item, index) => (<ol key={index}>{item}</ol>))}</div></ModalBody>
-              <ModalFooter>
-                <Button color="primary">
-                  Edit
-          </Button>{" "}
-                <Button color="secondary" onClick={handleClick}>
-                  Cancel
-          </Button>
-              </ModalFooter>
-            </Modal>
-          </div>) : null}
-      </div> */}
     </div>
-
   );
 };
 

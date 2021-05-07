@@ -28,7 +28,7 @@ const NavBar = (props) => {
         icon: "info",
         // confirmButtonText: `Save`,
         // denyButtonText: `Don't save`,
-        timer: 10000,
+        timer: 5000,
       });
       axios.post("http://localhost:4000/employee-logout/", { username: userName }).then(res => {
         if (res.status === 200) {

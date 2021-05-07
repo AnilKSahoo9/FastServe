@@ -1,40 +1,62 @@
 let employeeSchema = require('../models/employeeModel');
 const { v4: uuidv4 } = require("uuid");
-const showEmployeeController = async(req,res) => {
+const showEmployeeController = async (req, res) => {
     let biller = [];
     let waiter = [];
     let chef = [];
-    await employeeSchema.find({Type:'biller'}).then((item) => {
+    await employeeSchema.find({ type: 'biller' }).then((item) => {
         biller = item;
     })
-    await employeeSchema.find({Type:'waiter'}).then((item) => {
+    await employeeSchema.find({ type: 'waiter' }).then((item) => {
         waiter = item;
     });
-    res.status(200).json({billers:biller.map((item) => ({
-                empid:uuidv4(),
-                name:item.Name,
-                modal:{
-                    gender:item.Gender,
-                    username:item.Username,
-                    email:item.Email,
-                    mobile:item.Mobile,
-                    documents:item.Documents,
-                    doj:item.DOJ
-                }
-    })),
-    waiters:waiter.map((item) => ({
-                empid:uuidv4(),
-                name:item.Name,
-                modal:{
-                    gender:item.Gender,
-                    username:item.Username,
-                    email:item.Email,
-                    mobile:item.Mobile,
-                    documents:item.Documents,
-                    doj:item.DOJ
-                }
-    }))
-})
+    await employeeSchema.find({ type: 'chef' }).then((item) => {
+        chef = item;
+    });
+    res.status(200).json({
+        billers: biller.map((item) => ({
+            empId: item._id,
+            name: item.name,
+            modal: {
+                gender: item.gender,
+                username: item.username,
+                email: item.email,
+                mobile: item.mobile,
+                // documents:item.Documents,
+                doj: item.doj,
+                // mobile:item.mobile,
+                status: item.status
+            }
+        })),
+        waiters: waiter.map((item) => ({
+            empId: item._id,
+            name: item.name,
+            modal: {
+                gender: item.gender,
+                username: item.username,
+                email: item.email,
+                mobile: item.mobile,
+                // documents:item.Documents,
+                doj: item.doj,
+                // mobile:item.mobile,
+                status: item.status
+            }
+        })),
+        chefs: chef.map((item) => ({
+            empId: item._id,
+            name: item.name,
+            modal: {
+                gender: item.gender,
+                username: item.username,
+                email: item.email,
+                mobile: item.mobile,
+                // documents:item.Documents,
+                doj: item.doj,
+                // mobile:item.mobile,
+                status: item.status
+            }
+        }))
+    })
 }
 module.exports = showEmployeeController;
 

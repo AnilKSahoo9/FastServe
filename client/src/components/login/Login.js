@@ -73,14 +73,14 @@ const Login = () => {
     event.preventDefault();
     // console.log(form);
     Swal.fire({
-      title: `${form.username}Loging In........`,
+      title: "You are Loging In........",
       showDenyButton: false,
       showCancelButton: false,
       showConfirmButton: false,
       icon: "info",
       // confirmButtonText: `Save`,
       // denyButtonText: `Don't save`,
-      timer: 18000,
+      timer: 5000,
     });
     if (userType === "Admin") {
       axios
