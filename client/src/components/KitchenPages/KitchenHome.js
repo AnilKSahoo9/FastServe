@@ -191,7 +191,7 @@ const KitchenHome = () => {
       }).catch(err => console.log(err))
   };
 
-  console.log("outside", kitchenData.map(item => item.orderStatus))
+  console.log("outside", kitchenData)
   return (
     <div className="inner-container">
       {
@@ -291,7 +291,7 @@ const KitchenHome = () => {
                     <td>
                       <ol>
                         {eachOrder.items.map((val, index) => (
-                          <li key={index}>{val.name + "---" + val.quantity}</li>
+                          <li key={index}>{val.itemName + "---" + val.quantity}</li>
                         ))}
                       </ol>
                     </td>

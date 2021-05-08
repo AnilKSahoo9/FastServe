@@ -15,7 +15,7 @@ import SideBar from "./components/shared/SideBar/SideBar";
 //import  BillerReport  from "./components/BillerPages/BillerReport";
 // import { BillerWaiter } from "./components/BillerPages/BillerWaiter";
 // import BillerKitchen from "./components/BillerPages/BillerKitchen";
-// import BillerHome from "./components/BillerPages/BillerHome";
+import BillerHome from "./components/BillerPages/BillerHome";
 // import Customer from "./components/BillerPages/Customer";
 // import Login from "./components/login/Login";
 const Login = React.lazy(() => import("./components/login/Login"));
@@ -41,9 +41,9 @@ const AdminTotalOrder = React.lazy(() =>
 const BillerReport = React.lazy(() =>
   import("./components/BillerPages/BillerReport")
 );
-const BillerHome = React.lazy(() =>
-  import("./components/BillerPages/BillerHome")
-);
+// const BillerHome = React.lazy(() =>
+//   import("./components/BillerPages/BillerHome")
+// );
 const BillerChat = React.lazy(() =>
   import("./components/BillerPages/BillerKitchen")
 );

@@ -3,68 +3,68 @@ let parcelSchema = require("../models/parcelModel");
 let billerSchema = require("../models/billerModel");
 const { v4: uuidv4 } = require("uuid");
 let tableSchema = require("../models/tableModel");
-const billerPaymentController =  (req, res) => {
-  let { billStatus, orderType, orderId ,billerName ,tableNo} = req.body;
+const billerPaymentController = (req, res) => {
+  let { billStatus, orderType, orderId, billerName, tableNo } = req.body;
   let idM = uuidv4();
   orderType === "parcel"
-    ?  parcelSchema.updateOne(
-        { _id: orderId },
-        { billStatus: billStatus },
-        (err, doc) => {
-          // if (err) {
-          //   res.status(500).json({ msg: "error occured" });
-          // }
-          
-          if (doc) {
-            billerSchema.findOne({name:billerName},(err2,doc2) => {
-              if(doc2){
-                //console.log(doc2)
-                billerSchema.updateOne({name:billerName},{ $push:{paid:orderId}},(err3,doc3) => {
-                  //if(doc3){
-                    //console.log(doc3)
-                     res.status(200).json({ msg: "successful" });
-                  //}
-                });
-              }
-              else{
-                new billerSchema({_id:idM,name:billerName,paid:orderId}).save();
-                 res.status(200).json({msg:"ok"});
-              }
-            });
-          }
+    ? parcelSchema.updateOne(
+      { _id: orderId },
+      { billStatus: billStatus },
+      (err, doc) => {
+        // if (err) {
+        //   res.status(500).json({ msg: "error occured" });
+        // }
+
+        if (doc) {
+          billerSchema.findOne({ name: billerName }, (err2, doc2) => {
+            if (doc2) {
+              //console.log(doc2)
+              billerSchema.updateOne({ name: billerName }, { $push: { paid: orderId } }, (err3, doc3) => {
+                //if(doc3){
+                //console.log(doc3)
+                res.status(200).json({ msg: "successful" });
+                //}
+              });
+            }
+            else {
+              new billerSchema({ _id: idM, name: billerName, paid: orderId }).save();
+              res.status(200).json({ msg: "ok" });
+            }
+          });
         }
-      )
+      }
+    )
     : null;
 
   orderType === "table"
-    ?  sessionSchema.updateOne(
-        { _id: orderId },
-        { billStatus: billStatus },
-        (err, doc) => {
-          // if (err) {
-          //   res.status(500).json({ msg: "error occured" });
-          // }
-          if (doc) {
-            tableSchema.updateOne({tableNo:tableNo},{tableStatus: "inactive"},(err4,doc4) => {
-              if(doc4){
-                console.log("successfully updated");
-              }
-            });
-            billerSchema.findOne({name:billerName},(err2,doc2) => {
-              if(doc2){
-                billerSchema.updateOne({name:billerName},{ $push:{paid:orderId}},(err3,doc3) => {
-                     res.status(200).json({ msg: "successful" });
-                });
-              }
-              else{
-                new billerSchema({_id:idM,name:billerName,paid:orderId}).save();
-                 res.status(200).json({msg:"ok"});
-              }
-            });
-            //res.status(200).json({ msg: "successful" });
-          }
+    ? sessionSchema.updateOne(
+      { _id: orderId },
+      { billStatus: billStatus },
+      (err, doc) => {
+        // if (err) {
+        //   res.status(500).json({ msg: "error occured" });
+        // }
+        if (doc) {
+          tableSchema.updateOne({ tableNo: tableNo }, { tableStatus: "inactive" }, (err4, doc4) => {
+            if (doc4) {
+              console.log("successfully updated");
+            }
+          });
+          billerSchema.findOne({ name: billerName }, (err2, doc2) => {
+            if (doc2) {
+              billerSchema.updateOne({ name: billerName }, { $push: { paid: orderId } }, (err3, doc3) => {
+                res.status(200).json({ msg: "successful" });
+              });
+            }
+            else {
+              new billerSchema({ _id: idM, name: billerName, paid: orderId }).save();
+              res.status(200).json({ msg: "ok" });
+            }
+          });
+          //res.status(200).json({ msg: "successful" });
         }
-      )
+      }
+    )
     : null;
 };
 module.exports = billerPaymentController;

@@ -90,7 +90,7 @@ const ShowEmployee = () => {
           <div>
             <Modal isOpen={displayModal} toggle={displayModal}>
               <ModalHeader>Employee Details</ModalHeader>
-              <ModalBody><div>{Object.entries(data.data).map((item, index) => (<ol key={index}>{item}</ol>))}</div></ModalBody>
+              <ModalBody><div>{console.log(data)}</div></ModalBody>
               <ModalFooter>
                 {/* <Button color="primary">
                   Edit
@@ -211,4 +211,4 @@ const ShowEmployee = () => {
   );
 };
 
-export default ShowEmployee;
+export default React.memo(ShowEmployee);
