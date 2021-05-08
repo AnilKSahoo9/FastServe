@@ -21,7 +21,7 @@ const billerHomeController = async (req, res) => {
         }
     });
     //for chart
-    await sessionSchema.find({ billStatus: 'paid', orderStatus: "complete" }, (err, doc) => {
+    await sessionSchema.find({}, (err, doc) => {
         if (err) {
             res.status(500).json({ msg: 'error occurred' })
         }
@@ -29,7 +29,7 @@ const billerHomeController = async (req, res) => {
             totalTableOrdersPlaced = doc.length;
         }
     });
-    await parcelSchema.find({ billStatus: 'paid', orderStatus: "complete" }, (err, doc) => {
+    await parcelSchema.find({}, (err, doc) => {
         if (err) {
             res.status(500).json({ msg: 'error occurred' })
         }

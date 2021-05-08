@@ -649,7 +649,7 @@ const BillerHome = () => {
                 </div>
                 <span className="chartcard">
                   <div className="chart">
-                    <h5>Total Order Chart</h5>
+                    <h6>Total Order Chart</h6>
                     <Doughnut data={{
                       // datasets: [{
                       //   data: [otherData.totalTableData ? otherData.totalTableData : 0, otherData.totalParcelData ? otherData.totalParcelData : 0],
