@@ -5,12 +5,14 @@ import { userDetails, billerDetails, chefDetails } from "../../StaticData/showem
 import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import "../../css/AdminStyles.css";
 // import "../../css/showemployee.css";
+import ClipLoader from "react-spinners/ClipLoader";
+
 const ShowEmployee = () => {
 
   const [show, setShow] = useState(false);
   const [data, setData] = useState({});
-  const [employeeList, setEmployeeList] = useState({})
-  // const [dataFromChild, setDataFromChild] = useState(null);
+  const [employeeList, setEmployeeList] = useState({ billers: [], waiters: [], chefs: [] })
+  const [loading, setLoading] = useState(true);
   const [displayModal, setdisplayModal] = useState(false);
 
   useEffect(() => {
@@ -21,6 +23,7 @@ const ShowEmployee = () => {
         ).then(res => {
           console.log(res)
           setEmployeeList(res.data)
+          setLoading(false)
         }).catch(err => console.log(err))
     }
     fetchMenuList()
@@ -47,166 +50,178 @@ const ShowEmployee = () => {
   console.log(employeeList)
   return (
     <div className="inner-container">
-      <div className="showemp" style={{ marginTop: "6rem" }} >
-        <div className="showline">
-          Waiters Employee Table
-        </div>
-        <div>
-          <Table className="showemp_table"
-            responsive size="sm">
-            <thead>
-              <tr className="tr">
-                <th>Serial No.</th>
-                <th>Waiter Name </th>
-                <th>Attendance for Today</th>
-                <th>Details</th>
-              </tr>
-            </thead>
-            <tbody>
-              {employeeList.waiters.map((user, id) => (
-                <tr>
-                  <th scope="row">{user.empId.slice(0, 8).toUpperCase()}</th>
-                  <td>{user.name}</td>
-                  <td>{user.modal.status.charAt(0).toUpperCase() + user.modal.status.slice(1)}</td>
-                  <td>
-                    <Button
-                      className="showemp_btn"
-
-                      outline
-
-                      onClick={() => handleShowDetails(user.modal)
-                      }
-                    >
-                      Show Employee Details
-                    </Button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </Table>
-        </div>
-        {/* {show ? <ModalExample Data={data.data} display={show} parentCallback={handleCallback}/> : null} */}
-        {show ? (
+      {
+        loading ? (
+          <div style={{ marginTop: "290px" }}>
+            <ClipLoader
+              color="#1f305e"
+              loading={true}
+              css={""}
+              size={100}
+            />
+          </div>
+        ) : (
           <div>
-            <Modal isOpen={displayModal} toggle={displayModal}>
-              <ModalHeader>Employee Details</ModalHeader>
-              <ModalBody><div>{console.log(data)}</div></ModalBody>
-              <ModalFooter>
-                {/* <Button color="primary">
+            <div className="showemp" style={{ marginTop: "6rem" }} >
+              <div className="showline">
+                Waiters Employee Table
+        </div>
+              <div>
+                <Table className="showemp_table"
+                  responsive size="sm">
+                  <thead>
+                    <tr className="tr">
+                      <th>Serial No.</th>
+                      <th>Waiter Name </th>
+                      <th>Attendance for Today</th>
+                      <th>Details</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {employeeList.waiters.map((user, id) => (
+                      <tr>
+                        <th scope="row">{user.empId.slice(0, 8).toUpperCase()}</th>
+                        <td>{user.name}</td>
+                        <td>{user.modal.status.charAt(0).toUpperCase() + user.modal.status.slice(1)}</td>
+                        <td>
+                          <Button
+                            className="showemp_btn"
+                            outline
+                            onClick={() => handleShowDetails(user.modal)
+                            }
+                          >
+                            Show Waiter Details
+                    </Button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </Table>
+              </div>
+              {/* {show ? <ModalExample Data={data.data} display={show} parentCallback={handleCallback}/> : null} */}
+              {show ? (
+                <div>
+                  <Modal isOpen={displayModal} toggle={displayModal}>
+                    <ModalHeader>Employee Details</ModalHeader>
+                    <ModalBody><div>{console.log(data)}</div></ModalBody>
+                    <ModalFooter>
+                      {/* <Button color="primary">
                   Edit
           </Button>{" "} */}
-                <Button color="secondary" onClick={handleClick}>
-                  Cancel
+                      <Button color="secondary" onClick={handleClick}>
+                        Cancel
           </Button>
-              </ModalFooter>
-            </Modal>
-          </div>) : null}
-      </div>
-      <div className="showemp"  >
-        <div className="showline">
-          Billers Employee Table
+                    </ModalFooter>
+                  </Modal>
+                </div>) : null}
+            </div>
+            <div className="showemp"  >
+              <div className="showline">
+                Billers Employee Table
         </div>
-        <div>
-          <Table className="showemp_table"
-            responsive size="sm">
-            <thead>
-              <tr className="tr">
-                <th>Serial No.</th>
-                <th>Biller Name</th>
-                <th>Attendance for Today</th>
-                <th>Details</th>
-              </tr>
-            </thead>
-            <tbody>
-              {billerDetails.map((biller, id) => (
-                <tr>
-                  <th scope="row">{biller.empId}</th>
-                  <td>{biller.name}</td>
-                  <td>{biller.status}</td>
-                  <td><Button
-                    outline
-                    className="showemp_btn"
-
-                    onClick={() => handleShowDetails(biller.modal)
-                    }
-                  >
-                    Show Details
+              <div>
+                <Table className="showemp_table"
+                  responsive size="sm">
+                  <thead>
+                    <tr className="tr">
+                      <th>Serial No.</th>
+                      <th>Biller Name</th>
+                      <th>Attendance for Today</th>
+                      <th>Details</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {employeeList.billers.map((biller, id) => (
+                      <tr>
+                        <th scope="row">{biller.empId.slice(0, 8).toUpperCase()}</th>
+                        <td>{biller.name}</td>
+                        <td>{biller.modal.status.charAt(0).toUpperCase() + biller.modal.status.slice(1)}</td>
+                        <td><Button
+                          outline
+                          className="showemp_btn"
+                          onClick={() => handleShowDetails(biller.modal)
+                          }
+                        >
+                          Show Biller Details
                     </Button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </Table>
-        </div>
-        {show ? (
-          <div>
-            <Modal isOpen={displayModal} toggle={displayModal}>
-              <ModalHeader>User Details</ModalHeader>
-              <ModalBody><div>{Object.entries(data.data).map((item, index) => (<ol key={index}>{item}</ol>))}</div></ModalBody>
-              <ModalFooter>
-                <Button color="primary">
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </Table>
+              </div>
+              {show ? (
+                <div>
+                  <Modal isOpen={displayModal} toggle={displayModal}>
+                    <ModalHeader>User Details</ModalHeader>
+                    <ModalBody><div>{Object.entries(data.data).map((item, index) => (<ol key={index}>{item}</ol>))}</div></ModalBody>
+                    <ModalFooter>
+                      {/* <Button color="primary">
                   Edit
-          </Button>{" "}
-                <Button color="secondary" onClick={handleClick}>
-                  Cancel
+          </Button>{" "} */}
+                      <Button color="secondary" onClick={handleClick}>
+                        Cancel
           </Button>
-              </ModalFooter>
-            </Modal>
-          </div>) : null}
-      </div>
+                    </ModalFooter>
+                  </Modal>
+                </div>) : null}
+            </div>
 
-      <div className="showemp" >
-        <div className="showline">
-          Chefs Employee Table
+            <div className="showemp" >
+              <div className="showline">
+                Chefs Employee Table
         </div>
-        <div>
-          <Table className="showemp_table"
-            responsive size="sm">
-            <thead>
-              <tr>
-                <th>Serial No.</th>
-                <th>Chef Name</th>
-                <th>Attendance for Today</th>
-                <th>Details</th>
-              </tr>
-            </thead>
-            <tbody>
-              {chefDetails.map((chef, id) => (
-                <tr>
-                  <th scope="row">{chef.empId}</th>
-                  <td>{chef.name}</td>
-                  <td>{chef.status}</td>
-                  <td><Button
-                    outline
-                    className="showemp_btn"
+              <div>
+                <Table className="showemp_table"
+                  responsive size="sm">
+                  <thead>
+                    <tr>
+                      <th>Serial No.</th>
+                      <th>Chef Name</th>
+                      <th>Attendance for Today</th>
+                      <th>Details</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {employeeList.chefs.map((chef, id) => (
+                      <tr>
+                        <th scope="row">{chef.empId.slice(0, 8).toUpperCase()}</th>
+                        <td>{chef.name}</td>
+                        <td>{chef.modal.status.charAt(0).toUpperCase() + chef.modal.status.slice(1)}</td>
+                        <td><Button
+                          outline
+                          className="showemp_btn"
 
-                    onClick={() => handleShowDetails(chef.modal)
-                    }
-                  >
-                    Show Details
+                          onClick={() => handleShowDetails(chef.modal)
+                          }
+                        >
+                          Show Chef Details
                     </Button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </Table>
-        </div>
-        {show ? (
-          <div>
-            <Modal isOpen={displayModal} toggle={displayModal}>
-              <ModalHeader>User Details</ModalHeader>
-              <ModalBody><div>{Object.entries(data.data).map((item, index) => (<ol key={index}>{item}</ol>))}</div></ModalBody>
-              <ModalFooter>
-                <Button color="primary">
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </Table>
+              </div>
+              {show ? (
+                <div>
+                  <Modal isOpen={displayModal} toggle={displayModal}>
+                    <ModalHeader>User Details</ModalHeader>
+                    <ModalBody><div>{Object.entries(data.data).map((item, index) => (<ol key={index}>{item}</ol>))}</div></ModalBody>
+                    <ModalFooter>
+                      {/* <Button color="primary">
                   Edit
-          </Button>{" "}
-                <Button color="secondary" onClick={handleClick}>
-                  Cancel
+          </Button>{" "} */}
+                      <Button color="secondary" onClick={handleClick}>
+                        Cancel
           </Button>
-              </ModalFooter>
-            </Modal>
-          </div>) : null}
-      </div>
+                    </ModalFooter>
+                  </Modal>
+                </div>) : null}
+            </div>
+          </div>
+        )}
+
     </div>
   );
 };

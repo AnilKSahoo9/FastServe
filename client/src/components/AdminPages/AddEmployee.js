@@ -116,7 +116,7 @@ const AddEmployee = () => {
                   >
                     <option>Select Type</option>
                     <option value="waiter">Waiter</option>
-                    <option value="kitchen">Kitchen</option>
+                    <option value="chef">Chef</option>
                     <option value="biller">Biller</option>
                   </Input>
                 </Col>

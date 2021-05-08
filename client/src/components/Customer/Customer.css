@@ -3,6 +3,7 @@
     height: 120px;
     background-color: black;
     margin-left: -3rem;
+    margin-top: 2rem;
 }
 @media (max-width: 768px) {
     .carousel {

@@ -118,7 +118,7 @@ const Waiter_Place_Order = () => {
   }
 
   // console.log(showCategory, showItems);
-  // console.log(orderData);
+  console.log(orderData);
   return (
     <div className="inner-container">
       <div className="waiter_home_style"
